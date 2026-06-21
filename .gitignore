@@ -39,3 +39,6 @@ Thumbs.db
 
 #claude
 .claude/
+
+# Config dengan credentials
+config/odoo.conf

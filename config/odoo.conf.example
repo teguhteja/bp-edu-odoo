@@ -1,23 +1,27 @@
 [options]
-; Master password for database management
-admin_passwd = PLEASE_USE_SECURE_PASSWORD
-
 ; Addon paths: Odoo built-in + custom addons + third-party
-addons_path = /usr/lib/python3/dist-packages/odoo/addons,/mnt/extra-addons/addons,/mnt/extra-addons/third-party,/mnt/extra-addons/third-party/crm_lead_firstname-18.0.1.0.0,/mnt/extra-addons/third-party/partner_contact_birthdate-18.0.1.0.0
+addons_path = /usr/lib/python3/dist-packages/odoo/addons,/mnt/extra-addons/addons,/mnt/extra-addons/third-party
 
-; Database connection
+; Database connection (overridden by docker-compose CLI args)
 db_host = db
 db_port = 5432
 db_user = odoo
 db_password = odoo
 
-; Active database
+; Default database name
 db_name = odoo
+
+; Master password for /web/database/manager — keep secret, do NOT commit odoo.conf
+admin_passwd = your_master_password_here
 
 ; Allow database selection at login screen
 list_db = True
 
-; Workers
+; Route subdomain to matching database: cak1.yourdomain.com → database cak1
+; Comment out if you only use a single database
+dbfilter = ^%d$
+
+; Workers (set to 0 for dev/single-process mode)
 workers = 2
 
 ; Trust proxy headers (X-Forwarded-*) from nginx

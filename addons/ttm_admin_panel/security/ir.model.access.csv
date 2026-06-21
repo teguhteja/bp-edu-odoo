@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ttm_tenant_admin,ttm.tenant admin,model_ttm_tenant,base.group_system,1,1,1,1
+access_ttm_tenant_user,ttm.tenant user,model_ttm_tenant,base.group_user,1,0,0,0

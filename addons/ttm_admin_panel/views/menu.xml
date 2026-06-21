@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_ttm_root"
+              name="TTM Admin"
+              sequence="90"
+              web_icon="ttm_admin_panel,static/description/icon.png"
+              groups="base.group_system"/>
+
+    <menuitem id="menu_ttm_tenants"
+              name="Tenants"
+              parent="menu_ttm_root"
+              action="action_ttm_tenant"
+              sequence="10"/>
+
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="param_npm_url" model="ir.config_parameter">
+            <field name="key">ttm.npm.url</field>
+            <field name="value">http://npm:81</field>
+        </record>
+        <record id="param_npm_email" model="ir.config_parameter">
+            <field name="key">ttm.npm.email</field>
+            <field name="value">teguh.teja@gmail.com</field>
+        </record>
+        <record id="param_npm_password" model="ir.config_parameter">
+            <field name="key">ttm.npm.password</field>
+            <field name="value">changeme</field>
+        </record>
+        <record id="param_base_domain" model="ir.config_parameter">
+            <field name="key">ttm.base.domain</field>
+            <field name="value">teguhteja.com</field>
+        </record>
+    </data>
+</odoo>

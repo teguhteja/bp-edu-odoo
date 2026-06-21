@@ -1,0 +1,100 @@
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "${ODOO_PORT:-18069}:80"
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - web
+
+  web:
+    build: .
+    ports:
+      - "${ODOO_LONGPOLLING_PORT:-18072}:8072"
+    volumes:
+      # Dev: bind-mount source code for live editing
+      - ./addons:/mnt/extra-addons/addons:ro
+      - ./third-party:/mnt/extra-addons/third-party:ro
+      - ./config/odoo.conf:/etc/odoo/odoo.conf
+      # Persistent filestore
+      - odoo-filestore:/var/lib/odoo
+    environment:
+      - USER=${POSTGRES_USER:-odoo}
+      - PASSWORD=${POSTGRES_PASSWORD:-odoo}
+    command: >
+      bash -c "wait-for-psql.py --db_host db --db_port 5432 --db_user $${USER} --db_password $${PASSWORD} --timeout=30 &&
+      exec odoo --db_host db --db_port 5432 --db_user $${USER} --db_password $${PASSWORD}"
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:17
+    ports:
+      - "${POSTGRES_PORT:-15432}:5432"
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-odoo}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-odoo}
+      - POSTGRES_DB=${POSTGRES_DB:-teguhteja-odoo-dev}
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres-data:/var/lib/postgresql/data/pgdata
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-odoo}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+# Nginx Proxy Manager
+  npm:
+    image: jc21/nginx-proxy-manager:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"    # HTTP
+      - "443:443"  # HTTPS
+      - "81:81"    # Web UI NPM
+    volumes:
+      - npm_data:/data
+      - npm_letsencrypt:/etc/letsencrypt
+    environment:
+      - DB_MYSQL_HOST=npm-db
+      - DB_MYSQL_PORT=3306
+      - DB_MYSQL_USER=npm
+      - DB_MYSQL_PASSWORD=${NPM_DB_PASSWORD:-npmsecret}
+      - DB_MYSQL_NAME=npm
+    depends_on:
+      npm-db:
+        condition: service_healthy
+
+  npm-db:
+    image: jc21/mariadb:latest
+    restart: unless-stopped
+    environment:
+      - MYSQL_USER=npm
+      - MYSQL_PASSWORD=${NPM_DB_PASSWORD:-npmsecret}
+      - MYSQL_DATABASE=npm
+    volumes:
+      - npm-db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  adminer:
+    image: adminer
+    ports:
+      - "${ADMINER_PORT:-18070}:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  odoo-filestore:
+  postgres-data:
+  npm_data:
+  npm_letsencrypt:
+  npm-db-data:

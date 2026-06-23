@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_wizard_import_json_form" model="ir.ui.view">
+        <field name="name">bp.edu.wizard.import.json.form</field>
+        <field name="model">bp.edu.wizard.import.json</field>
+        <field name="arch" type="xml">
+            <form string="Import JSON">
+                <sheet>
+                    <!-- Step 1: Upload -->
+                    <group invisible="state != 'upload'" string="Upload File JSON">
+                        <field name="json_file" widget="binary" filename="json_filename" required="1"/>
+                        <field name="json_filename"/>
+                    </group>
+
+                    <!-- Step 2: Preview sebelum import -->
+                    <div invisible="state != 'preview'">
+                        <div class="alert alert-info">
+                            <strong>Konfirmasi Import</strong><br/>
+                            Tipe: <field name="detected_type" readonly="1" class="d-inline"/><br/>
+                            Mata Kuliah: <field name="detected_mk" readonly="1" class="d-inline"/>
+                        </div>
+                        <p>Klik <strong>Impor Sekarang</strong> untuk menyimpan data ke Odoo.</p>
+                    </div>
+
+                    <!-- Step 3: Hasil -->
+                    <div invisible="state != 'done'">
+                        <div class="alert alert-success">
+                            <strong>Import Berhasil!</strong>
+                        </div>
+                        <group string="Ringkasan">
+                            <field name="result_summary" readonly="1" nolabel="1"/>
+                        </group>
+                        <group string="Record Dibuat" invisible="not rps_id and not sap_id and not kontrak_id">
+                            <field name="rps_id" readonly="1" invisible="not rps_id"/>
+                            <field name="sap_id" readonly="1" invisible="not sap_id"/>
+                            <field name="kontrak_id" readonly="1" invisible="not kontrak_id"/>
+                        </group>
+                    </div>
+                </sheet>
+
+                <footer>
+                    <!-- Step 1 -->
+                    <button name="action_preview"
+                            type="object"
+                            string="Periksa File"
+                            class="btn-primary"
+                            invisible="state != 'upload'"/>
+                    <!-- Step 2 -->
+                    <button name="action_import"
+                            type="object"
+                            string="Impor Sekarang"
+                            class="btn-primary"
+                            invisible="state != 'preview'"/>
+                    <!-- Step 3 -->
+                    <button name="action_open_result"
+                            type="object"
+                            string="Buka Record"
+                            class="btn-success"
+                            invisible="state != 'done'"/>
+                    <button string="Tutup" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_wizard_import_json" model="ir.actions.act_window">
+        <field name="name">Import JSON</field>
+        <field name="res_model">bp.edu.wizard.import.json</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

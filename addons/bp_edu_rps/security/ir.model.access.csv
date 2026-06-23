@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bp_edu_rps_user,bp.edu.rps user,model_bp_edu_rps,,1,0,0,0
+access_bp_edu_rps_admin,bp.edu.rps admin,model_bp_edu_rps,base.group_system,1,1,1,1
+access_bp_edu_rps_detail_user,bp.edu.rps.detail user,model_bp_edu_rps_detail,,1,0,0,0
+access_bp_edu_rps_detail_admin,bp.edu.rps.detail admin,model_bp_edu_rps_detail,base.group_system,1,1,1,1
+access_bp_edu_sap_user,bp.edu.sap user,model_bp_edu_sap,,1,0,0,0
+access_bp_edu_sap_admin,bp.edu.sap admin,model_bp_edu_sap,base.group_system,1,1,1,1
+access_bp_edu_sap_pertemuan_user,bp.edu.sap.pertemuan user,model_bp_edu_sap_pertemuan,,1,0,0,0
+access_bp_edu_sap_pertemuan_admin,bp.edu.sap.pertemuan admin,model_bp_edu_sap_pertemuan,base.group_system,1,1,1,1
+access_bp_edu_kontrak_kuliah_user,bp.edu.kontrak.kuliah user,model_bp_edu_kontrak_kuliah,,1,0,0,0
+access_bp_edu_kontrak_kuliah_admin,bp.edu.kontrak.kuliah admin,model_bp_edu_kontrak_kuliah,base.group_system,1,1,1,1
+access_bp_edu_kontrak_materi_user,bp.edu.kontrak.materi user,model_bp_edu_kontrak_materi,,1,0,0,0
+access_bp_edu_kontrak_materi_admin,bp.edu.kontrak.materi admin,model_bp_edu_kontrak_materi,base.group_system,1,1,1,1

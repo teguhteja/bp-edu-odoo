@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bp_edu_docx_template_user,bp.edu.docx.template user,model_bp_edu_docx_template,base.group_user,1,0,0,0
+access_bp_edu_docx_template_admin,bp.edu.docx.template admin,model_bp_edu_docx_template,base.group_system,1,1,1,1
+access_bp_edu_generate_log_user,bp.edu.generate.log user,model_bp_edu_generate_log,base.group_user,1,0,0,0
+access_bp_edu_generate_log_admin,bp.edu.generate.log admin,model_bp_edu_generate_log,base.group_system,1,1,1,1
+access_bp_edu_wizard_generate_user,bp.edu.wizard.generate user,model_bp_edu_wizard_generate,base.group_user,1,1,1,1
+access_bp_edu_wizard_import_json_user,bp.edu.wizard.import.json user,model_bp_edu_wizard_import_json,base.group_user,1,1,1,1

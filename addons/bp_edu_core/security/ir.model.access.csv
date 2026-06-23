@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bp_edu_dosen_user,bp.edu.dosen user,model_bp_edu_dosen,,1,0,0,0
+access_bp_edu_dosen_admin,bp.edu.dosen admin,model_bp_edu_dosen,base.group_system,1,1,1,1
+access_bp_edu_program_studi_user,bp.edu.program.studi user,model_bp_edu_program_studi,,1,0,0,0
+access_bp_edu_program_studi_admin,bp.edu.program.studi admin,model_bp_edu_program_studi,base.group_system,1,1,1,1
+access_bp_edu_tahun_akademik_user,bp.edu.tahun.akademik user,model_bp_edu_tahun_akademik,,1,0,0,0
+access_bp_edu_tahun_akademik_admin,bp.edu.tahun.akademik admin,model_bp_edu_tahun_akademik,base.group_system,1,1,1,1

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_wizard_generate_form" model="ir.ui.view">
+        <field name="name">bp.edu.wizard.generate.form</field>
+        <field name="model">bp.edu.wizard.generate</field>
+        <field name="arch" type="xml">
+            <form string="Generate DOCX">
+                <sheet>
+                    <!-- Hasil setelah generate -->
+                    <div class="alert alert-success" invisible="state != 'done'">
+                        <strong>Berhasil!</strong> File
+                        <field name="result_filename" readonly="1" class="d-inline"/>
+                        siap diunduh.
+                    </div>
+
+                    <group invisible="state == 'done'">
+                        <group string="Jenis Dokumen">
+                            <field name="document_type" widget="radio" required="1"/>
+                        </group>
+                        <group string="Template">
+                            <field name="template_id" required="1"/>
+                        </group>
+                    </group>
+
+                    <!-- Pilih record sumber -->
+                    <group string="Sumber Data" invisible="state == 'done'">
+                        <field name="rps_id"
+                               invisible="document_type != 'rps'"
+                               required="document_type == 'rps'"/>
+                        <field name="sap_id"
+                               invisible="document_type != 'sap'"
+                               required="document_type == 'sap'"/>
+                        <field name="kontrak_id"
+                               invisible="document_type != 'kontrak'"
+                               required="document_type == 'kontrak'"/>
+                    </group>
+
+                    <!-- Read-only info setelah done -->
+                    <group string="Hasil" invisible="state != 'done'">
+                        <field name="result_filename" readonly="1"/>
+                        <field name="result_attachment_id" readonly="1"/>
+                    </group>
+                </sheet>
+
+                <footer>
+                    <button name="action_generate"
+                            type="object"
+                            string="Generate"
+                            class="btn-primary"
+                            invisible="state == 'done'"/>
+                    <button name="action_download"
+                            type="object"
+                            string="Unduh File"
+                            class="btn-success"
+                            invisible="state != 'done'"/>
+                    <button string="Tutup" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_wizard_generate" model="ir.actions.act_window">
+        <field name="name">Generate DOCX</field>
+        <field name="res_model">bp.edu.wizard.generate</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

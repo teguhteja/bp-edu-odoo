@@ -1,0 +1,178 @@
+# ╔══════════════════════════════════════════════════════════════╗
+# ║           CaritaHub – Monitoring Stack                       ║
+# ╠══════════════════════════════════════════════════════════════╣
+# ║  GlitchTip   – Sentry-compatible error tracker  :8100       ║
+# ║  Mailpit     – SMTP catcher (Mailtrap clone)    :8025/:1025  ║
+# ║  Dozzle      – Container log viewer             :9999        ║
+# ╚══════════════════════════════════════════════════════════════╝
+#
+# GlitchTip sepenuhnya kompatibel dengan Sentry SDK.
+# DSN-nya bisa langsung dipakai di modul Odoo sentry.
+#
+# Jalankan: bash setup.sh
+
+# ─── Shared env block untuk GlitchTip ─────────────────────────
+x-glitchtip-env: &glitchtip-env
+  DATABASE_URL: postgresql://glitchtip:${GLITCHTIP_DB_PASSWORD}@glitchtip-postgres/glitchtip
+  REDIS_URL: redis://glitchtip-redis:6379
+  SECRET_KEY: ${GLITCHTIP_SECRET_KEY}
+  EMAIL_URL: smtp://mailpit:1025
+  DEFAULT_FROM_EMAIL: ${GLITCHTIP_FROM_EMAIL:-alerts@localhost}
+  GLITCHTIP_DOMAIN: ${GLITCHTIP_DOMAIN:-http://localhost:8100}
+  ENABLE_OPEN_USER_REGISTRATION: "false"
+  CELERY_WORKER_CONCURRENCY: 2
+
+services:
+
+  # ═══════════════════════════════════════════════════════════════
+  #  GlitchTip – Sentry SDK-compatible error tracking
+  #  Docs: https://glitchtip.com/self-hosting
+  # ═══════════════════════════════════════════════════════════════
+
+  glitchtip-postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: glitchtip
+      POSTGRES_USER: glitchtip
+      POSTGRES_PASSWORD: ${GLITCHTIP_DB_PASSWORD}
+    volumes:
+      - glitchtip-postgres-data:/var/lib/postgresql/data
+    networks:
+      - monitoring
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U glitchtip"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  glitchtip-redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - glitchtip-redis-data:/data
+    networks:
+      - monitoring
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Database migration – hanya jalan sekali saat pertama kali
+  glitchtip-migrate:
+    image: glitchtip/glitchtip:latest
+    command: ./manage.py migrate
+    depends_on:
+      glitchtip-postgres:
+        condition: service_healthy
+    environment:
+      <<: *glitchtip-env
+    networks:
+      - monitoring
+    restart: "no"
+
+  glitchtip-web:
+    image: glitchtip/glitchtip:latest
+    restart: unless-stopped
+    ports:
+      - "${GLITCHTIP_PORT:-8100}:8080"
+    depends_on:
+      glitchtip-postgres:
+        condition: service_healthy
+      glitchtip-redis:
+        condition: service_healthy
+    environment:
+      <<: *glitchtip-env
+    volumes:
+      - glitchtip-uploads:/code/uploads
+    networks:
+      - monitoring
+      - odoo_network  # agar Odoo bisa akses via hostname glitchtip-web
+
+  # Background task worker + beat scheduler (dijadikan satu untuk efisiensi VPS)
+  glitchtip-worker:
+    image: glitchtip/glitchtip:latest
+    restart: unless-stopped
+    command: ./bin/run-celery-with-beat.sh
+    depends_on:
+      glitchtip-postgres:
+        condition: service_healthy
+      glitchtip-redis:
+        condition: service_healthy
+    environment:
+      <<: *glitchtip-env
+    volumes:
+      - glitchtip-uploads:/code/uploads
+    networks:
+      - monitoring
+
+  # ═══════════════════════════════════════════════════════════════
+  #  Mailpit – SMTP email catcher (pengganti Mailtrap)
+  #  Web UI  → http://vps-ip:8025
+  #  SMTP    → vps-ip:1025  (atau mailpit:1025 dari dalam Docker)
+  # ═══════════════════════════════════════════════════════════════
+
+  mailpit:
+    image: axllent/mailpit:latest
+    restart: unless-stopped
+    ports:
+      - "${MAILPIT_UI_PORT:-8025}:8025"    # Web UI
+      - "${MAILPIT_SMTP_PORT:-1025}:1025"  # SMTP
+    environment:
+      MP_MAX_MESSAGES: 5000
+      MP_DATABASE: /data/mailpit.db
+      # Terima koneksi SMTP tanpa auth (development only)
+      MP_SMTP_AUTH_ACCEPT_ANY: "true"
+      MP_SMTP_AUTH_ALLOW_INSECURE: "true"
+    volumes:
+      - mailpit-data:/data
+    networks:
+      - monitoring
+      - odoo_network  # agar Odoo container bisa kirim email ke mailpit:1025
+
+  # ═══════════════════════════════════════════════════════════════
+  #  Dozzle – Realtime container log viewer
+  #  Membaca semua container di Docker host ini.
+  #  Web UI → http://vps-ip:9999
+  # ═══════════════════════════════════════════════════════════════
+
+  dozzle:
+    image: amir20/dozzle:latest
+    restart: unless-stopped
+    ports:
+      - "${DOZZLE_PORT:-9999}:8080"
+    volumes:
+      # Read-only access ke Docker socket
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      # Users file untuk autentikasi (dibuat oleh setup.sh)
+      - ./dozzle-users.yml:/data/users.yml:ro
+    environment:
+      DOZZLE_LEVEL: info
+      DOZZLE_TAILSIZE: 300
+      DOZZLE_NO_ANALYTICS: "true"
+    networks:
+      - monitoring
+
+# ═══════════════════════════════════════════════════════════════
+#  Networks
+# ═══════════════════════════════════════════════════════════════
+networks:
+  monitoring:
+    name: monitoring
+    driver: bridge
+
+  # Jaringan existing Odoo stack – sesuaikan ODOO_NETWORK di .env
+  # Cari nama dengan: docker network ls
+  odoo_network:
+    name: ${ODOO_NETWORK:-bp-edu-odoo_default}
+    external: true
+
+# ═══════════════════════════════════════════════════════════════
+#  Volumes
+# ═══════════════════════════════════════════════════════════════
+volumes:
+  glitchtip-postgres-data:
+  glitchtip-redis-data:
+  glitchtip-uploads:
+  mailpit-data:

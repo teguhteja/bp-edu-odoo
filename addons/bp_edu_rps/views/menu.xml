@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ─── Sub-menu: Perencanaan ────────────────────────────── -->
+    <menuitem id="menu_bp_edu_perencanaan"
+              name="Perencanaan"
+              parent="bp_edu_core.menu_bp_edu_root"
+              sequence="30"/>
+
+    <menuitem id="menu_bp_edu_rps"
+              name="RPS"
+              parent="menu_bp_edu_perencanaan"
+              action="bp_edu_rps_action"
+              sequence="10"/>
+
+    <menuitem id="menu_bp_edu_sap"
+              name="SAP"
+              parent="menu_bp_edu_perencanaan"
+              action="bp_edu_sap_action"
+              sequence="20"/>
+
+    <menuitem id="menu_bp_edu_kontrak_kuliah"
+              name="Kontrak Kuliah"
+              parent="menu_bp_edu_perencanaan"
+              action="bp_edu_kontrak_kuliah_action"
+              sequence="30"/>
+
+</odoo>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ─── Top-Level Menu: Pendidikan ───────────────────────── -->
+    <menuitem id="menu_bp_edu_root"
+              name="Pendidikan"
+              sequence="50"
+              web_icon="bp_edu_core,static/description/icon.png"/>
+
+    <!-- ─── Master Data ──────────────────────────────────────── -->
+    <menuitem id="menu_bp_edu_master"
+              name="Master Data"
+              parent="menu_bp_edu_root"
+              sequence="10"/>
+
+    <menuitem id="menu_bp_edu_dosen"
+              name="Dosen"
+              parent="menu_bp_edu_master"
+              action="bp_edu_dosen_action"
+              sequence="10"/>
+
+    <menuitem id="menu_bp_edu_program_studi"
+              name="Program Studi"
+              parent="menu_bp_edu_master"
+              action="bp_edu_program_studi_action"
+              sequence="20"/>
+
+    <menuitem id="menu_bp_edu_tahun_akademik"
+              name="Tahun Akademik"
+              parent="menu_bp_edu_master"
+              action="bp_edu_tahun_akademik_action"
+              sequence="30"/>
+
+</odoo>

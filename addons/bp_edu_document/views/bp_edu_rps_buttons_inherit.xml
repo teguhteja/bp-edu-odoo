@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tambah tombol "Generate DOCX" ke form RPS -->
+    <record id="view_bp_edu_rps_generate_inherit" model="ir.ui.view">
+        <field name="name">bp.edu.rps.form.generate.inherit</field>
+        <field name="model">bp.edu.rps</field>
+        <field name="inherit_id" ref="bp_edu_rps.bp_edu_rps_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/div[1]" position="before">
+                <div class="oe_button_box" name="button_box_doc">
+                    <button type="action"
+                            name="%(bp_edu_document.action_wizard_generate)d"
+                            string="Generate DOCX"
+                            class="oe_stat_button"
+                            icon="fa-file-word-o"
+                            context="{'default_document_type': 'rps', 'default_rps_id': active_id}"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Tambah tombol "Generate DOCX" ke form SAP -->
+    <record id="view_bp_edu_sap_generate_inherit" model="ir.ui.view">
+        <field name="name">bp.edu.sap.form.generate.inherit</field>
+        <field name="model">bp.edu.sap</field>
+        <field name="inherit_id" ref="bp_edu_rps.bp_edu_sap_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/div[1]" position="before">
+                <div class="oe_button_box" name="button_box_doc">
+                    <button type="action"
+                            name="%(bp_edu_document.action_wizard_generate)d"
+                            string="Generate DOCX"
+                            class="oe_stat_button"
+                            icon="fa-file-word-o"
+                            context="{'default_document_type': 'sap', 'default_sap_id': active_id}"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Tambah tombol "Generate DOCX" ke form Kontrak Kuliah -->
+    <record id="view_bp_edu_kontrak_generate_inherit" model="ir.ui.view">
+        <field name="name">bp.edu.kontrak.kuliah.form.generate.inherit</field>
+        <field name="model">bp.edu.kontrak.kuliah</field>
+        <field name="inherit_id" ref="bp_edu_rps.bp_edu_kontrak_kuliah_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/div[1]" position="before">
+                <div class="oe_button_box" name="button_box_doc">
+                    <button type="action"
+                            name="%(bp_edu_document.action_wizard_generate)d"
+                            string="Generate DOCX"
+                            class="oe_stat_button"
+                            icon="fa-file-word-o"
+                            context="{'default_document_type': 'kontrak', 'default_kontrak_id': active_id}"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

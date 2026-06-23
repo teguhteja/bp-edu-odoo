@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ─── Form View SAP ─────────────────────────────────────── -->
+    <record id="bp_edu_sap_form_view" model="ir.ui.view">
+        <field name="name">bp.edu.sap.form</field>
+        <field name="model">bp.edu.sap</field>
+        <field name="arch" type="xml">
+            <form string="Satuan Acara Perkuliahan">
+                <header>
+                    <button name="action_buat_pertemuan_kosong"
+                            string="Generate 16 Pertemuan"
+                            type="object"
+                            invisible="pertemuan_ids"
+                            class="btn-secondary"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="mata_kuliah_id" string="SAP"/>
+                        <h1>
+                            <field name="mata_kuliah_id"
+                                   options="{'no_create': True}"
+                                   placeholder="Pilih Mata Kuliah..."/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Informasi">
+                            <field name="dosen_id" options="{'no_create': True}"/>
+                            <field name="tahun_akademik_id" options="{'no_create': True}"/>
+                            <field name="rps_id" options="{'no_create': True}"/>
+                        </group>
+                        <group string="MK">
+                            <field name="kode_mk" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <!-- Detail Pertemuan -->
+                    <field name="pertemuan_ids" nolabel="1">
+                        <list string="Pertemuan">
+                            <field name="no" optional="show"/>
+                            <field name="pokok_bahasan" optional="show"/>
+                            <field name="detail_cpmk" optional="hide"/>
+                            <field name="detail_sub_cpmk" optional="show"/>
+                            <field name="waktu_pertemuan" optional="hide"/>
+                        </list>
+                        <form string="Detail Pertemuan">
+                            <group>
+                                <group>
+                                    <field name="no"/>
+                                    <field name="waktu_pertemuan"/>
+                                </group>
+                                <group string="Capaian">
+                                    <field name="detail_cpmk" nolabel="1"
+                                           placeholder="CPMK yang dicapai..."/>
+                                    <field name="detail_sub_cpmk" nolabel="1"
+                                           placeholder="Sub-CPMK yang dicapai..."/>
+                                </group>
+                            </group>
+
+                            <group>
+                                <group string="Indikator &amp; Tujuan">
+                                    <field name="indikator_1" nolabel="1"
+                                           placeholder="Indikator penilaian 1..."/>
+                                    <field name="indikator_2" nolabel="1"
+                                           placeholder="Indikator penilaian 2 (jika ada)..."/>
+                                    <field name="tujuan_pembelajaran" nolabel="1"
+                                           placeholder="Tujuan pembelajaran pertemuan ini..."/>
+                                </group>
+                                <group string="Materi">
+                                    <field name="pokok_bahasan" nolabel="1"
+                                           placeholder="Pokok bahasan..."/>
+                                    <field name="sub_pokok_bahasan_1" nolabel="1"
+                                           placeholder="Sub-pokok bahasan 1..."/>
+                                    <field name="sub_pokok_bahasan_2" nolabel="1"
+                                           placeholder="Sub-pokok bahasan 2 (jika ada)..."/>
+                                </group>
+                            </group>
+
+                            <notebook>
+                                <page string="Kegiatan Pendahuluan" name="pendahuluan">
+                                    <group>
+                                        <group string="Pengajar">
+                                            <field name="pendahuluan_pengajar" nolabel="1"
+                                                   placeholder="Aktivitas pengajar pada pendahuluan..."/>
+                                        </group>
+                                        <group string="Mahasiswa">
+                                            <field name="pendahuluan_mahasiswa" nolabel="1"
+                                                   placeholder="Aktivitas mahasiswa pada pendahuluan..."/>
+                                        </group>
+                                    </group>
+                                    <group string="Media">
+                                        <field name="pendahuluan_media" nolabel="1"
+                                               placeholder="Media yang digunakan..."/>
+                                    </group>
+                                </page>
+
+                                <page string="Kegiatan Penyajian" name="penyajian">
+                                    <group>
+                                        <group string="Pengajar">
+                                            <field name="penyajian_pengajar" nolabel="1"
+                                                   placeholder="Aktivitas pengajar pada penyajian..."/>
+                                        </group>
+                                        <group string="Mahasiswa">
+                                            <field name="penyajian_mahasiswa" nolabel="1"
+                                                   placeholder="Aktivitas mahasiswa pada penyajian..."/>
+                                        </group>
+                                    </group>
+                                    <group string="Media">
+                                        <field name="penyajian_media" nolabel="1"
+                                               placeholder="Media yang digunakan..."/>
+                                    </group>
+                                </page>
+
+                                <page string="Kegiatan Penutup" name="penutup">
+                                    <group>
+                                        <group string="Pengajar">
+                                            <field name="penutup_pengajar" nolabel="1"
+                                                   placeholder="Aktivitas pengajar pada penutup..."/>
+                                        </group>
+                                        <group string="Mahasiswa">
+                                            <field name="penutup_mahasiswa" nolabel="1"
+                                                   placeholder="Aktivitas mahasiswa pada penutup..."/>
+                                        </group>
+                                    </group>
+                                    <group string="Media">
+                                        <field name="penutup_media" nolabel="1"
+                                               placeholder="Media yang digunakan..."/>
+                                    </group>
+                                </page>
+
+                                <page string="Evaluasi &amp; Referensi" name="evaluasi">
+                                    <group>
+                                        <group string="Evaluasi">
+                                            <field name="evaluasi_1" nolabel="1"
+                                                   placeholder="Evaluasi 1..."/>
+                                            <field name="evaluasi_2" nolabel="1"
+                                                   placeholder="Evaluasi 2 (jika ada)..."/>
+                                        </group>
+                                        <group string="Referensi">
+                                            <field name="referensi_1" nolabel="1"
+                                                   placeholder="Referensi 1..."/>
+                                            <field name="referensi_2" nolabel="1"
+                                                   placeholder="Referensi 2 (jika ada)..."/>
+                                        </group>
+                                    </group>
+                                </page>
+                            </notebook>
+                        </form>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ─── List View ─────────────────────────────────────────── -->
+    <record id="bp_edu_sap_list_view" model="ir.ui.view">
+        <field name="name">bp.edu.sap.list</field>
+        <field name="model">bp.edu.sap</field>
+        <field name="arch" type="xml">
+            <list string="SAP">
+                <field name="kode_mk" optional="show"/>
+                <field name="mata_kuliah_id"/>
+                <field name="dosen_id" optional="show"/>
+                <field name="tahun_akademik_id" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ─── Action ────────────────────────────────────────────── -->
+    <record id="bp_edu_sap_action" model="ir.actions.act_window">
+        <field name="name">SAP</field>
+        <field name="res_model">bp.edu.sap</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

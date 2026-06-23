@@ -7,6 +7,8 @@ services:
       - ./config/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     depends_on:
       - web
+    networks:
+      - odoo_app
 
   web:
     build: .
@@ -30,6 +32,8 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    networks:
+      - odoo_app
 
   db:
     image: postgres:17
@@ -47,6 +51,8 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    networks:
+      - odoo_app
 
 # Nginx Proxy Manager
   npm:
@@ -59,6 +65,8 @@ services:
     volumes:
       - npm_data:/data
       - npm_letsencrypt:/etc/letsencrypt
+    networks:
+      - odoo_app
 
   adminer:
     image: adminer
@@ -67,6 +75,13 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    networks:
+      - odoo_app
+
+networks:
+  odoo_app:
+    name: odoo_app
+    driver: bridge
 
 volumes:
   odoo-filestore:

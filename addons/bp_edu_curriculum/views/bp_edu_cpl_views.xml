@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ─── Form View ─────────────────────────────────────────── -->
+    <record id="bp_edu_cpl_form_view" model="ir.ui.view">
+        <field name="name">bp.edu.cpl.form</field>
+        <field name="model">bp.edu.cpl</field>
+        <field name="arch" type="xml">
+            <form string="CPL Prodi">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="kode" string="Kode CPL"/>
+                        <h1>
+                            <field name="kode" placeholder="Contoh: S-09, P-01, KU-01, KK-01"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="tipe"/>
+                        <field name="prodi_id"/>
+                    </group>
+                    <group string="Deskripsi">
+                        <field name="deskripsi" nolabel="1" placeholder="Deskripsi capaian pembelajaran..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ─── List View ─────────────────────────────────────────── -->
+    <record id="bp_edu_cpl_list_view" model="ir.ui.view">
+        <field name="name">bp.edu.cpl.list</field>
+        <field name="model">bp.edu.cpl</field>
+        <field name="arch" type="xml">
+            <list string="CPL Prodi">
+                <field name="kode"/>
+                <field name="tipe"/>
+                <field name="prodi_id"/>
+                <field name="deskripsi"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ─── Search View ───────────────────────────────────────── -->
+    <record id="bp_edu_cpl_search_view" model="ir.ui.view">
+        <field name="name">bp.edu.cpl.search</field>
+        <field name="model">bp.edu.cpl</field>
+        <field name="arch" type="xml">
+            <search string="Cari CPL">
+                <field name="kode"/>
+                <field name="deskripsi"/>
+                <filter string="Sikap" name="sikap" domain="[('tipe', '=', 'Sikap')]"/>
+                <filter string="Pengetahuan" name="pengetahuan" domain="[('tipe', '=', 'Pengetahuan')]"/>
+                <filter string="Keterampilan Umum" name="ku" domain="[('tipe', '=', 'Keterampilan Umum')]"/>
+                <filter string="Keterampilan Khusus" name="kk" domain="[('tipe', '=', 'Keterampilan Khusus')]"/>
+                <group expand="0" string="Kelompokkan berdasarkan">
+                    <filter string="Tipe" name="group_tipe" context="{'group_by': 'tipe'}"/>
+                    <filter string="Program Studi" name="group_prodi" context="{'group_by': 'prodi_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ─── Action ────────────────────────────────────────────── -->
+    <record id="bp_edu_cpl_action" model="ir.actions.act_window">
+        <field name="name">CPL Prodi</field>
+        <field name="res_model">bp.edu.cpl</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="bp_edu_cpl_search_view"/>
+    </record>
+
+</odoo>

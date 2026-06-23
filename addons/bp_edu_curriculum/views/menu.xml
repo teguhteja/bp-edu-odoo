@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ─── Sub-menu: Kurikulum (di bawah top menu Pendidikan) ── -->
+    <menuitem id="menu_bp_edu_kurikulum"
+              name="Kurikulum"
+              parent="bp_edu_core.menu_bp_edu_root"
+              sequence="20"/>
+
+    <menuitem id="menu_bp_edu_mata_kuliah"
+              name="Mata Kuliah"
+              parent="menu_bp_edu_kurikulum"
+              action="bp_edu_mata_kuliah_action"
+              sequence="10"/>
+
+    <menuitem id="menu_bp_edu_cpl"
+              name="CPL Prodi"
+              parent="menu_bp_edu_kurikulum"
+              action="bp_edu_cpl_action"
+              sequence="20"/>
+
+</odoo>

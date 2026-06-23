@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ─── Form View ─────────────────────────────────────────── -->
+    <record id="bp_edu_program_studi_form_view" model="ir.ui.view">
+        <field name="name">bp.edu.program.studi.form</field>
+        <field name="model">bp.edu.program.studi</field>
+        <field name="arch" type="xml">
+            <form string="Program Studi">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="nama" string="Nama Program Studi"/>
+                        <h1>
+                            <field name="nama" placeholder="Contoh: Sistem Informasi"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="kode" placeholder="Contoh: TSI"/>
+                        <field name="jenjang"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ─── List View ─────────────────────────────────────────── -->
+    <record id="bp_edu_program_studi_list_view" model="ir.ui.view">
+        <field name="name">bp.edu.program.studi.list</field>
+        <field name="model">bp.edu.program.studi</field>
+        <field name="arch" type="xml">
+            <list string="Program Studi">
+                <field name="kode"/>
+                <field name="nama"/>
+                <field name="jenjang"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ─── Action ────────────────────────────────────────────── -->
+    <record id="bp_edu_program_studi_action" model="ir.actions.act_window">
+        <field name="name">Program Studi</field>
+        <field name="res_model">bp.edu.program.studi</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

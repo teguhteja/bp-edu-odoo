@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- List View -->
+    <record id="view_bp_edu_docx_template_list" model="ir.ui.view">
+        <field name="name">bp.edu.docx.template.list</field>
+        <field name="model">bp.edu.docx.template</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="document_type" widget="badge"/>
+                <field name="template_filename"/>
+                <field name="active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_bp_edu_docx_template_form" model="ir.ui.view">
+        <field name="name">bp.edu.docx.template.form</field>
+        <field name="model">bp.edu.docx.template</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Nama template..."/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="document_type" widget="radio"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                        <group>
+                            <field name="template_file" filename="template_filename" widget="binary"/>
+                            <field name="template_filename"/>
+                        </group>
+                    </group>
+                    <group string="Keterangan">
+                        <field name="description" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_bp_edu_docx_template" model="ir.actions.act_window">
+        <field name="name">Template DOCX</field>
+        <field name="res_model">bp.edu.docx.template</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

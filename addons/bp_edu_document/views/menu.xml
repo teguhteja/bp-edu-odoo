@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Sub-menu "Dokumen" di bawah menu Pendidikan (parent dari bp_edu_core) -->
+    <menuitem id="menu_bp_edu_document"
+              name="Dokumen"
+              parent="bp_edu_core.menu_bp_edu_root"
+              sequence="40"/>
+
+    <menuitem id="menu_bp_edu_docx_template"
+              name="Template DOCX"
+              parent="menu_bp_edu_document"
+              action="action_bp_edu_docx_template"
+              sequence="10"/>
+
+    <menuitem id="menu_bp_edu_generate_log"
+              name="History Generate"
+              parent="menu_bp_edu_document"
+              action="action_bp_edu_generate_log"
+              sequence="20"/>
+
+    <menuitem id="menu_wizard_generate"
+              name="Generate DOCX"
+              parent="menu_bp_edu_document"
+              action="action_wizard_generate"
+              sequence="30"/>
+
+    <menuitem id="menu_wizard_import_json"
+              name="Import JSON"
+              parent="menu_bp_edu_document"
+              action="action_wizard_import_json"
+              sequence="40"/>
+
+</odoo>

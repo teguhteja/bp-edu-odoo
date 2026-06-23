@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ─── Form View RPS ─────────────────────────────────────── -->
+    <record id="bp_edu_rps_form_view" model="ir.ui.view">
+        <field name="name">bp.edu.rps.form</field>
+        <field name="model">bp.edu.rps</field>
+        <field name="arch" type="xml">
+            <form string="Rencana Pembelajaran Semester">
+                <header>
+                    <button name="action_finalize"
+                            string="Finalisasi"
+                            type="object"
+                            invisible="state == 'final'"
+                            class="btn-primary"/>
+                    <button name="action_reset_draft"
+                            string="Reset ke Draft"
+                            type="object"
+                            invisible="state == 'draft'"/>
+                    <button name="action_buat_detail_kosong"
+                            string="Generate 16 Baris Minggu"
+                            type="object"
+                            invisible="detail_ids"
+                            class="btn-secondary"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,final"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="mata_kuliah_id" string="RPS"/>
+                        <h1>
+                            <field name="mata_kuliah_id"
+                                   options="{'no_create': True}"
+                                   placeholder="Pilih Mata Kuliah..."/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Informasi">
+                            <field name="dosen_id" options="{'no_create': True}"/>
+                            <field name="tahun_akademik_id" options="{'no_create': True}"/>
+                            <field name="tanggal_penyusunan"/>
+                        </group>
+                        <group string="MK">
+                            <field name="kode_mk" readonly="1"/>
+                            <field name="nama_mk" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <!-- Detail 16 Minggu -->
+                    <notebook>
+                        <page string="Detail Perkuliahan (16 Minggu)" name="detail">
+                            <field name="detail_ids" nolabel="1"
+                                   readonly="state == 'final'">
+                                <list editable="bottom"
+                                      decoration-muted="minggu == 8"
+                                      decoration-info="minggu == 16">
+                                    <field name="minggu" readonly="1" optional="show"/>
+                                    <field name="deskripsi" optional="show"/>
+                                    <field name="indikator" optional="hide"/>
+                                    <field name="kriteria" optional="hide"/>
+                                    <field name="tatap_muka" optional="hide"/>
+                                    <field name="daring" optional="hide"/>
+                                    <field name="materi" optional="show"/>
+                                    <field name="bobot" optional="show"/>
+                                </list>
+                                <form string="Detail Minggu">
+                                    <group>
+                                        <field name="minggu" readonly="1"/>
+                                        <field name="bobot"/>
+                                    </group>
+                                    <group string="Sub-CPMK / Deskripsi">
+                                        <field name="deskripsi" nolabel="1"
+                                               placeholder="Sub-CPMK yang dicapai minggu ini..."/>
+                                    </group>
+                                    <group string="Indikator Penilaian">
+                                        <field name="indikator" nolabel="1"
+                                               placeholder="Ketepatan mahasiswa dalam..."/>
+                                    </group>
+                                    <group string="Kriteria &amp; Bentuk Penilaian">
+                                        <field name="kriteria" nolabel="1"
+                                               placeholder="Kuis online; Tugas individu..."/>
+                                    </group>
+                                    <group>
+                                        <group string="Tatap Muka">
+                                            <field name="tatap_muka" nolabel="1"
+                                                   placeholder="Kuliah interaktif TM: 2x50"/>
+                                        </group>
+                                        <group string="Daring / Blended">
+                                            <field name="daring" nolabel="1"
+                                                   placeholder="Kuliah daring sinkron; [TM: 2×50']..."/>
+                                        </group>
+                                    </group>
+                                    <group string="Materi / Pokok Bahasan">
+                                        <field name="materi" nolabel="1"
+                                               placeholder="Topik materi minggu ini..."/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ─── List View ─────────────────────────────────────────── -->
+    <record id="bp_edu_rps_list_view" model="ir.ui.view">
+        <field name="name">bp.edu.rps.list</field>
+        <field name="model">bp.edu.rps</field>
+        <field name="arch" type="xml">
+            <list string="RPS"
+                  decoration-success="state == 'final'"
+                  decoration-muted="state == 'draft'">
+                <field name="kode_mk" optional="show"/>
+                <field name="nama_mk"/>
+                <field name="dosen_id" optional="show"/>
+                <field name="tahun_akademik_id" optional="show"/>
+                <field name="tanggal_penyusunan" optional="hide"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'final'"
+                       decoration-warning="state == 'draft'"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ─── Search View ───────────────────────────────────────── -->
+    <record id="bp_edu_rps_search_view" model="ir.ui.view">
+        <field name="name">bp.edu.rps.search</field>
+        <field name="model">bp.edu.rps</field>
+        <field name="arch" type="xml">
+            <search string="Cari RPS">
+                <field name="mata_kuliah_id"/>
+                <field name="dosen_id"/>
+                <field name="tahun_akademik_id"/>
+                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Final" name="final" domain="[('state', '=', 'final')]"/>
+                <group expand="0" string="Kelompokkan berdasarkan">
+                    <filter string="Tahun Akademik" name="group_ta"
+                            context="{'group_by': 'tahun_akademik_id'}"/>
+                    <filter string="Dosen" name="group_dosen"
+                            context="{'group_by': 'dosen_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ─── Action ────────────────────────────────────────────── -->
+    <record id="bp_edu_rps_action" model="ir.actions.act_window">
+        <field name="name">RPS</field>
+        <field name="res_model">bp.edu.rps</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="bp_edu_rps_search_view"/>
+    </record>
+
+</odoo>

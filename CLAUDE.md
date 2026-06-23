@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-CaritaHub AAC is an **Odoo 17** business application for community care management. It consists of ~97 custom modules in `caritahub/` and ~26 third-party modules in `third-party/`. The application manages members/clients, volunteers, activities, events, healthcare assessments, AI-powered features, and integrations with external services.
+CaritaHub AAC is an **Odoo 19** business application for community care management. It consists of ~97 custom modules in `caritahub/` and ~26 third-party modules in `third-party/`. The application manages members/clients, volunteers, activities, events, healthcare assessments, AI-powered features, and integrations with external services.
 
 ## Running the Application
 
@@ -82,7 +82,7 @@ API controllers live in `caritahub_api/controllers/` and related API modules. Ke
 
 ## Naming Conventions
 
-These conventions were established during the Odoo 15 → 17 migration:
+These conventions were established during the Odoo 15 → 19 migration:
 
 | Element         | Convention                     | Example                          |
 |-----------------|--------------------------------|----------------------------------|
@@ -95,19 +95,31 @@ These conventions were established during the Odoo 15 → 17 migration:
 
 Split models and views into separate files per entity (e.g., `cth_user.py` + `cth_user_views.xml`).
 
-## Odoo 17 Specifics
+## Odoo 19 Specifics
 
-Key differences from earlier Odoo versions (reference: `guidelines/Guide on migration odoo15 to odoo17.md`):
+Key differences from earlier Odoo versions. Odoo 19 inherits all Odoo 17/18 breaking changes plus adds its own:
 
+### Carried over from Odoo 17/18 (still apply)
 - **No `states` attribute** on fields — use `readonly`/`invisible` conditions in views instead.
 - **No `attrs` in views** — use `attribute='condition'` format directly (e.g., `invisible="field == 'value'"`).
-- **`name_get` is deprecated** — use `_compute_display_name` instead.
+- **`name_get` is removed** — use `_compute_display_name` instead (was deprecated in 17, fully removed in 18+).
 - **`_read_group` signature** — `fields` parameter renamed to `aggregates`.
 - **New ORM methods**: `search_fetch()` and `fetch()`.
 - **`fields_get`** — `fields` parameter renamed to `allfields`.
 - **Email sending** — use `template_id.send_email(res_id, ...)` instead of `generate_email`.
 - **Field tracking** — use `tracking=True` instead of `track_visibility="onchange"`.
+
+### New in Odoo 19
+- **Python 3.12+ required** — ensure no use of deprecated Python 3.11 APIs.
+- **OWL 3** — frontend components use OWL 3; check for breaking changes in component lifecycle hooks and reactivity model.
+- **`__manifest__.py` `version`** — use `19.0.x.y.z` versioning for all custom modules.
+- **`_sql_constraints`** — syntax unchanged but PostgreSQL 16+ compatibility required.
+- **Spreadsheet/Analytics** — new native spreadsheet integration; avoid conflicts with custom dashboard modules.
+- **`ir.actions.act_window` `view_mode`** — validate that all view mode strings are still supported.
+- **JavaScript bundling** — Odoo 19 uses a modernised asset bundling pipeline; ensure `__manifest__.py` asset keys are correct (`web.assets_backend`, etc.).
 - Avoid circular dependencies at module, view, and field levels. Use class inheritance to break cycles.
+
+> **Note:** If you have a specific Odoo 19 migration guide, add it to `guidelines/` and reference it here.
 
 ## External Integrations
 
@@ -201,7 +213,7 @@ The `state` field on `cth.aac.activities.registration` has these exact values (c
 
 - `caritahub/` — all custom Odoo modules (~97)
 - `third-party/` — external/OCA Odoo modules (~26, includes queue_job, auditlog, fs_storage, server_environment)
-- `guidelines/` — migration guides and coding standards
+- `guidelines/` — migration guides and coding standards (add Odoo 19 migration guide here if available)
 - `templates/` — blank module template for scaffolding new modules
 - `database/test/` — test database dumps
 - `docs/` — dashboard specs and planning documents

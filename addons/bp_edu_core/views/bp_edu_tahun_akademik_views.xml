@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ─── Form View ─────────────────────────────────────────── -->
+    <record id="bp_edu_tahun_akademik_form_view" model="ir.ui.view">
+        <field name="name">bp.edu.tahun.akademik.form</field>
+        <field name="model">bp.edu.tahun.akademik</field>
+        <field name="arch" type="xml">
+            <form string="Tahun Akademik">
+                <header>
+                    <button name="action_set_active"
+                            string="Jadikan Aktif"
+                            type="object"
+                            invisible="aktif"
+                            class="btn-primary"/>
+                    <span class="o_field_widget o_statusbar_status" invisible="not aktif">
+                        ✓ Semester Aktif
+                    </span>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="nama" string="Tahun Akademik"/>
+                        <h1>
+                            <field name="nama" placeholder="Contoh: 2025/2026"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="semester"/>
+                        <field name="aktif"/>
+                        <field name="tanggal_mulai"/>
+                        <field name="tanggal_selesai"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ─── List View ─────────────────────────────────────────── -->
+    <record id="bp_edu_tahun_akademik_list_view" model="ir.ui.view">
+        <field name="name">bp.edu.tahun.akademik.list</field>
+        <field name="model">bp.edu.tahun.akademik</field>
+        <field name="arch" type="xml">
+            <list string="Tahun Akademik" decoration-success="aktif == True">
+                <field name="nama"/>
+                <field name="semester"/>
+                <field name="tanggal_mulai"/>
+                <field name="tanggal_selesai"/>
+                <field name="aktif" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ─── Action ────────────────────────────────────────────── -->
+    <record id="bp_edu_tahun_akademik_action" model="ir.actions.act_window">
+        <field name="name">Tahun Akademik</field>
+        <field name="res_model">bp.edu.tahun.akademik</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

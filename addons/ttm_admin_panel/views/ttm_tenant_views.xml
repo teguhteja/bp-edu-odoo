@@ -12,6 +12,7 @@
                 <field name="subdomain"/>
                 <field name="full_url"/>
                 <field name="admin_email"/>
+                <field name="group_tenant_id" optional="show"/>
                 <field name="state" widget="badge"
                        decoration-success="state == 'active'"
                        decoration-danger="state == 'error'"
@@ -68,6 +69,11 @@
                         <group string="Status">
                             <field name="active" widget="boolean_toggle"/>
                             <field name="npm_proxy_host_id" readonly="1"/>
+                        </group>
+                        <group string="Tenant Group">
+                            <field name="group_tenant_id"
+                                   domain="[('user_ids', 'in', uid)]"
+                                   options="{'no_create': True, 'no_open': True}"/>
                         </group>
                     </group>
                     <notebook>

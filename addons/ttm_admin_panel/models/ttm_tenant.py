@@ -31,6 +31,18 @@ class TtmTenant(models.Model):
     full_url = fields.Char(string='URL Lengkap', compute='_compute_full_url', store=False)
     npm_proxy_host_id = fields.Integer(string='NPM Proxy Host ID', readonly=True)
     error_message = fields.Text(string='Pesan Error', readonly=True)
+    group_tenant_id = fields.Many2one(
+        'ttm.tenant.group',
+        string='Tenant Group',
+        default=lambda self: self._default_group_tenant(),
+    )
+
+    def _default_group_tenant(self):
+        if (self.env.user.has_group('base.group_system') or
+                self.env.user.has_group('ttm_admin_panel.group_ttm_admin_tenant')):
+            return False
+        groups = self.env.user.sudo().group_tenant_ids
+        return groups[:1] if groups else False
 
     @api.depends('subdomain')
     def _compute_full_url(self):
@@ -92,6 +104,25 @@ class TtmTenant(models.Model):
             raise UserError(_('Gagal login ke NPM API: %s') % result)
         return token
 
+    @api.model_create_multi
+    def create(self, vals_list):
+        is_moderator = (
+            not self.env.user.has_group('base.group_system') and
+            not self.env.user.has_group('ttm_admin_panel.group_ttm_admin_tenant') and
+            self.env.user.has_group('ttm_admin_panel.group_ttm_moderator_tenant')
+        )
+        if is_moderator:
+            mod_groups = self.env.user.sudo().group_tenant_ids
+            if not mod_groups:
+                raise UserError(_(
+                    'Anda belum memiliki Tenant Group. '
+                    'Hubungi Admin Tenant untuk mendapatkan akses group terlebih dahulu.'
+                ))
+            for vals in vals_list:
+                if not vals.get('group_tenant_id'):
+                    vals['group_tenant_id'] = mod_groups[0].id
+        return super().create(vals_list)
+
     def action_create_tenant(self):
         self.ensure_one()
         if self.state == 'active':
@@ -120,6 +151,97 @@ class TtmTenant(models.Model):
             None,
         )
         _logger.info('Database %s berhasil dibuat', self.name_database)
+
+        self._copy_shared_settings()
+        _logger.info('Konfigurasi mail & OAuth berhasil disalin ke %s', self.name_database)
+
+    def _copy_shared_settings(self):
+        """Salin outgoing mail server dan Google OAuth ke database tenant baru."""
+        import odoo
+        from odoo.modules.registry import Registry
+
+        db_name = self.name_database
+
+        # ── 1. Outgoing mail servers ──────────────────────────────────────
+        mail_servers = self.env['ir.mail_server'].sudo().search([])
+        if mail_servers:
+            with odoo.sql_db.db_connect(db_name).cursor() as cr:
+                new_env = odoo.api.Environment(cr, odoo.SUPERUSER_ID, {})
+                for ms in mail_servers:
+                    try:
+                        new_env['ir.mail_server'].create({
+                            'name': ms.name,
+                            'from_filter': ms.from_filter or False,
+                            'smtp_host': ms.smtp_host,
+                            'smtp_port': ms.smtp_port,
+                            'smtp_authentication': ms.smtp_authentication,
+                            'smtp_user': ms.smtp_user or False,
+                            'smtp_pass': ms.smtp_pass or False,
+                            'smtp_encryption': ms.smtp_encryption,
+                            'smtp_debug': ms.smtp_debug,
+                            'sequence': ms.sequence,
+                            'active': ms.active,
+                        })
+                        _logger.info('Mail server "%s" disalin ke %s', ms.name, db_name)
+                    except Exception as e:
+                        _logger.warning('Gagal salin mail server "%s": %s', ms.name, e)
+                cr.commit()
+
+        # ── 2. Google OAuth providers ─────────────────────────────────────
+        try:
+            providers = self.env['auth.oauth.provider'].sudo().search([])
+        except Exception:
+            _logger.info('auth_oauth tidak terinstall di sumber, skip OAuth copy')
+            return
+
+        if not providers:
+            return
+
+        # Install auth_oauth di database tenant baru jika belum ada
+        try:
+            with odoo.sql_db.db_connect(db_name).cursor() as cr:
+                new_env = odoo.api.Environment(cr, odoo.SUPERUSER_ID, {})
+                mod = new_env['ir.module.module'].search([
+                    ('name', '=', 'auth_oauth'),
+                    ('state', '=', 'uninstalled'),
+                ], limit=1)
+                if mod:
+                    mod.write({'state': 'to install'})
+                cr.commit()
+
+            _logger.info('Menginstall auth_oauth di %s...', db_name)
+            Registry.new(db_name, update_module=True)
+        except Exception as e:
+            _logger.warning('Gagal install auth_oauth di %s: %s', db_name, e)
+            return
+
+        # Salin provider OAuth ke database tenant
+        with odoo.sql_db.db_connect(db_name).cursor() as cr:
+            new_env = odoo.api.Environment(cr, odoo.SUPERUSER_ID, {})
+            for provider in providers:
+                try:
+                    vals = {
+                        'name': provider.name,
+                        'auth_endpoint': provider.auth_endpoint,
+                        'validation_endpoint': provider.validation_endpoint,
+                        'data_endpoint': provider.data_endpoint or False,
+                        'enabled': provider.enabled,
+                        'client_id': provider.client_id or False,
+                        'body': provider.body or False,
+                        'css_class': provider.css_class or False,
+                        'sequence': provider.sequence,
+                    }
+                    existing = new_env['auth.oauth.provider'].search([
+                        ('name', '=', provider.name)
+                    ], limit=1)
+                    if existing:
+                        existing.write(vals)
+                    else:
+                        new_env['auth.oauth.provider'].create(vals)
+                    _logger.info('OAuth provider "%s" disalin ke %s', provider.name, db_name)
+                except Exception as e:
+                    _logger.warning('Gagal salin OAuth provider "%s": %s', provider.name, e)
+            cr.commit()
 
         cfg = self._get_npm_config()
         full_domain = f"{self.subdomain}.{cfg['base_domain']}"

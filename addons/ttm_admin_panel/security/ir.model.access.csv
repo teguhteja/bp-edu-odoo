@@ -1,3 +1,9 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_ttm_tenant_admin,ttm.tenant admin,model_ttm_tenant,base.group_system,1,1,1,1
+access_ttm_tenant_admin,ttm.tenant system,model_ttm_tenant,base.group_system,1,1,1,1
+access_ttm_tenant_ttm_admin,ttm.tenant ttm-admin,model_ttm_tenant,ttm_admin_panel.group_ttm_admin_tenant,1,1,1,1
+access_ttm_tenant_moderator,ttm.tenant moderator,model_ttm_tenant,ttm_admin_panel.group_ttm_moderator_tenant,1,1,1,1
 access_ttm_tenant_user,ttm.tenant user,model_ttm_tenant,base.group_user,1,0,0,0
+access_ttm_tenant_group_admin,ttm.tenant.group system,model_ttm_tenant_group,base.group_system,1,1,1,1
+access_ttm_tenant_group_ttm_admin,ttm.tenant.group ttm-admin,model_ttm_tenant_group,ttm_admin_panel.group_ttm_admin_tenant,1,1,1,1
+access_ttm_tenant_group_moderator,ttm.tenant.group moderator,model_ttm_tenant_group,ttm_admin_panel.group_ttm_moderator_tenant,1,0,0,0
+access_res_users_ttm_admin,res.users ttm-admin,model_res_users,ttm_admin_panel.group_ttm_admin_tenant,1,1,0,0

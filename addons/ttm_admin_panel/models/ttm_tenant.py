@@ -138,10 +138,13 @@ class TtmTenant(models.Model):
             raise UserError(_('Gagal membuat tenant: %s') % str(e))
 
     def _do_create_tenant(self):
-        from odoo.service import db as odoo_db
+        # Gunakan internal functions langsung untuk bypass check_db_management_enabled
+        # (dekorator itu memblokir exp_create_database saat list_db=False)
+        from odoo.service.db import _create_empty_database, _initialize_db
 
         _logger.info('Membuat database Odoo: %s', self.name_database)
-        odoo_db.exp_create_database(
+        _create_empty_database(self.name_database)
+        _initialize_db(
             self.name_database,
             False,
             'en_US',

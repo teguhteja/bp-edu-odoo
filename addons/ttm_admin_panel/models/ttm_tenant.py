@@ -22,6 +22,7 @@ class TtmTenant(models.Model):
     admin_name = fields.Char(string='Login Admin', default='admin',
                              help='Username login untuk database baru')
     admin_password = fields.Char(string='Password Admin', required=True)
+    is_protected = fields.Boolean(string='Tidak Boleh Dihapus', default=False)
     active = fields.Boolean(string='Aktif', default=True)
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -295,8 +296,56 @@ class TtmTenant(models.Model):
         })
         _logger.info('Tenant %s berhasil dibuat di %s', self.name_database, full_domain)
 
+    def action_open_toggle_protected(self):
+        self.ensure_one()
+        return {
+            'name': _('Ubah Status Proteksi'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'ttm.toggle.protected.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {'default_tenant_id': self.id},
+        }
+
+    def unlink(self):
+        for rec in self:
+            if rec.is_protected:
+                raise UserError(_(
+                    'Tenant "%s" tidak bisa dihapus karena proteksi aktif. '
+                    'Nonaktifkan proteksi terlebih dahulu.'
+                ) % rec.name)
+            if rec.state == 'active' and rec.name_database:
+                if rec.npm_proxy_host_id:
+                    try:
+                        token = rec._get_npm_token()
+                        rec._npm_request('DELETE', f'/api/nginx/proxy-hosts/{rec.npm_proxy_host_id}', token=token)
+                    except Exception as e:
+                        _logger.warning('Gagal hapus NPM proxy host saat unlink: %s', e)
+                try:
+                    rec._drop_database(rec.name_database)
+                except Exception as e:
+                    _logger.exception('Gagal hapus DB saat unlink tenant %s', rec.name_database)
+                    raise UserError(_('Gagal menghapus database tenant "%s": %s') % (rec.name_database, e))
+        return super().unlink()
+
+    def action_open_change_password(self):
+        self.ensure_one()
+        return {
+            'name': _('Ganti Password Admin'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'ttm.change.password.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {'default_tenant_id': self.id},
+        }
+
     def action_delete_tenant(self):
         self.ensure_one()
+        if self.is_protected:
+            raise UserError(_(
+                'Tenant ini tidak bisa dihapus karena proteksi aktif. '
+                'Nonaktifkan proteksi terlebih dahulu.'
+            ))
         if self.state != 'active':
             raise UserError(_('Hanya tenant aktif yang bisa dihapus.'))
 
@@ -308,8 +357,6 @@ class TtmTenant(models.Model):
             raise UserError(_('Gagal menghapus tenant: %s') % str(e))
 
     def _do_delete_tenant(self):
-        from odoo.service import db as odoo_db
-
         if self.npm_proxy_host_id:
             token = self._get_npm_token()
             try:
@@ -319,10 +366,31 @@ class TtmTenant(models.Model):
                 _logger.warning('Gagal hapus NPM proxy host: %s', e)
 
         _logger.info('Menghapus database: %s', self.name_database)
-        odoo_db.exp_drop(self.name_database)
+        self._drop_database(self.name_database)
+        self.write({'active': False, 'state': 'draft', 'npm_proxy_host_id': 0})
 
-        self.write({
-            'active': False,
-            'state': 'draft',
-            'npm_proxy_host_id': 0,
-        })
+    def _drop_database(self, db_name):
+        """Drop database langsung tanpa melalui exp_drop (yang diblokir list_db=False)."""
+        import os
+        import shutil
+        from contextlib import closing
+        from psycopg2 import sql
+        import odoo
+        from odoo.service.db import _drop_conn
+
+        odoo.modules.registry.Registry.delete(db_name)
+        odoo.sql_db.close_db(db_name)
+
+        db = odoo.sql_db.db_connect('postgres')
+        with closing(db.cursor()) as cr:
+            cr._cnx.autocommit = True
+            _drop_conn(cr, db_name)
+            cr.execute(sql.SQL('DROP DATABASE IF EXISTS {}').format(
+                sql.Identifier(db_name)
+            ))
+            _logger.info('Database %s berhasil dihapus', db_name)
+
+        fs = odoo.tools.config.filestore(db_name)
+        if os.path.exists(fs):
+            shutil.rmtree(fs)
+            _logger.info('Filestore %s berhasil dihapus', fs)

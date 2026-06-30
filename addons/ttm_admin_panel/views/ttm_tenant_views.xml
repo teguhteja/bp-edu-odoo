@@ -41,6 +41,9 @@
                             type="object" class="btn-danger"
                             invisible="state != 'active'"
                             confirm="Ini akan menghapus database dan subdomain secara permanen. Yakin?"/>
+                    <button name="action_open_change_password" string="Ganti Password Admin"
+                            type="object" class="btn-secondary"
+                            invisible="state != 'active'"/>
                     <field name="state" widget="statusbar"
                            statusbar_visible="draft,active"/>
                 </header>
@@ -62,13 +65,20 @@
                         <group string="Konfigurasi Admin">
                             <field name="admin_email"/>
                             <field name="admin_name"/>
-                            <field name="admin_password" password="True"/>
+                            <field name="admin_password" widget="password"/>
                         </group>
                     </group>
                     <group>
                         <group string="Status">
                             <field name="active" widget="boolean_toggle"/>
                             <field name="npm_proxy_host_id" readonly="1"/>
+                            <field name="is_protected" readonly="1" widget="boolean_toggle"/>
+                            <div>
+                                <button name="action_open_toggle_protected"
+                                        string="Ubah Proteksi"
+                                        type="object"
+                                        class="btn btn-sm btn-secondary"/>
+                            </div>
                         </group>
                         <group string="Tenant Group">
                             <field name="group_tenant_id"

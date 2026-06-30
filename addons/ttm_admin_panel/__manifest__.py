@@ -1,6 +1,6 @@
 {
     'name': 'TTM Admin Panel',
-    'version': '19.0.2.0.0',
+    'version': '19.0.4.0.0',
     'category': 'Administration',
     'author': 'IB Teguh TM',
     'summary': 'Manage Odoo tenants: create new databases and subdomains automatically',
@@ -13,6 +13,8 @@
         'views/ttm_tenant_group_views.xml',
         'views/ttm_user_tenant_views.xml',
         'views/ttm_tenant_views.xml',
+        'views/ttm_change_password_wizard_views.xml',
+        'views/ttm_toggle_protected_wizard_views.xml',
         'views/menu.xml',
     ],
     'installable': True,

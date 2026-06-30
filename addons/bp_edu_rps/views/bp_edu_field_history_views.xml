@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ─── List View ─────────────────────────────────────────── -->
+    <record id="bp_edu_field_history_list_view" model="ir.ui.view">
+        <field name="name">bp.edu.field.history.list</field>
+        <field name="model">bp.edu.field.history</field>
+        <field name="arch" type="xml">
+            <list string="Riwayat Perubahan"
+                  create="false" edit="false" delete="false"
+                  default_order="create_date desc">
+                <field name="create_date" string="Waktu" optional="show"/>
+                <field name="changed_by" optional="show"/>
+                <field name="res_name" string="Record" optional="show"/>
+                <field name="field_label" string="Field" optional="show"/>
+                <field name="old_value" string="Nilai Lama" optional="show"/>
+                <field name="new_value" string="Nilai Baru" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ─── Form View ─────────────────────────────────────────── -->
+    <record id="bp_edu_field_history_form_view" model="ir.ui.view">
+        <field name="name">bp.edu.field.history.form</field>
+        <field name="model">bp.edu.field.history</field>
+        <field name="arch" type="xml">
+            <form string="Detail Riwayat Perubahan" create="false" edit="false">
+                <sheet>
+                    <group string="Informasi Perubahan">
+                        <group>
+                            <field name="create_date" string="Waktu Perubahan"/>
+                            <field name="changed_by"/>
+                            <field name="res_name" string="Record"/>
+                        </group>
+                        <group>
+                            <field name="field_label" string="Field"/>
+                            <field name="field_name" string="Field (teknis)"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Nilai Lama">
+                            <field name="old_value" nolabel="1"/>
+                        </group>
+                        <group string="Nilai Baru">
+                            <field name="new_value" nolabel="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ─── Search View ───────────────────────────────────────── -->
+    <record id="bp_edu_field_history_search_view" model="ir.ui.view">
+        <field name="name">bp.edu.field.history.search</field>
+        <field name="model">bp.edu.field.history</field>
+        <field name="arch" type="xml">
+            <search string="Cari Riwayat">
+                <field name="res_name" string="Record"/>
+                <field name="field_label" string="Field"/>
+                <field name="changed_by"/>
+                <filter string="Hari ini" name="today"
+                        domain="[('create_date', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00'))]"/>
+                <filter string="Minggu ini" name="this_week"
+                        domain="[('create_date', '&gt;=', (datetime.datetime.now() - datetime.timedelta(days=7)).strftime('%Y-%m-%d 00:00:00'))]"/>
+                <group>
+                    <filter string="Per Field" name="group_field"
+                            context="{'group_by': 'field_label'}"/>
+                    <filter string="Per Pengguna" name="group_user"
+                            context="{'group_by': 'changed_by'}"/>
+                    <filter string="Per Tanggal" name="group_date"
+                            context="{'group_by': 'create_date:day'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ─── Action ────────────────────────────────────────────── -->
+    <record id="bp_edu_field_history_action" model="ir.actions.act_window">
+        <field name="name">Riwayat Perubahan</field>
+        <field name="res_model">bp.edu.field.history</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="bp_edu_field_history_search_view"/>
+    </record>
+
+</odoo>

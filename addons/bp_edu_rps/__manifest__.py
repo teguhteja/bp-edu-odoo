@@ -6,6 +6,8 @@
     'depends': ['bp_edu_curriculum'],
     'data': [
         'security/ir.model.access.csv',
+        'security/bp_edu_rps_rules.xml',
+        'views/bp_edu_field_history_views.xml',
         'views/bp_edu_rps_views.xml',
         'views/bp_edu_sap_views.xml',
         'views/bp_edu_kontrak_kuliah_views.xml',

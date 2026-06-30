@@ -1,11 +1,11 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_bp_edu_mata_kuliah_user,bp.edu.mata.kuliah user,model_bp_edu_mata_kuliah,,1,0,0,0
-access_bp_edu_mata_kuliah_admin,bp.edu.mata.kuliah admin,model_bp_edu_mata_kuliah,base.group_system,1,1,1,1
+access_bp_edu_mata_kuliah_doko,bp.edu.mata.kuliah doko,model_bp_edu_mata_kuliah,bp_edu_core.group_dosen_koordinator,1,1,1,1
 access_bp_edu_cpl_user,bp.edu.cpl user,model_bp_edu_cpl,,1,0,0,0
-access_bp_edu_cpl_admin,bp.edu.cpl admin,model_bp_edu_cpl,base.group_system,1,1,1,1
+access_bp_edu_cpl_doko,bp.edu.cpl doko,model_bp_edu_cpl,bp_edu_core.group_dosen_koordinator,1,1,1,1
 access_bp_edu_cpmk_user,bp.edu.cpmk user,model_bp_edu_cpmk,,1,0,0,0
-access_bp_edu_cpmk_admin,bp.edu.cpmk admin,model_bp_edu_cpmk,base.group_system,1,1,1,1
+access_bp_edu_cpmk_doko,bp.edu.cpmk doko,model_bp_edu_cpmk,bp_edu_core.group_dosen_koordinator,1,1,1,1
 access_bp_edu_sub_cpmk_user,bp.edu.sub.cpmk user,model_bp_edu_sub_cpmk,,1,0,0,0
-access_bp_edu_sub_cpmk_admin,bp.edu.sub.cpmk admin,model_bp_edu_sub_cpmk,base.group_system,1,1,1,1
+access_bp_edu_sub_cpmk_doko,bp.edu.sub.cpmk doko,model_bp_edu_sub_cpmk,bp_edu_core.group_dosen_koordinator,1,1,1,1
 access_bp_edu_pustaka_user,bp.edu.pustaka user,model_bp_edu_pustaka,,1,0,0,0
-access_bp_edu_pustaka_admin,bp.edu.pustaka admin,model_bp_edu_pustaka,base.group_system,1,1,1,1
+access_bp_edu_pustaka_doko,bp.edu.pustaka doko,model_bp_edu_pustaka,bp_edu_core.group_dosen_koordinator,1,1,1,1

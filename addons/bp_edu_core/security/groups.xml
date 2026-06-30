@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Dosen: hanya melihat dan mengedit dokumen miliknya -->
+    <record id="group_dosen" model="res.groups">
+        <field name="name">Dosen</field>
+    </record>
+
+    <!-- Dosen Koordinator (DoKo): akses penuh termasuk konfigurasi -->
+    <record id="group_dosen_koordinator" model="res.groups">
+        <field name="name">Dosen Koordinator</field>
+    </record>
+
+</odoo>

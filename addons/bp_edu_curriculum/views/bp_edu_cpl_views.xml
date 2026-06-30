@@ -52,7 +52,7 @@
                 <filter string="Pengetahuan" name="pengetahuan" domain="[('tipe', '=', 'Pengetahuan')]"/>
                 <filter string="Keterampilan Umum" name="ku" domain="[('tipe', '=', 'Keterampilan Umum')]"/>
                 <filter string="Keterampilan Khusus" name="kk" domain="[('tipe', '=', 'Keterampilan Khusus')]"/>
-                <group expand="0" string="Kelompokkan berdasarkan">
+                <group>
                     <filter string="Tipe" name="group_tipe" context="{'group_by': 'tipe'}"/>
                     <filter string="Program Studi" name="group_prodi" context="{'group_by': 'prodi_id'}"/>
                 </group>

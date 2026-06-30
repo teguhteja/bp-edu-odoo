@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--
+        Record rules untuk group Dosen:
+        Setiap dosen hanya dapat melihat dan mengedit
+        RPS / SAP / Kontrak Kuliah miliknya sendiri.
+        (dosen_id.user_id = user yang sedang login)
+
+        Catatan: rule ini TIDAK berlaku untuk DoKo karena DoKo
+        menggunakan group terpisah (bukan implied_ids).
+    -->
+
+    <!-- ── RPS ───────────────────────────────────────────────────── -->
+    <record id="rule_rps_dosen_own" model="ir.rule">
+        <field name="name">RPS: Dosen hanya melihat miliknya</field>
+        <field name="model_id" ref="model_bp_edu_rps"/>
+        <field name="groups" eval="[(4, ref('bp_edu_core.group_dosen'))]"/>
+        <field name="domain_force">[('dosen_id.user_id', '=', user.id)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <!-- ── SAP ───────────────────────────────────────────────────── -->
+    <record id="rule_sap_dosen_own" model="ir.rule">
+        <field name="name">SAP: Dosen hanya melihat miliknya</field>
+        <field name="model_id" ref="model_bp_edu_sap"/>
+        <field name="groups" eval="[(4, ref('bp_edu_core.group_dosen'))]"/>
+        <field name="domain_force">[('dosen_id.user_id', '=', user.id)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <!-- ── Kontrak Kuliah ─────────────────────────────────────────── -->
+    <record id="rule_kontrak_dosen_own" model="ir.rule">
+        <field name="name">Kontrak Kuliah: Dosen hanya melihat miliknya</field>
+        <field name="model_id" ref="model_bp_edu_kontrak_kuliah"/>
+        <field name="groups" eval="[(4, ref('bp_edu_core.group_dosen'))]"/>
+        <field name="domain_force">[('dosen_id.user_id', '=', user.id)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+</odoo>

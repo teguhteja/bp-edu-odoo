@@ -23,6 +23,7 @@
                         <group string="Kepegawaian">
                             <field name="pangkat_golongan"/>
                             <field name="jabatan"/>
+                            <field name="user_id" options="{'no_create': True}"/>
                             <field name="active"/>
                         </group>
                     </group>

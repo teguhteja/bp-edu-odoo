@@ -1,13 +1,15 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_bp_edu_rps_user,bp.edu.rps user,model_bp_edu_rps,,1,0,0,0
-access_bp_edu_rps_admin,bp.edu.rps admin,model_bp_edu_rps,base.group_system,1,1,1,1
-access_bp_edu_rps_detail_user,bp.edu.rps.detail user,model_bp_edu_rps_detail,,1,0,0,0
-access_bp_edu_rps_detail_admin,bp.edu.rps.detail admin,model_bp_edu_rps_detail,base.group_system,1,1,1,1
-access_bp_edu_sap_user,bp.edu.sap user,model_bp_edu_sap,,1,0,0,0
-access_bp_edu_sap_admin,bp.edu.sap admin,model_bp_edu_sap,base.group_system,1,1,1,1
-access_bp_edu_sap_pertemuan_user,bp.edu.sap.pertemuan user,model_bp_edu_sap_pertemuan,,1,0,0,0
-access_bp_edu_sap_pertemuan_admin,bp.edu.sap.pertemuan admin,model_bp_edu_sap_pertemuan,base.group_system,1,1,1,1
-access_bp_edu_kontrak_kuliah_user,bp.edu.kontrak.kuliah user,model_bp_edu_kontrak_kuliah,,1,0,0,0
-access_bp_edu_kontrak_kuliah_admin,bp.edu.kontrak.kuliah admin,model_bp_edu_kontrak_kuliah,base.group_system,1,1,1,1
-access_bp_edu_kontrak_materi_user,bp.edu.kontrak.materi user,model_bp_edu_kontrak_materi,,1,0,0,0
-access_bp_edu_kontrak_materi_admin,bp.edu.kontrak.materi admin,model_bp_edu_kontrak_materi,base.group_system,1,1,1,1
+access_bp_edu_field_history_user,bp.edu.field.history user,model_bp_edu_field_history,,1,0,0,0
+access_bp_edu_field_history_doko,bp.edu.field.history doko,model_bp_edu_field_history,bp_edu_core.group_dosen_koordinator,1,0,0,1
+access_bp_edu_rps_dosen,bp.edu.rps dosen,model_bp_edu_rps,bp_edu_core.group_dosen,1,1,1,1
+access_bp_edu_rps_doko,bp.edu.rps doko,model_bp_edu_rps,bp_edu_core.group_dosen_koordinator,1,1,1,1
+access_bp_edu_rps_detail_dosen,bp.edu.rps.detail dosen,model_bp_edu_rps_detail,bp_edu_core.group_dosen,1,1,1,1
+access_bp_edu_rps_detail_doko,bp.edu.rps.detail doko,model_bp_edu_rps_detail,bp_edu_core.group_dosen_koordinator,1,1,1,1
+access_bp_edu_sap_dosen,bp.edu.sap dosen,model_bp_edu_sap,bp_edu_core.group_dosen,1,1,1,1
+access_bp_edu_sap_doko,bp.edu.sap doko,model_bp_edu_sap,bp_edu_core.group_dosen_koordinator,1,1,1,1
+access_bp_edu_sap_pertemuan_dosen,bp.edu.sap.pertemuan dosen,model_bp_edu_sap_pertemuan,bp_edu_core.group_dosen,1,1,1,1
+access_bp_edu_sap_pertemuan_doko,bp.edu.sap.pertemuan doko,model_bp_edu_sap_pertemuan,bp_edu_core.group_dosen_koordinator,1,1,1,1
+access_bp_edu_kontrak_kuliah_dosen,bp.edu.kontrak.kuliah dosen,model_bp_edu_kontrak_kuliah,bp_edu_core.group_dosen,1,1,1,1
+access_bp_edu_kontrak_kuliah_doko,bp.edu.kontrak.kuliah doko,model_bp_edu_kontrak_kuliah,bp_edu_core.group_dosen_koordinator,1,1,1,1
+access_bp_edu_kontrak_materi_dosen,bp.edu.kontrak.materi dosen,model_bp_edu_kontrak_materi,bp_edu_core.group_dosen,1,1,1,1
+access_bp_edu_kontrak_materi_doko,bp.edu.kontrak.materi doko,model_bp_edu_kontrak_materi,bp_edu_core.group_dosen_koordinator,1,1,1,1

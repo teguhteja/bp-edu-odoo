@@ -15,6 +15,12 @@
                             class="btn-secondary"/>
                 </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object"
+                                name="action_view_history" icon="fa-history">
+                            <field name="history_count" string="Riwayat" widget="statinfo"/>
+                        </button>
+                    </div>
                     <div class="oe_title">
                         <label for="mata_kuliah_id" string="Kontrak Kuliah"/>
                         <h1>
@@ -125,7 +131,7 @@
                 <field name="mata_kuliah_id"/>
                 <field name="dosen_id"/>
                 <field name="tahun_akademik_id"/>
-                <group expand="0" string="Kelompokkan berdasarkan">
+                <group>
                     <filter string="Tahun Akademik" name="group_ta"
                             context="{'group_by': 'tahun_akademik_id'}"/>
                     <filter string="Dosen" name="group_dosen"

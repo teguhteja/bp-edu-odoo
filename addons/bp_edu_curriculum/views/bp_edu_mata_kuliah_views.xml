@@ -135,7 +135,7 @@
                 <filter string="Semester 2" name="sem2" domain="[('semester', '=', 2)]"/>
                 <filter string="Semester 3" name="sem3" domain="[('semester', '=', 3)]"/>
                 <filter string="Semester 4" name="sem4" domain="[('semester', '=', 4)]"/>
-                <group expand="0" string="Kelompokkan berdasarkan">
+                <group>
                     <filter string="Semester" name="group_semester" context="{'group_by': 'semester'}"/>
                     <filter string="Program Studi" name="group_prodi" context="{'group_by': 'prodi_id'}"/>
                     <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>

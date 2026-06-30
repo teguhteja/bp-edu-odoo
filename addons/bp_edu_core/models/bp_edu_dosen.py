@@ -16,6 +16,11 @@ class BpEduDosen(models.Model):
     pangkat_golongan = fields.Char(string='Pangkat/Golongan', default='-')
     jabatan = fields.Char(string='Jabatan Fungsional', help='Contoh: Asisten Ahli, Lektor, Lektor Kepala')
     email = fields.Char(string='Email')
+    user_id = fields.Many2one(
+        'res.users', string='Akun Pengguna',
+        ondelete='set null', copy=False,
+        help='Hubungkan dengan akun login Odoo agar dosen dapat login dan hanya melihat datanya sendiri.',
+    )
     tanda_tangan = fields.Binary(string='Tanda Tangan', attachment=True)
     tanda_tangan_filename = fields.Char(string='Nama File TTD')
     active = fields.Boolean(default=True)

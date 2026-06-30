@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <!-- ─── Sub-menu: Kurikulum (di bawah top menu Pendidikan) ── -->
+    <!-- ─── Sub-menu: Kurikulum ──────────────────────────────── -->
     <menuitem id="menu_bp_edu_kurikulum"
               name="Kurikulum"
               parent="bp_edu_core.menu_bp_edu_root"
               sequence="20"/>
 
+    <!-- Mata Kuliah: semua grup bisa lihat (read-only untuk Dosen) -->
     <menuitem id="menu_bp_edu_mata_kuliah"
               name="Mata Kuliah"
               parent="menu_bp_edu_kurikulum"
               action="bp_edu_mata_kuliah_action"
               sequence="10"/>
 
+    <!-- CPL Prodi: hanya DoKo -->
     <menuitem id="menu_bp_edu_cpl"
               name="CPL Prodi"
               parent="menu_bp_edu_kurikulum"
               action="bp_edu_cpl_action"
-              sequence="20"/>
+              sequence="20"
+              groups="bp_edu_core.group_dosen_koordinator"/>
 
 </odoo>

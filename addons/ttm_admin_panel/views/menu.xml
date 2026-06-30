@@ -1,16 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <!-- Root menu: visible to system admin, TTM admin-tenant, and moderator-tenant -->
     <menuitem id="menu_ttm_root"
               name="TTM Admin"
               sequence="90"
               web_icon="ttm_admin_panel,static/description/icon.png"
-              groups="base.group_system"/>
+              groups="base.group_system,ttm_admin_panel.group_ttm_admin_tenant,ttm_admin_panel.group_ttm_moderator_tenant"/>
 
+    <!-- Tenants: admin + moderator (moderator hanya bisa lihat) -->
     <menuitem id="menu_ttm_tenants"
               name="Tenants"
               parent="menu_ttm_root"
               action="action_ttm_tenant"
-              sequence="10"/>
+              sequence="10"
+              groups="base.group_system,ttm_admin_panel.group_ttm_admin_tenant,ttm_admin_panel.group_ttm_moderator_tenant"/>
+
+    <!-- Configuration: admin-tenant only -->
+    <menuitem id="menu_ttm_configuration"
+              name="Configuration"
+              parent="menu_ttm_root"
+              sequence="90"
+              groups="base.group_system,ttm_admin_panel.group_ttm_admin_tenant"/>
+
+    <menuitem id="menu_ttm_tenant_groups"
+              name="Tenant Groups"
+              parent="menu_ttm_configuration"
+              action="action_ttm_tenant_group"
+              sequence="10"
+              groups="base.group_system,ttm_admin_panel.group_ttm_admin_tenant"/>
+
+    <menuitem id="menu_ttm_user_tenant"
+              name="User Manage Tenant"
+              parent="menu_ttm_configuration"
+              action="action_ttm_user_tenant"
+              sequence="20"
+              groups="base.group_system,ttm_admin_panel.group_ttm_admin_tenant"/>
 
 </odoo>

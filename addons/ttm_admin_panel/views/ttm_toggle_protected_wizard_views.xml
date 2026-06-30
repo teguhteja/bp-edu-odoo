@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="ttm_toggle_protected_wizard_view_form" model="ir.ui.view">
+        <field name="name">ttm.toggle.protected.wizard.form</field>
+        <field name="model">ttm.toggle.protected.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Ubah Status Proteksi Tenant">
+                <sheet>
+                    <group>
+                        <field name="tenant_id" readonly="1"/>
+                        <field name="is_protected" readonly="1" widget="boolean_toggle"/>
+                    </group>
+                    <div class="alert alert-warning" role="alert">
+                        <span invisible="is_protected">
+                            Tenant akan <strong>diproteksi</strong> dan tidak dapat dihapus sampai proteksi dinonaktifkan.
+                        </span>
+                        <span invisible="not is_protected">
+                            Proteksi akan <strong>dinonaktifkan</strong>. Tenant dapat dihapus setelah ini.
+                        </span>
+                    </div>
+                    <group string="Konfirmasi Identitas">
+                        <field name="current_password" widget="password" password="True"
+                               placeholder="Masukkan password akun Anda..."/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_confirm" string="Konfirmasi"
+                            type="object" class="btn-primary"/>
+                    <button string="Batal" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

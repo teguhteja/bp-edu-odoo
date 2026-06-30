@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--
+            Moderator Tenant hanya bisa read/write/unlink tenant
+            yang memiliki group sama dengan group_tenant_ids user.
+            perm_create=False agar create tidak diblokir rule ini
+            (moderator bebas membuat tenant, tapi harus assign group sendiri agar terlihat).
+        -->
+        <record id="rule_ttm_tenant_moderator" model="ir.rule">
+            <field name="name">TTM Tenant: Moderator hanya akses group sendiri</field>
+            <field name="model_id" ref="model_ttm_tenant"/>
+            <field name="domain_force">
+                [('group_tenant_id', 'in', user.group_tenant_ids.ids)]
+            </field>
+            <field name="groups" eval="[(4, ref('ttm_admin_panel.group_ttm_moderator_tenant'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

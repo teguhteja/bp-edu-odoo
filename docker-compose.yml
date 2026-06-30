@@ -1,6 +1,7 @@
 services:
   nginx:
     image: nginx:alpine
+    restart: unless-stopped
     ports:
       - "${ODOO_PORT:-18069}:80"
     volumes:
@@ -12,6 +13,7 @@ services:
 
   web:
     build: .
+    restart: unless-stopped
     ports:
       - "${ODOO_LONGPOLLING_PORT:-18072}:8072"
     volumes:
@@ -37,8 +39,9 @@ services:
 
   db:
     image: postgres:17
-    ports:
-      - "${POSTGRES_PORT:-15432}:5432"
+    # Port 5432 NOT exposed externally — only accessible inside Docker network
+    # ports:
+    #   - "${POSTGRES_PORT:-15432}:5432"
     environment:
       - POSTGRES_USER=${POSTGRES_USER:-odoo}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-odoo}
@@ -70,8 +73,9 @@ services:
 
   adminer:
     image: adminer
-    ports:
-      - "${ADMINER_PORT:-18070}:8080"
+    # Port not exposed externally — access via SSH tunnel only
+    # ports:
+    #   - "${ADMINER_PORT:-18070}:8080"
     depends_on:
       db:
         condition: service_healthy

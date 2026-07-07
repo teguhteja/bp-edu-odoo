@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_open_ai_wizard_mk" model="ir.actions.act_window">
+        <field name="name">Generate dengan AI</field>
+        <field name="res_model">bp.edu.ai.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{
+            'default_res_model': 'bp.edu.mata.kuliah',
+            'default_res_id': active_id,
+        }</field>
+    </record>
+
+    <record id="bp_edu_mata_kuliah_form_ai_inherit" model="ir.ui.view">
+        <field name="name">bp.edu.mata.kuliah.form.ai.inherit</field>
+        <field name="model">bp.edu.mata.kuliah</field>
+        <field name="inherit_id" ref="bp_edu_curriculum.bp_edu_mata_kuliah_form_view"/>
+        <field name="arch" type="xml">
+            <!-- Insert button box before oe_title -->
+            <xpath expr="//sheet/div[hasclass('oe_title')]" position="before">
+                <div class="oe_button_box" name="button_box">
+                    <button name="%(bp_edu_ai.action_open_ai_wizard_mk)d"
+                            string="Generate dengan AI"
+                            type="action"
+                            class="oe_stat_button"
+                            icon="fa-magic"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

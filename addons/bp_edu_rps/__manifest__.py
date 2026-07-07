@@ -3,7 +3,7 @@
     'version': '19.0.1.0.0',
     'category': 'Education',
     'summary': 'Rencana Pembelajaran Semester, SAP, dan Kontrak Kuliah',
-    'depends': ['bp_edu_curriculum'],
+    'depends': ['bp_edu_curriculum', 'mail'],
     'data': [
         'security/ir.model.access.csv',
         'security/bp_edu_rps_rules.xml',

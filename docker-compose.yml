@@ -26,6 +26,33 @@ services:
     environment:
       - USER=${POSTGRES_USER:-odoo}
       - PASSWORD=${POSTGRES_PASSWORD:-odoo}
+      # Cloudflare R2 (read by ttm_storage_r2's post_init_hook) — podman-compose
+      # doesn't reliably honor env_file, so pass explicitly via substitution.
+      - R2_ACCESS_KEY_ID=${R2_ACCESS_KEY_ID:-}
+      - R2_SECRET_ACCESS_KEY=${R2_SECRET_ACCESS_KEY:-}
+      - R2_ENDPOINT_URL=${R2_ENDPOINT_URL:-}
+      - R2_BUCKET=${R2_BUCKET:-}
+      - R2_BASE_URL=${R2_BASE_URL:-}
+      - R2_SET_AS_DEFAULT=${R2_SET_AS_DEFAULT:-false}
+      # Email (read by ttm_email's post_init_hook)
+      - EMAIL_SMTP_NAME=${EMAIL_SMTP_NAME:-}
+      - EMAIL_SMTP_HOST=${EMAIL_SMTP_HOST:-}
+      - EMAIL_SMTP_PORT=${EMAIL_SMTP_PORT:-587}
+      - EMAIL_SMTP_USER=${EMAIL_SMTP_USER:-}
+      - EMAIL_SMTP_PASS=${EMAIL_SMTP_PASS:-}
+      - EMAIL_SMTP_ENCRYPTION=${EMAIL_SMTP_ENCRYPTION:-starttls_strict}
+      - EMAIL_SMTP_AUTHENTICATION=${EMAIL_SMTP_AUTHENTICATION:-login}
+      - EMAIL_SMTP_PRIORITY=${EMAIL_SMTP_PRIORITY:-10}
+      - EMAIL_SMTP_TEST_CONNECTION=${EMAIL_SMTP_TEST_CONNECTION:-true}
+      - EMAIL_FETCH_NAME=${EMAIL_FETCH_NAME:-}
+      - EMAIL_FETCH_TYPE=${EMAIL_FETCH_TYPE:-imap}
+      - EMAIL_FETCH_SERVER=${EMAIL_FETCH_SERVER:-}
+      - EMAIL_FETCH_PORT=${EMAIL_FETCH_PORT:-993}
+      - EMAIL_FETCH_SSL=${EMAIL_FETCH_SSL:-true}
+      - EMAIL_FETCH_USER=${EMAIL_FETCH_USER:-}
+      - EMAIL_FETCH_PASSWORD=${EMAIL_FETCH_PASSWORD:-}
+      - EMAIL_FETCH_PRIORITY=${EMAIL_FETCH_PRIORITY:-5}
+      - EMAIL_FETCH_CONFIRM=${EMAIL_FETCH_CONFIRM:-true}
     command: >
       bash -c "wait-for-psql.py --db_host db --db_port 5432 --db_user $${USER} --db_password $${PASSWORD} --timeout=30 &&
       exec odoo --db_host db --db_port 5432 --db_user $${USER} --db_password $${PASSWORD}"

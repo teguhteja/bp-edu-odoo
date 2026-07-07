@@ -3,7 +3,7 @@
     'version': '19.0.1.0.0',
     'category': 'Education',
     'summary': 'Kurikulum: mata kuliah, CPL, CPMK, Sub-CPMK, dan pustaka referensi',
-    'depends': ['bp_edu_core'],
+    'depends': ['bp_edu_core', 'mail'],
     'data': [
         'security/ir.model.access.csv',
         'views/bp_edu_cpl_views.xml',

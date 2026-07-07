@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="bp_edu_ai_wizard_form" model="ir.ui.view">
+        <field name="name">bp.edu.ai.wizard.form</field>
+        <field name="model">bp.edu.ai.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generate dengan AI">
+                <sheet>
+                    <div class="oe_title mb-3">
+                        <h4 class="text-muted">
+                            Generate konten untuk: <field name="res_name" readonly="1" nolabel="1" class="o_field_highlight"/>
+                        </h4>
+                    </div>
+
+                    <!-- INPUT STATE -->
+                    <group invisible="state != 'input'">
+                        <group col="1">
+                            <field name="prompt" widget="text"
+                                   placeholder="Ketik instruksi untuk AI..."
+                                   style="min-height:120px;"
+                                   nolabel="1"/>
+                            <field name="placeholder_hint" invisible="1"/>
+                        </group>
+                    </group>
+
+                    <!-- PROCESSING STATE -->
+                    <div invisible="state != 'processing'" class="text-center py-5">
+                        <i class="fa fa-spinner fa-spin fa-3x text-primary" title="Memproses"/>
+                        <p class="mt-3 text-muted">AI sedang memproses permintaan Anda...</p>
+                    </div>
+
+                    <!-- DONE STATE -->
+                    <group invisible="state not in ('done', 'error')">
+                        <group string="Hasil dari AI" col="1">
+                            <field name="result_html" widget="html" nolabel="1"/>
+                        </group>
+                    </group>
+
+                    <!-- Hidden fields -->
+                    <field name="res_model" invisible="1"/>
+                    <field name="res_id" invisible="1"/>
+                    <field name="state" invisible="1"/>
+                </sheet>
+
+                <footer>
+                    <!-- Input state buttons -->
+                    <button name="action_generate"
+                            string="Generate"
+                            type="object"
+                            class="btn-primary"
+                            invisible="state != 'input'"/>
+                    <button string="Batal"
+                            class="btn-secondary"
+                            special="cancel"
+                            invisible="state != 'input'"/>
+
+                    <!-- Done state buttons -->
+                    <button name="action_post_to_chatter"
+                            string="Simpan ke Catatan"
+                            type="object"
+                            class="btn-primary"
+                            invisible="state != 'done'"/>
+                    <button name="action_reset"
+                            string="Generate Ulang"
+                            type="object"
+                            class="btn-secondary"
+                            invisible="state != 'done'"/>
+                    <button string="Tutup"
+                            class="btn-secondary"
+                            special="cancel"
+                            invisible="state != 'done'"/>
+
+                    <!-- Error state buttons -->
+                    <button name="action_reset"
+                            string="Coba Lagi"
+                            type="object"
+                            class="btn-warning"
+                            invisible="state != 'error'"/>
+                    <button string="Tutup"
+                            class="btn-secondary"
+                            special="cancel"
+                            invisible="state != 'error'"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_bp_edu_ai_wizard" model="ir.actions.act_window">
+        <field name="name">Generate dengan AI</field>
+        <field name="res_model">bp.edu.ai.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

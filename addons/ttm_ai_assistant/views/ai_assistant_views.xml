@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ─── ai.agent — Form View ────────────────────────────────────── -->
+    <record id="view_ai_agent_form" model="ir.ui.view">
+        <field name="name">ai.agent.form</field>
+        <field name="model">ai.agent</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_test_connection"
+                            type="object"
+                            string="Test Koneksi"
+                            class="btn-secondary"
+                            icon="fa-plug"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Nama Agent"/>
+                        <h1>
+                            <field name="name" placeholder="contoh: Groq Llama Default"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group string="Konfigurasi API">
+                            <field name="api_provider" widget="radio"/>
+                            <field name="api_key" password="True"
+                                   placeholder="gsk_... atau sk-..."/>
+                            <field name="model_name"
+                                   placeholder="llama-3.3-70b-versatile"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                        <group string="Parameter LLM">
+                            <field name="priority"/>
+                            <field name="max_tokens"/>
+                            <field name="temperature" digits="[4, 2]"/>
+                        </group>
+                    </group>
+
+                    <group string="Configuration Prompt">
+                        <label for="system_prompt" string="System Prompt"/>
+                        <field name="system_prompt" nolabel="1"
+                               widget="text" rows="6"
+                               placeholder="Kamu adalah asisten AI..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ─── ai.agent — List View ────────────────────────────────────── -->
+    <record id="view_ai_agent_list" model="ir.ui.view">
+        <field name="name">ai.agent.list</field>
+        <field name="model">ai.agent</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="priority"/>
+                <field name="name"/>
+                <field name="api_provider" widget="badge"
+                       decoration-success="api_provider == 'groq'"
+                       decoration-info="api_provider == 'openrouter'"
+                       decoration-warning="api_provider == 'openai'"/>
+                <field name="model_name"/>
+                <field name="max_tokens"/>
+                <field name="temperature"/>
+                <field name="active" widget="boolean_toggle"/>
+                <button name="action_test_connection" type="object"
+                        string="Test" icon="fa-plug" class="btn-sm"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ─── Action ──────────────────────────────────────────────────── -->
+    <record id="action_ai_agent" model="ir.actions.act_window">
+        <field name="name">AI Agents</field>
+        <field name="res_model">ai.agent</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Belum ada AI Agent
+            </p>
+            <p>
+                Buat agent baru atau gunakan <b>Settings → AI Assistant</b>
+                untuk konfigurasi default via Groq / OpenRouter / OpenAI.
+            </p>
+        </field>
+    </record>
+
+    <!-- ─── ai.agent.log — List/Form View ──────────────────────────────── -->
+    <record id="view_ai_agent_log_list" model="ir.ui.view">
+        <field name="name">ai.agent.log.list</field>
+        <field name="model">ai.agent.log</field>
+        <field name="arch" type="xml">
+            <list create="false" edit="false" decoration-danger="state == 'error'">
+                <field name="create_date" string="Waktu"/>
+                <field name="user_id"/>
+                <field name="agent_id"/>
+                <field name="command"/>
+                <field name="res_model"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'success'"
+                       decoration-danger="state == 'error'"/>
+                <field name="duration" string="Durasi (s)"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_ai_agent_log_form" model="ir.ui.view">
+        <field name="name">ai.agent.log.form</field>
+        <field name="model">ai.agent.log</field>
+        <field name="arch" type="xml">
+            <form create="false" edit="false">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="state" widget="badge"
+                                   decoration-success="state == 'success'"
+                                   decoration-danger="state == 'error'"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="create_date" string="Waktu"/>
+                            <field name="user_id"/>
+                            <field name="agent_id"/>
+                        </group>
+                        <group>
+                            <field name="res_model"/>
+                            <field name="res_id"/>
+                            <field name="duration"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Pertanyaan/Perintah" name="command">
+                            <field name="command" nolabel="1" readonly="1"/>
+                        </page>
+                        <page string="Respons AI" name="response"
+                              invisible="not response">
+                            <field name="response" nolabel="1" readonly="1"/>
+                        </page>
+                        <page string="Error" name="error"
+                              invisible="not error_message">
+                            <field name="error_message" nolabel="1" readonly="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_ai_agent_log" model="ir.actions.act_window">
+        <field name="name">AI Assistant Log</field>
+        <field name="res_model">ai.agent.log</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Belum ada log interaksi AI
+            </p>
+            <p>
+                Setiap pertanyaan, respons, dan error saat berinteraksi dengan
+                AI Assistant akan dicatat di sini.
+            </p>
+        </field>
+    </record>
+
+    <!-- ─── Menu ────────────────────────────────────────────────────── -->
+    <menuitem id="menu_ai_assistant_root"
+              name="AI Assistant"
+              parent="base.menu_administration"
+              sequence="99"
+              groups="base.group_system"/>
+
+    <menuitem id="menu_ai_agents"
+              name="AI Agents"
+              parent="menu_ai_assistant_root"
+              action="action_ai_agent"
+              sequence="10"
+              groups="base.group_system"/>
+
+    <menuitem id="menu_ai_agent_log"
+              name="AI Assistant Log"
+              parent="menu_ai_assistant_root"
+              action="action_ai_agent_log"
+              sequence="20"
+              groups="base.group_system"/>
+
+</odoo>

@@ -8,6 +8,7 @@ _logger = logging.getLogger(__name__)
 class BpEduRps(models.Model):
     _name = 'bp.edu.rps'
     _description = 'Rencana Pembelajaran Semester'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _rec_name = 'display_name'
     _order = 'tahun_akademik_id desc, mata_kuliah_id'
 

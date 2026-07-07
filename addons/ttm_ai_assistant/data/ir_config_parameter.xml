@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- noupdate=1: tidak overwrite nilai yang sudah dikustomisasi user -->
+    <data noupdate="1">
+
+        <record id="param_ttm_ai_provider" model="ir.config_parameter">
+            <field name="key">ttm_ai.api_provider</field>
+            <field name="value">groq</field>
+        </record>
+
+        <record id="param_ttm_ai_api_key" model="ir.config_parameter">
+            <field name="key">ttm_ai.api_key</field>
+            <field name="value"></field>
+        </record>
+
+        <record id="param_ttm_ai_model_name" model="ir.config_parameter">
+            <field name="key">ttm_ai.model_name</field>
+            <field name="value">llama-3.3-70b-versatile</field>
+        </record>
+
+        <record id="param_ttm_ai_max_tokens" model="ir.config_parameter">
+            <field name="key">ttm_ai.max_tokens</field>
+            <field name="value">2048</field>
+        </record>
+
+        <record id="param_ttm_ai_temperature" model="ir.config_parameter">
+            <field name="key">ttm_ai.temperature</field>
+            <field name="value">0.7</field>
+        </record>
+
+        <record id="param_ttm_ai_system_prompt" model="ir.config_parameter">
+            <field name="key">ttm_ai.system_prompt</field>
+            <field name="value">Kamu adalah asisten AI yang terintegrasi dalam Odoo ERP. Kamu dapat membantu pengguna dengan mencari data, membaca record, memperbarui field, dan membuat record baru menggunakan tools yang tersedia. Selalu jawab dalam bahasa yang sama dengan pertanyaan pengguna. Berikan jawaban yang jelas dan akurat. Saat mengubah data, konfirmasi operasi yang telah dilakukan.</field>
+        </record>
+
+    </data>
+</odoo>

@@ -3,7 +3,7 @@
 
     <!-- Root menu: visible to system admin, TTM admin-tenant, and moderator-tenant -->
     <menuitem id="menu_ttm_root"
-              name="TTM Admin"
+              name="Admin Panel"
               sequence="90"
               web_icon="ttm_admin_panel,static/description/icon.png"
               groups="base.group_system,ttm_admin_panel.group_ttm_admin_tenant,ttm_admin_panel.group_ttm_moderator_tenant"/>

@@ -7,6 +7,7 @@ _logger = logging.getLogger(__name__)
 class BpEduDosen(models.Model):
     _name = 'bp.edu.dosen'
     _description = 'Dosen'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _rec_name = 'nama'
     _order = 'nama'
 

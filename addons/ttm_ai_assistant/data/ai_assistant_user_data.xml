@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- noupdate=1: user dibuat sekali saat install/upgrade, tidak menimpa kustomisasi -->
+    <data noupdate="1">
+
+        <record id="user_ai_assistant" model="res.users"
+                context="{'no_reset_password': True, 'mail_create_nosubscribe': True}">
+            <field name="name">ai-assistant-ttm</field>
+            <field name="login">ai-assistant-ttm</field>
+            <field name="active">True</field>
+            <field name="group_ids" eval="[(6, 0, [ref('base.group_user')])]"/>
+            <field name="notification_type">email</field>
+        </record>
+
+    </data>
+</odoo>

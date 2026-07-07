@@ -15,6 +15,11 @@ RUN apt-get update \
 COPY addons/ /mnt/extra-addons/addons/
 COPY third-party/ /mnt/extra-addons/third-party/
 
+# Extra Python dependencies for custom/third-party addons
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install --break-system-packages --no-cache-dir -r /tmp/requirements.txt \
+    && rm /tmp/requirements.txt
+
 # Copy Odoo config
 COPY config/odoo.conf /etc/odoo/odoo.conf
 

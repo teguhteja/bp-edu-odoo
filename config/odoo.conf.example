@@ -1,6 +1,6 @@
 [options]
 ; Addon paths: Odoo built-in + custom addons + third-party
-addons_path = /usr/lib/python3/dist-packages/odoo/addons,/mnt/extra-addons/addons,/mnt/extra-addons/third-party
+addons_path = /usr/lib/python3/dist-packages/odoo/addons,/mnt/extra-addons/addons,/mnt/extra-addons/third-party,/mnt/extra-addons/third-party/storage
 
 ; Database connection (overridden by docker-compose CLI args)
 db_host = db

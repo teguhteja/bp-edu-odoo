@@ -1,0 +1,1645 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* eh_ai
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-01 04:32+0000\n"
+"PO-Revision-Date: 2026-07-01 04:32+0000\n"
+"Last-Translator: ERP Heritage <info@erpheritage.com.au>\n"
+"Language-Team: Dutch\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__system_prompt_id
+msgid ""
+"A versioned prompt template. Overrides the inline system prompt when set."
+msgstr ""
+"Een geversioneerde promptsjabloon. Overschrijft de inline systeemprompt "
+"indien ingesteld."
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "AI"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_agent
+msgid "AI Agent"
+msgstr "AI-Agent"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_source
+msgid "AI Agent Knowledge Source"
+msgstr "AI-agent kennisbron"
+
+#. module: eh_ai
+#: model:ir.module.category,name:eh_ai.module_category_eh_ai
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_root
+#: model:res.groups.privilege,name:eh_ai.res_groups_privilege_eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "AI Agents"
+msgstr "AI-agenten"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_embedding
+msgid "AI Embedding Chunk"
+msgstr "AI-embeddingfragment"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_model
+msgid "AI Model"
+msgstr "AI-model"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_prompt_revision
+msgid "AI Prompt Revision"
+msgstr "AI-promptrevisie"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_prompt
+msgid "AI Prompt Template"
+msgstr "AI-promptsjabloon"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_provider
+msgid "AI Provider"
+msgstr "AI-provider"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_budget
+msgid "AI Spend Budget"
+msgstr "AI-uitgavenbudget"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.view_server_action_form_eh_ai
+msgid "AI Tool"
+msgstr "AI-tool"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_topic
+msgid "AI Topic"
+msgstr "AI-onderwerp"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_usage_log
+msgid "AI Usage Log"
+msgstr "AI-gebruikslogboek"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_budget.py:0
+msgid ""
+"AI budget '%(name)s' is exhausted (%(spent).2f / %(limit).2f USD this "
+"%(period)s). The request was blocked."
+msgstr ""
+"AI-budget '%(name)s' is uitgeput (%(spent).2f / %(limit).2f USD deze "
+"%(period)s). De aanvraag is geblokkeerd."
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "AI error: %s"
+msgstr "AI-fout: %s"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/utils/providers/base.py:0
+msgid "AI request failed: %s"
+msgstr "AI-aanvraag mislukt: %s"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/search/ai_search.js:0
+msgid "AI search failed: %s"
+msgstr "AI-zoekopdracht mislukt: %s"
+
+#. module: eh_ai
+#: model:ir.actions.server,name:eh_ai.tool_count_records
+msgid "AI: Count Odoo Records"
+msgstr "AI: Odoo-records tellen"
+
+#. module: eh_ai
+#: model:ir.actions.server,name:eh_ai.tool_get_current_datetime
+msgid "AI: Current Date and Time"
+msgstr "AI: Huidige datum en tijd"
+
+#. module: eh_ai
+#: model:ir.actions.server,name:eh_ai.tool_search_records
+msgid "AI: Search Odoo Records"
+msgstr "AI: Odoo-records zoeken"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "AIza..."
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__auth_scheme__header_key
+msgid "API key header"
+msgstr "API-sleutelheader"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__base_url
+msgid ""
+"API root, without a trailing slash. For example https://api.openai.com/v1 or"
+" http://localhost:11434/v1."
+msgstr ""
+"API-hoofdmap, zonder afsluitende schuine streep. Bijvoorbeeld "
+"https://api.openai.com/v1 of http://localhost:11434/v1."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__active
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__active
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__active
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__active
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__active
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__active
+msgid "Active"
+msgstr "Actief"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__is_active
+msgid "Active for Retrieval"
+msgstr "Actief voor ophalen"
+
+#. module: eh_ai
+#: model:res.groups,name:eh_ai.group_eh_ai_manager
+msgid "Administrator"
+msgstr "Beheerder"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_provider_view_form
+msgid "Advanced"
+msgstr "Geavanceerd"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__agent_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__agent_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__agent_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__agent_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__agent_id
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__scope__agent
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_search
+msgid "Agent"
+msgstr ""
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_agent.py:0
+msgid "Agent '%s' has no chat model configured."
+msgstr "Agent '%s' heeft geen chatmodel geconfigureerd."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__partner_id
+msgid "Agent Identity"
+msgstr "Agentidentiteit"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+msgid "Agent name"
+msgstr "Agentnaam"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_agent
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_agents
+msgid "Agents"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__restrict_to_sources
+msgid "Answer Only From Sources"
+msgstr "Alleen antwoorden op basis van bronnen"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__api_key
+msgid "Api Key"
+msgstr "API sleutel"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/chatter_patch.xml:0
+#: code:addons/eh_ai/static/src/chat/command.js:0
+#: code:addons/eh_ai/static/src/chat/systray.xml:0
+msgid "Ask AI"
+msgstr "Vraag het aan AI"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/chatter_patch.xml:0
+msgid "Ask AI about this record"
+msgstr "Vraag AI over dit record"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/search/ai_search.js:0
+msgid "Ask AI: %s"
+msgstr "Vraag AI: %s"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__attachment_id
+msgid "Attachment"
+msgstr "Bijlage"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__auth_scheme
+msgid "Auth Scheme"
+msgstr "Authenticatieschema"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__eh_ai_use_in_tool
+#: model:ir.model.fields,field_description:eh_ai.field_ir_cron__eh_ai_use_in_tool
+msgid "Available to AI Agents"
+msgstr "Beschikbaar voor AI-agents"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__code__azure_openai
+msgid "Azure OpenAI"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_agent__response_style__balanced
+msgid "Balanced"
+msgstr "Gebalanceerd"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__base_url
+msgid "Base Url"
+msgstr "Basis-URL"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__auth_scheme__bearer
+msgid "Bearer token"
+msgstr "Bearer-token"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_topic__instructions
+msgid ""
+"Behavioural guidance added to the system prompt when an agent uses this "
+"topic."
+msgstr ""
+"Gedragsrichtlijnen die aan de systeemprompt worden toegevoegd wanneer een "
+"agent dit onderwerp gebruikt."
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_topic_view_form
+msgid "Behavioural guidance added to the system prompt..."
+msgstr "Gedragsrichtlijnen toegevoegd aan de systeemprompt..."
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__mode__hard_stop
+msgid "Block requests"
+msgstr "Verzoeken blokkeren"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_search
+msgid "Blocked"
+msgstr "Geblokkeerd"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_usage_log__outcome__budget_block
+msgid "Blocked (budget)"
+msgstr "Geblokkeerd (budget)"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__body
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__body
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_prompt_view_form
+msgid "Body"
+msgstr "Inhoud"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_budget
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_budgets
+msgid "Budgets"
+msgstr "Budgetten"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__price_cached_input_per_mtok
+msgid "Cached Input $/MTok"
+msgstr "Gecachte invoer $/MTok"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__cached_tokens
+msgid "Cached Tokens"
+msgstr "Gecachte tokens"
+
+#. module: eh_ai
+#: model:res.groups,comment:eh_ai.group_eh_ai_manager
+msgid "Can configure providers, models and agents."
+msgstr "Kan providers, modellen en agents configureren."
+
+#. module: eh_ai
+#: model:res.groups,comment:eh_ai.group_eh_ai_user
+msgid "Can use AI agents."
+msgstr "Kan AI-agents gebruiken."
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/agent_picker_dialog.xml:0
+#: code:addons/eh_ai/static/src/editor/ai_prompt_dialog.xml:0
+msgid "Cancel"
+msgstr "Annuleren"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_model_view_form
+msgid "Capabilities"
+msgstr "Mogelijkheden"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__channel_id
+msgid "Channel"
+msgstr "Kanaal"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_model__kind__chat
+msgid "Chat"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__chat_model_id
+msgid "Chat Model"
+msgstr "Chatmodel"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/agent_picker_dialog.xml:0
+msgid "Choose an agent to chat with:"
+msgstr "Kies een agent om mee te chatten:"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_form
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_list
+msgid "Chunks"
+msgstr "Blokken"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__provider_code
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__code
+msgid "Code"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__rag_hybrid
+msgid ""
+"Combine vector similarity with keyword (full-text) search. Better for "
+"queries containing exact terms, codes or ids."
+msgstr ""
+"Combineer vectorgelijkenis met zoeken op trefwoorden (volledige tekst). "
+"Beter voor zoekopdrachten met exacte termen, codes of id's."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__company_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__company_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__company_id
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__scope__company
+msgid "Company"
+msgstr "Bedrijf"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_res_config_settings
+msgid "Config Settings"
+msgstr "Configuratie-instellingen"
+
+#. module: eh_ai
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config
+msgid "Configuration"
+msgstr "Configuratie"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__content
+msgid "Content"
+msgstr "Inhoud"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__context_window
+msgid "Context Window"
+msgstr "Contextvenster"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__cost
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_list
+msgid "Cost (USD)"
+msgstr "Kosten (USD)"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__price_input_per_mtok
+msgid "Cost per million input tokens, used for usage reporting."
+msgstr "Kosten per miljoen invoertokens, gebruikt voor gebruiksrapportage."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__create_uid
+msgid "Created by"
+msgstr "Aangemaakt door"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__create_date
+msgid "Created on"
+msgstr "Aangemaakt op"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_agent__response_style__creative
+msgid "Creative"
+msgstr "Creatief"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_prompt_dialog.xml:0
+msgid "Ctrl/Cmd + Enter to generate."
+msgstr "Ctrl/Cmd + Enter om te genereren."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__current_revision_id
+msgid "Current Revision"
+msgstr "Huidige revisie"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__period__daily
+msgid "Daily"
+msgstr "Dagelijks"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Describe what to write…"
+msgstr "Beschrijf wat u wilt schrijven…"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__description
+msgid "Description"
+msgstr "Omschrijving"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__provider_code
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__code
+msgid ""
+"Determines which wire format adapter is used to talk to the provider. "
+"Additional providers can be added by extending modules."
+msgstr ""
+"Bepaalt welke wire-format-adapter wordt gebruikt om met de provider te "
+"communiceren. Aanvullende providers kunnen worden toegevoegd door modules "
+"uit te breiden."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__dimensions
+msgid "Dimensions"
+msgstr "Dimensies"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_discuss_channel
+msgid "Discussion Channel"
+msgstr "Chatkanaal"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__display_label
+msgid "Display Label"
+msgstr "Weergavelabel"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_discuss_channel__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "Weergavenaam"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_model_view_form
+msgid "Display name"
+msgstr "Weergavenaam"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_reply_job__state__done
+msgid "Done"
+msgstr "Gereed"
+
+#. module: eh_ai
+#: model:ir.actions.server,name:eh_ai.ir_cron_agent_replies_ir_actions_server
+msgid "EH AI: Generate Agent Replies"
+msgstr "EH AI: Agentantwoorden genereren"
+
+#. module: eh_ai
+#: model:ir.actions.server,name:eh_ai.ir_cron_generate_embeddings_ir_actions_server
+msgid "EH AI: Generate Embeddings"
+msgstr "EH AI: Embeddings genereren"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_discuss_channel__eh_ai_agent_id
+msgid "Eh Ai Agent"
+msgstr "Eh AI-agent"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_discuss_channel__eh_ai_is_agent
+msgid "Eh Ai Is Agent"
+msgstr "Eh AI is agent"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__embedding_ids
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_model__kind__embedding
+msgid "Embedding"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__embedding_count
+msgid "Embedding Count"
+msgstr "Aantal embeddings"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__embedding_dimensions
+msgid "Embedding Dimensions"
+msgstr "Embedding-dimensies"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__embedding_json
+msgid "Embedding Json"
+msgstr "Embedding-Json"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__embedding_model_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__embedding_model_id
+msgid "Embedding Model"
+msgstr "Embeddingmodel"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__env_var
+msgid "Environment Variable"
+msgstr "Omgevingsvariabele"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__error
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_reply_job__state__error
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_usage_log__outcome__error
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_form
+msgid "Error"
+msgstr "Fout"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__error_details
+msgid "Error Details"
+msgstr "Foutgegevens"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__scope__global
+msgid "Everyone"
+msgstr "Iedereen"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_ir_actions_server__eh_ai_use_in_tool
+#: model:ir.model.fields,help:eh_ai.field_ir_cron__eh_ai_use_in_tool
+msgid "Expose this server action to AI agents as a callable tool."
+msgstr ""
+"Stel deze serveractie beschikbaar aan AI-agents als een aanroepbare tool."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__extra_headers
+msgid "Extra Headers"
+msgstr "Extra headers"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_source__status__failed
+msgid "Failed"
+msgstr "Mislukt"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_source__type__binary
+msgid "File"
+msgstr "Bestand"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__upload_filename
+msgid "File Name"
+msgstr "Bestandsnaam"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_prompt_dialog.xml:0
+msgid "Generate"
+msgstr "Genereren"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Generate text from an instruction"
+msgstr "Tekst genereren op basis van een instructie"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__code__google
+msgid "Google"
+msgstr ""
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "Google Gemini"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_res_config_settings__eh_ai_google_key
+msgid "Google Gemini API Key"
+msgstr "Google Gemini API-sleutel"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__has_failed
+msgid "Has Failed"
+msgstr "Is mislukt"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_prompt_view_form
+msgid "History"
+msgstr "Geschiedenis"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__rag_over_fetch
+msgid "How many candidates each search method contributes before fusion."
+msgstr "Hoeveel kandidaten elke zoekmethode aandraagt vóór fusie."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__auth_scheme
+msgid ""
+"How the API key is sent. Bearer for OpenAI-style, API key header for Azure, "
+"none for an unauthenticated local endpoint."
+msgstr ""
+"Hoe de API-sleutel wordt verzonden. Bearer voor OpenAI-stijl, API key-header"
+" voor Azure, geen voor een niet-geverifieerd lokaal eindpunt."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__rag_over_fetch
+msgid "Hybrid Candidates"
+msgstr "Hybride kandidaten"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__rag_hybrid
+msgid "Hybrid Search"
+msgstr "Hybride zoeken"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_discuss_channel__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__id
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__id
+#: model:ir.model.fields,field_description:eh_ai.field_res_config_settings__id
+msgid "ID"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_ir_actions_server__eh_ai_tool_name
+#: model:ir.model.fields,help:eh_ai.field_ir_cron__eh_ai_tool_name
+msgid ""
+"Identifier the model uses to call this tool. Lowercase, no spaces. Defaults "
+"to a slug of the action name."
+msgstr ""
+"Identificatie die het model gebruikt om deze tool aan te roepen. Kleine "
+"letters, geen spaties. Standaard een slug van de actienaam."
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_model_view_list
+msgid "In $/MTok"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_source__status__indexed
+msgid "Indexed"
+msgstr "Geïndexeerd"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_list
+msgid "Input"
+msgstr "Ontvangst"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__price_input_per_mtok
+msgid "Input $/MTok"
+msgstr "Invoer $/MTok"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__input_tokens
+msgid "Input Tokens"
+msgstr "Invoertokens"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__restrict_to_sources
+msgid "Instruct the agent to answer only from retrieved sources."
+msgstr ""
+"Instrueer de agent om alleen te antwoorden op basis van opgehaalde bronnen."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__topic_ids
+msgid "Instruction and tool bundles available to this agent."
+msgstr "Instructie- en toolbundels die beschikbaar zijn voor deze agent."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__instructions
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_topic_view_form
+msgid "Instructions"
+msgstr "Instructies"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__is_current
+msgid "Is Current"
+msgstr "Is huidig"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_ir_actions_server__eh_ai_tool_schema
+#: model:ir.model.fields,help:eh_ai.field_ir_cron__eh_ai_tool_schema
+msgid "JSON schema object describing the arguments the model must supply."
+msgstr ""
+"JSON-schemaobject dat de argumenten beschrijft die het model moet "
+"aanleveren."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__has_key
+msgid "Key Configured"
+msgstr "Sleutel geconfigureerd"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "Key used for Gemini models. Stored as a system parameter."
+msgstr ""
+"Sleutel gebruikt voor Gemini-modellen. Opgeslagen als systeemparameter."
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "Key used for Grok models. Stored as a system parameter."
+msgstr "Sleutel gebruikt voor Grok-modellen. Opgeslagen als systeemparameter."
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "Key used for OpenAI models. Stored as a system parameter."
+msgstr ""
+"Sleutel gebruikt voor OpenAI-modellen. Opgeslagen als systeemparameter."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__kind
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__kind
+msgid "Kind"
+msgstr "Soort"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+msgid "Knowledge (RAG)"
+msgstr "Kennis (RAG)"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__write_uid
+msgid "Last Updated by"
+msgstr "Laatst bijgewerkt door"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__write_date
+msgid "Last Updated on"
+msgstr "Laatst bijgewerkt op"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__latency_ms
+msgid "Latency (ms)"
+msgstr "Latentie (ms)"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__limit_amount
+msgid "Limit (USD)"
+msgstr "Limiet (USD)"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__max_output_tokens
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__max_output_tokens
+msgid "Max Output Tokens"
+msgstr "Max. uitvoertokens"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__context_window
+msgid "Maximum input tokens."
+msgstr "Maximaal aantal invoertokens."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__message_id
+msgid "Message"
+msgstr "Bericht"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__mode
+msgid "Mode"
+msgstr "Modus"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__model_id
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_search
+msgid "Model"
+msgstr "Type"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__model_count
+msgid "Model Count"
+msgstr "Aantal modellen"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__embedding_model_id
+msgid ""
+"Model used to embed knowledge sources and queries. Required for sources."
+msgstr ""
+"Model dat wordt gebruikt om kennisbronnen en query's in te bedden. Vereist "
+"voor bronnen."
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_model
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__model_ids
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_models
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_provider_view_form
+msgid "Models"
+msgstr "Modellen"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__period__monthly
+msgid "Monthly"
+msgstr "Maandelijks"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__name
+msgid "Name"
+msgstr "Naam"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/chat_service.js:0
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "No AI agents are configured yet."
+msgstr "Er zijn nog geen AI-agents geconfigureerd."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "No URL is set on this source."
+msgstr "Er is geen URL ingesteld voor deze bron."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/utils/providers/__init__.py:0
+msgid "No adapter is registered for provider type '%s'."
+msgstr "Er is geen adapter geregistreerd voor providertype '%s'."
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__auth_scheme__none
+msgid "No authentication"
+msgstr "Geen authenticatie"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "No file is attached to this source."
+msgstr "Er is geen bestand aan deze bron gekoppeld."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "No usable text could be extracted."
+msgstr "Er kon geen bruikbare tekst worden geëxtraheerd."
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_usage_log__outcome__ok
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_search
+msgid "OK"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__code__ollama
+msgid "Ollama / Local"
+msgstr "Ollama / Lokaal"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "One or more chunks could not be embedded."
+msgstr "Een of meer fragmenten konden niet worden ingesloten."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "Only http and https source URLs are allowed."
+msgstr "Alleen http- en https-bron-URL's zijn toegestaan."
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/agent_picker_dialog.xml:0
+msgid "Open chat"
+msgstr "Chat openen"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__code__openai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "OpenAI"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_res_config_settings__eh_ai_openai_key
+msgid "OpenAI API Key"
+msgstr "OpenAI API-sleutel"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__code__openai_compatible
+msgid "OpenAI-compatible endpoint"
+msgstr "OpenAI-compatibel eindpunt"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__extra_headers
+msgid ""
+"Optional JSON object of additional HTTP headers to send with every request."
+msgstr ""
+"Optioneel JSON-object met aanvullende HTTP-headers die bij elk verzoek "
+"worden verzonden."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__env_var
+msgid "Optional environment variable used as a final fallback for the key."
+msgstr ""
+"Optionele omgevingsvariabele die als laatste terugval voor de sleutel wordt "
+"gebruikt."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__config_param_key
+msgid ""
+"Optional ir.config_parameter name used as a fallback source for the key."
+msgstr ""
+"Optionele ir.config_parameter-naam die als fallbackbron voor de sleutel "
+"wordt gebruikt."
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_model_view_list
+msgid "Out $/MTok"
+msgstr "Uit $/MTok"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__outcome
+msgid "Outcome"
+msgstr "Resultaat"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_list
+msgid "Output"
+msgstr "Uitgaand"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__price_output_per_mtok
+msgid "Output $/MTok"
+msgstr "Uitvoer $/MTok"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__output_tokens
+msgid "Output Tokens"
+msgstr "Uitvoer-tokens"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__partner_id
+msgid "Partner the agent posts as in Discuss conversations."
+msgstr "Relatie waaronder de agent bericht plaatst in Discuss-gesprekken."
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_reply_job__state__pending
+msgid "Pending"
+msgstr "In behandeling"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_reply_job
+msgid "Pending AI Agent Reply"
+msgstr "In afwachting van antwoord van AI-agent"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__period
+msgid "Period"
+msgstr "Periode"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_agent__response_style__precise
+msgid "Precise"
+msgstr "Nauwkeurig"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_model_view_form
+msgid "Pricing (per million tokens)"
+msgstr "Prijzen (per miljoen tokens)"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_source__status__processing
+msgid "Processing"
+msgstr "In verwerking"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_reply_job.py:0
+msgid "Processing aborted."
+msgstr "Verwerking afgebroken."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__prompt_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__prompt
+msgid "Prompt"
+msgstr ""
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_prompt_view_form
+msgid "Prompt name"
+msgstr "Promptnaam"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_prompt
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_prompts
+msgid "Prompts"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__provider_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__provider_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__provider_id
+msgid "Provider"
+msgstr ""
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "Provider API Keys"
+msgstr "Provider API-sleutels"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_provider_view_form
+msgid "Provider name"
+msgstr "Providernaam"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_provider
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_providers
+msgid "Providers"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_prompt__kind__rag_instruction
+msgid "RAG Instruction"
+msgstr "RAG-instructie"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__remaining
+msgid "Remaining (USD)"
+msgstr "Resterend (USD)"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Rephrase with AI"
+msgstr "Herformuleren met AI"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_form
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_list
+msgid "Reprocess"
+msgstr "Opnieuw verwerken"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__response_style
+msgid "Response Style"
+msgstr "Antwoordstijl"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_prompt_view_form
+msgid "Restore"
+msgstr "Terugzetten"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_prompt.py:0
+msgid "Restored version %s."
+msgstr "Versie %s hersteld."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__use_sources
+msgid ""
+"Retrieve relevant chunks from this agent's sources and add them to the "
+"prompt."
+msgstr ""
+"Relevante fragmenten uit de bronnen van deze agent ophalen en aan de prompt "
+"toevoegen."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__rag_top_n
+msgid "Retrieved Chunks"
+msgstr "Opgehaalde fragmenten"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__retry_count
+msgid "Retry Count"
+msgstr "Aantal nieuwe pogingen"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__revision_ids
+msgid "Revision"
+msgstr "Revisie"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Rewrite the selected text"
+msgstr "De geselecteerde tekst herschrijven"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__scope
+msgid "Scope"
+msgstr "Bereik"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Select some text to rephrase first."
+msgstr "Selecteer eerst wat tekst om te herformuleren."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__sequence
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__sequence
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__sequence
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__sequence
+msgid "Sequence"
+msgstr "Reeks"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_ir_actions_server
+msgid "Server Action"
+msgstr "Serveractie"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_topic__tool_ids
+msgid "Server actions exposed to the model as callable tools for this topic."
+msgstr ""
+"Serveracties die voor dit onderwerp als aanroepbare tools aan het model "
+"worden aangeboden."
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_settings
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_settings
+msgid "Settings"
+msgstr "Instellingen"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_topic__description
+msgid "Short note shown to administrators."
+msgstr "Korte notitie die aan beheerders wordt getoond."
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+msgid "Short tagline"
+msgstr "Korte slogan"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__subtitle
+msgid "Short tagline shown in agent pickers."
+msgstr "Korte slogan die in agentkiezers wordt getoond."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__supports_temperature
+msgid ""
+"Some reasoning models reject sampling parameters. Disable to omit "
+"temperature from requests for this model."
+msgstr ""
+"Sommige redeneermodellen accepteren geen sampling-parameters. Schakel dit "
+"uit om temperature weg te laten uit verzoeken voor dit model."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_reply_job.py:0
+msgid "Sorry, I could not generate a reply. Please try again."
+msgstr "Sorry, ik kon geen antwoord genereren. Probeer het opnieuw."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__source_id
+msgid "Source"
+msgstr "Bron"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__source_count
+msgid "Source Count"
+msgstr "Aantal bronnen"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "Source file"
+msgstr "Bronbestand"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_form
+msgid "Source name"
+msgstr "Bronnaam"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_source
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__source_ids
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_sources
+msgid "Sources"
+msgstr "Bronnen"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__spent
+msgid "Spent (USD)"
+msgstr "Besteed (USD)"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__state
+msgid "State"
+msgstr "Status"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__status
+msgid "Status"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__api_key
+msgid ""
+"Stored key for this provider. Leave empty to fall back to the system "
+"parameter or environment variable below."
+msgstr ""
+"Opgeslagen sleutel voor deze provider. Laat leeg om terug te vallen op de "
+"systeemparameter of omgevingsvariabele hieronder."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__subtitle
+msgid "Subtitle"
+msgstr "Subtitel"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__supports_temperature
+msgid "Supports Temperature"
+msgstr "Ondersteunt Temperature"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__supports_tools
+msgid "Supports Tools"
+msgstr "Ondersteunt Tools"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__supports_vision
+msgid "Supports Vision"
+msgstr "Ondersteunt Vision"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__config_param_key
+msgid "System Parameter"
+msgstr "Systeemparameter"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__system_prompt
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_prompt__kind__system
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+msgid "System Prompt"
+msgstr "Systeemprompt"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__system_prompt_id
+msgid "System Prompt Template"
+msgstr "Sjabloon voor systeemprompt"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__technical_name
+msgid "Technical Name"
+msgstr "Technische naam"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_ir_actions_server__eh_ai_tool_description
+#: model:ir.model.fields,help:eh_ai.field_ir_cron__eh_ai_tool_description
+msgid "Tells the model when and why to call this tool."
+msgstr ""
+"Vertelt het model wanneer en waarom deze tool moet worden aangeroepen."
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/search/ai_search.js:0
+msgid "The AI could not turn that into a filter."
+msgstr "De AI kon daar geen filter van maken."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "The agent has no embedding model configured."
+msgstr "Voor de agent is geen embeddingmodel geconfigureerd."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__system_prompt
+msgid ""
+"The agent's persistent instructions. Used when no template is selected."
+msgstr ""
+"De permanente instructies van de agent. Gebruikt wanneer geen sjabloon is "
+"geselecteerd."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_embedding__embedding_json
+msgid "The chunk vector, stored as a JSON array of floats."
+msgstr "De chunkvector, opgeslagen als een JSON-array van floats."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "The content produced no chunks."
+msgstr "De inhoud heeft geen chunks opgeleverd."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__technical_name
+msgid ""
+"The model identifier sent to the provider, for example gpt-4.1 or "
+"gemini-2.5-flash."
+msgstr ""
+"De model-id die naar de provider wordt verzonden, bijvoorbeeld gpt-4.1 of "
+"gemini-2.5-flash."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "The source URL has no host."
+msgstr "De bron-URL heeft geen host."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "The source URL host could not be resolved: %s"
+msgstr "De host van de bron-URL kon niet worden omgezet: %s"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "The source URL resolves to a non-public address and was blocked."
+msgstr "De bron-URL verwijst naar een niet-openbaar adres en is geblokkeerd."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__eh_ai_tool_description
+#: model:ir.model.fields,field_description:eh_ai.field_ir_cron__eh_ai_tool_description
+msgid "Tool Description"
+msgstr "Toolbeschrijving"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_prompt__kind__tool_guidance
+msgid "Tool Guidance"
+msgstr "Toolrichtlijnen"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__eh_ai_tool_name
+#: model:ir.model.fields,field_description:eh_ai.field_ir_cron__eh_ai_tool_name
+msgid "Tool Name"
+msgstr "Toolnaam"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__eh_ai_tool_schema
+#: model:ir.model.fields,field_description:eh_ai.field_ir_cron__eh_ai_tool_schema
+msgid "Tool Parameters (JSON Schema)"
+msgstr "Toolparameters (JSON Schema)"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/ir_actions_server.py:0
+msgid "Tool parameters must be a JSON object schema (\"type\": \"object\")."
+msgstr "Toolparameters moeten een JSON-objectschema zijn (\"type\": \"object\")."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/ir_actions_server.py:0
+msgid "Tool parameters must be valid JSON: %s"
+msgstr "Toolparameters moeten geldige JSON zijn: %s"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__tool_ids
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_topic_view_form
+msgid "Tools"
+msgstr "Hulpmiddelen"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_topic_view_form
+msgid "Topic name"
+msgstr "Onderwerpnaam"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_topic
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__topic_ids
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_topics
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+msgid "Topics"
+msgstr "Onderwerpen"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__total_tokens
+msgid "Total Tokens"
+msgstr "Totaal aantal tokens"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__type
+msgid "Type"
+msgstr "Soort"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__upload_file
+msgid "Upload File"
+msgstr "Bestand uploaden"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__max_output_tokens
+msgid "Upper bound on tokens generated per response."
+msgstr "Bovengrens voor het aantal per antwoord gegenereerde tokens."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__url
+msgid "Url"
+msgstr "URL"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_usage_log
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_usage
+msgid "Usage and Cost"
+msgstr "Gebruik en kosten"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__use_sources
+msgid "Use Knowledge Sources"
+msgstr "Kennisbronnen gebruiken"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__user_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__user_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__user_id
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__scope__user
+#: model:res.groups,name:eh_ai.group_eh_ai_user
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_search
+msgid "User"
+msgstr "Gebruiker"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__embedding_dimensions
+msgid "Vector size for embedding models."
+msgstr "Vectorgrootte voor embeddingmodellen."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__version
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__version
+msgid "Version"
+msgstr "Versie"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__mode__soft_warn
+msgid "Warn only"
+msgstr "Alleen waarschuwen"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_source__type__url
+msgid "Web Page"
+msgstr "Webpagina"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Write with AI"
+msgstr "Schrijven met AI"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_prompt_view_form
+msgid "You are a helpful assistant for..."
+msgstr "U bent een behulpzame assistent voor..."
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "ai"
+msgstr ""
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "draft"
+msgstr "concept"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_budget_view_form
+msgid "e.g. Monthly cap"
+msgstr "bijv. Maandelijks maximum"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.view_server_action_form_eh_ai
+msgid "get_customer_balance"
+msgstr ""
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_form
+msgid "https://example.com/page"
+msgstr ""
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "improve"
+msgstr "Verbeteren"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "rephrase"
+msgstr "Herformuleren"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "sk-..."
+msgstr ""
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "write"
+msgstr "schrijven"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "xAI (Grok)"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_res_config_settings__eh_ai_xai_key
+msgid "xAI (Grok) API Key"
+msgstr "xAI (Grok) API-sleutel"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "xai-..."
+msgstr ""
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_provider_view_form
+msgid "{\"X-Custom-Header\": \"value\"}"
+msgstr ""
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.view_server_action_form_eh_ai
+msgid "{\"type\": \"object\", \"properties\": {}, \"required\": []}"
+msgstr ""

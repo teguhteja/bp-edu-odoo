@@ -1,0 +1,1640 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* eh_ai
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-01 04:32+0000\n"
+"PO-Revision-Date: 2026-07-01 04:32+0000\n"
+"Last-Translator: ERP Heritage <info@erpheritage.com.au>\n"
+"Language-Team: Vietnamese\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__system_prompt_id
+msgid ""
+"A versioned prompt template. Overrides the inline system prompt when set."
+msgstr ""
+"Một mẫu lời nhắc có phiên bản. Ghi đè lời nhắc hệ thống nội tuyến khi được "
+"đặt."
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "AI"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_agent
+msgid "AI Agent"
+msgstr "Tác nhân AI"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_source
+msgid "AI Agent Knowledge Source"
+msgstr "Nguồn tri thức của tác nhân AI"
+
+#. module: eh_ai
+#: model:ir.module.category,name:eh_ai.module_category_eh_ai
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_root
+#: model:res.groups.privilege,name:eh_ai.res_groups_privilege_eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "AI Agents"
+msgstr "Tác nhân AI"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_embedding
+msgid "AI Embedding Chunk"
+msgstr "Đoạn embedding AI"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_model
+msgid "AI Model"
+msgstr "Mô hình AI"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_prompt_revision
+msgid "AI Prompt Revision"
+msgstr "Bản sửa đổi lời nhắc AI"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_prompt
+msgid "AI Prompt Template"
+msgstr "Mẫu lời nhắc AI"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_provider
+msgid "AI Provider"
+msgstr "Nhà cung cấp AI"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_budget
+msgid "AI Spend Budget"
+msgstr "Ngân sách chi tiêu AI"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.view_server_action_form_eh_ai
+msgid "AI Tool"
+msgstr "Công cụ AI"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_topic
+msgid "AI Topic"
+msgstr "Chủ đề AI"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_usage_log
+msgid "AI Usage Log"
+msgstr "Nhật ký sử dụng AI"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_budget.py:0
+msgid ""
+"AI budget '%(name)s' is exhausted (%(spent).2f / %(limit).2f USD this "
+"%(period)s). The request was blocked."
+msgstr ""
+"Ngân sách AI '%(name)s' đã cạn (%(spent).2f / %(limit).2f USD trong "
+"%(period)s này). Yêu cầu đã bị chặn."
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "AI error: %s"
+msgstr "Lỗi AI: %s"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/utils/providers/base.py:0
+msgid "AI request failed: %s"
+msgstr "Yêu cầu AI thất bại: %s"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/search/ai_search.js:0
+msgid "AI search failed: %s"
+msgstr "Tìm kiếm AI thất bại: %s"
+
+#. module: eh_ai
+#: model:ir.actions.server,name:eh_ai.tool_count_records
+msgid "AI: Count Odoo Records"
+msgstr "AI: Đếm bản ghi Odoo"
+
+#. module: eh_ai
+#: model:ir.actions.server,name:eh_ai.tool_get_current_datetime
+msgid "AI: Current Date and Time"
+msgstr "AI: Ngày và giờ hiện tại"
+
+#. module: eh_ai
+#: model:ir.actions.server,name:eh_ai.tool_search_records
+msgid "AI: Search Odoo Records"
+msgstr "AI: Tìm kiếm bản ghi Odoo"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "AIza..."
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__auth_scheme__header_key
+msgid "API key header"
+msgstr "Tiêu đề khóa API"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__base_url
+msgid ""
+"API root, without a trailing slash. For example https://api.openai.com/v1 or"
+" http://localhost:11434/v1."
+msgstr ""
+"Gốc API, không có dấu gạch chéo ở cuối. Ví dụ https://api.openai.com/v1 hoặc"
+" http://localhost:11434/v1."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__active
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__active
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__active
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__active
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__active
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__active
+msgid "Active"
+msgstr "Đang hoạt động"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__is_active
+msgid "Active for Retrieval"
+msgstr "Hoạt động để truy xuất"
+
+#. module: eh_ai
+#: model:res.groups,name:eh_ai.group_eh_ai_manager
+msgid "Administrator"
+msgstr "Quản trị viên"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_provider_view_form
+msgid "Advanced"
+msgstr "Nâng cao"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__agent_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__agent_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__agent_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__agent_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__agent_id
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__scope__agent
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_search
+msgid "Agent"
+msgstr "Tư vấn viên"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_agent.py:0
+msgid "Agent '%s' has no chat model configured."
+msgstr "Đại lý '%s' chưa được cấu hình mô hình trò chuyện."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__partner_id
+msgid "Agent Identity"
+msgstr "Danh tính đại lý"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+msgid "Agent name"
+msgstr "Tên đại lý"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_agent
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_agents
+msgid "Agents"
+msgstr "Tư vấn viên"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__restrict_to_sources
+msgid "Answer Only From Sources"
+msgstr "Chỉ trả lời từ nguồn"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__api_key
+msgid "Api Key"
+msgstr "Mã khóa API"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/chatter_patch.xml:0
+#: code:addons/eh_ai/static/src/chat/command.js:0
+#: code:addons/eh_ai/static/src/chat/systray.xml:0
+msgid "Ask AI"
+msgstr "Hỏi AI"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/chatter_patch.xml:0
+msgid "Ask AI about this record"
+msgstr "Hỏi AI về bản ghi này"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/search/ai_search.js:0
+msgid "Ask AI: %s"
+msgstr "Hỏi AI: %s"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__attachment_id
+msgid "Attachment"
+msgstr "Tệp đính kèm"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__auth_scheme
+msgid "Auth Scheme"
+msgstr "Lược đồ xác thực"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__eh_ai_use_in_tool
+#: model:ir.model.fields,field_description:eh_ai.field_ir_cron__eh_ai_use_in_tool
+msgid "Available to AI Agents"
+msgstr "Khả dụng cho AI Agent"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__code__azure_openai
+msgid "Azure OpenAI"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_agent__response_style__balanced
+msgid "Balanced"
+msgstr "Cân đối"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__base_url
+msgid "Base Url"
+msgstr "URL cơ sở"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__auth_scheme__bearer
+msgid "Bearer token"
+msgstr "Mã thông báo Bearer"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_topic__instructions
+msgid ""
+"Behavioural guidance added to the system prompt when an agent uses this "
+"topic."
+msgstr ""
+"Hướng dẫn hành vi được thêm vào prompt hệ thống khi một tác nhân sử dụng chủ"
+" đề này."
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_topic_view_form
+msgid "Behavioural guidance added to the system prompt..."
+msgstr "Hướng dẫn hành vi được thêm vào prompt hệ thống..."
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__mode__hard_stop
+msgid "Block requests"
+msgstr "Chặn yêu cầu"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_search
+msgid "Blocked"
+msgstr "Đã bị chặn"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_usage_log__outcome__budget_block
+msgid "Blocked (budget)"
+msgstr "Bị chặn (ngân sách)"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__body
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__body
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_prompt_view_form
+msgid "Body"
+msgstr "Thân"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_budget
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_budgets
+msgid "Budgets"
+msgstr "Ngân sách"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__price_cached_input_per_mtok
+msgid "Cached Input $/MTok"
+msgstr "Đầu vào đã lưu bộ nhớ đệm $/MTok"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__cached_tokens
+msgid "Cached Tokens"
+msgstr "Token đã lưu bộ nhớ đệm"
+
+#. module: eh_ai
+#: model:res.groups,comment:eh_ai.group_eh_ai_manager
+msgid "Can configure providers, models and agents."
+msgstr "Có thể cấu hình nhà cung cấp, mô hình và tác nhân."
+
+#. module: eh_ai
+#: model:res.groups,comment:eh_ai.group_eh_ai_user
+msgid "Can use AI agents."
+msgstr "Có thể sử dụng tác nhân AI."
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/agent_picker_dialog.xml:0
+#: code:addons/eh_ai/static/src/editor/ai_prompt_dialog.xml:0
+msgid "Cancel"
+msgstr "Hủy"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_model_view_form
+msgid "Capabilities"
+msgstr "Khả năng"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__channel_id
+msgid "Channel"
+msgstr "Kênh"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_model__kind__chat
+msgid "Chat"
+msgstr "Nhắn tin"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__chat_model_id
+msgid "Chat Model"
+msgstr "Mô hình trò chuyện"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/agent_picker_dialog.xml:0
+msgid "Choose an agent to chat with:"
+msgstr "Chọn một tác nhân để trò chuyện:"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_form
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_list
+msgid "Chunks"
+msgstr "Khối"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__provider_code
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__code
+msgid "Code"
+msgstr "Mã"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__rag_hybrid
+msgid ""
+"Combine vector similarity with keyword (full-text) search. Better for "
+"queries containing exact terms, codes or ids."
+msgstr ""
+"Kết hợp độ tương đồng vector với tìm kiếm theo từ khóa (toàn văn). Phù hợp "
+"hơn cho các truy vấn chứa thuật ngữ, mã hoặc id chính xác."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__company_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__company_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__company_id
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__scope__company
+msgid "Company"
+msgstr "Công ty"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_res_config_settings
+msgid "Config Settings"
+msgstr "Cài đặt cấu hình"
+
+#. module: eh_ai
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config
+msgid "Configuration"
+msgstr "Cấu hình"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__content
+msgid "Content"
+msgstr "Nội dung"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__context_window
+msgid "Context Window"
+msgstr "Cửa sổ ngữ cảnh"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__cost
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_list
+msgid "Cost (USD)"
+msgstr "Chi phí (USD)"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__price_input_per_mtok
+msgid "Cost per million input tokens, used for usage reporting."
+msgstr "Chi phí trên mỗi triệu token đầu vào, dùng cho báo cáo sử dụng."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__create_uid
+msgid "Created by"
+msgstr "Được tạo bởi"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__create_date
+msgid "Created on"
+msgstr "Được tạo vào"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_agent__response_style__creative
+msgid "Creative"
+msgstr "Sáng tạo"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_prompt_dialog.xml:0
+msgid "Ctrl/Cmd + Enter to generate."
+msgstr "Ctrl/Cmd + Enter để tạo."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__current_revision_id
+msgid "Current Revision"
+msgstr "Bản sửa đổi hiện tại"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__period__daily
+msgid "Daily"
+msgstr "Hàng ngày"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Describe what to write…"
+msgstr "Mô tả nội dung cần viết…"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__description
+msgid "Description"
+msgstr "Mô tả"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__provider_code
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__code
+msgid ""
+"Determines which wire format adapter is used to talk to the provider. "
+"Additional providers can be added by extending modules."
+msgstr ""
+"Xác định bộ điều hợp định dạng truyền được sử dụng để giao tiếp với nhà cung"
+" cấp. Có thể thêm các nhà cung cấp khác bằng cách mở rộng mô-đun."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__dimensions
+msgid "Dimensions"
+msgstr "Kích thước"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_discuss_channel
+msgid "Discussion Channel"
+msgstr "Kênh thảo luận"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__display_label
+msgid "Display Label"
+msgstr "Nhãn hiển thị"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_discuss_channel__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "Tên hiển thị"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_model_view_form
+msgid "Display name"
+msgstr "Tên hiển thị"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_reply_job__state__done
+msgid "Done"
+msgstr "Hoàn tất"
+
+#. module: eh_ai
+#: model:ir.actions.server,name:eh_ai.ir_cron_agent_replies_ir_actions_server
+msgid "EH AI: Generate Agent Replies"
+msgstr "EH AI: Tạo phản hồi của tác nhân"
+
+#. module: eh_ai
+#: model:ir.actions.server,name:eh_ai.ir_cron_generate_embeddings_ir_actions_server
+msgid "EH AI: Generate Embeddings"
+msgstr "EH AI: Tạo embeddings"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_discuss_channel__eh_ai_agent_id
+msgid "Eh Ai Agent"
+msgstr "Eh Tác nhân AI"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_discuss_channel__eh_ai_is_agent
+msgid "Eh Ai Is Agent"
+msgstr "Eh AI là tác nhân"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__embedding_ids
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_model__kind__embedding
+msgid "Embedding"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__embedding_count
+msgid "Embedding Count"
+msgstr "Số lượng nhúng"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__embedding_dimensions
+msgid "Embedding Dimensions"
+msgstr "Số chiều nhúng"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__embedding_json
+msgid "Embedding Json"
+msgstr "Json nhúng"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__embedding_model_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__embedding_model_id
+msgid "Embedding Model"
+msgstr "Mô hình nhúng"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__env_var
+msgid "Environment Variable"
+msgstr "Biến môi trường"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__error
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_reply_job__state__error
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_usage_log__outcome__error
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_form
+msgid "Error"
+msgstr "Lỗi"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__error_details
+msgid "Error Details"
+msgstr "Chi tiết lỗi"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__scope__global
+msgid "Everyone"
+msgstr "Mọi người"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_ir_actions_server__eh_ai_use_in_tool
+#: model:ir.model.fields,help:eh_ai.field_ir_cron__eh_ai_use_in_tool
+msgid "Expose this server action to AI agents as a callable tool."
+msgstr ""
+"Cung cấp hành động máy chủ này cho các tác nhân AI dưới dạng công cụ có thể "
+"gọi."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__extra_headers
+msgid "Extra Headers"
+msgstr "Tiêu đề bổ sung"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_source__status__failed
+msgid "Failed"
+msgstr "Không đạt"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_source__type__binary
+msgid "File"
+msgstr "Tệp"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__upload_filename
+msgid "File Name"
+msgstr "Tên Tệp"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_prompt_dialog.xml:0
+msgid "Generate"
+msgstr "Tạo"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Generate text from an instruction"
+msgstr "Tạo văn bản từ một chỉ dẫn"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__code__google
+msgid "Google"
+msgstr ""
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "Google Gemini"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_res_config_settings__eh_ai_google_key
+msgid "Google Gemini API Key"
+msgstr "Khóa API Google Gemini"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__has_failed
+msgid "Has Failed"
+msgstr "Đã thất bại"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_prompt_view_form
+msgid "History"
+msgstr "Lịch sử"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__rag_over_fetch
+msgid "How many candidates each search method contributes before fusion."
+msgstr ""
+"Mỗi phương pháp tìm kiếm đóng góp bao nhiêu ứng viên trước khi hợp nhất."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__auth_scheme
+msgid ""
+"How the API key is sent. Bearer for OpenAI-style, API key header for Azure, "
+"none for an unauthenticated local endpoint."
+msgstr ""
+"Cách gửi khóa API. Bearer cho kiểu OpenAI, tiêu đề API key cho Azure, không "
+"dùng gì cho điểm cuối cục bộ không xác thực."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__rag_over_fetch
+msgid "Hybrid Candidates"
+msgstr "Ứng viên kết hợp"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__rag_hybrid
+msgid "Hybrid Search"
+msgstr "Tìm kiếm kết hợp"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_discuss_channel__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__id
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__id
+#: model:ir.model.fields,field_description:eh_ai.field_res_config_settings__id
+msgid "ID"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_ir_actions_server__eh_ai_tool_name
+#: model:ir.model.fields,help:eh_ai.field_ir_cron__eh_ai_tool_name
+msgid ""
+"Identifier the model uses to call this tool. Lowercase, no spaces. Defaults "
+"to a slug of the action name."
+msgstr ""
+"Định danh mà mô hình sử dụng để gọi công cụ này. Chữ thường, không có khoảng"
+" trắng. Mặc định là một slug của tên hành động."
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_model_view_list
+msgid "In $/MTok"
+msgstr "Theo $/MTok"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_source__status__indexed
+msgid "Indexed"
+msgstr "Được lập chỉ mục"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_list
+msgid "Input"
+msgstr "Đầu vào"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__price_input_per_mtok
+msgid "Input $/MTok"
+msgstr "Đầu vào $/MTok"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__input_tokens
+msgid "Input Tokens"
+msgstr "Token đầu vào"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__restrict_to_sources
+msgid "Instruct the agent to answer only from retrieved sources."
+msgstr "Hướng dẫn tác nhân chỉ trả lời từ các nguồn đã truy xuất."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__topic_ids
+msgid "Instruction and tool bundles available to this agent."
+msgstr "Các gói hướng dẫn và công cụ có sẵn cho tác nhân này."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__instructions
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_topic_view_form
+msgid "Instructions"
+msgstr "Hướng dẫn"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__is_current
+msgid "Is Current"
+msgstr "Hiện tại"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_ir_actions_server__eh_ai_tool_schema
+#: model:ir.model.fields,help:eh_ai.field_ir_cron__eh_ai_tool_schema
+msgid "JSON schema object describing the arguments the model must supply."
+msgstr "Đối tượng lược đồ JSON mô tả các đối số mà mô hình phải cung cấp."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__has_key
+msgid "Key Configured"
+msgstr "Khóa đã được cấu hình"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "Key used for Gemini models. Stored as a system parameter."
+msgstr ""
+"Khóa dùng cho các mô hình Gemini. Được lưu dưới dạng tham số hệ thống."
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "Key used for Grok models. Stored as a system parameter."
+msgstr "Khóa dùng cho các mô hình Grok. Được lưu dưới dạng tham số hệ thống."
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "Key used for OpenAI models. Stored as a system parameter."
+msgstr ""
+"Khóa dùng cho các mô hình OpenAI. Được lưu dưới dạng tham số hệ thống."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__kind
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__kind
+msgid "Kind"
+msgstr "Loại"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+msgid "Knowledge (RAG)"
+msgstr "Kiến thức (RAG)"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__write_uid
+msgid "Last Updated by"
+msgstr "Cập nhật lần cuối bởi"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__write_date
+msgid "Last Updated on"
+msgstr "Cập nhật lần cuối vào"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__latency_ms
+msgid "Latency (ms)"
+msgstr "Độ trễ (ms)"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__limit_amount
+msgid "Limit (USD)"
+msgstr "Hạn mức (USD)"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__max_output_tokens
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__max_output_tokens
+msgid "Max Output Tokens"
+msgstr "Số token đầu ra tối đa"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__context_window
+msgid "Maximum input tokens."
+msgstr "Số token đầu vào tối đa."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__message_id
+msgid "Message"
+msgstr "Tin nhắn"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__mode
+msgid "Mode"
+msgstr "Chế độ"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__model_id
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_search
+msgid "Model"
+msgstr "Mô hình"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__model_count
+msgid "Model Count"
+msgstr "Số dòng xe"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__embedding_model_id
+msgid ""
+"Model used to embed knowledge sources and queries. Required for sources."
+msgstr ""
+"Mô hình dùng để nhúng các nguồn tri thức và truy vấn. Bắt buộc đối với các "
+"nguồn."
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_model
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__model_ids
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_models
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_provider_view_form
+msgid "Models"
+msgstr "Mô hình"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__period__monthly
+msgid "Monthly"
+msgstr "Hàng tháng"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__name
+msgid "Name"
+msgstr "Tên"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/chat_service.js:0
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "No AI agents are configured yet."
+msgstr "Chưa có tác nhân AI nào được cấu hình."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "No URL is set on this source."
+msgstr "Chưa đặt URL cho nguồn này."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/utils/providers/__init__.py:0
+msgid "No adapter is registered for provider type '%s'."
+msgstr "Không có bộ điều hợp nào được đăng ký cho loại nhà cung cấp '%s'."
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__auth_scheme__none
+msgid "No authentication"
+msgstr "Không xác thực"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "No file is attached to this source."
+msgstr "Không có tệp nào đính kèm với nguồn này."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "No usable text could be extracted."
+msgstr "Không thể trích xuất văn bản sử dụng được."
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_usage_log__outcome__ok
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_search
+msgid "OK"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__code__ollama
+msgid "Ollama / Local"
+msgstr "Ollama / Cục bộ"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "One or more chunks could not be embedded."
+msgstr "Không thể nhúng một hoặc nhiều đoạn."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "Only http and https source URLs are allowed."
+msgstr "Chỉ cho phép các URL nguồn http và https."
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/agent_picker_dialog.xml:0
+msgid "Open chat"
+msgstr "Mở chat"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__code__openai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "OpenAI"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_res_config_settings__eh_ai_openai_key
+msgid "OpenAI API Key"
+msgstr "Khóa API OpenAI"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__code__openai_compatible
+msgid "OpenAI-compatible endpoint"
+msgstr "Điểm cuối tương thích OpenAI"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__extra_headers
+msgid ""
+"Optional JSON object of additional HTTP headers to send with every request."
+msgstr ""
+"Đối tượng JSON tùy chọn chứa các tiêu đề HTTP bổ sung gửi kèm mọi yêu cầu."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__env_var
+msgid "Optional environment variable used as a final fallback for the key."
+msgstr ""
+"Biến môi trường tùy chọn được dùng làm phương án dự phòng cuối cùng cho "
+"khóa."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__config_param_key
+msgid ""
+"Optional ir.config_parameter name used as a fallback source for the key."
+msgstr ""
+"Tên ir.config_parameter tùy chọn được dùng làm nguồn dự phòng cho khóa."
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_model_view_list
+msgid "Out $/MTok"
+msgstr "Đầu ra $/MTok"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__outcome
+msgid "Outcome"
+msgstr "Kết quả"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_list
+msgid "Output"
+msgstr "Đầu ra"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__price_output_per_mtok
+msgid "Output $/MTok"
+msgstr "Đầu ra $/MTok"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__output_tokens
+msgid "Output Tokens"
+msgstr "Token đầu ra"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__partner_id
+msgid "Partner the agent posts as in Discuss conversations."
+msgstr ""
+"Đối tác mà tác nhân dùng để đăng bài trong các cuộc trò chuyện Discuss."
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_reply_job__state__pending
+msgid "Pending"
+msgstr "Đang chờ"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_reply_job
+msgid "Pending AI Agent Reply"
+msgstr "Chờ phản hồi từ tác nhân AI"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__period
+msgid "Period"
+msgstr "Giai đoạn"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_agent__response_style__precise
+msgid "Precise"
+msgstr "Chính xác"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_model_view_form
+msgid "Pricing (per million tokens)"
+msgstr "Giá (mỗi triệu token)"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_source__status__processing
+msgid "Processing"
+msgstr "Đang xử lý"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_reply_job.py:0
+msgid "Processing aborted."
+msgstr "Đã hủy xử lý."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__prompt_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__prompt
+msgid "Prompt"
+msgstr "Yêu cầu"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_prompt_view_form
+msgid "Prompt name"
+msgstr "Tên lời nhắc"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_prompt
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_prompts
+msgid "Prompts"
+msgstr "Prompt"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__provider_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__provider_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__provider_id
+msgid "Provider"
+msgstr "Nhà cung cấp"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "Provider API Keys"
+msgstr "Khóa API của nhà cung cấp"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_provider_view_form
+msgid "Provider name"
+msgstr "Tên nhà cung cấp"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_provider
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_providers
+msgid "Providers"
+msgstr "Nhà cung cấp"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_prompt__kind__rag_instruction
+msgid "RAG Instruction"
+msgstr "Hướng dẫn RAG"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__remaining
+msgid "Remaining (USD)"
+msgstr "Còn lại (USD)"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Rephrase with AI"
+msgstr "Diễn đạt lại bằng AI"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_form
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_list
+msgid "Reprocess"
+msgstr "Xử lý lại"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__response_style
+msgid "Response Style"
+msgstr "Phong cách phản hồi"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_prompt_view_form
+msgid "Restore"
+msgstr "Khôi phục"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_prompt.py:0
+msgid "Restored version %s."
+msgstr "Đã khôi phục phiên bản %s."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__use_sources
+msgid ""
+"Retrieve relevant chunks from this agent's sources and add them to the "
+"prompt."
+msgstr ""
+"Truy xuất các đoạn liên quan từ nguồn của tác nhân này và thêm chúng vào "
+"prompt."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__rag_top_n
+msgid "Retrieved Chunks"
+msgstr "Các đoạn đã truy xuất"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__retry_count
+msgid "Retry Count"
+msgstr "Số lần thử lại"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__revision_ids
+msgid "Revision"
+msgstr "Sửa đổi"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Rewrite the selected text"
+msgstr "Viết lại văn bản đã chọn"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__scope
+msgid "Scope"
+msgstr "Phạm vi"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Select some text to rephrase first."
+msgstr "Trước tiên hãy chọn một đoạn văn bản để diễn đạt lại."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__sequence
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__sequence
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__sequence
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__sequence
+msgid "Sequence"
+msgstr "Trình tự"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_ir_actions_server
+msgid "Server Action"
+msgstr "Tác vụ phía máy chủ"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_topic__tool_ids
+msgid "Server actions exposed to the model as callable tools for this topic."
+msgstr ""
+"Các hành động máy chủ được cung cấp cho mô hình dưới dạng công cụ có thể gọi"
+" cho chủ đề này."
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_settings
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_settings
+msgid "Settings"
+msgstr "Cài đặt"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_topic__description
+msgid "Short note shown to administrators."
+msgstr "Ghi chú ngắn hiển thị cho quản trị viên."
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+msgid "Short tagline"
+msgstr "Khẩu hiệu ngắn"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__subtitle
+msgid "Short tagline shown in agent pickers."
+msgstr "Khẩu hiệu ngắn hiển thị trong bộ chọn agent."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__supports_temperature
+msgid ""
+"Some reasoning models reject sampling parameters. Disable to omit "
+"temperature from requests for this model."
+msgstr ""
+"Một số mô hình suy luận không chấp nhận tham số lấy mẫu. Tắt để bỏ "
+"temperature khỏi các yêu cầu cho mô hình này."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_reply_job.py:0
+msgid "Sorry, I could not generate a reply. Please try again."
+msgstr "Xin lỗi, tôi không thể tạo câu trả lời. Vui lòng thử lại."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__source_id
+msgid "Source"
+msgstr "Nguồn"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__source_count
+msgid "Source Count"
+msgstr "Số lượng nguồn"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "Source file"
+msgstr "Tệp nguồn"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_form
+msgid "Source name"
+msgstr "Tên nguồn"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_source
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__source_ids
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_sources
+msgid "Sources"
+msgstr "Nguồn"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__spent
+msgid "Spent (USD)"
+msgstr "Đã chi (USD)"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__state
+msgid "State"
+msgstr "Trạng thái"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__status
+msgid "Status"
+msgstr "Trạng thái"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__api_key
+msgid ""
+"Stored key for this provider. Leave empty to fall back to the system "
+"parameter or environment variable below."
+msgstr ""
+"Khóa đã lưu cho nhà cung cấp này. Để trống để chuyển sang dùng tham số hệ "
+"thống hoặc biến môi trường bên dưới."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__subtitle
+msgid "Subtitle"
+msgstr "Phụ đề"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__supports_temperature
+msgid "Supports Temperature"
+msgstr "Hỗ trợ Temperature"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__supports_tools
+msgid "Supports Tools"
+msgstr "Hỗ trợ Tools"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__supports_vision
+msgid "Supports Vision"
+msgstr "Hỗ trợ Vision"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__config_param_key
+msgid "System Parameter"
+msgstr "Tham số hệ thống"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__system_prompt
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_prompt__kind__system
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+msgid "System Prompt"
+msgstr "Yêu cầu hệ thống"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__system_prompt_id
+msgid "System Prompt Template"
+msgstr "Mẫu lời nhắc hệ thống"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__technical_name
+msgid "Technical Name"
+msgstr "Tên kỹ thuật"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_ir_actions_server__eh_ai_tool_description
+#: model:ir.model.fields,help:eh_ai.field_ir_cron__eh_ai_tool_description
+msgid "Tells the model when and why to call this tool."
+msgstr "Cho mô hình biết khi nào và tại sao gọi công cụ này."
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/search/ai_search.js:0
+msgid "The AI could not turn that into a filter."
+msgstr "AI không thể chuyển đổi nội dung đó thành bộ lọc."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "The agent has no embedding model configured."
+msgstr "Tác nhân chưa được cấu hình mô hình embedding."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__system_prompt
+msgid ""
+"The agent's persistent instructions. Used when no template is selected."
+msgstr ""
+"Hướng dẫn cố định của tác nhân. Được dùng khi không có mẫu nào được chọn."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_embedding__embedding_json
+msgid "The chunk vector, stored as a JSON array of floats."
+msgstr "Vectơ chunk, được lưu trữ dưới dạng mảng JSON các số float."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "The content produced no chunks."
+msgstr "Nội dung không tạo ra chunk nào."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__technical_name
+msgid ""
+"The model identifier sent to the provider, for example gpt-4.1 or "
+"gemini-2.5-flash."
+msgstr ""
+"Định danh mô hình được gửi đến nhà cung cấp, ví dụ gpt-4.1 hoặc "
+"gemini-2.5-flash."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "The source URL has no host."
+msgstr "URL nguồn không có máy chủ."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "The source URL host could not be resolved: %s"
+msgstr "Không thể phân giải máy chủ của URL nguồn: %s"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "The source URL resolves to a non-public address and was blocked."
+msgstr "URL nguồn phân giải đến một địa chỉ không công khai và đã bị chặn."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__eh_ai_tool_description
+#: model:ir.model.fields,field_description:eh_ai.field_ir_cron__eh_ai_tool_description
+msgid "Tool Description"
+msgstr "Mô tả công cụ"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_prompt__kind__tool_guidance
+msgid "Tool Guidance"
+msgstr "Hướng dẫn công cụ"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__eh_ai_tool_name
+#: model:ir.model.fields,field_description:eh_ai.field_ir_cron__eh_ai_tool_name
+msgid "Tool Name"
+msgstr "Tên công cụ"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__eh_ai_tool_schema
+#: model:ir.model.fields,field_description:eh_ai.field_ir_cron__eh_ai_tool_schema
+msgid "Tool Parameters (JSON Schema)"
+msgstr "Tham số công cụ (JSON Schema)"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/ir_actions_server.py:0
+msgid "Tool parameters must be a JSON object schema (\"type\": \"object\")."
+msgstr "Tham số công cụ phải là một lược đồ đối tượng JSON (\"type\": \"object\")."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/ir_actions_server.py:0
+msgid "Tool parameters must be valid JSON: %s"
+msgstr "Tham số công cụ phải là JSON hợp lệ: %s"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__tool_ids
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_topic_view_form
+msgid "Tools"
+msgstr "Công cụ"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_topic_view_form
+msgid "Topic name"
+msgstr "Tên chủ đề"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_topic
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__topic_ids
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_topics
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+msgid "Topics"
+msgstr "Chủ đề"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__total_tokens
+msgid "Total Tokens"
+msgstr "Tổng số token"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__type
+msgid "Type"
+msgstr "Loại"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__upload_file
+msgid "Upload File"
+msgstr "Tải lên tệp"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__max_output_tokens
+msgid "Upper bound on tokens generated per response."
+msgstr "Giới hạn trên cho số token được tạo ra trên mỗi phản hồi."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__url
+msgid "Url"
+msgstr "URL"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_usage_log
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_usage
+msgid "Usage and Cost"
+msgstr "Mức sử dụng và chi phí"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__use_sources
+msgid "Use Knowledge Sources"
+msgstr "Sử dụng nguồn kiến thức"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__user_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__user_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__user_id
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__scope__user
+#: model:res.groups,name:eh_ai.group_eh_ai_user
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_search
+msgid "User"
+msgstr "Người dùng"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__embedding_dimensions
+msgid "Vector size for embedding models."
+msgstr "Kích thước vector cho các mô hình embedding."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__version
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__version
+msgid "Version"
+msgstr "Phiên bản"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__mode__soft_warn
+msgid "Warn only"
+msgstr "Chỉ cảnh báo"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_source__type__url
+msgid "Web Page"
+msgstr "Trang web"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Write with AI"
+msgstr "Viết bằng AI"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_prompt_view_form
+msgid "You are a helpful assistant for..."
+msgstr "Bạn là một trợ lý hữu ích cho..."
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "ai"
+msgstr ""
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "draft"
+msgstr "bản nháp"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_budget_view_form
+msgid "e.g. Monthly cap"
+msgstr "ví dụ Mức trần hàng tháng"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.view_server_action_form_eh_ai
+msgid "get_customer_balance"
+msgstr ""
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_form
+msgid "https://example.com/page"
+msgstr ""
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "improve"
+msgstr "Cải thiện"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "rephrase"
+msgstr "Diễn đạt lại"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "sk-..."
+msgstr ""
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "write"
+msgstr "viết"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "xAI (Grok)"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_res_config_settings__eh_ai_xai_key
+msgid "xAI (Grok) API Key"
+msgstr "Khóa API xAI (Grok)"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "xai-..."
+msgstr ""
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_provider_view_form
+msgid "{\"X-Custom-Header\": \"value\"}"
+msgstr ""
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.view_server_action_form_eh_ai
+msgid "{\"type\": \"object\", \"properties\": {}, \"required\": []}"
+msgstr ""

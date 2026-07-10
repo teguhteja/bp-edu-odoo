@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="eh_ai_source_view_list" model="ir.ui.view">
+        <field name="name">eh.ai.source.list</field>
+        <field name="model">eh.ai.source</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="type"/>
+                <field name="status" widget="badge"
+                       decoration-success="status == 'indexed'"
+                       decoration-warning="status == 'processing'"
+                       decoration-danger="status == 'failed'"/>
+                <field name="embedding_count" string="Chunks"/>
+                <field name="is_active"/>
+                <button name="action_reprocess" type="object" string="Reprocess" icon="fa-refresh"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="eh_ai_source_view_form" model="ir.ui.view">
+        <field name="name">eh.ai.source.form</field>
+        <field name="model">eh.ai.source</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_reprocess" type="object" string="Reprocess" class="btn-secondary"/>
+                    <field name="status" widget="statusbar" statusbar_visible="processing,indexed"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Source name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="agent_id"/>
+                            <field name="type"/>
+                            <field name="upload_file" filename="upload_filename"
+                                   invisible="type != 'binary' or attachment_id"/>
+                            <field name="upload_filename" invisible="1"/>
+                            <field name="attachment_id" invisible="type != 'binary'"/>
+                            <field name="url" widget="url" invisible="type != 'url'"
+                                   placeholder="https://example.com/page"/>
+                        </group>
+                        <group>
+                            <field name="is_active"/>
+                            <field name="embedding_count" string="Chunks"/>
+                        </group>
+                    </group>
+                    <group string="Error" invisible="status != 'failed'">
+                        <field name="error_details" nolabel="1" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_eh_ai_source" model="ir.actions.act_window">
+        <field name="name">Sources</field>
+        <field name="res_model">eh.ai.source</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="module_category_eh_ai" model="ir.module.category">
+        <field name="name">AI Agents</field>
+        <field name="sequence">20</field>
+    </record>
+
+    <record id="res_groups_privilege_eh_ai" model="res.groups.privilege">
+        <field name="name">AI Agents</field>
+        <field name="category_id" ref="module_category_eh_ai"/>
+        <field name="sequence">20</field>
+    </record>
+
+    <record id="group_eh_ai_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="privilege_id" ref="res_groups_privilege_eh_ai"/>
+        <field name="comment">Can use AI agents.</field>
+    </record>
+
+    <record id="group_eh_ai_manager" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="privilege_id" ref="res_groups_privilege_eh_ai"/>
+        <field name="implied_ids" eval="[(4, ref('group_eh_ai_user'))]"/>
+        <field name="comment">Can configure providers, models and agents.</field>
+    </record>
+
+    <record id="base.user_admin" model="res.users">
+        <field name="group_ids" eval="[(4, ref('group_eh_ai_manager'))]"/>
+    </record>
+</odoo>

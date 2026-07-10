@@ -1,0 +1,1641 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* eh_ai
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-01 04:32+0000\n"
+"PO-Revision-Date: 2026-07-01 04:32+0000\n"
+"Last-Translator: ERP Heritage <info@erpheritage.com.au>\n"
+"Language-Team: Turkish\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__system_prompt_id
+msgid ""
+"A versioned prompt template. Overrides the inline system prompt when set."
+msgstr ""
+"Sürümlendirilmiş bir istem şablonu. Ayarlandığında satır içi sistem istemini"
+" geçersiz kılar."
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "AI"
+msgstr "Yapay Zeka"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_agent
+msgid "AI Agent"
+msgstr "Yapay Zeka Aracısı"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_source
+msgid "AI Agent Knowledge Source"
+msgstr "AI Aracısı Bilgi Kaynağı"
+
+#. module: eh_ai
+#: model:ir.module.category,name:eh_ai.module_category_eh_ai
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_root
+#: model:res.groups.privilege,name:eh_ai.res_groups_privilege_eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "AI Agents"
+msgstr "AI Aracıları"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_embedding
+msgid "AI Embedding Chunk"
+msgstr "AI Gömme Parçası"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_model
+msgid "AI Model"
+msgstr "AI Modeli"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_prompt_revision
+msgid "AI Prompt Revision"
+msgstr "AI İstem Revizyonu"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_prompt
+msgid "AI Prompt Template"
+msgstr "AI İstem Şablonu"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_provider
+msgid "AI Provider"
+msgstr "AI Sağlayıcısı"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_budget
+msgid "AI Spend Budget"
+msgstr "AI Harcama Bütçesi"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.view_server_action_form_eh_ai
+msgid "AI Tool"
+msgstr "AI Aracı"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_topic
+msgid "AI Topic"
+msgstr "AI Konusu"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_usage_log
+msgid "AI Usage Log"
+msgstr "AI Kullanım Günlüğü"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_budget.py:0
+msgid ""
+"AI budget '%(name)s' is exhausted (%(spent).2f / %(limit).2f USD this "
+"%(period)s). The request was blocked."
+msgstr ""
+"AI bütçesi '%(name)s' tükendi (bu %(period)s içinde %(spent).2f / "
+"%(limit).2f USD). İstek engellendi."
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "AI error: %s"
+msgstr "AI hatası: %s"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/utils/providers/base.py:0
+msgid "AI request failed: %s"
+msgstr "AI isteği başarısız oldu: %s"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/search/ai_search.js:0
+msgid "AI search failed: %s"
+msgstr "AI araması başarısız oldu: %s"
+
+#. module: eh_ai
+#: model:ir.actions.server,name:eh_ai.tool_count_records
+msgid "AI: Count Odoo Records"
+msgstr "AI: Odoo Kayıtlarını Say"
+
+#. module: eh_ai
+#: model:ir.actions.server,name:eh_ai.tool_get_current_datetime
+msgid "AI: Current Date and Time"
+msgstr "AI: Geçerli Tarih ve Saat"
+
+#. module: eh_ai
+#: model:ir.actions.server,name:eh_ai.tool_search_records
+msgid "AI: Search Odoo Records"
+msgstr "AI: Odoo Kayıtlarını Ara"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "AIza..."
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__auth_scheme__header_key
+msgid "API key header"
+msgstr "API anahtarı başlığı"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__base_url
+msgid ""
+"API root, without a trailing slash. For example https://api.openai.com/v1 or"
+" http://localhost:11434/v1."
+msgstr ""
+"Sonunda eğik çizgi olmadan API kökü. Örneğin https://api.openai.com/v1 veya "
+"http://localhost:11434/v1."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__active
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__active
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__active
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__active
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__active
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__active
+msgid "Active"
+msgstr "Etkin"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__is_active
+msgid "Active for Retrieval"
+msgstr "Alma için etkin"
+
+#. module: eh_ai
+#: model:res.groups,name:eh_ai.group_eh_ai_manager
+msgid "Administrator"
+msgstr "Yönetici"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_provider_view_form
+msgid "Advanced"
+msgstr "Gelişmiş"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__agent_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__agent_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__agent_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__agent_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__agent_id
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__scope__agent
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_search
+msgid "Agent"
+msgstr "Ajan"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_agent.py:0
+msgid "Agent '%s' has no chat model configured."
+msgstr "'%s' aracısı için yapılandırılmış bir sohbet modeli yok."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__partner_id
+msgid "Agent Identity"
+msgstr "Aracı Kimliği"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+msgid "Agent name"
+msgstr "Aracı adı"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_agent
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_agents
+msgid "Agents"
+msgstr "Temsilciler"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__restrict_to_sources
+msgid "Answer Only From Sources"
+msgstr "Yalnızca kaynaklardan yanıtla"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__api_key
+msgid "Api Key"
+msgstr "API Anahtarı"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/chatter_patch.xml:0
+#: code:addons/eh_ai/static/src/chat/command.js:0
+#: code:addons/eh_ai/static/src/chat/systray.xml:0
+msgid "Ask AI"
+msgstr "Yapay Zekaya Sor"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/chatter_patch.xml:0
+msgid "Ask AI about this record"
+msgstr "Bu kayıt hakkında Yapay Zekâ'ya sor"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/search/ai_search.js:0
+msgid "Ask AI: %s"
+msgstr "Yapay Zekâ'ya Sor: %s"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__attachment_id
+msgid "Attachment"
+msgstr "Ek"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__auth_scheme
+msgid "Auth Scheme"
+msgstr "Kimlik Doğrulama Şeması"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__eh_ai_use_in_tool
+#: model:ir.model.fields,field_description:eh_ai.field_ir_cron__eh_ai_use_in_tool
+msgid "Available to AI Agents"
+msgstr "AI ajanları için kullanılabilir"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__code__azure_openai
+msgid "Azure OpenAI"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_agent__response_style__balanced
+msgid "Balanced"
+msgstr "Dengeli"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__base_url
+msgid "Base Url"
+msgstr "Temel URL"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__auth_scheme__bearer
+msgid "Bearer token"
+msgstr "Bearer belirteci"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_topic__instructions
+msgid ""
+"Behavioural guidance added to the system prompt when an agent uses this "
+"topic."
+msgstr ""
+"Bir aracı bu konuyu kullandığında sistem istemine eklenen davranışsal "
+"yönlendirme."
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_topic_view_form
+msgid "Behavioural guidance added to the system prompt..."
+msgstr "Sistem istemine eklenen davranışsal yönlendirme..."
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__mode__hard_stop
+msgid "Block requests"
+msgstr "İstekleri engelle"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_search
+msgid "Blocked"
+msgstr "Engellendi"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_usage_log__outcome__budget_block
+msgid "Blocked (budget)"
+msgstr "Engellendi (bütçe)"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__body
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__body
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_prompt_view_form
+msgid "Body"
+msgstr "Gövde"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_budget
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_budgets
+msgid "Budgets"
+msgstr "Bütçeler"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__price_cached_input_per_mtok
+msgid "Cached Input $/MTok"
+msgstr "Önbelleğe alınan girdi $/MTok"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__cached_tokens
+msgid "Cached Tokens"
+msgstr "Önbelleğe alınan tokenlar"
+
+#. module: eh_ai
+#: model:res.groups,comment:eh_ai.group_eh_ai_manager
+msgid "Can configure providers, models and agents."
+msgstr "Sağlayıcıları, modelleri ve aracıları yapılandırabilir."
+
+#. module: eh_ai
+#: model:res.groups,comment:eh_ai.group_eh_ai_user
+msgid "Can use AI agents."
+msgstr "AI aracılarını kullanabilir."
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/agent_picker_dialog.xml:0
+#: code:addons/eh_ai/static/src/editor/ai_prompt_dialog.xml:0
+msgid "Cancel"
+msgstr "İptal"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_model_view_form
+msgid "Capabilities"
+msgstr "Yetenekler"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__channel_id
+msgid "Channel"
+msgstr "Kanal"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_model__kind__chat
+msgid "Chat"
+msgstr "Sohbet"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__chat_model_id
+msgid "Chat Model"
+msgstr "Sohbet modeli"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/agent_picker_dialog.xml:0
+msgid "Choose an agent to chat with:"
+msgstr "Sohbet edilecek bir aracı seçin:"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_form
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_list
+msgid "Chunks"
+msgstr "Parçalar"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__provider_code
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__code
+msgid "Code"
+msgstr "Kod"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__rag_hybrid
+msgid ""
+"Combine vector similarity with keyword (full-text) search. Better for "
+"queries containing exact terms, codes or ids."
+msgstr ""
+"Vektör benzerliğini anahtar sözcük (tam metin) aramasıyla birleştirin. Tam "
+"terimler, kodlar veya id'ler içeren sorgular için daha uygundur."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__company_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__company_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__company_id
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__scope__company
+msgid "Company"
+msgstr "Firma"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_res_config_settings
+msgid "Config Settings"
+msgstr "Yapılandırma Ayarları"
+
+#. module: eh_ai
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config
+msgid "Configuration"
+msgstr "Ayarlar"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__content
+msgid "Content"
+msgstr "İçerik"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__context_window
+msgid "Context Window"
+msgstr "Bağlam Penceresi"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__cost
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_list
+msgid "Cost (USD)"
+msgstr "Maliyet (USD)"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__price_input_per_mtok
+msgid "Cost per million input tokens, used for usage reporting."
+msgstr ""
+"Milyon girdi belirteci başına maliyet, kullanım raporlaması için kullanılır."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__create_uid
+msgid "Created by"
+msgstr "Tarafından oluşturuldu"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__create_date
+msgid "Created on"
+msgstr "Oluşturuldu"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_agent__response_style__creative
+msgid "Creative"
+msgstr "Yaratıcı"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_prompt_dialog.xml:0
+msgid "Ctrl/Cmd + Enter to generate."
+msgstr "Oluşturmak için Ctrl/Cmd + Enter."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__current_revision_id
+msgid "Current Revision"
+msgstr "Mevcut Revizyon"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__period__daily
+msgid "Daily"
+msgstr "Günlük"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Describe what to write…"
+msgstr "Ne yazılacağını açıklayın…"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__description
+msgid "Description"
+msgstr "Açıklama"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__provider_code
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__code
+msgid ""
+"Determines which wire format adapter is used to talk to the provider. "
+"Additional providers can be added by extending modules."
+msgstr ""
+"Sağlayıcıyla iletişim kurmak için hangi aktarım biçimi bağdaştırıcısının "
+"kullanılacağını belirler. Modüller genişletilerek ek sağlayıcılar "
+"eklenebilir."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__dimensions
+msgid "Dimensions"
+msgstr "Boyutlar"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_discuss_channel
+msgid "Discussion Channel"
+msgstr "Mesajlaşma Kanalı"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__display_label
+msgid "Display Label"
+msgstr "Görüntü Etiketi"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_discuss_channel__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "İsim Göster"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_model_view_form
+msgid "Display name"
+msgstr "Görüntü adı"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_reply_job__state__done
+msgid "Done"
+msgstr "Yapıldı"
+
+#. module: eh_ai
+#: model:ir.actions.server,name:eh_ai.ir_cron_agent_replies_ir_actions_server
+msgid "EH AI: Generate Agent Replies"
+msgstr "EH AI: Ajan Yanıtları Oluştur"
+
+#. module: eh_ai
+#: model:ir.actions.server,name:eh_ai.ir_cron_generate_embeddings_ir_actions_server
+msgid "EH AI: Generate Embeddings"
+msgstr "EH AI: Embedding Oluştur"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_discuss_channel__eh_ai_agent_id
+msgid "Eh Ai Agent"
+msgstr "Eh AI Aracısı"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_discuss_channel__eh_ai_is_agent
+msgid "Eh Ai Is Agent"
+msgstr "Eh AI aracıdır"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__embedding_ids
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_model__kind__embedding
+msgid "Embedding"
+msgstr "Gömme (Embedding)"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__embedding_count
+msgid "Embedding Count"
+msgstr "Gömme Sayısı"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__embedding_dimensions
+msgid "Embedding Dimensions"
+msgstr "Gömme Boyutları"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__embedding_json
+msgid "Embedding Json"
+msgstr "Gömme Json"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__embedding_model_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__embedding_model_id
+msgid "Embedding Model"
+msgstr "Gömme Modeli"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__env_var
+msgid "Environment Variable"
+msgstr "Ortam değişkeni"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__error
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_reply_job__state__error
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_usage_log__outcome__error
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_form
+msgid "Error"
+msgstr "Hata"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__error_details
+msgid "Error Details"
+msgstr "Hata Detayları"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__scope__global
+msgid "Everyone"
+msgstr "Herkes"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_ir_actions_server__eh_ai_use_in_tool
+#: model:ir.model.fields,help:eh_ai.field_ir_cron__eh_ai_use_in_tool
+msgid "Expose this server action to AI agents as a callable tool."
+msgstr "Bu sunucu eylemini AI aracılarına çağrılabilir bir araç olarak sunun."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__extra_headers
+msgid "Extra Headers"
+msgstr "Ek Başlıklar"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_source__status__failed
+msgid "Failed"
+msgstr "Başarısız"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_source__type__binary
+msgid "File"
+msgstr "Dosya"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__upload_filename
+msgid "File Name"
+msgstr "Dosya Adı"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_prompt_dialog.xml:0
+msgid "Generate"
+msgstr "Oluştur"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Generate text from an instruction"
+msgstr "Bir talimattan metin oluştur"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__code__google
+msgid "Google"
+msgstr ""
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "Google Gemini"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_res_config_settings__eh_ai_google_key
+msgid "Google Gemini API Key"
+msgstr "Google Gemini API Anahtarı"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__has_failed
+msgid "Has Failed"
+msgstr "Başarısız Oldu"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_prompt_view_form
+msgid "History"
+msgstr "Geçmiş"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__rag_over_fetch
+msgid "How many candidates each search method contributes before fusion."
+msgstr "Birleştirmeden önce her arama yönteminin kaç aday katkısı sağladığı."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__auth_scheme
+msgid ""
+"How the API key is sent. Bearer for OpenAI-style, API key header for Azure, "
+"none for an unauthenticated local endpoint."
+msgstr ""
+"API anahtarının nasıl gönderileceği. OpenAI tarzı için Bearer, Azure için "
+"API key başlığı, kimliği doğrulanmamış yerel bir uç nokta için hiçbiri."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__rag_over_fetch
+msgid "Hybrid Candidates"
+msgstr "Hibrit Adaylar"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__rag_hybrid
+msgid "Hybrid Search"
+msgstr "Hibrit Arama"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_discuss_channel__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__id
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__id
+#: model:ir.model.fields,field_description:eh_ai.field_res_config_settings__id
+msgid "ID"
+msgstr "İD"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_ir_actions_server__eh_ai_tool_name
+#: model:ir.model.fields,help:eh_ai.field_ir_cron__eh_ai_tool_name
+msgid ""
+"Identifier the model uses to call this tool. Lowercase, no spaces. Defaults "
+"to a slug of the action name."
+msgstr ""
+"Modelin bu aracı çağırmak için kullandığı tanımlayıcı. Küçük harf, "
+"boşluksuz. Varsayılan değer, eylem adının bir slug'ıdır."
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_model_view_list
+msgid "In $/MTok"
+msgstr "$/MTok cinsinden"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_source__status__indexed
+msgid "Indexed"
+msgstr "İndekslenmiş"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_list
+msgid "Input"
+msgstr "Giriş"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__price_input_per_mtok
+msgid "Input $/MTok"
+msgstr "Girdi $/MTok"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__input_tokens
+msgid "Input Tokens"
+msgstr "Girdi Token'ları"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__restrict_to_sources
+msgid "Instruct the agent to answer only from retrieved sources."
+msgstr "Aracıya yalnızca alınan kaynaklardan yanıt vermesini söyleyin."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__topic_ids
+msgid "Instruction and tool bundles available to this agent."
+msgstr "Bu aracı için mevcut talimat ve araç paketleri."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__instructions
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_topic_view_form
+msgid "Instructions"
+msgstr "Açıklamalar"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__is_current
+msgid "Is Current"
+msgstr "Güncel mi"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_ir_actions_server__eh_ai_tool_schema
+#: model:ir.model.fields,help:eh_ai.field_ir_cron__eh_ai_tool_schema
+msgid "JSON schema object describing the arguments the model must supply."
+msgstr ""
+"Modelin sağlaması gereken bağımsız değişkenleri açıklayan JSON şema nesnesi."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__has_key
+msgid "Key Configured"
+msgstr "Anahtar Yapılandırıldı"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "Key used for Gemini models. Stored as a system parameter."
+msgstr ""
+"Gemini modelleri için kullanılan anahtar. Sistem parametresi olarak "
+"saklanır."
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "Key used for Grok models. Stored as a system parameter."
+msgstr ""
+"Grok modelleri için kullanılan anahtar. Sistem parametresi olarak saklanır."
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "Key used for OpenAI models. Stored as a system parameter."
+msgstr ""
+"OpenAI modelleri için kullanılan anahtar. Sistem parametresi olarak "
+"saklanır."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__kind
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__kind
+msgid "Kind"
+msgstr "Tür"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+msgid "Knowledge (RAG)"
+msgstr "Bilgi (RAG)"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__write_uid
+msgid "Last Updated by"
+msgstr "Son Güncelleyen"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__write_date
+msgid "Last Updated on"
+msgstr "Son Güncelleme"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__latency_ms
+msgid "Latency (ms)"
+msgstr "Gecikme (ms)"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__limit_amount
+msgid "Limit (USD)"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__max_output_tokens
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__max_output_tokens
+msgid "Max Output Tokens"
+msgstr "Maks. çıktı token sayısı"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__context_window
+msgid "Maximum input tokens."
+msgstr "En fazla girdi jetonu."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__message_id
+msgid "Message"
+msgstr "Mesaj"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__mode
+msgid "Mode"
+msgstr "Şekli"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__model_id
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_search
+msgid "Model"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__model_count
+msgid "Model Count"
+msgstr "Model Sayısı"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__embedding_model_id
+msgid ""
+"Model used to embed knowledge sources and queries. Required for sources."
+msgstr ""
+"Bilgi kaynaklarını ve sorguları gömmek için kullanılan model. Kaynaklar için"
+" gereklidir."
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_model
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__model_ids
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_models
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_provider_view_form
+msgid "Models"
+msgstr "Modeller"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__period__monthly
+msgid "Monthly"
+msgstr "Aylık"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__name
+msgid "Name"
+msgstr "Adı"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/chat_service.js:0
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "No AI agents are configured yet."
+msgstr "Henüz yapılandırılmış AI aracısı yok."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "No URL is set on this source."
+msgstr "Bu kaynakta URL ayarlanmamış."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/utils/providers/__init__.py:0
+msgid "No adapter is registered for provider type '%s'."
+msgstr "'%s' sağlayıcı türü için kayıtlı adaptör yok."
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__auth_scheme__none
+msgid "No authentication"
+msgstr "Kimlik doğrulama yok"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "No file is attached to this source."
+msgstr "Bu kaynağa ekli dosya yok."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "No usable text could be extracted."
+msgstr "Kullanılabilir metin çıkarılamadı."
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_usage_log__outcome__ok
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_search
+msgid "OK"
+msgstr "Tamam"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__code__ollama
+msgid "Ollama / Local"
+msgstr "Ollama / Yerel"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "One or more chunks could not be embedded."
+msgstr "Bir veya daha fazla parça gömülemedi."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "Only http and https source URLs are allowed."
+msgstr "Yalnızca http ve https kaynak URL'lerine izin verilir."
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/agent_picker_dialog.xml:0
+msgid "Open chat"
+msgstr "Konuşmayı aç"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__code__openai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "OpenAI"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_res_config_settings__eh_ai_openai_key
+msgid "OpenAI API Key"
+msgstr "OpenAI API Anahtarı"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__code__openai_compatible
+msgid "OpenAI-compatible endpoint"
+msgstr "OpenAI uyumlu uç nokta"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__extra_headers
+msgid ""
+"Optional JSON object of additional HTTP headers to send with every request."
+msgstr ""
+"Her istekle birlikte gönderilecek ek HTTP başlıklarının isteğe bağlı JSON "
+"nesnesi."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__env_var
+msgid "Optional environment variable used as a final fallback for the key."
+msgstr ""
+"Anahtar için son yedek olarak kullanılan isteğe bağlı ortam değişkeni."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__config_param_key
+msgid ""
+"Optional ir.config_parameter name used as a fallback source for the key."
+msgstr ""
+"Anahtar için yedek kaynak olarak kullanılan isteğe bağlı ir.config_parameter"
+" adı."
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_model_view_list
+msgid "Out $/MTok"
+msgstr "Çıkış $/MTok"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__outcome
+msgid "Outcome"
+msgstr "Sonuç"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_list
+msgid "Output"
+msgstr "Çıkış"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__price_output_per_mtok
+msgid "Output $/MTok"
+msgstr "Çıktı $/MTok"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__output_tokens
+msgid "Output Tokens"
+msgstr "Çıktı Token'ları"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__partner_id
+msgid "Partner the agent posts as in Discuss conversations."
+msgstr "Aracının Discuss sohbetlerinde adına gönderi yaptığı iş ortağı."
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_reply_job__state__pending
+msgid "Pending"
+msgstr "Beklemede"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_reply_job
+msgid "Pending AI Agent Reply"
+msgstr "Bekleyen AI Aracısı yanıtı"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__period
+msgid "Period"
+msgstr "Dönem"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_agent__response_style__precise
+msgid "Precise"
+msgstr "Kesin"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_model_view_form
+msgid "Pricing (per million tokens)"
+msgstr "Fiyatlandırma (milyon token başına)"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_source__status__processing
+msgid "Processing"
+msgstr "İşleniyor"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_reply_job.py:0
+msgid "Processing aborted."
+msgstr "İşleme durduruldu."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__prompt_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__prompt
+msgid "Prompt"
+msgstr "İstem"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_prompt_view_form
+msgid "Prompt name"
+msgstr "İstem adı"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_prompt
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_prompts
+msgid "Prompts"
+msgstr "İstemler"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__provider_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__provider_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__provider_id
+msgid "Provider"
+msgstr "Sağlayıcı"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "Provider API Keys"
+msgstr "Sağlayıcı API Anahtarları"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_provider_view_form
+msgid "Provider name"
+msgstr "Sağlayıcı adı"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_provider
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_providers
+msgid "Providers"
+msgstr "Sağlayıcılar"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_prompt__kind__rag_instruction
+msgid "RAG Instruction"
+msgstr "RAG Talimatı"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__remaining
+msgid "Remaining (USD)"
+msgstr "Kalan (USD)"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Rephrase with AI"
+msgstr "AI ile yeniden ifade et"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_form
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_list
+msgid "Reprocess"
+msgstr "Yeniden İşle"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__response_style
+msgid "Response Style"
+msgstr "Yanıt Tarzı"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_prompt_view_form
+msgid "Restore"
+msgstr "Geriyükle"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_prompt.py:0
+msgid "Restored version %s."
+msgstr "Sürüm %s geri yüklendi."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__use_sources
+msgid ""
+"Retrieve relevant chunks from this agent's sources and add them to the "
+"prompt."
+msgstr ""
+"Bu aracının kaynaklarından ilgili parçaları alın ve bunları isteme ekleyin."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__rag_top_n
+msgid "Retrieved Chunks"
+msgstr "Alınan Parçalar"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__retry_count
+msgid "Retry Count"
+msgstr "Yeniden Deneme Sayısı"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__revision_ids
+msgid "Revision"
+msgstr "Revizyon"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Rewrite the selected text"
+msgstr "Seçili metni yeniden yaz"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__scope
+msgid "Scope"
+msgstr "Kapsam"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Select some text to rephrase first."
+msgstr "Önce yeniden ifade edilecek bir metin seçin."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__sequence
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__sequence
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__sequence
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__sequence
+msgid "Sequence"
+msgstr "Sıralama"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_ir_actions_server
+msgid "Server Action"
+msgstr "Sunucu İşlemi"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_topic__tool_ids
+msgid "Server actions exposed to the model as callable tools for this topic."
+msgstr ""
+"Bu konu için modele çağrılabilir araçlar olarak sunulan sunucu eylemleri."
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_settings
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_settings
+msgid "Settings"
+msgstr "Ayarlar"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_topic__description
+msgid "Short note shown to administrators."
+msgstr "Yöneticilere gösterilen kısa not."
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+msgid "Short tagline"
+msgstr "Kısa slogan"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__subtitle
+msgid "Short tagline shown in agent pickers."
+msgstr "Aracı seçicilerde gösterilen kısa slogan."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__supports_temperature
+msgid ""
+"Some reasoning models reject sampling parameters. Disable to omit "
+"temperature from requests for this model."
+msgstr ""
+"Bazı akıl yürütme modelleri örnekleme parametrelerini reddeder. Bu model "
+"için isteklerden temperature değerini çıkarmak üzere devre dışı bırakın."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_reply_job.py:0
+msgid "Sorry, I could not generate a reply. Please try again."
+msgstr "Üzgünüz, bir yanıt oluşturulamadı. Lütfen tekrar deneyin."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__source_id
+msgid "Source"
+msgstr "Kaynak"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__source_count
+msgid "Source Count"
+msgstr "Kaynak Sayısı"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "Source file"
+msgstr "Kaynak dosya"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_form
+msgid "Source name"
+msgstr "Kaynak adı"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_source
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__source_ids
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_sources
+msgid "Sources"
+msgstr "Kaynaklar"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__spent
+msgid "Spent (USD)"
+msgstr "Harcanan (USD)"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__state
+msgid "State"
+msgstr "İl/Eyalet"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__status
+msgid "Status"
+msgstr "Durumu"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__api_key
+msgid ""
+"Stored key for this provider. Leave empty to fall back to the system "
+"parameter or environment variable below."
+msgstr ""
+"Bu sağlayıcı için depolanan anahtar. Aşağıdaki sistem parametresine veya "
+"ortam değişkenine geri dönmek için boş bırakın."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__subtitle
+msgid "Subtitle"
+msgstr "Alt Başlık"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__supports_temperature
+msgid "Supports Temperature"
+msgstr "Temperature Destekler"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__supports_tools
+msgid "Supports Tools"
+msgstr "Tools Destekler"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__supports_vision
+msgid "Supports Vision"
+msgstr "Vision Destekler"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__config_param_key
+msgid "System Parameter"
+msgstr "Sistem Parametresi"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__system_prompt
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_prompt__kind__system
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+msgid "System Prompt"
+msgstr "Sistem İstemi"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__system_prompt_id
+msgid "System Prompt Template"
+msgstr "Sistem İstemi Şablonu"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__technical_name
+msgid "Technical Name"
+msgstr "Teknik Adı"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_ir_actions_server__eh_ai_tool_description
+#: model:ir.model.fields,help:eh_ai.field_ir_cron__eh_ai_tool_description
+msgid "Tells the model when and why to call this tool."
+msgstr "Modele bu aracın ne zaman ve neden çağrılacağını bildirir."
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/search/ai_search.js:0
+msgid "The AI could not turn that into a filter."
+msgstr "Yapay zeka bunu bir filtreye dönüştüremedi."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "The agent has no embedding model configured."
+msgstr "Aracıda yapılandırılmış bir embedding modeli yok."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__system_prompt
+msgid ""
+"The agent's persistent instructions. Used when no template is selected."
+msgstr "Aracının kalıcı talimatları. Hiçbir şablon seçilmediğinde kullanılır."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_embedding__embedding_json
+msgid "The chunk vector, stored as a JSON array of floats."
+msgstr ""
+"Öbek vektörü; float değerlerden oluşan bir JSON dizisi olarak saklanır."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "The content produced no chunks."
+msgstr "İçerik hiçbir öbek üretmedi."
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__technical_name
+msgid ""
+"The model identifier sent to the provider, for example gpt-4.1 or "
+"gemini-2.5-flash."
+msgstr ""
+"Sağlayıcıya gönderilen model tanımlayıcısı, örneğin gpt-4.1 veya "
+"gemini-2.5-flash."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "The source URL has no host."
+msgstr "Kaynak URL'nin ana bilgisayarı yok."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "The source URL host could not be resolved: %s"
+msgstr "Kaynak URL ana bilgisayarı çözümlenemedi: %s"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "The source URL resolves to a non-public address and was blocked."
+msgstr "Kaynak URL genel olmayan bir adrese çözümleniyor ve engellendi."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__eh_ai_tool_description
+#: model:ir.model.fields,field_description:eh_ai.field_ir_cron__eh_ai_tool_description
+msgid "Tool Description"
+msgstr "Araç Açıklaması"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_prompt__kind__tool_guidance
+msgid "Tool Guidance"
+msgstr "Araç Kılavuzu"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__eh_ai_tool_name
+#: model:ir.model.fields,field_description:eh_ai.field_ir_cron__eh_ai_tool_name
+msgid "Tool Name"
+msgstr "Araç Adı"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__eh_ai_tool_schema
+#: model:ir.model.fields,field_description:eh_ai.field_ir_cron__eh_ai_tool_schema
+msgid "Tool Parameters (JSON Schema)"
+msgstr "Araç Parametreleri (JSON Schema)"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/ir_actions_server.py:0
+msgid "Tool parameters must be a JSON object schema (\"type\": \"object\")."
+msgstr "Araç parametreleri bir JSON nesne şeması olmalıdır (\"type\": \"object\")."
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/ir_actions_server.py:0
+msgid "Tool parameters must be valid JSON: %s"
+msgstr "Araç parametreleri geçerli JSON olmalıdır: %s"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__tool_ids
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_topic_view_form
+msgid "Tools"
+msgstr "Araçlar"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_topic_view_form
+msgid "Topic name"
+msgstr "Konu adı"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_topic
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__topic_ids
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_topics
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+msgid "Topics"
+msgstr "Başlıklar"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__total_tokens
+msgid "Total Tokens"
+msgstr "Toplam Token"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__type
+msgid "Type"
+msgstr "Tip"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__upload_file
+msgid "Upload File"
+msgstr "Dosya Yükleme"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__max_output_tokens
+msgid "Upper bound on tokens generated per response."
+msgstr "Yanıt başına üretilen token sayısının üst sınırı."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__url
+msgid "Url"
+msgstr "URL"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_usage_log
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_usage
+msgid "Usage and Cost"
+msgstr "Kullanım ve Maliyet"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__use_sources
+msgid "Use Knowledge Sources"
+msgstr "Bilgi Kaynaklarını Kullan"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__user_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__user_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__user_id
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__scope__user
+#: model:res.groups,name:eh_ai.group_eh_ai_user
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_search
+msgid "User"
+msgstr "Kullanıcı"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__embedding_dimensions
+msgid "Vector size for embedding models."
+msgstr "Embedding modelleri için vektör boyutu."
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__version
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__version
+msgid "Version"
+msgstr "Sürüm"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__mode__soft_warn
+msgid "Warn only"
+msgstr "Yalnızca uyar"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_source__type__url
+msgid "Web Page"
+msgstr "Web Sayfası"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Write with AI"
+msgstr "AI ile yaz"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_prompt_view_form
+msgid "You are a helpful assistant for..."
+msgstr "Şunun için yardımcı bir asistansınız..."
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "ai"
+msgstr ""
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "draft"
+msgstr "taslak"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_budget_view_form
+msgid "e.g. Monthly cap"
+msgstr "örn. Aylık üst sınır"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.view_server_action_form_eh_ai
+msgid "get_customer_balance"
+msgstr ""
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_form
+msgid "https://example.com/page"
+msgstr ""
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "improve"
+msgstr "İyileştir"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "rephrase"
+msgstr "Yeniden ifade et"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "sk-..."
+msgstr ""
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "write"
+msgstr "yazmak"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "xAI (Grok)"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_res_config_settings__eh_ai_xai_key
+msgid "xAI (Grok) API Key"
+msgstr "xAI (Grok) API Anahtarı"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "xai-..."
+msgstr ""
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_provider_view_form
+msgid "{\"X-Custom-Header\": \"value\"}"
+msgstr ""
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.view_server_action_form_eh_ai
+msgid "{\"type\": \"object\", \"properties\": {}, \"required\": []}"
+msgstr ""

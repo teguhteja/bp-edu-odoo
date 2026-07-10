@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_eh_ai" model="ir.ui.view">
+        <field name="name">res.config.settings.form.eh.ai</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="AI Agents" name="eh_ai">
+                    <block title="Provider API Keys" name="eh_ai_keys">
+                        <setting string="OpenAI"
+                                 help="Key used for OpenAI models. Stored as a system parameter.">
+                            <field name="eh_ai_openai_key" password="True"
+                                   placeholder="sk-..."/>
+                        </setting>
+                        <setting string="Google Gemini"
+                                 help="Key used for Gemini models. Stored as a system parameter.">
+                            <field name="eh_ai_google_key" password="True"
+                                   placeholder="AIza..."/>
+                        </setting>
+                        <setting string="xAI (Grok)"
+                                 help="Key used for Grok models. Stored as a system parameter.">
+                            <field name="eh_ai_xai_key" password="True"
+                                   placeholder="xai-..."/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_eh_ai_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+        <field name="context">{'module': 'eh_ai'}</field>
+    </record>
+</odoo>

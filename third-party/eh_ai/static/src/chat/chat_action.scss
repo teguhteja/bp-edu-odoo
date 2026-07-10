@@ -1,0 +1,56 @@
+.o_eh_ai_chat {
+    background-color: var(--o-view-background-color, #fff);
+
+    .o_eh_ai_msg {
+        display: flex;
+    }
+    .o_eh_ai_msg_user {
+        justify-content: flex-end;
+    }
+    .o_eh_ai_msg_assistant {
+        justify-content: flex-start;
+    }
+    .o_eh_ai_bubble {
+        display: inline-block;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.85rem;
+        max-width: 80%;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+    .o_eh_ai_msg_user .o_eh_ai_bubble {
+        background-color: #714b67;
+        color: #fff;
+    }
+    .o_eh_ai_msg_assistant .o_eh_ai_bubble {
+        background-color: #f1f1f1;
+        color: #111;
+    }
+    .o_eh_ai_chat_messages {
+        max-width: 900px;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .o_eh_ai_chat_input {
+        max-width: 900px;
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+.o_eh_ai_dialog .o_eh_ai_dialog_body {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+}
+.o_eh_ai_dialog .o_eh_ai_dialog_body .o_eh_ai_chat {
+    flex: 1 1 auto;
+    min-height: 0;
+}
+.o_eh_ai_systray button {
+    color: inherit;
+}
+.o_eh_ai_mark {
+    vertical-align: text-bottom;
+    object-fit: contain;
+}

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- A safe, dependency-free sample tool so the tool-calling loop can be
+         demonstrated out of the box. It reports the current server date and
+         time and takes no arguments. -->
+    <record id="tool_get_current_datetime" model="ir.actions.server">
+        <field name="name">AI: Current Date and Time</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="state">code</field>
+        <field name="eh_ai_use_in_tool" eval="True"/>
+        <field name="eh_ai_tool_name">get_current_datetime</field>
+        <field name="eh_ai_tool_description">Return the current server date and time in ISO format. Call this when the user asks what time or date it is.</field>
+        <field name="eh_ai_tool_schema">{"type": "object", "properties": {}, "required": []}</field>
+        <field name="code">result['output'] = datetime.datetime.now().isoformat(timespec='seconds')</field>
+    </record>
+
+    <record id="topic_general_tools" model="eh.ai.topic">
+        <field name="name">General Tools</field>
+        <field name="description">Baseline tools available to any agent.</field>
+        <field name="tool_ids" eval="[(4, ref('tool_get_current_datetime'))]"/>
+    </record>
+
+    <!-- Read-only access to the user's Odoo data. Runs in the requesting user's
+         environment, so record rules and field access are enforced. -->
+    <record id="tool_search_records" model="ir.actions.server">
+        <field name="name">AI: Search Odoo Records</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="state">code</field>
+        <field name="eh_ai_use_in_tool" eval="True"/>
+        <field name="eh_ai_tool_name">search_records</field>
+        <field name="eh_ai_tool_description">Search the user's Odoo database and return matching records. Use this to answer any question about the user's data instead of asking them to provide it.</field>
+        <field name="eh_ai_tool_schema">{"type": "object", "properties": {"model": {"type": "string"}, "domain": {"type": "array"}, "fields": {"type": "array", "items": {"type": "string"}}, "limit": {"type": "integer"}}, "required": ["model"]}</field>
+        <field name="code">
+name = arguments.get('model')
+if not name or name not in env:
+    result['error'] = 'Unknown model "%s".' % name
+else:
+    Model = env[name]
+    limit = min(int(arguments.get('limit') or 20), 100)
+    # Drop any field the model does not have so a bad guess from the model
+    # cannot break the query; an empty list returns the default fields.
+    fields = [f for f in (arguments.get('fields') or []) if f in Model._fields]
+    try:
+        rows = Model.search_read(arguments.get('domain') or [], fields, limit=limit)
+        result['output'] = json.dumps(rows, default=str)
+    except Exception:
+        result['error'] = 'The query could not be run; check the model, fields and filter.'
+        </field>
+    </record>
+
+    <record id="tool_count_records" model="ir.actions.server">
+        <field name="name">AI: Count Odoo Records</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="state">code</field>
+        <field name="eh_ai_use_in_tool" eval="True"/>
+        <field name="eh_ai_tool_name">count_records</field>
+        <field name="eh_ai_tool_description">Count how many records of a model match an optional Odoo domain.</field>
+        <field name="eh_ai_tool_schema">{"type": "object", "properties": {"model": {"type": "string"}, "domain": {"type": "array"}}, "required": ["model"]}</field>
+        <field name="code">
+name = arguments.get('model')
+if not name or name not in env:
+    result['error'] = 'Unknown model "%s".' % name
+else:
+    result['output'] = str(env[name].search_count(arguments.get('domain') or []))
+        </field>
+    </record>
+
+    <record id="topic_odoo_data" model="eh.ai.topic">
+        <field name="name">Odoo Data</field>
+        <field name="description">Lets the agent read the user's Odoo records to answer data questions.</field>
+        <field name="instructions">You can query the user's Odoo database with search_records(model, domain, fields, limit) and count_records(model, domain). Never ask the user to upload or paste data; query Odoo directly. "domain" is an Odoo domain: a list of [field, operator, value] clauses, e.g. [["name", "ilike", "acme"]]; omit it to match everything. Useful models: ir.attachment (files and documents), res.partner (contacts, customers, vendors), crm.lead (leads and opportunities), sale.order (sales orders and quotations), purchase.order (purchase orders), account.move (invoices and bills, filter on move_type), product.product (products), stock.picking (deliveries and receipts), project.task (tasks), hr.employee (employees). Request only the fields you need and a sensible limit, then summarise the results for the user in plain language.</field>
+        <field name="tool_ids" eval="[(4, ref('tool_search_records')), (4, ref('tool_count_records'))]"/>
+    </record>
+</odoo>

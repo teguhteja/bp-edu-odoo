@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_server_action_form_eh_ai" model="ir.ui.view">
+        <field name="name">ir.actions.server.form.eh.ai</field>
+        <field name="model">ir.actions.server</field>
+        <field name="inherit_id" ref="base.view_server_action_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <group string="AI Tool" name="eh_ai_tool">
+                    <field name="eh_ai_use_in_tool"/>
+                    <field name="eh_ai_tool_name"
+                           invisible="not eh_ai_use_in_tool"
+                           placeholder="get_customer_balance"/>
+                    <field name="eh_ai_tool_description"
+                           invisible="not eh_ai_use_in_tool"/>
+                    <field name="eh_ai_tool_schema"
+                           invisible="not eh_ai_use_in_tool"
+                           placeholder='{"type": "object", "properties": {}, "required": []}'/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

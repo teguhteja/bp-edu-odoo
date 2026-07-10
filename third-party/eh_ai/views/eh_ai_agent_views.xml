@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="eh_ai_agent_view_list" model="ir.ui.view">
+        <field name="name">eh.ai.agent.list</field>
+        <field name="model">eh.ai.agent</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="subtitle"/>
+                <field name="provider_id"/>
+                <field name="chat_model_id"/>
+                <field name="response_style"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="eh_ai_agent_view_form" model="ir.ui.view">
+        <field name="name">eh.ai.agent.form</field>
+        <field name="model">eh.ai.agent</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Agent name"/></h1>
+                        <field name="subtitle" placeholder="Short tagline"/>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="chat_model_id"/>
+                            <field name="provider_id"/>
+                            <field name="response_style"/>
+                        </group>
+                        <group>
+                            <field name="max_output_tokens"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="system_prompt_id"/>
+                    </group>
+                    <group string="System Prompt" invisible="system_prompt_id">
+                        <field name="system_prompt" nolabel="1"
+                               placeholder="You are a helpful assistant for..."/>
+                    </group>
+                    <group string="Topics">
+                        <field name="topic_ids" nolabel="1" widget="many2many_tags"/>
+                    </group>
+                    <notebook>
+                        <page string="Knowledge (RAG)" name="rag"
+                              groups="eh_ai.group_eh_ai_manager">
+                            <group>
+                                <group>
+                                    <field name="use_sources"/>
+                                    <field name="embedding_model_id"
+                                           invisible="not use_sources"
+                                           required="use_sources and source_count &gt; 0"/>
+                                </group>
+                                <group>
+                                    <field name="restrict_to_sources" invisible="not use_sources"/>
+                                    <field name="rag_top_n" invisible="not use_sources"/>
+                                    <field name="rag_hybrid" invisible="not use_sources"/>
+                                    <field name="rag_over_fetch"
+                                           invisible="not use_sources or not rag_hybrid"/>
+                                    <field name="source_count" invisible="1"/>
+                                </group>
+                            </group>
+                            <field name="source_ids" context="{'default_agent_id': id}">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="type"/>
+                                    <field name="url" optional="hide"/>
+                                    <field name="status" widget="badge"
+                                           decoration-success="status == 'indexed'"
+                                           decoration-warning="status == 'processing'"
+                                           decoration-danger="status == 'failed'"/>
+                                    <field name="embedding_count" string="Chunks"/>
+                                    <field name="is_active"/>
+                                    <button name="action_reprocess" type="object"
+                                            string="Reprocess" icon="fa-refresh"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_eh_ai_agent" model="ir.actions.act_window">
+        <field name="name">Agents</field>
+        <field name="res_model">eh.ai.agent</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,1607 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* eh_ai
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-01 04:32+0000\n"
+"PO-Revision-Date: 2026-07-01 04:32+0000\n"
+"Last-Translator: ERP Heritage <info@erpheritage.com.au>\n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__system_prompt_id
+msgid ""
+"A versioned prompt template. Overrides the inline system prompt when set."
+msgstr "バージョン管理されたプロンプトテンプレート。設定されている場合、インラインのシステムプロンプトを上書きします。"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "AI"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_agent
+msgid "AI Agent"
+msgstr "AIエージェント"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_source
+msgid "AI Agent Knowledge Source"
+msgstr "AI エージェントのナレッジソース"
+
+#. module: eh_ai
+#: model:ir.module.category,name:eh_ai.module_category_eh_ai
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_root
+#: model:res.groups.privilege,name:eh_ai.res_groups_privilege_eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "AI Agents"
+msgstr "AI エージェント"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_embedding
+msgid "AI Embedding Chunk"
+msgstr "AI 埋め込みチャンク"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_model
+msgid "AI Model"
+msgstr "AI モデル"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_prompt_revision
+msgid "AI Prompt Revision"
+msgstr "AI プロンプトのリビジョン"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_prompt
+msgid "AI Prompt Template"
+msgstr "AI プロンプトテンプレート"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_provider
+msgid "AI Provider"
+msgstr "AI プロバイダー"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_budget
+msgid "AI Spend Budget"
+msgstr "AI 支出予算"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.view_server_action_form_eh_ai
+msgid "AI Tool"
+msgstr "AI ツール"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_topic
+msgid "AI Topic"
+msgstr "AI トピック"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_usage_log
+msgid "AI Usage Log"
+msgstr "AI 使用ログ"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_budget.py:0
+msgid ""
+"AI budget '%(name)s' is exhausted (%(spent).2f / %(limit).2f USD this "
+"%(period)s). The request was blocked."
+msgstr ""
+"AI 予算 '%(name)s' が枯渇しました（今回の %(period)s で %(spent).2f / %(limit).2f "
+"USD）。リクエストはブロックされました。"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "AI error: %s"
+msgstr "AI エラー: %s"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/utils/providers/base.py:0
+msgid "AI request failed: %s"
+msgstr "AI リクエストに失敗しました: %s"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/search/ai_search.js:0
+msgid "AI search failed: %s"
+msgstr "AI 検索に失敗しました: %s"
+
+#. module: eh_ai
+#: model:ir.actions.server,name:eh_ai.tool_count_records
+msgid "AI: Count Odoo Records"
+msgstr "AI: Odoo レコード数のカウント"
+
+#. module: eh_ai
+#: model:ir.actions.server,name:eh_ai.tool_get_current_datetime
+msgid "AI: Current Date and Time"
+msgstr "AI: 現在の日付と時刻"
+
+#. module: eh_ai
+#: model:ir.actions.server,name:eh_ai.tool_search_records
+msgid "AI: Search Odoo Records"
+msgstr "AI: Odoo レコードの検索"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "AIza..."
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__auth_scheme__header_key
+msgid "API key header"
+msgstr "API キーヘッダー"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__base_url
+msgid ""
+"API root, without a trailing slash. For example https://api.openai.com/v1 or"
+" http://localhost:11434/v1."
+msgstr ""
+"末尾のスラッシュを含まない API ルート。例: https://api.openai.com/v1 または "
+"http://localhost:11434/v1。"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__active
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__active
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__active
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__active
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__active
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__active
+msgid "Active"
+msgstr "有効"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__is_active
+msgid "Active for Retrieval"
+msgstr "取得対象として有効"
+
+#. module: eh_ai
+#: model:res.groups,name:eh_ai.group_eh_ai_manager
+msgid "Administrator"
+msgstr "管理者"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_provider_view_form
+msgid "Advanced"
+msgstr "詳細"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__agent_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__agent_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__agent_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__agent_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__agent_id
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__scope__agent
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_search
+msgid "Agent"
+msgstr "担当者"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_agent.py:0
+msgid "Agent '%s' has no chat model configured."
+msgstr "エージェント '%s' にはチャットモデルが設定されていません。"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__partner_id
+msgid "Agent Identity"
+msgstr "エージェント ID"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+msgid "Agent name"
+msgstr "エージェント名"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_agent
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_agents
+msgid "Agents"
+msgstr "担当者"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__restrict_to_sources
+msgid "Answer Only From Sources"
+msgstr "ソースのみから回答"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__api_key
+msgid "Api Key"
+msgstr "APIキー"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/chatter_patch.xml:0
+#: code:addons/eh_ai/static/src/chat/command.js:0
+#: code:addons/eh_ai/static/src/chat/systray.xml:0
+msgid "Ask AI"
+msgstr "AI に質問"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/chatter_patch.xml:0
+msgid "Ask AI about this record"
+msgstr "このレコードについて AI に質問"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/search/ai_search.js:0
+msgid "Ask AI: %s"
+msgstr "AI に質問：%s"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__attachment_id
+msgid "Attachment"
+msgstr "添付ファイル"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__auth_scheme
+msgid "Auth Scheme"
+msgstr "認証スキーム"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__eh_ai_use_in_tool
+#: model:ir.model.fields,field_description:eh_ai.field_ir_cron__eh_ai_use_in_tool
+msgid "Available to AI Agents"
+msgstr "AI エージェントで利用可能"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__code__azure_openai
+msgid "Azure OpenAI"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_agent__response_style__balanced
+msgid "Balanced"
+msgstr "バランス"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__base_url
+msgid "Base Url"
+msgstr "ベース URL"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__auth_scheme__bearer
+msgid "Bearer token"
+msgstr "Bearer トークン"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_topic__instructions
+msgid ""
+"Behavioural guidance added to the system prompt when an agent uses this "
+"topic."
+msgstr "エージェントがこのトピックを使用するときにシステムプロンプトに追加される行動ガイダンス。"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_topic_view_form
+msgid "Behavioural guidance added to the system prompt..."
+msgstr "システムプロンプトに追加される行動ガイダンス…"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__mode__hard_stop
+msgid "Block requests"
+msgstr "リクエストをブロック"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_search
+msgid "Blocked"
+msgstr "ブロック中"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_usage_log__outcome__budget_block
+msgid "Blocked (budget)"
+msgstr "ブロック済み（予算）"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__body
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__body
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_prompt_view_form
+msgid "Body"
+msgstr "表示文"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_budget
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_budgets
+msgid "Budgets"
+msgstr "予算"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__price_cached_input_per_mtok
+msgid "Cached Input $/MTok"
+msgstr "キャッシュ入力 $/MTok"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__cached_tokens
+msgid "Cached Tokens"
+msgstr "キャッシュされたトークン"
+
+#. module: eh_ai
+#: model:res.groups,comment:eh_ai.group_eh_ai_manager
+msgid "Can configure providers, models and agents."
+msgstr "プロバイダー、モデル、エージェントを構成できます。"
+
+#. module: eh_ai
+#: model:res.groups,comment:eh_ai.group_eh_ai_user
+msgid "Can use AI agents."
+msgstr "AI エージェントを使用できます。"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/agent_picker_dialog.xml:0
+#: code:addons/eh_ai/static/src/editor/ai_prompt_dialog.xml:0
+msgid "Cancel"
+msgstr "キャンセル"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_model_view_form
+msgid "Capabilities"
+msgstr "機能"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__channel_id
+msgid "Channel"
+msgstr "チャネル"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_model__kind__chat
+msgid "Chat"
+msgstr "チャット"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__chat_model_id
+msgid "Chat Model"
+msgstr "チャットモデル"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/agent_picker_dialog.xml:0
+msgid "Choose an agent to chat with:"
+msgstr "チャットするエージェントを選択してください:"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_form
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_list
+msgid "Chunks"
+msgstr "チャンク"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__provider_code
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__code
+msgid "Code"
+msgstr "コード"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__rag_hybrid
+msgid ""
+"Combine vector similarity with keyword (full-text) search. Better for "
+"queries containing exact terms, codes or ids."
+msgstr "ベクトル類似度をキーワード（全文）検索と組み合わせます。正確な用語、コード、id を含むクエリに適しています。"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__company_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__company_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__company_id
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__scope__company
+msgid "Company"
+msgstr "会社"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_res_config_settings
+msgid "Config Settings"
+msgstr "構成設定"
+
+#. module: eh_ai
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config
+msgid "Configuration"
+msgstr "設定"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__content
+msgid "Content"
+msgstr "コンテンツ"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__context_window
+msgid "Context Window"
+msgstr "コンテキストウィンドウ"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__cost
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_list
+msgid "Cost (USD)"
+msgstr "コスト (USD)"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__price_input_per_mtok
+msgid "Cost per million input tokens, used for usage reporting."
+msgstr "使用状況レポートに使用される、入力トークン 100 万個あたりのコスト。"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__create_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__create_uid
+msgid "Created by"
+msgstr "作成者"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__create_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__create_date
+msgid "Created on"
+msgstr "作成日"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_agent__response_style__creative
+msgid "Creative"
+msgstr "クリエイティブ"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_prompt_dialog.xml:0
+msgid "Ctrl/Cmd + Enter to generate."
+msgstr "生成するには Ctrl/Cmd + Enter を押します。"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__current_revision_id
+msgid "Current Revision"
+msgstr "現在のリビジョン"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__period__daily
+msgid "Daily"
+msgstr "日次"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Describe what to write…"
+msgstr "何を書くか記述してください…"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__description
+msgid "Description"
+msgstr "説明"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__provider_code
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__code
+msgid ""
+"Determines which wire format adapter is used to talk to the provider. "
+"Additional providers can be added by extending modules."
+msgstr "プロバイダーとの通信に使用するワイヤーフォーマットアダプターを決定します。モジュールを拡張することで追加のプロバイダーを追加できます。"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__dimensions
+msgid "Dimensions"
+msgstr "次元"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_discuss_channel
+msgid "Discussion Channel"
+msgstr "ディスカッションチャンネル"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__display_label
+msgid "Display Label"
+msgstr "表示ラベル"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_discuss_channel__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__display_name
+#: model:ir.model.fields,field_description:eh_ai.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "表示名"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_model_view_form
+msgid "Display name"
+msgstr "表示名"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_reply_job__state__done
+msgid "Done"
+msgstr "完了"
+
+#. module: eh_ai
+#: model:ir.actions.server,name:eh_ai.ir_cron_agent_replies_ir_actions_server
+msgid "EH AI: Generate Agent Replies"
+msgstr "EH AI: エージェントの返信を生成"
+
+#. module: eh_ai
+#: model:ir.actions.server,name:eh_ai.ir_cron_generate_embeddings_ir_actions_server
+msgid "EH AI: Generate Embeddings"
+msgstr "EH AI: 埋め込みを生成"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_discuss_channel__eh_ai_agent_id
+msgid "Eh Ai Agent"
+msgstr "Eh AI エージェント"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_discuss_channel__eh_ai_is_agent
+msgid "Eh Ai Is Agent"
+msgstr "Eh AI はエージェント"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__embedding_ids
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_model__kind__embedding
+msgid "Embedding"
+msgstr "埋め込み"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__embedding_count
+msgid "Embedding Count"
+msgstr "埋め込み数"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__embedding_dimensions
+msgid "Embedding Dimensions"
+msgstr "埋め込み次元"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__embedding_json
+msgid "Embedding Json"
+msgstr "埋め込み Json"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__embedding_model_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__embedding_model_id
+msgid "Embedding Model"
+msgstr "埋め込みモデル"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__env_var
+msgid "Environment Variable"
+msgstr "環境変数"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__error
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_reply_job__state__error
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_usage_log__outcome__error
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_form
+msgid "Error"
+msgstr "エラー"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__error_details
+msgid "Error Details"
+msgstr "エラー詳細"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__scope__global
+msgid "Everyone"
+msgstr "全員"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_ir_actions_server__eh_ai_use_in_tool
+#: model:ir.model.fields,help:eh_ai.field_ir_cron__eh_ai_use_in_tool
+msgid "Expose this server action to AI agents as a callable tool."
+msgstr "このサーバーアクションを呼び出し可能なツールとして AI エージェントに公開します。"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__extra_headers
+msgid "Extra Headers"
+msgstr "追加ヘッダー"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_source__status__failed
+msgid "Failed"
+msgstr "失敗"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_source__type__binary
+msgid "File"
+msgstr "ファイル"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__upload_filename
+msgid "File Name"
+msgstr "ファイル名"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_prompt_dialog.xml:0
+msgid "Generate"
+msgstr "作成"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Generate text from an instruction"
+msgstr "指示からテキストを生成"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__code__google
+msgid "Google"
+msgstr ""
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "Google Gemini"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_res_config_settings__eh_ai_google_key
+msgid "Google Gemini API Key"
+msgstr "Google Gemini API キー"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__has_failed
+msgid "Has Failed"
+msgstr "失敗しました"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_prompt_view_form
+msgid "History"
+msgstr "履歴"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__rag_over_fetch
+msgid "How many candidates each search method contributes before fusion."
+msgstr "統合前に各検索方法が提供する候補の数。"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__auth_scheme
+msgid ""
+"How the API key is sent. Bearer for OpenAI-style, API key header for Azure, "
+"none for an unauthenticated local endpoint."
+msgstr ""
+"API キーの送信方法。OpenAI 形式には Bearer、Azure には API key "
+"ヘッダー、認証なしのローカルエンドポイントにはなしを使用します。"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__rag_over_fetch
+msgid "Hybrid Candidates"
+msgstr "ハイブリッド候補"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__rag_hybrid
+msgid "Hybrid Search"
+msgstr "ハイブリッド検索"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_discuss_channel__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__id
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__id
+#: model:ir.model.fields,field_description:eh_ai.field_res_config_settings__id
+msgid "ID"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_ir_actions_server__eh_ai_tool_name
+#: model:ir.model.fields,help:eh_ai.field_ir_cron__eh_ai_tool_name
+msgid ""
+"Identifier the model uses to call this tool. Lowercase, no spaces. Defaults "
+"to a slug of the action name."
+msgstr "モデルがこのツールを呼び出すために使用する識別子。小文字、スペースなし。既定値はアクション名の slug です。"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_model_view_list
+msgid "In $/MTok"
+msgstr "$/MTok 単位"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_source__status__indexed
+msgid "Indexed"
+msgstr "インデックス付き"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_list
+msgid "Input"
+msgstr "入力"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__price_input_per_mtok
+msgid "Input $/MTok"
+msgstr "入力 $/MTok"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__input_tokens
+msgid "Input Tokens"
+msgstr "入力トークン"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__restrict_to_sources
+msgid "Instruct the agent to answer only from retrieved sources."
+msgstr "取得したソースのみから回答するようにエージェントに指示します。"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__topic_ids
+msgid "Instruction and tool bundles available to this agent."
+msgstr "このエージェントが利用できる指示とツールのバンドル。"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__instructions
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_topic_view_form
+msgid "Instructions"
+msgstr "指示"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__is_current
+msgid "Is Current"
+msgstr "現在有効"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_ir_actions_server__eh_ai_tool_schema
+#: model:ir.model.fields,help:eh_ai.field_ir_cron__eh_ai_tool_schema
+msgid "JSON schema object describing the arguments the model must supply."
+msgstr "モデルが提供する必要がある引数を記述する JSON スキーマオブジェクト。"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__has_key
+msgid "Key Configured"
+msgstr "キー設定済み"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "Key used for Gemini models. Stored as a system parameter."
+msgstr "Gemini モデルに使用するキー。システムパラメーターとして保存されます。"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "Key used for Grok models. Stored as a system parameter."
+msgstr "Grok モデルに使用するキー。システムパラメーターとして保存されます。"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "Key used for OpenAI models. Stored as a system parameter."
+msgstr "OpenAI モデルに使用するキー。システムパラメーターとして保存されます。"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__kind
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__kind
+msgid "Kind"
+msgstr "種類"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+msgid "Knowledge (RAG)"
+msgstr "ナレッジ (RAG)"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__write_uid
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__write_uid
+msgid "Last Updated by"
+msgstr "最終更新者"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__write_date
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__write_date
+msgid "Last Updated on"
+msgstr "最終更新日"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__latency_ms
+msgid "Latency (ms)"
+msgstr "レイテンシ (ms)"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__limit_amount
+msgid "Limit (USD)"
+msgstr "限度額 (USD)"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__max_output_tokens
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__max_output_tokens
+msgid "Max Output Tokens"
+msgstr "最大出力トークン数"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__context_window
+msgid "Maximum input tokens."
+msgstr "最大入力トークン数。"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__message_id
+msgid "Message"
+msgstr "メッセージ"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__mode
+msgid "Mode"
+msgstr "モード"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__model_id
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_search
+msgid "Model"
+msgstr "モデル"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__model_count
+msgid "Model Count"
+msgstr "モデル数"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__embedding_model_id
+msgid ""
+"Model used to embed knowledge sources and queries. Required for sources."
+msgstr "ナレッジソースとクエリを埋め込むために使用するモデル。ソースには必須です。"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_model
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__model_ids
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_models
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_provider_view_form
+msgid "Models"
+msgstr "モデル"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__period__monthly
+msgid "Monthly"
+msgstr "月次"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__name
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__name
+msgid "Name"
+msgstr "名称"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/chat_service.js:0
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "No AI agents are configured yet."
+msgstr "AI エージェントはまだ構成されていません。"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "No URL is set on this source."
+msgstr "このソースに URL が設定されていません。"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/utils/providers/__init__.py:0
+msgid "No adapter is registered for provider type '%s'."
+msgstr "プロバイダータイプ '%s' に対して登録されたアダプターがありません。"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__auth_scheme__none
+msgid "No authentication"
+msgstr "認証なし"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "No file is attached to this source."
+msgstr "このソースにはファイルが添付されていません。"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "No usable text could be extracted."
+msgstr "使用可能なテキストを抽出できませんでした。"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_usage_log__outcome__ok
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_search
+msgid "OK"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__code__ollama
+msgid "Ollama / Local"
+msgstr "Ollama / ローカル"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "One or more chunks could not be embedded."
+msgstr "1つ以上のチャンクを埋め込めませんでした。"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "Only http and https source URLs are allowed."
+msgstr "http および https のソース URL のみ許可されます。"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/chat/agent_picker_dialog.xml:0
+msgid "Open chat"
+msgstr "チャットを開く"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__code__openai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "OpenAI"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_res_config_settings__eh_ai_openai_key
+msgid "OpenAI API Key"
+msgstr "OpenAI API キー"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_provider__code__openai_compatible
+msgid "OpenAI-compatible endpoint"
+msgstr "OpenAI 互換エンドポイント"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__extra_headers
+msgid ""
+"Optional JSON object of additional HTTP headers to send with every request."
+msgstr "すべてのリクエストとともに送信する追加の HTTP ヘッダーを含むオプションの JSON オブジェクト。"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__env_var
+msgid "Optional environment variable used as a final fallback for the key."
+msgstr "キーの最終フォールバックとして使用されるオプションの環境変数。"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__config_param_key
+msgid ""
+"Optional ir.config_parameter name used as a fallback source for the key."
+msgstr "キーのフォールバックソースとして使用される任意の ir.config_parameter 名。"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_model_view_list
+msgid "Out $/MTok"
+msgstr "出力 $/MTok"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__outcome
+msgid "Outcome"
+msgstr "結果"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_list
+msgid "Output"
+msgstr "出荷"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__price_output_per_mtok
+msgid "Output $/MTok"
+msgstr "出力 $/MTok"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__output_tokens
+msgid "Output Tokens"
+msgstr "出力トークン"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__partner_id
+msgid "Partner the agent posts as in Discuss conversations."
+msgstr "エージェントが Discuss の会話で投稿する際の名義となる取引先。"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_reply_job__state__pending
+msgid "Pending"
+msgstr "保留"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_eh_ai_reply_job
+msgid "Pending AI Agent Reply"
+msgstr "AI エージェントの返信待ち"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__period
+msgid "Period"
+msgstr "期間"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_agent__response_style__precise
+msgid "Precise"
+msgstr "正確"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_model_view_form
+msgid "Pricing (per million tokens)"
+msgstr "料金（100万トークンあたり）"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_source__status__processing
+msgid "Processing"
+msgstr "処理中"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_reply_job.py:0
+msgid "Processing aborted."
+msgstr "処理が中止されました。"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__prompt_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__prompt
+msgid "Prompt"
+msgstr "プロンプト"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_prompt_view_form
+msgid "Prompt name"
+msgstr "プロンプト名"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_prompt
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_prompts
+msgid "Prompts"
+msgstr "プロンプト"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__provider_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__provider_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__provider_id
+msgid "Provider"
+msgstr "プロバイダ"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "Provider API Keys"
+msgstr "プロバイダー API キー"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_provider_view_form
+msgid "Provider name"
+msgstr "プロバイダー名"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_provider
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_providers
+msgid "Providers"
+msgstr "プロバイダー"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_prompt__kind__rag_instruction
+msgid "RAG Instruction"
+msgstr "RAG 指示"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__remaining
+msgid "Remaining (USD)"
+msgstr "残高 (USD)"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Rephrase with AI"
+msgstr "AI で言い換える"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_form
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_list
+msgid "Reprocess"
+msgstr "再処理"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__response_style
+msgid "Response Style"
+msgstr "応答スタイル"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_prompt_view_form
+msgid "Restore"
+msgstr "リストア"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_prompt.py:0
+msgid "Restored version %s."
+msgstr "バージョン %s を復元しました。"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__use_sources
+msgid ""
+"Retrieve relevant chunks from this agent's sources and add them to the "
+"prompt."
+msgstr "このエージェントのソースから関連するチャンクを取得し、プロンプトに追加します。"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__rag_top_n
+msgid "Retrieved Chunks"
+msgstr "取得したチャンク"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__retry_count
+msgid "Retry Count"
+msgstr "再試行回数"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__revision_ids
+msgid "Revision"
+msgstr "更新"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Rewrite the selected text"
+msgstr "選択したテキストを書き換える"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__scope
+msgid "Scope"
+msgstr "スコープ"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Select some text to rephrase first."
+msgstr "まず言い換えるテキストを選択してください。"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__sequence
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__sequence
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__sequence
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__sequence
+msgid "Sequence"
+msgstr "シーケンス"
+
+#. module: eh_ai
+#: model:ir.model,name:eh_ai.model_ir_actions_server
+msgid "Server Action"
+msgstr "サーバーアクション"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_topic__tool_ids
+msgid "Server actions exposed to the model as callable tools for this topic."
+msgstr "このトピックの呼び出し可能なツールとしてモデルに公開されるサーバーアクション。"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_settings
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_settings
+msgid "Settings"
+msgstr "管理設定"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_topic__description
+msgid "Short note shown to administrators."
+msgstr "管理者に表示される短いメモ。"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+msgid "Short tagline"
+msgstr "短いキャッチフレーズ"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__subtitle
+msgid "Short tagline shown in agent pickers."
+msgstr "エージェント選択画面に表示される短いキャッチフレーズ。"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__supports_temperature
+msgid ""
+"Some reasoning models reject sampling parameters. Disable to omit "
+"temperature from requests for this model."
+msgstr "一部の推論モデルはサンプリングパラメータを受け付けません。無効にすると、このモデルのリクエストから temperature を省略します。"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_reply_job.py:0
+msgid "Sorry, I could not generate a reply. Please try again."
+msgstr "申し訳ございませんが、返信を生成できませんでした。もう一度お試しください。"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_embedding__source_id
+msgid "Source"
+msgstr "流入元"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__source_count
+msgid "Source Count"
+msgstr "ソース数"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "Source file"
+msgstr "ソースファイル"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_form
+msgid "Source name"
+msgstr "ソース名"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_source
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__source_ids
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_sources
+msgid "Sources"
+msgstr "ソース"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__spent
+msgid "Spent (USD)"
+msgstr "支出額 (USD)"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__state
+msgid "State"
+msgstr "ステータス"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__status
+msgid "Status"
+msgstr "ステータス"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_provider__api_key
+msgid ""
+"Stored key for this provider. Leave empty to fall back to the system "
+"parameter or environment variable below."
+msgstr "このプロバイダー用に保存されたキー。空欄のままにすると、下のシステムパラメーターまたは環境変数にフォールバックします。"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__subtitle
+msgid "Subtitle"
+msgstr "サブタイトル"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__supports_temperature
+msgid "Supports Temperature"
+msgstr "Temperature をサポート"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__supports_tools
+msgid "Supports Tools"
+msgstr "Tools をサポート"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__supports_vision
+msgid "Supports Vision"
+msgstr "Vision をサポート"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_provider__config_param_key
+msgid "System Parameter"
+msgstr "システムパラメタ"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__system_prompt
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_prompt__kind__system
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+msgid "System Prompt"
+msgstr "システムプロンプト"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__system_prompt_id
+msgid "System Prompt Template"
+msgstr "システムプロンプトテンプレート"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_model__technical_name
+msgid "Technical Name"
+msgstr "技術名称"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_ir_actions_server__eh_ai_tool_description
+#: model:ir.model.fields,help:eh_ai.field_ir_cron__eh_ai_tool_description
+msgid "Tells the model when and why to call this tool."
+msgstr "このツールをいつ、なぜ呼び出すかをモデルに伝えます。"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/search/ai_search.js:0
+msgid "The AI could not turn that into a filter."
+msgstr "AI はそれをフィルターに変換できませんでした。"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "The agent has no embedding model configured."
+msgstr "エージェントに埋め込みモデルが構成されていません。"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__system_prompt
+msgid ""
+"The agent's persistent instructions. Used when no template is selected."
+msgstr "エージェントの永続的な指示。テンプレートが選択されていない場合に使用されます。"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_embedding__embedding_json
+msgid "The chunk vector, stored as a JSON array of floats."
+msgstr "チャンクベクトル。浮動小数点数の JSON 配列として保存されます。"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "The content produced no chunks."
+msgstr "コンテンツからチャンクは生成されませんでした。"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__technical_name
+msgid ""
+"The model identifier sent to the provider, for example gpt-4.1 or "
+"gemini-2.5-flash."
+msgstr "プロバイダーに送信されるモデル識別子。例えば gpt-4.1 または gemini-2.5-flash。"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "The source URL has no host."
+msgstr "ソース URL にホストがありません。"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "The source URL host could not be resolved: %s"
+msgstr "ソース URL のホストを解決できませんでした: %s"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/eh_ai_source.py:0
+msgid "The source URL resolves to a non-public address and was blocked."
+msgstr "ソース URL は非公開アドレスに解決されるため、ブロックされました。"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__eh_ai_tool_description
+#: model:ir.model.fields,field_description:eh_ai.field_ir_cron__eh_ai_tool_description
+msgid "Tool Description"
+msgstr "ツールの説明"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_prompt__kind__tool_guidance
+msgid "Tool Guidance"
+msgstr "ツールガイダンス"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__eh_ai_tool_name
+#: model:ir.model.fields,field_description:eh_ai.field_ir_cron__eh_ai_tool_name
+msgid "Tool Name"
+msgstr "ツール名"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_ir_actions_server__eh_ai_tool_schema
+#: model:ir.model.fields,field_description:eh_ai.field_ir_cron__eh_ai_tool_schema
+msgid "Tool Parameters (JSON Schema)"
+msgstr "ツールパラメータ (JSON Schema)"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/ir_actions_server.py:0
+msgid "Tool parameters must be a JSON object schema (\"type\": \"object\")."
+msgstr "ツールパラメータは JSON オブジェクトスキーマ (\"type\": \"object\") である必要があります。"
+
+#. module: eh_ai
+#. odoo-python
+#: code:addons/eh_ai/models/ir_actions_server.py:0
+msgid "Tool parameters must be valid JSON: %s"
+msgstr "ツールパラメータは有効な JSON である必要があります：%s"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_topic__tool_ids
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_topic_view_form
+msgid "Tools"
+msgstr "ツール"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_topic_view_form
+msgid "Topic name"
+msgstr "トピック名"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_topic
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__topic_ids
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_config_topics
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+msgid "Topics"
+msgstr "トピック"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__total_tokens
+msgid "Total Tokens"
+msgstr "トークン合計"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__type
+msgid "Type"
+msgstr "タイプ"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__upload_file
+msgid "Upload File"
+msgstr "ファイルをアップロード"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_agent__max_output_tokens
+msgid "Upper bound on tokens generated per response."
+msgstr "1回の応答で生成されるトークン数の上限。"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_source__url
+msgid "Url"
+msgstr "URL"
+
+#. module: eh_ai
+#: model:ir.actions.act_window,name:eh_ai.action_eh_ai_usage_log
+#: model:ir.ui.menu,name:eh_ai.menu_eh_ai_usage
+msgid "Usage and Cost"
+msgstr "使用量とコスト"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_agent__use_sources
+msgid "Use Knowledge Sources"
+msgstr "ナレッジソースを使用"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_budget__user_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_reply_job__user_id
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_usage_log__user_id
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__scope__user
+#: model:res.groups,name:eh_ai.group_eh_ai_user
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_usage_log_view_search
+msgid "User"
+msgstr "ユーザ"
+
+#. module: eh_ai
+#: model:ir.model.fields,help:eh_ai.field_eh_ai_model__embedding_dimensions
+msgid "Vector size for embedding models."
+msgstr "埋め込みモデルのベクトルサイズ。"
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt__version
+#: model:ir.model.fields,field_description:eh_ai.field_eh_ai_prompt_revision__version
+msgid "Version"
+msgstr "バージョン"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_budget__mode__soft_warn
+msgid "Warn only"
+msgstr "警告のみ"
+
+#. module: eh_ai
+#: model:ir.model.fields.selection,name:eh_ai.selection__eh_ai_source__type__url
+msgid "Web Page"
+msgstr "ウェブページ"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "Write with AI"
+msgstr "AI で作成"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_agent_view_form
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_prompt_view_form
+msgid "You are a helpful assistant for..."
+msgstr "あなたは...のための役立つアシスタントです。"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "ai"
+msgstr ""
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "draft"
+msgstr "ドラフト"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_budget_view_form
+msgid "e.g. Monthly cap"
+msgstr "例: 月間上限"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.view_server_action_form_eh_ai
+msgid "get_customer_balance"
+msgstr ""
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_source_view_form
+msgid "https://example.com/page"
+msgstr ""
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "improve"
+msgstr "改善"
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "rephrase"
+msgstr "言い換え"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "sk-..."
+msgstr ""
+
+#. module: eh_ai
+#. odoo-javascript
+#: code:addons/eh_ai/static/src/editor/ai_editor_plugin.js:0
+msgid "write"
+msgstr "書き込み"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "xAI (Grok)"
+msgstr ""
+
+#. module: eh_ai
+#: model:ir.model.fields,field_description:eh_ai.field_res_config_settings__eh_ai_xai_key
+msgid "xAI (Grok) API Key"
+msgstr "xAI (Grok) API キー"
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.res_config_settings_view_form_eh_ai
+msgid "xai-..."
+msgstr ""
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.eh_ai_provider_view_form
+msgid "{\"X-Custom-Header\": \"value\"}"
+msgstr ""
+
+#. module: eh_ai
+#: model_terms:ir.ui.view,arch_db:eh_ai.view_server_action_form_eh_ai
+msgid "{\"type\": \"object\", \"properties\": {}, \"required\": []}"
+msgstr ""

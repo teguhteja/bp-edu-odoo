@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="eh_ai.ChatterAiButton" t-inherit="mail.Chatter" t-inherit-mode="extension">
+        <xpath expr="//span[hasclass('o-mail-Chatter-topbarGrow')]" position="before">
+            <button class="o-mail-Chatter-ehAi btn text-nowrap me-1" t-on-click="onClickAskAi"
+                    title="Ask AI about this record">
+                <img class="o_eh_ai_mark me-1" src="/eh_ai/static/src/img/eh_mark_bronze.svg"
+                     alt="" width="16" height="16"/>Ask AI
+            </button>
+        </xpath>
+    </t>
+</templates>

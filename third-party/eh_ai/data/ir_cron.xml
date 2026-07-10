@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ir_cron_generate_embeddings" model="ir.cron">
+        <field name="name">EH AI: Generate Embeddings</field>
+        <field name="model_id" ref="model_eh_ai_embedding"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_generate_embeddings()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="ir_cron_agent_replies" model="ir.cron">
+        <field name="name">EH AI: Generate Agent Replies</field>
+        <field name="model_id" ref="model_eh_ai_reply_job"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_process()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active" eval="True"/>
+    </record>
+</odoo>

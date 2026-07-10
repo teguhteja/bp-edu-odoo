@@ -5,3 +5,7 @@ access_bp_edu_program_studi_user,bp.edu.program.studi user,model_bp_edu_program_
 access_bp_edu_program_studi_doko,bp.edu.program.studi doko,model_bp_edu_program_studi,bp_edu_core.group_dosen_koordinator,1,1,1,1
 access_bp_edu_tahun_akademik_user,bp.edu.tahun.akademik user,model_bp_edu_tahun_akademik,,1,0,0,0
 access_bp_edu_tahun_akademik_doko,bp.edu.tahun.akademik doko,model_bp_edu_tahun_akademik,bp_edu_core.group_dosen_koordinator,1,1,1,1
+access_bp_edu_dokumen_master_user,bp.edu.dokumen.master user,model_bp_edu_dokumen_master,,1,0,0,0
+access_bp_edu_dokumen_master_doko,bp.edu.dokumen.master doko,model_bp_edu_dokumen_master,bp_edu_core.group_dosen_koordinator,1,1,1,1
+access_bp_edu_dokumen_master_history_user,bp.edu.dokumen.master.history user,model_bp_edu_dokumen_master_history,,1,0,0,0
+access_bp_edu_dokumen_master_history_doko,bp.edu.dokumen.master.history doko,model_bp_edu_dokumen_master_history,bp_edu_core.group_dosen_koordinator,1,1,1,0

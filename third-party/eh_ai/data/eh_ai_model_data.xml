@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Model catalogue. Editable data: administrators can add, edit or remove
+        models from the UI, so it is seeded once and never overwritten.
+
+        Model ids and prices below were taken from the providers' official model
+        and pricing pages (OpenAI, Google Gemini, xAI). Prices are per million
+        tokens. Re-verify before relying on the cost dashboard, as catalogues
+        change frequently. Reasoning models that reject sampling parameters have
+        supports_temperature set to False.
+    -->
+
+    <!-- ============================ OpenAI ============================ -->
+    <record id="model_gpt_5_5" model="eh.ai.model">
+        <field name="name">GPT-5.5</field>
+        <field name="technical_name">gpt-5.5</field>
+        <field name="provider_id" ref="provider_openai"/>
+        <field name="sequence">10</field>
+        <field name="supports_tools" eval="True"/>
+        <field name="supports_vision" eval="True"/>
+        <field name="supports_temperature" eval="False"/>
+        <field name="context_window">1000000</field>
+        <field name="max_output_tokens">128000</field>
+        <field name="price_input_per_mtok">5.0</field>
+        <field name="price_output_per_mtok">30.0</field>
+    </record>
+
+    <record id="model_gpt_5_4" model="eh.ai.model">
+        <field name="name">GPT-5.4</field>
+        <field name="technical_name">gpt-5.4</field>
+        <field name="provider_id" ref="provider_openai"/>
+        <field name="sequence">20</field>
+        <field name="supports_tools" eval="True"/>
+        <field name="supports_vision" eval="True"/>
+        <field name="supports_temperature" eval="False"/>
+        <field name="context_window">1000000</field>
+        <field name="max_output_tokens">128000</field>
+        <field name="price_input_per_mtok">2.5</field>
+        <field name="price_output_per_mtok">15.0</field>
+    </record>
+
+    <record id="model_gpt_5_4_mini" model="eh.ai.model">
+        <field name="name">GPT-5.4 Mini</field>
+        <field name="technical_name">gpt-5.4-mini</field>
+        <field name="provider_id" ref="provider_openai"/>
+        <field name="sequence">30</field>
+        <field name="supports_tools" eval="True"/>
+        <field name="supports_vision" eval="True"/>
+        <field name="supports_temperature" eval="False"/>
+        <field name="context_window">400000</field>
+        <field name="max_output_tokens">128000</field>
+        <field name="price_input_per_mtok">0.75</field>
+        <field name="price_output_per_mtok">4.5</field>
+    </record>
+
+    <record id="model_gpt_4_1" model="eh.ai.model">
+        <field name="name">GPT-4.1</field>
+        <field name="technical_name">gpt-4.1</field>
+        <field name="provider_id" ref="provider_openai"/>
+        <field name="sequence">40</field>
+        <field name="supports_tools" eval="True"/>
+        <field name="supports_vision" eval="True"/>
+        <field name="supports_temperature" eval="True"/>
+        <field name="context_window">1047576</field>
+        <field name="max_output_tokens">32768</field>
+        <field name="price_input_per_mtok">2.0</field>
+        <field name="price_output_per_mtok">8.0</field>
+    </record>
+
+    <record id="model_gpt_4_1_mini" model="eh.ai.model">
+        <field name="name">GPT-4.1 Mini</field>
+        <field name="technical_name">gpt-4.1-mini</field>
+        <field name="provider_id" ref="provider_openai"/>
+        <field name="sequence">50</field>
+        <field name="supports_tools" eval="True"/>
+        <field name="supports_vision" eval="True"/>
+        <field name="supports_temperature" eval="True"/>
+        <field name="context_window">1047576</field>
+        <field name="max_output_tokens">32768</field>
+        <field name="price_input_per_mtok">0.4</field>
+        <field name="price_output_per_mtok">1.6</field>
+    </record>
+
+    <record id="model_gpt_4o" model="eh.ai.model">
+        <field name="name">GPT-4o</field>
+        <field name="technical_name">gpt-4o</field>
+        <field name="provider_id" ref="provider_openai"/>
+        <field name="sequence">60</field>
+        <field name="supports_tools" eval="True"/>
+        <field name="supports_vision" eval="True"/>
+        <field name="supports_temperature" eval="True"/>
+        <field name="context_window">128000</field>
+        <field name="max_output_tokens">16384</field>
+        <field name="price_input_per_mtok">2.5</field>
+        <field name="price_output_per_mtok">10.0</field>
+    </record>
+
+    <record id="model_o4_mini" model="eh.ai.model">
+        <field name="name">o4-mini</field>
+        <field name="technical_name">o4-mini</field>
+        <field name="provider_id" ref="provider_openai"/>
+        <field name="sequence">70</field>
+        <field name="supports_tools" eval="True"/>
+        <field name="supports_vision" eval="True"/>
+        <field name="supports_temperature" eval="False"/>
+        <field name="context_window">200000</field>
+        <field name="max_output_tokens">100000</field>
+        <field name="price_input_per_mtok">0.55</field>
+        <field name="price_output_per_mtok">2.2</field>
+    </record>
+
+    <record id="model_openai_text_embedding_3_small" model="eh.ai.model">
+        <field name="name">Text Embedding 3 Small</field>
+        <field name="technical_name">text-embedding-3-small</field>
+        <field name="provider_id" ref="provider_openai"/>
+        <field name="sequence">90</field>
+        <field name="kind">embedding</field>
+        <field name="supports_tools" eval="False"/>
+        <field name="embedding_dimensions">1536</field>
+        <field name="price_input_per_mtok">0.02</field>
+    </record>
+
+    <record id="model_openai_text_embedding_3_large" model="eh.ai.model">
+        <field name="name">Text Embedding 3 Large</field>
+        <field name="technical_name">text-embedding-3-large</field>
+        <field name="provider_id" ref="provider_openai"/>
+        <field name="sequence">95</field>
+        <field name="kind">embedding</field>
+        <field name="supports_tools" eval="False"/>
+        <field name="embedding_dimensions">3072</field>
+        <field name="price_input_per_mtok">0.13</field>
+    </record>
+
+    <!-- ========================= Google Gemini ========================= -->
+    <record id="model_gemini_3_5_flash" model="eh.ai.model">
+        <field name="name">Gemini 3.5 Flash</field>
+        <field name="technical_name">gemini-3.5-flash</field>
+        <field name="provider_id" ref="provider_google"/>
+        <field name="sequence">10</field>
+        <field name="supports_tools" eval="True"/>
+        <field name="supports_vision" eval="True"/>
+        <field name="supports_temperature" eval="True"/>
+        <field name="context_window">1048576</field>
+        <field name="max_output_tokens">65536</field>
+        <field name="price_input_per_mtok">1.5</field>
+        <field name="price_output_per_mtok">9.0</field>
+    </record>
+
+    <record id="model_gemini_3_1_pro" model="eh.ai.model">
+        <field name="name">Gemini 3.1 Pro (Preview)</field>
+        <field name="technical_name">gemini-3.1-pro-preview</field>
+        <field name="provider_id" ref="provider_google"/>
+        <field name="sequence">20</field>
+        <field name="supports_tools" eval="True"/>
+        <field name="supports_vision" eval="True"/>
+        <field name="supports_temperature" eval="True"/>
+        <field name="context_window">1048576</field>
+        <field name="max_output_tokens">65536</field>
+        <field name="price_input_per_mtok">2.0</field>
+        <field name="price_output_per_mtok">12.0</field>
+    </record>
+
+    <record id="model_gemini_3_flash" model="eh.ai.model">
+        <field name="name">Gemini 3 Flash (Preview)</field>
+        <field name="technical_name">gemini-3-flash-preview</field>
+        <field name="provider_id" ref="provider_google"/>
+        <field name="sequence">30</field>
+        <field name="supports_tools" eval="True"/>
+        <field name="supports_vision" eval="True"/>
+        <field name="supports_temperature" eval="True"/>
+        <field name="context_window">1048576</field>
+        <field name="max_output_tokens">65536</field>
+        <field name="price_input_per_mtok">0.5</field>
+        <field name="price_output_per_mtok">3.0</field>
+    </record>
+
+    <record id="model_gemini_3_1_flash_lite" model="eh.ai.model">
+        <field name="name">Gemini 3.1 Flash-Lite</field>
+        <field name="technical_name">gemini-3.1-flash-lite</field>
+        <field name="provider_id" ref="provider_google"/>
+        <field name="sequence">40</field>
+        <field name="supports_tools" eval="True"/>
+        <field name="supports_vision" eval="True"/>
+        <field name="supports_temperature" eval="True"/>
+        <field name="context_window">1048576</field>
+        <field name="max_output_tokens">65536</field>
+        <field name="price_input_per_mtok">0.25</field>
+        <field name="price_output_per_mtok">1.5</field>
+    </record>
+
+    <record id="model_gemini_2_5_pro" model="eh.ai.model">
+        <field name="name">Gemini 2.5 Pro</field>
+        <field name="technical_name">gemini-2.5-pro</field>
+        <field name="provider_id" ref="provider_google"/>
+        <field name="sequence">50</field>
+        <field name="supports_tools" eval="True"/>
+        <field name="supports_vision" eval="True"/>
+        <field name="supports_temperature" eval="True"/>
+        <field name="context_window">1048576</field>
+        <field name="max_output_tokens">65536</field>
+        <field name="price_input_per_mtok">1.25</field>
+        <field name="price_output_per_mtok">10.0</field>
+    </record>
+
+    <record id="model_gemini_2_5_flash" model="eh.ai.model">
+        <field name="name">Gemini 2.5 Flash</field>
+        <field name="technical_name">gemini-2.5-flash</field>
+        <field name="provider_id" ref="provider_google"/>
+        <field name="sequence">60</field>
+        <field name="supports_tools" eval="True"/>
+        <field name="supports_vision" eval="True"/>
+        <field name="supports_temperature" eval="True"/>
+        <field name="context_window">1048576</field>
+        <field name="max_output_tokens">65536</field>
+        <field name="price_input_per_mtok">0.3</field>
+        <field name="price_output_per_mtok">2.5</field>
+    </record>
+
+    <record id="model_gemini_2_5_flash_lite" model="eh.ai.model">
+        <field name="name">Gemini 2.5 Flash-Lite</field>
+        <field name="technical_name">gemini-2.5-flash-lite</field>
+        <field name="provider_id" ref="provider_google"/>
+        <field name="sequence">70</field>
+        <field name="supports_tools" eval="True"/>
+        <field name="supports_vision" eval="True"/>
+        <field name="supports_temperature" eval="True"/>
+        <field name="context_window">1048576</field>
+        <field name="max_output_tokens">65536</field>
+        <field name="price_input_per_mtok">0.1</field>
+        <field name="price_output_per_mtok">0.4</field>
+    </record>
+
+    <record id="model_gemini_embedding_2" model="eh.ai.model">
+        <field name="name">Gemini Embedding 2</field>
+        <field name="technical_name">gemini-embedding-2</field>
+        <field name="provider_id" ref="provider_google"/>
+        <field name="sequence">90</field>
+        <field name="kind">embedding</field>
+        <field name="supports_tools" eval="False"/>
+        <field name="embedding_dimensions">3072</field>
+        <field name="price_input_per_mtok">0.2</field>
+    </record>
+
+    <record id="model_gemini_embedding_001" model="eh.ai.model">
+        <field name="name">Gemini Embedding 001</field>
+        <field name="technical_name">gemini-embedding-001</field>
+        <field name="provider_id" ref="provider_google"/>
+        <field name="sequence">95</field>
+        <field name="kind">embedding</field>
+        <field name="supports_tools" eval="False"/>
+        <field name="embedding_dimensions">3072</field>
+        <field name="price_input_per_mtok">0.15</field>
+    </record>
+
+    <!-- ============================ xAI Grok ============================ -->
+    <record id="model_grok_4_3" model="eh.ai.model">
+        <field name="name">Grok 4.3</field>
+        <field name="technical_name">grok-4.3</field>
+        <field name="provider_id" ref="provider_xai"/>
+        <field name="sequence">10</field>
+        <field name="supports_tools" eval="True"/>
+        <field name="supports_vision" eval="True"/>
+        <field name="supports_temperature" eval="True"/>
+        <field name="context_window">1000000</field>
+        <field name="max_output_tokens">32768</field>
+        <field name="price_input_per_mtok">1.25</field>
+        <field name="price_output_per_mtok">2.5</field>
+    </record>
+
+    <record id="model_grok_build" model="eh.ai.model">
+        <field name="name">Grok Build 0.1</field>
+        <field name="technical_name">grok-build-0.1</field>
+        <field name="provider_id" ref="provider_xai"/>
+        <field name="sequence">20</field>
+        <field name="supports_tools" eval="True"/>
+        <field name="supports_vision" eval="False"/>
+        <field name="supports_temperature" eval="True"/>
+        <field name="context_window">256000</field>
+        <field name="max_output_tokens">32768</field>
+        <field name="price_input_per_mtok">1.0</field>
+        <field name="price_output_per_mtok">2.0</field>
+    </record>
+</odoo>

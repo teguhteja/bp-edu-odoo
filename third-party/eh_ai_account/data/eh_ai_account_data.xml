@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="tool_customer_balance" model="ir.actions.server">
+        <field name="name">AI: Customer Balance</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="state">code</field>
+        <field name="eh_ai_use_in_tool" eval="True"/>
+        <field name="eh_ai_tool_name">get_customer_balance</field>
+        <field name="eh_ai_tool_description">Return a customer's outstanding receivable balance. Call this when asked how much a customer owes.</field>
+        <field name="eh_ai_tool_schema">{"type": "object", "properties": {"customer_name": {"type": "string"}}, "required": ["customer_name"]}</field>
+        <field name="code">
+name = (arguments.get('customer_name') or '').strip()
+partner = env['res.partner'].search([('name', 'ilike', name)], limit=1) if name else env['res.partner'].browse()
+if not partner:
+    result['output'] = 'No customer found matching "%s".' % name
+else:
+    result['output'] = 'Customer %s has an outstanding receivable balance of %.2f.' % (partner.name, partner.credit or 0.0)
+        </field>
+    </record>
+
+    <record id="topic_accounting" model="eh.ai.topic">
+        <field name="name">Accounting</field>
+        <field name="description">Answer accounting questions such as customer balances.</field>
+        <field name="instructions">You assist with accounting queries. Use get_customer_balance to look up what a customer owes. Always state amounts clearly with two decimals.</field>
+        <field name="tool_ids" eval="[(4, ref('tool_customer_balance'))]"/>
+    </record>
+</odoo>

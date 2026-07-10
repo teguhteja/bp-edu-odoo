@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="eh_ai_usage_log_view_list" model="ir.ui.view">
+        <field name="name">eh.ai.usage.log.list</field>
+        <field name="model">eh.ai.usage.log</field>
+        <field name="arch" type="xml">
+            <list create="0" edit="0">
+                <field name="create_date"/>
+                <field name="agent_id"/>
+                <field name="model_id"/>
+                <field name="user_id"/>
+                <field name="input_tokens" sum="Input"/>
+                <field name="output_tokens" sum="Output"/>
+                <field name="cost" sum="Cost (USD)"/>
+                <field name="latency_ms"/>
+                <field name="outcome" widget="badge"
+                       decoration-success="outcome == 'ok'"
+                       decoration-danger="outcome in ('error', 'budget_block')"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="eh_ai_usage_log_view_pivot" model="ir.ui.view">
+        <field name="name">eh.ai.usage.log.pivot</field>
+        <field name="model">eh.ai.usage.log</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="model_id" type="row"/>
+                <field name="cost" type="measure"/>
+                <field name="total_tokens" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="eh_ai_usage_log_view_graph" model="ir.ui.view">
+        <field name="name">eh.ai.usage.log.graph</field>
+        <field name="model">eh.ai.usage.log</field>
+        <field name="arch" type="xml">
+            <graph type="line">
+                <field name="create_date" interval="day"/>
+                <field name="cost" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="eh_ai_usage_log_view_search" model="ir.ui.view">
+        <field name="name">eh.ai.usage.log.search</field>
+        <field name="model">eh.ai.usage.log</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="agent_id"/>
+                <field name="model_id"/>
+                <field name="user_id"/>
+                <filter name="ok" string="OK" domain="[('outcome', '=', 'ok')]"/>
+                <filter name="blocked" string="Blocked" domain="[('outcome', '=', 'budget_block')]"/>
+                <group>
+                    <filter name="group_model" string="Model" context="{'group_by': 'model_id'}"/>
+                    <filter name="group_agent" string="Agent" context="{'group_by': 'agent_id'}"/>
+                    <filter name="group_user" string="User" context="{'group_by': 'user_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_eh_ai_usage_log" model="ir.actions.act_window">
+        <field name="name">Usage and Cost</field>
+        <field name="res_model">eh.ai.usage.log</field>
+        <field name="view_mode">graph,pivot,list</field>
+    </record>
+</odoo>

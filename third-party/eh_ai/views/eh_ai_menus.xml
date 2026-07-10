@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_eh_ai_root"
+              name="AI Agents"
+              sequence="90"
+              web_icon="eh_ai,static/description/icon.png"
+              groups="group_eh_ai_user"/>
+
+    <menuitem id="menu_eh_ai_agents"
+              name="Agents"
+              parent="menu_eh_ai_root"
+              action="action_eh_ai_agent"
+              sequence="10"/>
+
+    <menuitem id="menu_eh_ai_sources"
+              name="Sources"
+              parent="menu_eh_ai_root"
+              action="action_eh_ai_source"
+              sequence="20"
+              groups="group_eh_ai_manager"/>
+
+    <menuitem id="menu_eh_ai_usage"
+              name="Usage and Cost"
+              parent="menu_eh_ai_root"
+              action="action_eh_ai_usage_log"
+              sequence="30"
+              groups="group_eh_ai_manager"/>
+
+    <menuitem id="menu_eh_ai_config"
+              name="Configuration"
+              parent="menu_eh_ai_root"
+              sequence="90"
+              groups="group_eh_ai_manager"/>
+
+    <menuitem id="menu_eh_ai_config_prompts"
+              name="Prompts"
+              parent="menu_eh_ai_config"
+              action="action_eh_ai_prompt"
+              sequence="40"/>
+
+    <menuitem id="menu_eh_ai_config_budgets"
+              name="Budgets"
+              parent="menu_eh_ai_config"
+              action="action_eh_ai_budget"
+              sequence="50"/>
+
+    <menuitem id="menu_eh_ai_config_providers"
+              name="Providers"
+              parent="menu_eh_ai_config"
+              action="action_eh_ai_provider"
+              sequence="10"/>
+
+    <menuitem id="menu_eh_ai_config_models"
+              name="Models"
+              parent="menu_eh_ai_config"
+              action="action_eh_ai_model"
+              sequence="20"/>
+
+    <menuitem id="menu_eh_ai_config_topics"
+              name="Topics"
+              parent="menu_eh_ai_config"
+              action="action_eh_ai_topic"
+              sequence="30"/>
+
+    <menuitem id="menu_eh_ai_config_settings"
+              name="Settings"
+              parent="menu_eh_ai_config"
+              action="action_eh_ai_settings"
+              sequence="90"/>
+</odoo>

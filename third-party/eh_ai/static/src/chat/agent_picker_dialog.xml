@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="eh_ai.AgentPickerDialog">
+        <Dialog title="'Ask AI'" size="'md'">
+            <div class="mb-2">Choose an agent to chat with:</div>
+            <select class="form-select" t-on-change="onChange">
+                <option t-foreach="props.agents" t-as="a" t-key="a.id"
+                        t-att-value="a.id" t-esc="a.name"/>
+            </select>
+            <t t-set-slot="footer">
+                <button class="btn btn-primary" t-on-click="onConfirm">Open chat</button>
+                <button class="btn btn-secondary" t-on-click="() => props.close()">Cancel</button>
+            </t>
+        </Dialog>
+    </t>
+</templates>

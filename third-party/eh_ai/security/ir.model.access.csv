@@ -1,0 +1,18 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_eh_ai_provider_user,eh.ai.provider user,model_eh_ai_provider,group_eh_ai_user,1,0,0,0
+access_eh_ai_provider_manager,eh.ai.provider manager,model_eh_ai_provider,group_eh_ai_manager,1,1,1,1
+access_eh_ai_model_user,eh.ai.model user,model_eh_ai_model,group_eh_ai_user,1,0,0,0
+access_eh_ai_model_manager,eh.ai.model manager,model_eh_ai_model,group_eh_ai_manager,1,1,1,1
+access_eh_ai_topic_user,eh.ai.topic user,model_eh_ai_topic,group_eh_ai_user,1,0,0,0
+access_eh_ai_topic_manager,eh.ai.topic manager,model_eh_ai_topic,group_eh_ai_manager,1,1,1,1
+access_eh_ai_agent_user,eh.ai.agent user,model_eh_ai_agent,group_eh_ai_user,1,0,0,0
+access_eh_ai_agent_manager,eh.ai.agent manager,model_eh_ai_agent,group_eh_ai_manager,1,1,1,1
+access_eh_ai_source_manager,eh.ai.source manager,model_eh_ai_source,group_eh_ai_manager,1,1,1,1
+access_eh_ai_embedding_manager,eh.ai.embedding manager,model_eh_ai_embedding,group_eh_ai_manager,1,1,1,1
+access_eh_ai_usage_log_manager,eh.ai.usage.log manager,model_eh_ai_usage_log,group_eh_ai_manager,1,1,1,1
+access_eh_ai_budget_manager,eh.ai.budget manager,model_eh_ai_budget,group_eh_ai_manager,1,1,1,1
+access_eh_ai_reply_job_manager,eh.ai.reply.job manager,model_eh_ai_reply_job,group_eh_ai_manager,1,1,1,1
+access_eh_ai_prompt_user,eh.ai.prompt user,model_eh_ai_prompt,group_eh_ai_user,1,0,0,0
+access_eh_ai_prompt_manager,eh.ai.prompt manager,model_eh_ai_prompt,group_eh_ai_manager,1,1,1,1
+access_eh_ai_prompt_revision_user,eh.ai.prompt.revision user,model_eh_ai_prompt_revision,group_eh_ai_user,1,0,0,0
+access_eh_ai_prompt_revision_manager,eh.ai.prompt.revision manager,model_eh_ai_prompt_revision,group_eh_ai_manager,1,1,1,1

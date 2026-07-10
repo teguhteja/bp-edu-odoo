@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Provider records are user-editable (API keys, base URLs), so they are
+         seeded once and never overwritten on update. -->
+    <data noupdate="1">
+        <record id="provider_openai" model="eh.ai.provider">
+            <field name="name">OpenAI</field>
+            <field name="code">openai</field>
+            <field name="sequence">10</field>
+            <field name="base_url">https://api.openai.com/v1</field>
+            <field name="auth_scheme">bearer</field>
+            <field name="config_param_key">eh_ai.openai_key</field>
+            <field name="env_var">OPENAI_API_KEY</field>
+        </record>
+
+        <record id="provider_google" model="eh.ai.provider">
+            <field name="name">Google Gemini</field>
+            <field name="code">google</field>
+            <field name="sequence">20</field>
+            <!-- Gemini exposes an OpenAI-compatible surface, so the OpenAI
+                 Chat Completions adapter serves it unchanged. -->
+            <field name="base_url">https://generativelanguage.googleapis.com/v1beta/openai</field>
+            <field name="auth_scheme">bearer</field>
+            <field name="config_param_key">eh_ai.google_key</field>
+            <field name="env_var">GEMINI_API_KEY</field>
+        </record>
+
+        <record id="provider_xai" model="eh.ai.provider">
+            <field name="name">xAI (Grok)</field>
+            <!-- xAI exposes an OpenAI-compatible API, served by the same adapter. -->
+            <field name="code">openai_compatible</field>
+            <field name="sequence">30</field>
+            <field name="base_url">https://api.x.ai/v1</field>
+            <field name="auth_scheme">bearer</field>
+            <field name="config_param_key">eh_ai.xai_key</field>
+            <field name="env_var">XAI_API_KEY</field>
+        </record>
+
+        <record id="provider_ollama" model="eh.ai.provider">
+            <field name="name">Ollama (Local)</field>
+            <field name="code">ollama</field>
+            <field name="sequence">40</field>
+            <field name="active" eval="False"/>
+            <field name="base_url">http://localhost:11434/v1</field>
+            <field name="auth_scheme">none</field>
+            <field name="env_var">OLLAMA_API_KEY</field>
+        </record>
+    </data>
+</odoo>

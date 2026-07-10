@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="eh_ai.EditorPromptDialog">
+        <Dialog title="props.title or 'Write with AI'" size="'md'">
+            <textarea class="form-control" rows="4" t-ref="input"
+                      t-att-placeholder="props.placeholder"
+                      t-model="state.value" t-on-keydown="onKeydown"/>
+            <small class="text-muted">Ctrl/Cmd + Enter to generate.</small>
+            <t t-set-slot="footer">
+                <button class="btn btn-primary" t-on-click="onConfirm">Generate</button>
+                <button class="btn btn-secondary" t-on-click="() => props.close()">Cancel</button>
+            </t>
+        </Dialog>
+    </t>
+</templates>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="eh_ai_provider_view_list" model="ir.ui.view">
+        <field name="name">eh.ai.provider.list</field>
+        <field name="model">eh.ai.provider</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="base_url"/>
+                <field name="has_key"/>
+                <field name="model_count"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="eh_ai_provider_view_form" model="ir.ui.view">
+        <field name="name">eh.ai.provider.form</field>
+        <field name="model">eh.ai.provider</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Provider name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="base_url"/>
+                            <field name="auth_scheme"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="api_key" password="True"/>
+                            <field name="config_param_key"/>
+                            <field name="env_var"/>
+                            <field name="has_key"/>
+                        </group>
+                    </group>
+                    <group string="Advanced">
+                        <field name="extra_headers" placeholder='{"X-Custom-Header": "value"}' colspan="2"/>
+                    </group>
+                    <notebook>
+                        <page string="Models" name="models">
+                            <field name="model_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="technical_name"/>
+                                    <field name="kind"/>
+                                    <field name="supports_tools"/>
+                                    <field name="supports_temperature"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_eh_ai_provider" model="ir.actions.act_window">
+        <field name="name">Providers</field>
+        <field name="res_model">eh.ai.provider</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

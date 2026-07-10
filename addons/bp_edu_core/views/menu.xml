@@ -35,4 +35,11 @@
               sequence="30"
               groups="bp_edu_core.group_dosen_koordinator"/>
 
+    <menuitem id="menu_bp_edu_dokumen_master"
+              name="Dokumen Master"
+              parent="menu_bp_edu_master"
+              action="bp_edu_dokumen_master_action"
+              sequence="40"
+              groups="bp_edu_core.group_dosen_koordinator"/>
+
 </odoo>

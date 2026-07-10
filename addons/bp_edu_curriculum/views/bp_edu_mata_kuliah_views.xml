@@ -70,10 +70,12 @@
                         <!-- Tab: Deskripsi -->
                         <page string="Deskripsi" name="deskripsi">
                             <group string="Deskripsi Singkat">
+                                <label for="deskripsi_singkat" string="Deskripsi Singkat"/>
                                 <field name="deskripsi_singkat" nolabel="1"
                                        placeholder="Deskripsi singkat mata kuliah..."/>
                             </group>
                             <group string="Bahan Kajian">
+                                <label for="bahan_kajian" string="Bahan Kajian"/>
                                 <field name="bahan_kajian" nolabel="1"
                                        placeholder="1. Topik pertama&#10;2. Topik kedua&#10;..."/>
                             </group>
@@ -98,6 +100,7 @@
                         </page>
                     </notebook>
                 </sheet>
+                <chatter/>
             </form>
         </field>
     </record>

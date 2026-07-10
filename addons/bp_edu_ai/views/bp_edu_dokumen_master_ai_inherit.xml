@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_open_ai_wizard_dokumen_master" model="ir.actions.act_window">
+        <field name="name">Generate dengan AI</field>
+        <field name="res_model">bp.edu.ai.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{
+            'default_res_model': 'bp.edu.dokumen.master',
+            'default_res_id': active_id,
+        }</field>
+    </record>
+
+    <record id="bp_edu_dokumen_master_form_ai_inherit" model="ir.ui.view">
+        <field name="name">bp.edu.dokumen.master.form.ai.inherit</field>
+        <field name="model">bp.edu.dokumen.master</field>
+        <field name="inherit_id" ref="bp_edu_core.bp_edu_dokumen_master_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/div[hasclass('oe_button_box')]" position="inside">
+                <button name="%(bp_edu_ai.action_open_ai_wizard_dokumen_master)d"
+                        string="Generate dengan AI"
+                        type="action"
+                        class="oe_stat_button"
+                        icon="fa-magic"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

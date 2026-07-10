@@ -1,5 +1,5 @@
 {
-    'name': 'TTM Admin Panel',
+    'name': 'Admin Panel',
     'version': '19.0.4.0.0',
     'category': 'Administration',
     'author': 'IB Teguh TM',

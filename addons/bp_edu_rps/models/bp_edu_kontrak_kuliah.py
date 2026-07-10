@@ -8,6 +8,7 @@ _logger = logging.getLogger(__name__)
 class BpEduKontrakKuliah(models.Model):
     _name = 'bp.edu.kontrak.kuliah'
     _description = 'Kontrak Kuliah'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _rec_name = 'display_name'
     _order = 'tahun_akademik_id desc, mata_kuliah_id'
 

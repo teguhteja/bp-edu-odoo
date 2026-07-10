@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="eh_ai.Systray">
+        <div class="o_eh_ai_systray">
+            <button class="btn btn-link d-flex align-items-center" t-on-click="onClick"
+                    title="Ask AI">
+                <img class="o_eh_ai_mark" src="/eh_ai/static/src/img/eh_mark_white.svg"
+                     alt="Ask AI" width="18" height="18"/>
+                <span class="d-none d-md-inline ms-1">Ask AI</span>
+            </button>
+        </div>
+    </t>
+</templates>

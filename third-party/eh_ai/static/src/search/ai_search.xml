@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="eh_ai.SearchBarAiItem" t-inherit="web.SearchBar.QuickSearchItems"
+       t-inherit-mode="extension">
+        <xpath expr="//t[@t-elif='!item.isFieldProperty']" position="before">
+            <t t-elif="item.isEhAiAsk">
+                <span class="text-action">
+                    <img class="o_eh_ai_mark me-1" src="/eh_ai/static/src/img/eh_mark_bronze.svg"
+                         alt="" width="14" height="14"/>
+                    <t t-esc="item.label"/>
+                </span>
+            </t>
+        </xpath>
+    </t>
+</templates>

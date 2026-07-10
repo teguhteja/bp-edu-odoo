@@ -1,0 +1,11 @@
+# Extra Python dependencies for custom/third-party addons not covered by
+# Odoo's base image. Install with: pip install -r requirements.txt
+
+# bp_edu_document, bp_edu_core (Dokumen Master file extraction)
+python-docx
+PyPDF2
+
+# third-party/storage (fs_storage, fs_attachment, fs_attachment_s3)
+packaging
+fsspec>=2024.5.0
+s3fs

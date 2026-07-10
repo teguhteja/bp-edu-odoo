@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ─── Form View ─────────────────────────────────────────── -->
+    <record id="bp_edu_dokumen_master_form_view" model="ir.ui.view">
+        <field name="name">bp.edu.dokumen.master.form</field>
+        <field name="model">bp.edu.dokumen.master</field>
+        <field name="arch" type="xml">
+            <form string="Dokumen Master">
+                <header>
+                    <button name="action_extract_content"
+                            string="Ekstrak dari File"
+                            type="object"
+                            class="btn-secondary"
+                            icon="fa-magic"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_history"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-history">
+                            <field name="history_count" widget="statinfo" string="Riwayat"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name" string="Nama Dokumen"/>
+                        <h1>
+                            <field name="name" placeholder="contoh: Pedoman Akademik 2024"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Informasi">
+                            <field name="kategori"/>
+                            <field name="prodi_id" options="{'no_create': True}"/>
+                            <field name="version" readonly="1"/>
+                            <field name="active"/>
+                        </group>
+                        <group string="File">
+                            <field name="file" filename="filename"/>
+                            <field name="filename" invisible="1"/>
+                        </group>
+                    </group>
+                    <group string="Isi Dokumen (digunakan sebagai referensi AI)">
+                        <label for="isi_dokumen" string="Isi Dokumen"/>
+                        <field name="isi_dokumen" nolabel="1" widget="text" rows="16"
+                               placeholder="Isi teks dokumen — bisa diisi manual atau via tombol 'Ekstrak dari File'..."/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- ─── List View ─────────────────────────────────────────── -->
+    <record id="bp_edu_dokumen_master_list_view" model="ir.ui.view">
+        <field name="name">bp.edu.dokumen.master.list</field>
+        <field name="model">bp.edu.dokumen.master</field>
+        <field name="arch" type="xml">
+            <list string="Dokumen Master">
+                <field name="name"/>
+                <field name="kategori" widget="badge"/>
+                <field name="prodi_id"/>
+                <field name="filename"/>
+                <field name="version"/>
+                <field name="active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ─── Search View ───────────────────────────────────────── -->
+    <record id="bp_edu_dokumen_master_search_view" model="ir.ui.view">
+        <field name="name">bp.edu.dokumen.master.search</field>
+        <field name="model">bp.edu.dokumen.master</field>
+        <field name="arch" type="xml">
+            <search string="Cari Dokumen Master">
+                <field name="name"/>
+                <field name="kategori"/>
+                <field name="prodi_id"/>
+                <filter string="Aktif" name="aktif" domain="[('active', '=', True)]"/>
+                <filter string="Non-Aktif" name="nonaktif" domain="[('active', '=', False)]"/>
+                <group>
+                    <filter string="Kategori" name="group_kategori" context="{'group_by': 'kategori'}"/>
+                    <filter string="Program Studi" name="group_prodi" context="{'group_by': 'prodi_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ─── Riwayat: List/Form View ───────────────────────────── -->
+    <record id="bp_edu_dokumen_master_history_list_view" model="ir.ui.view">
+        <field name="name">bp.edu.dokumen.master.history.list</field>
+        <field name="model">bp.edu.dokumen.master.history</field>
+        <field name="arch" type="xml">
+            <list string="Riwayat Perubahan" create="false" edit="false">
+                <field name="create_date" string="Waktu"/>
+                <field name="edited_by"/>
+                <field name="version"/>
+                <field name="source" widget="badge"
+                       decoration-info="source == 'manual'"
+                       decoration-success="source == 'ai'"
+                       decoration-warning="source == 'extract'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="bp_edu_dokumen_master_history_form_view" model="ir.ui.view">
+        <field name="name">bp.edu.dokumen.master.history.form</field>
+        <field name="model">bp.edu.dokumen.master.history</field>
+        <field name="arch" type="xml">
+            <form string="Riwayat Perubahan" create="false" edit="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="dokumen_id"/>
+                            <field name="edited_by"/>
+                        </group>
+                        <group>
+                            <field name="source"/>
+                            <field name="version"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Prompt AI" name="prompt" invisible="not prompt">
+                            <field name="prompt" nolabel="1" readonly="1"/>
+                        </page>
+                        <page string="Isi Sebelum" name="sebelum">
+                            <field name="isi_sebelum" nolabel="1" readonly="1"/>
+                        </page>
+                        <page string="Isi Sesudah" name="sesudah">
+                            <field name="isi_sesudah" nolabel="1" readonly="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ─── Action ────────────────────────────────────────────── -->
+    <record id="bp_edu_dokumen_master_action" model="ir.actions.act_window">
+        <field name="name">Dokumen Master</field>
+        <field name="res_model">bp.edu.dokumen.master</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="bp_edu_dokumen_master_search_view"/>
+        <field name="context">{'search_default_aktif': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Belum ada Dokumen Master
+            </p>
+            <p>
+                Upload dokumen seperti Pedoman Akademik atau Buku Kurikulum di sini.
+                Dokumen ini digunakan sebagai referensi saat AI membuat RPS, SAP,
+                atau dokumen akademik lainnya.
+            </p>
+        </field>
+    </record>
+
+</odoo>

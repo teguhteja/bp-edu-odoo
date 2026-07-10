@@ -36,10 +36,11 @@ def _display_value(record, field_name):
     return str(value) if value else ''
 
 
-def _track_and_write(records, vals, tracked_fields):
+def _track_and_write(records, caller_cls, vals, tracked_fields):
     """
     Snapshot nilai lama → write → bandingkan → buat history records.
     Dipanggil oleh write() di setiap model.
+    caller_cls harus diisi dengan kelas yang mendefinisikan write() agar super() tidak loop.
     """
     fields_in_vals = [f for f in tracked_fields if f in vals]
 
@@ -49,7 +50,7 @@ def _track_and_write(records, vals, tracked_fields):
         for rec in records:
             snapshots[rec.id] = {f: _display_value(rec, f) for f in fields_in_vals}
 
-    result = super(type(records), records).write(vals)
+    result = super(caller_cls, records).write(vals)
 
     # Catat perubahan
     if snapshots:
@@ -121,7 +122,7 @@ class BpEduRpsTracking(models.Model):
         return _action_view_history(self)
 
     def write(self, vals):
-        return _track_and_write(self, vals, _RPS_TRACKED)
+        return _track_and_write(self, BpEduRpsTracking, vals, _RPS_TRACKED)
 
 
 # ── SAP ───────────────────────────────────────────────────────────────────────
@@ -145,7 +146,7 @@ class BpEduSapTracking(models.Model):
         return _action_view_history(self)
 
     def write(self, vals):
-        return _track_and_write(self, vals, _SAP_TRACKED)
+        return _track_and_write(self, BpEduSapTracking, vals, _SAP_TRACKED)
 
 
 # ── Kontrak Kuliah ────────────────────────────────────────────────────────────
@@ -174,4 +175,4 @@ class BpEduKontrakTracking(models.Model):
         return _action_view_history(self)
 
     def write(self, vals):
-        return _track_and_write(self, vals, _KONTRAK_TRACKED)
+        return _track_and_write(self, BpEduKontrakTracking, vals, _KONTRAK_TRACKED)

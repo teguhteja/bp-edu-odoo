@@ -17,7 +17,7 @@ class TtmToggleProtectedWizard(models.TransientModel):
 
         try:
             self.env.user.sudo()._check_credentials(
-                self.current_password,
+                {'type': 'password', 'token': self.current_password},
                 {'interactive': False},
             )
         except AccessDenied:

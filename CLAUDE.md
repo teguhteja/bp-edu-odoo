@@ -2,6 +2,38 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## bp-edu-odoo Project (Primary)
+
+This repo is an **Odoo 19** multi-tenant SaaS platform running on Docker Compose at `/home/ubuntu/bp-edu-odoo/` on OVH VPS (`teguhteja.com`).
+
+### Stack
+- Odoo 19 (`19.0-20260609`) in Docker service `web`
+- PostgreSQL 17 in Docker service `db`
+- Nginx Proxy Manager (`npm`) for subdomain routing + SSL
+- Custom addon: `addons/ttm_admin_panel/`
+
+### Two databases (always upgrade both)
+- `teguhteja` — production, served at `teguhteja.com`
+- `teguhteja-odoo-dev` — dev/testing
+
+```bash
+# Upgrade addon on both DBs
+docker compose exec -T web odoo -d teguhteja -u ttm_admin_panel --no-http --stop-after-init
+docker compose exec -T web odoo -d teguhteja-odoo-dev -u ttm_admin_panel --no-http --stop-after-init
+docker compose restart web
+```
+
+### Odoo 19 breaking changes (already applied)
+- `admin_passwd` is `FileOnlyOption` — set only in `odoo.conf`, never via CLI
+- `list_db = False` blocks `exp_create_database` / `exp_drop` via `@check_db_management_enabled` — use `_create_empty_database`, `_initialize_db`, `_drop_conn` directly
+- `_check_credentials(credential, env)` — `credential` must be `{'type': 'password', 'token': <str>}`, not a plain string
+- `category_id` removed from `res.groups`; `groups_id` removed from `res.users` views
+- `auth_oauth` depends on `auth_signup` — install `auth_signup` first when bootstrapping tenant DBs
+- `dbfilter = ^%d$` where `%d` = first subdomain part (e.g. `bpedu` from `bpedu.teguhteja.com`)
+
+---
+
+
 ## Project Overview
 
 CaritaHub AAC is an **Odoo 19** business application for community care management. It consists of ~97 custom modules in `caritahub/` and ~26 third-party modules in `third-party/`. The application manages members/clients, volunteers, activities, events, healthcare assessments, AI-powered features, and integrations with external services.

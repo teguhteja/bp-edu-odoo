@@ -201,19 +201,22 @@ class TtmTenant(models.Model):
         if not providers:
             return
 
-        # Install auth_oauth di database tenant baru jika belum ada
+        # Install auth_signup + auth_oauth di database tenant baru jika belum ada
+        # auth_oauth depends on auth_signup, keduanya harus diinstall bersamaan
         try:
             with odoo.sql_db.db_connect(db_name).cursor() as cr:
                 new_env = odoo.api.Environment(cr, odoo.SUPERUSER_ID, {})
-                mod = new_env['ir.module.module'].search([
-                    ('name', '=', 'auth_oauth'),
-                    ('state', '=', 'uninstalled'),
-                ], limit=1)
-                if mod:
-                    mod.write({'state': 'to install'})
+                for mod_name in ('auth_signup', 'auth_oauth'):
+                    mod = new_env['ir.module.module'].search([
+                        ('name', '=', mod_name),
+                        ('state', '=', 'uninstalled'),
+                    ], limit=1)
+                    if mod:
+                        mod.write({'state': 'to install'})
+                        _logger.info('Menandai %s untuk install di %s', mod_name, db_name)
                 cr.commit()
 
-            _logger.info('Menginstall auth_oauth di %s...', db_name)
+            _logger.info('Menginstall auth_signup + auth_oauth di %s...', db_name)
             Registry.new(db_name, update_module=True)
         except Exception as e:
             _logger.warning('Gagal install auth_oauth di %s: %s', db_name, e)

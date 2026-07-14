@@ -166,6 +166,18 @@ class TtmTenant(models.Model):
 
         db_name = self.name_database
 
+        # ── 0. web.base.url + freeze (HTTPS behind Cloudflare/nginx) ─────
+        get = lambda k, d: self.env['ir.config_parameter'].sudo().get_param(k, d)
+        base_domain = get('ttm.base.domain', 'teguhteja.com')
+        tenant_url = f'https://{self.subdomain}.{base_domain}'
+        with odoo.sql_db.db_connect(db_name).cursor() as cr:
+            new_env = odoo.api.Environment(cr, odoo.SUPERUSER_ID, {})
+            ICP = new_env['ir.config_parameter']
+            ICP.set_param('web.base.url', tenant_url)
+            ICP.set_param('web.base.url.freeze', 'True')
+            cr.commit()
+        _logger.info('web.base.url=%s (freeze=True) disimpan ke %s', tenant_url, db_name)
+
         # ── 1. Outgoing mail servers ──────────────────────────────────────
         mail_servers = self.env['ir.mail_server'].sudo().search([])
         if mail_servers:
@@ -201,12 +213,12 @@ class TtmTenant(models.Model):
         if not providers:
             return
 
-        # Install auth_signup + auth_oauth di database tenant baru jika belum ada
-        # auth_oauth depends on auth_signup, keduanya harus diinstall bersamaan
+        # Install mail + auth_signup + auth_oauth di database tenant baru
+        # Urutan penting: mail harus ada sebelum auth_signup bisa diinstall
         try:
             with odoo.sql_db.db_connect(db_name).cursor() as cr:
                 new_env = odoo.api.Environment(cr, odoo.SUPERUSER_ID, {})
-                for mod_name in ('auth_signup', 'auth_oauth'):
+                for mod_name in ('mail', 'auth_signup', 'auth_oauth'):
                     mod = new_env['ir.module.module'].search([
                         ('name', '=', mod_name),
                         ('state', '=', 'uninstalled'),
@@ -216,10 +228,36 @@ class TtmTenant(models.Model):
                         _logger.info('Menandai %s untuk install di %s', mod_name, db_name)
                 cr.commit()
 
-            _logger.info('Menginstall auth_signup + auth_oauth di %s...', db_name)
+            _logger.info('Menginstall mail + auth_signup + auth_oauth di %s...', db_name)
             Registry.new(db_name, update_module=True)
+
+            # Pastikan tidak ada modul yang masih stuck setelah install
+            with odoo.sql_db.db_connect(db_name).cursor() as cr:
+                new_env = odoo.api.Environment(cr, odoo.SUPERUSER_ID, {})
+                stuck = new_env['ir.module.module'].search([
+                    ('name', 'in', ('mail', 'auth_signup', 'auth_oauth')),
+                    ('state', '=', 'to install'),
+                ])
+                if stuck:
+                    stuck.write({'state': 'uninstalled'})
+                    cr.commit()
+                    _logger.warning(
+                        'Modul %s tidak bisa diinstall di %s, direset ke uninstalled',
+                        stuck.mapped('name'), db_name,
+                    )
         except Exception as e:
             _logger.warning('Gagal install auth_oauth di %s: %s', db_name, e)
+            # Reset supaya tidak memblokir operasi modul lain
+            try:
+                with odoo.sql_db.db_connect(db_name).cursor() as cr:
+                    new_env = odoo.api.Environment(cr, odoo.SUPERUSER_ID, {})
+                    new_env['ir.module.module'].search([
+                        ('name', 'in', ('mail', 'auth_signup', 'auth_oauth')),
+                        ('state', '=', 'to install'),
+                    ]).write({'state': 'uninstalled'})
+                    cr.commit()
+            except Exception:
+                pass
             return
 
         # Salin provider OAuth ke database tenant

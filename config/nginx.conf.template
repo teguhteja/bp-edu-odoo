@@ -10,12 +10,14 @@ map $http_x_forwarded_proto $real_proto {
 server {
     listen 80;
 
-    # Use Podman's internal aardvark-dns resolver (network gateway), re-resolve every 30s
-    # Prevents 502 after container restarts (avoids stale IP cache).
-    # NOTE: 127.0.0.11 is the Docker Compose convention and does NOT work with
-    # Podman — it must be Podman's actual network gateway IP (see `podman
-    # network inspect <network>` for the current value).
-    resolver 10.89.7.1 valid=30s ipv6=off;
+    # DNS resolver — beda antara Docker (127.0.0.11, bawaan Docker Compose) dan
+    # Podman (IP gateway network, mis. 10.89.7.1 — cek `podman network inspect
+    # <network>` per environment, bisa beda). Nilai diisi dari env var
+    # NGINX_RESOLVER (lihat .env / .env.example) supaya dev (Podman) dan
+    # produksi (Docker) tidak perlu edit file ini manual.
+    # Re-resolve setiap 30s — mencegah 502 setelah container restart (hindari
+    # stale IP cache).
+    resolver ${NGINX_RESOLVER} valid=30s ipv6=off;
 
     # Default is 1MB — too small for document uploads (Pedoman Akademik, Buku
     # Kurikulum, dll via Dokumen Master). Raise to allow larger file uploads.

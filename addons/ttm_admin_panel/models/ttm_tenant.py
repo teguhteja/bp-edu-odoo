@@ -15,9 +15,19 @@ class TtmTenant(models.Model):
     _rec_name = 'name'
 
     name = fields.Char(string='Nama Tenant', required=True)
-    name_database = fields.Char(string='Nama Database', required=True)
-    subdomain = fields.Char(string='Subdomain', required=True,
-                            help='Prefix subdomain, mis. "cak1" → cak1.teguhteja.com')
+    name_database = fields.Char(
+        string='Nama Database / Subdomain',
+        required=True,
+        help='Hanya huruf kecil, angka, dan tanda hubung (-). '
+             'Akan digunakan sebagai nama database dan subdomain URL. '
+             'Contoh: apotek-rama-sinta → apotek-rama-sinta.teguhteja.com',
+    )
+    # subdomain selalu sama dengan name_database — disembunyikan dari form.
+    subdomain = fields.Char(
+        compute='_compute_subdomain',
+        store=True,
+        readonly=True,
+    )
     admin_email = fields.Char(string='Email Admin', required=True)
     admin_name = fields.Char(string='Login Admin', default='admin',
                              help='Username login untuk database baru')
@@ -45,30 +55,74 @@ class TtmTenant(models.Model):
         groups = self.env.user.sudo().group_tenant_ids
         return groups[:1] if groups else False
 
-    @api.depends('subdomain')
+    # ── Slugify helper ────────────────────────────────────────────────────────
+
+    @staticmethod
+    def _slugify(text):
+        """Konversi teks bebas ke slug aman untuk database & subdomain."""
+        import re
+        import unicodedata
+        text = unicodedata.normalize('NFKD', text)
+        text = text.encode('ascii', 'ignore').decode('ascii')
+        text = text.lower()
+        text = re.sub(r'[^a-z0-9\-_]', '-', text)
+        text = re.sub(r'-{2,}', '-', text)
+        text = text.strip('-_')
+        return text or 'db'
+
+    # ── Onchange ──────────────────────────────────────────────────────────────
+
+    @api.onchange('name')
+    def _onchange_name_to_database(self):
+        """Auto-isi nama database dari nama tenant saat masih draft."""
+        if self.name and self.state == 'draft':
+            self.name_database = self._slugify(self.name)
+
+    @api.onchange('name_database')
+    def _onchange_sanitize_name_database(self):
+        """Sanitize nama database saat diketik manual."""
+        if self.name_database:
+            self.name_database = self._slugify(self.name_database)
+
+    # ── Compute ───────────────────────────────────────────────────────────────
+
+    @api.depends('name_database')
+    def _compute_subdomain(self):
+        for rec in self:
+            rec.subdomain = rec.name_database or ''
+
+    @api.depends('name_database')
     def _compute_full_url(self):
         base_domain = self.env['ir.config_parameter'].sudo().get_param(
             'ttm.base.domain', 'teguhteja.com'
         )
         for rec in self:
-            if rec.subdomain:
-                rec.full_url = f'{rec.subdomain}.{base_domain}'
-            else:
-                rec.full_url = False
+            rec.full_url = f'{rec.name_database}.{base_domain}' if rec.name_database else False
 
-    @api.constrains('name_database', 'subdomain')
+    # ── Constrains ────────────────────────────────────────────────────────────
+
+    @api.constrains('name_database')
+    def _check_name_database_format(self):
+        import re
+        pattern = re.compile(r'^[a-z0-9][a-z0-9\-_]*$')
+        for rec in self:
+            if rec.name_database and not pattern.match(rec.name_database):
+                raise ValidationError(_(
+                    'Nama database "%s" tidak valid.\n'
+                    'Aturan: huruf kecil (a-z), angka (0-9), tanda hubung (-), '
+                    'atau underscore (_). Tidak boleh diawali tanda hubung/underscore.'
+                ) % rec.name_database)
+
+    @api.constrains('name_database')
     def _check_unique_fields(self):
         for rec in self:
             if self.search_count([
                 ('name_database', '=', rec.name_database),
                 ('id', '!=', rec.id),
             ]):
-                raise ValidationError(_('Nama database "%s" sudah digunakan.') % rec.name_database)
-            if self.search_count([
-                ('subdomain', '=', rec.subdomain),
-                ('id', '!=', rec.id),
-            ]):
-                raise ValidationError(_('Subdomain "%s" sudah digunakan.') % rec.subdomain)
+                raise ValidationError(
+                    _('Nama database "%s" sudah digunakan oleh tenant lain.') % rec.name_database
+                )
 
     def _get_npm_config(self):
         get = self.env['ir.config_parameter'].sudo().get_param

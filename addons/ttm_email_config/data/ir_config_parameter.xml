@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!-- DB sumber yang dipakai sebagai referensi konfigurasi email -->
+    <record id="param_email_source_db" model="ir.config_parameter">
+        <field name="key">ttm.email_config.source_db</field>
+        <field name="value">teguhteja</field>
+    </record>
+</odoo>

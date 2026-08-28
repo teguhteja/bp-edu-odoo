@@ -45,3 +45,4 @@ config/odoo.conf
 
 # Local backups (e.g. before deleting vendored third-party code)
 /.backups/
+/backups/

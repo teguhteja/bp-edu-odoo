@@ -49,6 +49,7 @@
                         <group string="MK">
                             <field name="kode_mk" readonly="1"/>
                             <field name="nama_mk" readonly="1"/>
+                            <field name="semester" readonly="1"/>
                         </group>
                     </group>
 
@@ -263,6 +264,7 @@
                   decoration-muted="state == 'draft'">
                 <field name="kode_mk" optional="show"/>
                 <field name="nama_mk"/>
+                <field name="semester" optional="show"/>
                 <field name="dosen_id" optional="show"/>
                 <field name="tahun_akademik_id" optional="show"/>
                 <field name="tanggal_penyusunan" optional="hide"/>
@@ -282,6 +284,7 @@
                 <field name="mata_kuliah_id"/>
                 <field name="dosen_id"/>
                 <field name="tahun_akademik_id"/>
+                <field name="semester"/>
                 <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
                 <filter string="Final" name="final" domain="[('state', '=', 'final')]"/>
                 <group>
@@ -289,6 +292,8 @@
                             context="{'group_by': 'tahun_akademik_id'}"/>
                     <filter string="Dosen" name="group_dosen"
                             context="{'group_by': 'dosen_id'}"/>
+                    <filter string="Semester" name="group_semester"
+                            context="{'group_by': 'semester'}"/>
                 </group>
             </search>
         </field>

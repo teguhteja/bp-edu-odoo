@@ -33,6 +33,7 @@ class BpEduRps(models.Model):
     # Computed dari mata_kuliah_id untuk kemudahan template
     kode_mk = fields.Char(related='mata_kuliah_id.kode', string='Kode MK', store=True)
     nama_mk = fields.Char(related='mata_kuliah_id.nama', string='Nama MK', store=True)
+    semester = fields.Integer(related='mata_kuliah_id.semester', string='Semester', store=True)
 
     detail_ids = fields.One2many('bp.edu.rps.detail', 'rps_id', string='Detail Per Minggu')
 

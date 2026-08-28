@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="atliis_app_launcher.CommandPaletteResourceItem">
+        <div class="o_atliis_cp_item d-flex align-items-center gap-2 px-3 py-2">
+            <img t-if="props.iconUrl" class="o_atliis_cp_item_icon" t-att-src="props.iconUrl" alt="App Icon"/>
+            <div class="o_atliis_cp_item_body flex-grow-1 min-w-0">
+                <div class="d-flex align-items-center gap-2">
+                    <t t-slot="name"/>
+                    <small t-if="props.kind" class="o_atliis_cp_item_kind text-muted" t-esc="props.kind"/>
+                </div>
+                <small
+                    t-if="props.subtitle"
+                    class="o_atliis_cp_item_subtitle d-block text-muted text-truncate"
+                    t-att-title="props.subtitle"
+                    t-esc="props.subtitle"
+                />
+            </div>
+            <t t-slot="focusMessage"/>
+        </div>
+    </t>
+</templates>

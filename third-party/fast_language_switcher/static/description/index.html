@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #212529;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 24px;
+            line-height: 1.6;
+        }
+        h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.25rem; }
+        h2 { font-size: 1.25rem; font-weight: 600; margin-top: 2rem; border-bottom: 2px solid #e9ecef; padding-bottom: 6px; }
+        .tagline { font-size: 1.05rem; color: #6c757d; margin-bottom: 2rem; }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 1.5rem 0; }
+        .feature-card {
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 18px;
+            background: #f8f9fa;
+        }
+        .feature-card .icon { font-size: 2rem; margin-bottom: 10px; }
+        .feature-card h3 { font-size: 1rem; font-weight: 600; margin: 0 0 6px; }
+        .feature-card p { font-size: 0.9rem; color: #495057; margin: 0; }
+        kbd {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-bottom-width: 2px;
+            border-radius: 4px;
+            padding: 2px 7px;
+            font-size: 0.85em;
+            font-family: inherit;
+        }
+        .steps { padding-left: 1.25rem; }
+        .steps li { margin-bottom: 8px; }
+        .note {
+            background: #e8f4fd;
+            border-left: 4px solid #0d6efd;
+            border-radius: 0 6px 6px 0;
+            padding: 12px 16px;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+        }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid #dee2e6; }
+        th { background: #f8f9fa; font-weight: 600; }
+        .badge {
+            display: inline-block;
+            background: #0d6efd;
+            color: #fff;
+            border-radius: 4px;
+            padding: 2px 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🌐 Fast Language Switcher</h1>
+<p class="tagline">
+    A sleek systray language switcher for Odoo 17 with emoji flags and a configurable keyboard shortcut.
+</p>
+
+<h2>Overview</h2>
+<p>
+    <strong>Fast Language Switcher</strong> adds a compact flag icon to your Odoo navigation bar.
+    Click it to choose a language from a dropdown, or use a keyboard shortcut (default <kbd>Ctrl</kbd>+<kbd>L</kbd>)
+    to open a macOS-style floating picker and cycle through languages without touching the mouse.
+    The shortcut is fully configurable from General Settings.
+</p>
+
+<h2>Key Features</h2>
+<div class="features">
+    <div class="feature-card">
+        <div class="icon">🏳️</div>
+        <h3>Flag Icons in Systray</h3>
+        <p>Country flag emoji for the active language is always visible in the top navigation bar.</p>
+    </div>
+    <div class="feature-card">
+        <div class="icon">🖱️</div>
+        <h3>Click Dropdown</h3>
+        <p>Click the flag to open a clean dropdown listing all installed languages with a checkmark on the active one.</p>
+    </div>
+    <div class="feature-card">
+        <div class="icon">⌨️</div>
+        <h3>Keyboard Shortcut</h3>
+        <p>Press the configured shortcut (default <kbd>Ctrl</kbd>+<kbd>L</kbd>) to open a floating language picker and cycle languages.</p>
+    </div>
+    <div class="feature-card">
+        <div class="icon">⚙️</div>
+        <h3>Configurable Shortcut</h3>
+        <p>Change the shortcut any time in <strong>Settings → General Settings → Fast Language Switcher</strong>. Click to record a new key combination.</p>
+    </div>
+    <div class="feature-card">
+        <div class="icon">✨</div>
+        <h3>macOS-style Wizard</h3>
+        <p>Frosted-glass floating panel with smooth animations. Release the modifier key to apply, or press Esc to cancel.</p>
+    </div>
+    <div class="feature-card">
+        <div class="icon">📱</div>
+        <h3>Responsive</h3>
+        <p>Language code label hides on small screens; the flag icon always stays visible.</p>
+    </div>
+</div>
+
+<h2>How to Use</h2>
+
+<h3>Click-based switching</h3>
+<ol class="steps">
+    <li>Click the flag icon in the top navigation bar.</li>
+    <li>Choose any active language from the dropdown list.</li>
+    <li>The page reloads with the selected language applied.</li>
+</ol>
+
+<h3>Keyboard shortcut switching (default: Ctrl+L)</h3>
+<ol class="steps">
+    <li>Press <kbd>Ctrl</kbd>+<kbd>L</kbd> — a floating picker opens with the next language pre-selected.</li>
+    <li>Press the shortcut again to cycle to the next language.</li>
+    <li>Release <kbd>Ctrl</kbd> to apply the highlighted language, <strong>or</strong> click any language in the list.</li>
+    <li>Press <kbd>Esc</kbd> to close the picker without switching.</li>
+</ol>
+
+<div class="note">
+    <strong>Tip:</strong> The shortcut can be customised. Go to <strong>Settings → General Settings → Fast Language Switcher</strong>,
+    click the shortcut field, and press your preferred key combination (e.g. <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd> or <kbd>Alt</kbd>+<kbd>L</kbd>).
+</div>
+
+<h2>Configuration</h2>
+<p>Navigate to <strong>Settings → General Settings</strong> and scroll to the <em>Fast Language Switcher</em> section.</p>
+<table>
+    <thead>
+        <tr><th>Setting</th><th>Default</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Language Switcher Shortcut</td>
+            <td><kbd>Ctrl</kbd>+<kbd>L</kbd></td>
+            <td>
+                Keyboard shortcut to open the floating language picker.
+                Click the field and press a new combination to change it.
+                Supported modifiers: <kbd>Ctrl</kbd>, <kbd>Alt</kbd>, <kbd>Shift</kbd>, <kbd>Meta</kbd>.
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Requirements</h2>
+<table>
+    <thead>
+        <tr><th>Requirement</th><th>Version</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Odoo</td><td>17.0</td></tr>
+        <tr><td>Python</td><td>3.10+</td></tr>
+        <tr><td>Browser</td><td>Any modern browser (Chrome, Firefox, Edge, Safari)</td></tr>
+    </tbody>
+</table>
+
+<h2>Installation</h2>
+<ol class="steps">
+    <li>Copy the <code>fast_language_switcher</code> folder into your Odoo addons directory.</li>
+    <li>Restart the Odoo server.</li>
+    <li>Go to <strong>Apps</strong>, search for <em>Fast Language Switcher</em>, and click <strong>Install</strong>.</li>
+    <li>Ensure at least two languages are installed and active under <strong>Settings → Translations → Languages</strong>.</li>
+</ol>
+
+<h2>Keyboard Shortcut Reference</h2>
+<table>
+    <thead>
+        <tr><th>Key</th><th>Action</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Configured shortcut (default <kbd>Ctrl</kbd>+<kbd>L</kbd>)</td><td>Open picker / cycle to next language</td></tr>
+        <tr><td>Release modifier key (e.g. <kbd>Ctrl</kbd>)</td><td>Apply the highlighted language</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>Close picker without switching</td></tr>
+        <tr><td>Click language in picker</td><td>Switch immediately</td></tr>
+    </tbody>
+</table>
+
+<h2>License</h2>
+<p>This module is released under the <strong>LGPL-3</strong> license.</p>
+
+</body>
+</html>

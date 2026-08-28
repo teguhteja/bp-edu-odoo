@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="fast_language_switcher.ShortcutInputField">
+        <div class="o_shortcut_input_field">
+            <t t-if="isReadonly">
+                <div class="o_shortcut_display o_shortcut_display_readonly">
+                    <t t-foreach="currentShortcut.split('+')" t-as="part" t-key="part_index">
+                        <t t-if="part_index > 0"><span class="o_shortcut_sep">+</span></t>
+                        <kbd t-esc="part.charAt(0).toUpperCase() + part.slice(1)"/>
+                    </t>
+                </div>
+            </t>
+            <t t-else="">
+                <!-- Hidden focusable input that captures keydown events -->
+                <input
+                    t-ref="input"
+                    class="o_shortcut_capture_input"
+                    type="text"
+                    readonly="readonly"
+                    t-on-keydown="onKeyDown"
+                    t-on-blur="onBlur"
+                />
+                <div
+                    class="o_shortcut_display"
+                    t-att-class="{ 'o_shortcut_recording': state.recording }"
+                    t-on-click="startRecording"
+                    tabindex="0"
+                    t-on-keydown="onKeyDown"
+                    t-on-blur="onBlur"
+                >
+                    <t t-if="!state.recording and currentShortcut">
+                        <t t-foreach="currentShortcut.split('+')" t-as="part" t-key="part_index">
+                            <t t-if="part_index > 0"><span class="o_shortcut_sep">+</span></t>
+                            <kbd t-esc="part.charAt(0).toUpperCase() + part.slice(1)"/>
+                        </t>
+                    </t>
+                    <t t-elif="state.recording">
+                        <span class="o_shortcut_hint" t-esc="state.displayValue"/>
+                    </t>
+                    <t t-else="">
+                        <span class="o_shortcut_hint">Click to record shortcut</span>
+                    </t>
+                </div>
+                <div class="o_shortcut_actions">
+                    <button
+                        type="button"
+                        class="btn btn-sm btn-secondary o_shortcut_record_btn"
+                        t-if="!state.recording"
+                        t-on-click="startRecording"
+                        title="Click then press your desired key combination"
+                    >
+                        <i class="fa fa-keyboard-o me-1"/>Record
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-sm btn-light o_shortcut_cancel_btn"
+                        t-if="state.recording"
+                        t-on-click="cancelRecording"
+                    >
+                        <i class="fa fa-times me-1"/>Cancel
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-sm btn-light o_shortcut_reset_btn"
+                        title="Reset to default (Ctrl+L)"
+                        t-on-click="resetToDefault"
+                    >
+                        <i class="fa fa-undo me-1"/>Default
+                    </button>
+                </div>
+            </t>
+        </div>
+    </t>
+
+</templates>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="app_launcher_dashboard.NavBarAppsMenu" t-inherit="web.NavBar.AppsMenu" t-inherit-mode="extension">
+        <xpath expr="//t[@t-else='']/div[@t-if='!isScopedApp' and contains(@class, 'o_navbar_apps_menu')]/Dropdown" position="replace">
+            <button
+                type="button"
+                class="o_nav_entry o_app_launcher_home_btn"
+                data-hotkey="h"
+                title="Home Menu"
+                t-on-click.prevent="onAppLauncherHomeClick"
+            >
+                <i class="oi oi-apps" />
+            </button>
+        </xpath>
+    </t>
+
+    <t t-name="app_launcher_dashboard.AppLauncherDashboard">
+        <div t-attf-class="o_app_launcher_dashboard h-100 {{ isSearchMode ? 'o_search_mode' : '' }}">
+            <t t-if="isSearchMode">
+                <div class="o_app_launcher_backdrop" t-on-click="this.onSearchBackdropClick"/>
+            </t>
+
+            <div class="o_app_launcher_center_box">
+                <div class="o_app_launcher_search_wrap">
+                    <input
+                        class="o_app_launcher_search"
+                        type="search"
+                        placeholder="/ Search apps and menus..."
+                        t-ref="searchInput"
+                        t-att-value="state.query"
+                        t-on-input="this.onSearchInput"
+                        t-on-keydown="this.onSearchKeyDown"
+                    />
+                    <span class="o_app_launcher_search_icon oi oi-search"/>
+                </div>
+
+                <t t-if="isSearchMode">
+                    <div class="o_app_launcher_search_panel">
+                        <t t-if="searchResults.length">
+                            <div class="o_app_launcher_results">
+                                <t t-foreach="searchResults" t-as="result" t-key="result.id">
+                                    <button
+                                        type="button"
+                                        t-attf-class="o_app_launcher_result {{ result.entry_type === 'app' ? 'is-app' : 'is-menu' }} {{ isActiveResult(result_index) ? 'is-active' : '' }}"
+                                        t-on-mouseenter="() => this.onSearchResultMouseEnter(result_index)"
+                                        t-on-click="() => this.openApp(result)"
+                                    >
+                                        <t t-if="result.entry_type === 'app'">
+                                            <img
+                                                class="o_app_launcher_result_icon"
+                                                t-att-src="result.icon_url || result.default_icon_url"
+                                                t-att-data-default-icon="result.default_icon_url"
+                                                alt="Result Icon"
+                                                t-on-error="this.onImageError"
+                                            />
+                                        </t>
+                                        <span class="o_app_launcher_result_name" t-esc="result.name"/>
+                                    </button>
+                                </t>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <div class="o_app_launcher_empty">No applications or menus matched your search.</div>
+                        </t>
+                    </div>
+                </t>
+            </div>
+
+            <t t-if="state.loading">
+                <div class="o_app_launcher_empty">Loading applications...</div>
+            </t>
+            <t t-elif="!isSearchMode and !appCards.length">
+                <div class="o_app_launcher_empty">No applications available.</div>
+            </t>
+            <t t-elif="!isSearchMode">
+                <div class="o_app_launcher_grid">
+                    <t t-foreach="appCards" t-as="app" t-key="app.id">
+                        <article
+                            class="o_app_launcher_card"
+                            t-att-class="isDragging(app.id) ? 'o_app_launcher_card is-dragging' : (isDragOver(app.id) ? 'o_app_launcher_card is-drag-over' : 'o_app_launcher_card')"
+                            draggable="true"
+                            t-att-title="app.name"
+                            t-on-click="() => this.openApp(app)"
+                            t-on-dragstart="(ev) => this.onAppDragStart(ev, app)"
+                            t-on-dragover="(ev) => this.onAppDragOver(ev, app)"
+                            t-on-drop="(ev) => this.onAppDrop(ev, app)"
+                            t-on-dragend="this.onAppDragEnd"
+                        >
+                            <img
+                                class="o_app_launcher_icon"
+                                t-att-src="app.icon_url || app.default_icon_url"
+                                t-att-data-default-icon="app.default_icon_url"
+                                alt="App Icon"
+                                t-on-error="this.onImageError"
+                            />
+                            <div class="o_app_launcher_name" t-esc="app.name"/>
+                        </article>
+                    </t>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

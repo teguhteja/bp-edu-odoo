@@ -1,0 +1,287 @@
+.o_app_launcher_dashboard {
+    --launcher-bg-start: #f4f7fb;
+    --launcher-bg-end: #e9eff7;
+    --launcher-card-bg: #ffffff;
+    --launcher-card-border: #d9e2ef;
+    --launcher-title: #1f2d3d;
+    --launcher-muted: #5d6c7f;
+    --launcher-accent: #0f9d8f;
+    --launcher-accent-soft: #dbf4f1;
+
+    position: relative;
+    min-height: 100%;
+    padding: 2.25rem 1.25rem 1.5rem;
+    background: linear-gradient(140deg, var(--launcher-bg-start), var(--launcher-bg-end));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body.o_app_launcher_active {
+    .o_main_navbar {
+        .o_menu_brand,
+        .o_menu_sections,
+        .o_navbar_breadcrumbs {
+            display: none !important;
+        }
+    }
+}
+
+.o_app_launcher_center_box {
+    width: 100%;
+    max-width: 980px;
+    margin: 6rem auto 0;
+    z-index: 12;
+}
+
+.o_app_launcher_search_wrap {
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.o_app_launcher_search {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--launcher-card-border);
+    border-radius: 10px;
+    padding: 0.95rem 3rem 0.95rem 1rem;
+    background: #fff;
+    color: var(--launcher-title);
+    font-size: 1.1rem;
+    outline: none;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.o_app_launcher_search:focus {
+    border-color: var(--launcher-accent);
+    box-shadow: 0 0 0 0.2rem rgba(15, 157, 143, 0.18);
+}
+
+.o_app_launcher_search_icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #57687f;
+    pointer-events: none;
+    font-size: 1.2rem;
+}
+
+.o_app_launcher_grid {
+    margin-top: 1.65rem;
+    display: grid;
+    gap: 0.8rem;
+    grid-template-columns: repeat(auto-fit, minmax(128px, 128px));
+    justify-content: center;
+    width: 100%;
+    max-width: 980px;
+}
+
+.o_app_launcher_card {
+    position: relative;
+    min-height: 122px;
+    border: 1px solid var(--launcher-card-border);
+    border-radius: 12px;
+    background: radial-gradient(circle at top right, var(--launcher-accent-soft), transparent 45%), var(--launcher-card-bg);
+    padding: 0.7rem 0.6rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.o_app_launcher_card:hover {
+    transform: translateY(-1px);
+    border-color: var(--launcher-accent);
+    box-shadow: 0 8px 20px rgba(31, 45, 61, 0.1);
+}
+
+.o_app_launcher_card.is-dragging {
+    opacity: 0.45;
+    transform: scale(0.98);
+}
+
+.o_app_launcher_card.is-drag-over {
+    border-color: var(--launcher-accent);
+    box-shadow: 0 0 0 2px rgba(15, 157, 143, 0.24);
+}
+
+.o_app_launcher_icon {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    margin-bottom: 0.45rem;
+}
+
+.o_app_launcher_name {
+    color: var(--launcher-title);
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.o_app_launcher_backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(42, 49, 59, 0.5);
+    z-index: 10;
+}
+
+.o_search_mode .o_app_launcher_center_box {
+    position: fixed;
+    top: 6.5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100vw - 2rem);
+    max-width: 1120px;
+}
+
+.o_search_mode .o_app_launcher_search {
+    border-radius: 8px 8px 0 0;
+    border-bottom-color: #cfd8e7;
+    padding-top: 1.02rem;
+    padding-bottom: 1.02rem;
+}
+
+.o_search_mode .o_app_launcher_search_wrap,
+.o_search_mode .o_app_launcher_search_panel {
+    width: 100%;
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+.o_app_launcher_search_panel {
+    border: 1px solid #cfd8e7;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    background: #f8fafc;
+    overflow: hidden;
+    box-shadow: 0 20px 36px rgba(24, 33, 44, 0.24);
+}
+
+.o_app_launcher_results {
+    max-height: 70vh;
+    overflow: auto;
+}
+
+.o_app_launcher_result {
+    width: 100%;
+    border: none;
+    border-top: 1px solid #d6deec;
+    background: #f8fafc;
+    color: var(--launcher-title);
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.78rem 1rem;
+    text-align: left;
+}
+
+.o_app_launcher_result:first-child {
+    border-top: none;
+}
+
+.o_app_launcher_result.is-app {
+    background: #eaf2f4;
+    font-weight: 600;
+}
+
+.o_app_launcher_result.is-menu {
+    gap: 0;
+    padding-left: 2.3rem;
+}
+
+.o_app_launcher_result.is-active {
+    background: #e6eef6;
+}
+
+.o_app_launcher_result:hover {
+    background: #e6eef6;
+}
+
+.o_app_launcher_result_icon {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    flex: 0 0 34px;
+}
+
+.o_app_launcher_result_name {
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.1rem;
+}
+
+.o_app_launcher_empty {
+    margin-top: 1.25rem;
+    border: 1px dashed var(--launcher-card-border);
+    background: #fff;
+    border-radius: 12px;
+    color: var(--launcher-muted);
+    text-align: center;
+    padding: 1.8rem 1rem;
+    width: 100%;
+    max-width: 980px;
+}
+
+.o_search_mode .o_app_launcher_empty {
+    margin-top: 0;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    padding: 1.6rem 1rem;
+}
+
+@media (max-width: 991.98px) {
+    .o_search_mode .o_app_launcher_center_box {
+        top: 4.5vh;
+        width: calc(100vw - 1.1rem);
+    }
+
+    .o_app_launcher_result_name {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .o_app_launcher_dashboard {
+        padding: 1rem 0.7rem;
+    }
+
+    .o_app_launcher_grid {
+        grid-template-columns: repeat(auto-fit, minmax(108px, 108px));
+        gap: 0.65rem;
+    }
+
+    .o_app_launcher_card {
+        min-height: 106px;
+        padding: 0.6rem 0.45rem;
+    }
+
+    .o_app_launcher_icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .o_app_launcher_name {
+        font-size: 0.82rem;
+    }
+
+    .o_app_launcher_result {
+        padding: 0.68rem 0.78rem;
+    }
+
+    .o_app_launcher_result.is-menu {
+        padding-left: 1.15rem;
+    }
+}

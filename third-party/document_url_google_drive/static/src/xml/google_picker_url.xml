@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright (C) 2023 Cetmix OÜ
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+     Migrated to the Odoo 19 mail.Chatter template. -->
+<templates xml:space="preserve">
+    <t t-inherit="mail.Chatter" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('o-mail-AttachmentBox')]//button[hasclass('o_add_url_button')]" position="after">
+            <button
+                t-if="googlePickerActive"
+                type="button"
+                class="o_add_gdrive_url_button btn btn-link"
+                t-on-click="onClickAddGoogleDrive"
+            >
+                <i class="fa fa-plus-square" />
+                Add GDrive link
+            </button>
+            <i
+                t-if="googlePicker.accessToken"
+                class="fa fa-sign-out ms-1"
+                role="button"
+                title="Sign out of Google"
+                t-on-click="onClickGoogleSignOut"
+            />
+        </xpath>
+    </t>
+</templates>

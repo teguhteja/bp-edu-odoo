@@ -1,0 +1,125 @@
+// ----------------------------------------------------------------
+// Toggle button look & feel
+// ----------------------------------------------------------------
+// Two clear states so it's obvious at a glance whether the chatter
+// is currently shown or hidden:
+//   - default  (chatter visible): neutral outlined button
+//   - .my_hide_chatter_btn_active (chatter hidden): solid purple
+//     highlight, matching the module's own icon color, so the
+//     "active/on" state actually stands out in the control panel
+//     instead of blending in with everything else.
+$mhc-purple: #714B9F;
+$mhc-purple-dark: #5b3b83;
+
+.my_hide_chatter_btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin-left: 8px;
+    padding: 0;
+    flex: none;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid #c7c7c7;
+    background-color: #fff;
+    color: #4a4a4a;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+    transition: background-color 0.15s ease, color 0.15s ease,
+        border-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+
+    i {
+        font-size: 15px;
+        line-height: 1;
+        pointer-events: none;
+    }
+
+    &:hover {
+        border-color: $mhc-purple;
+        color: $mhc-purple;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+    }
+
+    &:active {
+        transform: scale(0.94);
+    }
+
+    &:focus,
+    &:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(113, 75, 159, 0.3);
+    }
+
+    // Highlighted / active state -> chatter is currently HIDDEN.
+    // Solid fill makes the "on" state unmistakable.
+    &.my_hide_chatter_btn_active {
+        border-color: $mhc-purple;
+        background-color: $mhc-purple;
+        color: #fff;
+        box-shadow: 0 1px 4px rgba(113, 75, 159, 0.55);
+
+        &:hover {
+            background-color: $mhc-purple-dark;
+            border-color: $mhc-purple-dark;
+            color: #fff;
+        }
+    }
+}
+
+// ----------------------------------------------------------------
+// Anti-flash guard
+// ----------------------------------------------------------------
+// Until the JS has explicitly decided show/hide for THIS form root
+// (it adds .my_hide_chatter_ready the instant the root appears - see
+// applyStoredPref in the JS), keep the chatter invisible-but-in-place.
+// No layout shift, and no "flash of the wrong state" in either
+// direction while that per-app decision is being made on refresh.
+.o_form_renderer:not(.my_hide_chatter_ready) {
+    .o-mail-Chatter,
+    .o_attachment_preview {
+        visibility: hidden !important;
+    }
+}
+
+// ----------------------------------------------------------------
+// Layout impact when the chatter is hidden
+// ----------------------------------------------------------------
+.o_form_renderer.o_chatter_hidden {
+    // Hide the chatter itself...
+    .o-mail-Chatter,
+    .o_attachment_preview {
+        display: none !important;
+    }
+
+    // ...and fully collapse the wrapper element that used to hold it.
+    // On desktop that wrapper often shrinks to nothing on its own, but
+    // on narrow/mobile layouts Odoo reserves it a fixed width/height,
+    // which is exactly what was leaving a blank empty panel instead of
+    // letting the form take the full page. The toggle button lives in
+    // the control panel bar, entirely outside this wrapper, so it's
+    // safe to hide the wrapper completely.
+    .o_chatter_toggle_row {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        max-width: 0 !important;
+        max-height: 0 !important;
+        flex: 0 0 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: 0 !important;
+    }
+
+    // Let the sheet take the freed-up width/height on any layout
+    // (side-by-side on desktop, stacked on mobile).
+    .o_form_sheet_bg,
+    .o_form_sheet {
+        max-width: 100% !important;
+        width: 100% !important;
+        flex: 1 1 100% !important;
+    }
+}

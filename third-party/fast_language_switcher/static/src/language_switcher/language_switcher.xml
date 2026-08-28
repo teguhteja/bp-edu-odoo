@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="fast_language_switcher.LanguageSwitcher">
+        <Dropdown class="'o_lang_switcher_menu'" togglerClass="'o_lang_switcher_toggle'">
+            <t t-set-slot="toggler">
+                <div class="o_lang_switcher_btn" title="Switch Language (Ctrl+L)">
+                    <t t-if="currentFlagUrl">
+                        <img
+                            class="o_lang_flag"
+                            t-att-src="currentFlagUrl"
+                            t-att-alt="state.currentLang and state.currentLang.name"
+                        />
+                    </t>
+                    <span class="o_lang_code" t-esc="currentLangCode"/>
+                </div>
+            </t>
+            <t t-if="state.languages.length">
+                <t t-foreach="state.languages" t-as="lang" t-key="lang.code">
+                    <DropdownItem
+                        class="{ 'o_lang_item': true, 'o_lang_item_active': lang.code === user.lang }"
+                        onSelected="() => this.switchLanguage(lang)"
+                    >
+                        <div class="o_lang_item_content">
+                            <img
+                                class="o_lang_item_flag"
+                                t-att-src="lang.flag_image_url"
+                                t-att-alt="lang.name"
+                            />
+                            <span class="o_lang_item_name" t-esc="lang.name"/>
+                            <t t-if="lang.code === user.lang">
+                                <i class="fa fa-check o_lang_item_check ms-auto"/>
+                            </t>
+                        </div>
+                    </DropdownItem>
+                </t>
+            </t>
+        </Dropdown>
+    </t>
+
+</templates>

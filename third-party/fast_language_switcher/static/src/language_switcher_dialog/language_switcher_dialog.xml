@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="fast_language_switcher.LanguageSwitcherDialog">
+        <!-- Always mounted as a systray item; the overlay portal is invisible until Ctrl+L is pressed -->
+        <t t-if="state.visible">
+            <div class="o_lang_switcher_overlay">
+                <div class="o_lang_switcher_backdrop" t-on-click="_close"/>
+                <div class="o_lang_switcher_panel">
+                    <div class="o_lang_switcher_hint">
+                        <span>Switch Language</span>
+                        <span class="o_lang_switcher_shortcut_badge" t-esc="state.shortcutLabel"/>
+                    </div>
+                    <div class="o_lang_switcher_list">
+                        <t t-foreach="state.languages" t-as="lang" t-key="lang.code">
+                            <div
+                                class="o_lang_switcher_item"
+                                t-att-class="{
+                                    'o_lang_switcher_item_selected': lang_index === state.selectedIndex,
+                                    'o_lang_switcher_item_current': lang.code === user.lang,
+                                }"
+                                t-on-click="() => this.selectLanguage(lang_index)"
+                            >
+                                <img
+                                    class="o_lang_switcher_flag"
+                                    t-att-src="lang.flag_image_url"
+                                    t-att-alt="lang.name"
+                                />
+                                <span class="o_lang_switcher_name" t-esc="lang.name"/>
+                                <t t-if="lang.code === user.lang">
+                                    <span class="o_lang_switcher_current_badge">current</span>
+                                </t>
+                            </div>
+                        </t>
+                    </div>
+                    <div t-if="state.applying" class="o_lang_switcher_applying">
+                        <i class="fa fa-spinner fa-spin me-2"/>
+                        <span>Applying...</span>
+                    </div>
+                    <div t-else="" class="o_lang_switcher_footer">
+                        Press <t t-esc="state.shortcutLabel"/> to cycle · click to select · Esc to cancel
+                    </div>
+                </div>
+            </div>
+        </t>
+        <t t-else=""/>
+    </t>
+
+</templates>

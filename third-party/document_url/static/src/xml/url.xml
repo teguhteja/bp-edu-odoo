@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2018-2021 Tecnativa
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+     Migrated to the Odoo 19 mail.Chatter template. -->
+<templates xml:space="preserve">
+
+    <t t-inherit="mail.Chatter" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('o-mail-AttachmentBox')]//FileUploader" position="after">
+            <button
+                type="button"
+                class="o_add_url_button btn btn-link"
+                t-on-click="onClickAddUrl"
+            >
+                <i class="fa fa-plus-square" />
+                Add URL
+            </button>
+        </xpath>
+    </t>
+
+</templates>

@@ -1,0 +1,181 @@
+// macOS-style language switcher overlay
+
+.o_lang_switcher_overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.o_lang_switcher_backdrop {
+    position: absolute;
+    inset: 0;
+    pointer-events: all;
+}
+
+.o_lang_switcher_panel {
+    position: relative;
+    pointer-events: all;
+    background: rgba(30, 30, 30, 0.92);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 16px;
+    padding: 20px 16px 14px;
+    min-width: 280px;
+    max-width: 360px;
+    max-height: 80vh;
+    box-shadow:
+        0 32px 64px rgba(0, 0, 0, 0.5),
+        0 8px 24px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: o_lang_panel_in 0.18s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    overflow: hidden;
+}
+
+@keyframes o_lang_panel_in {
+    from {
+        opacity: 0;
+        transform: scale(0.88) translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.o_lang_switcher_hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.o_lang_switcher_shortcut_badge {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.5px;
+    font-family: inherit;
+}
+
+.o_lang_switcher_list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    overflow-y: auto;
+    max-height: calc(80vh - 120px);
+
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 2px;
+    }
+}
+
+.o_lang_switcher_item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.12s ease;
+    position: relative;
+
+    &:hover:not(.o_lang_switcher_item_selected) {
+        background: rgba(255, 255, 255, 0.06);
+    }
+
+    &.o_lang_switcher_item_selected {
+        background: rgba(255, 255, 255, 0.18);
+        box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.25);
+
+        .o_lang_switcher_name {
+            color: #fff;
+            font-weight: 600;
+        }
+    }
+
+    &.o_lang_switcher_item_current:not(.o_lang_switcher_item_selected) {
+        .o_lang_switcher_name {
+            color: rgba(255, 255, 255, 0.6);
+        }
+    }
+}
+
+.o_lang_switcher_flag {
+    width: 32px;
+    height: 22px;
+    object-fit: cover;
+    border-radius: 3px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    flex-shrink: 0;
+}
+
+.o_lang_switcher_name {
+    flex: 1;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 400;
+}
+
+.o_lang_switcher_current_badge {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.08);
+    padding: 2px 7px;
+    border-radius: 10px;
+}
+
+.o_lang_switcher_applying {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+    padding: 4px 0;
+    gap: 6px;
+}
+
+.o_lang_switcher_footer {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 11px;
+    padding: 4px 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+    kbd {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+        padding: 1px 5px;
+        font-size: 10px;
+        font-family: inherit;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: rgba(255, 255, 255, 0.4);
+    }
+}

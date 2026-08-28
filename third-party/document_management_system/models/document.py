@@ -18,6 +18,8 @@ class Document(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     parent_path = fields.Char(index=True)
+    parent_left = fields.Integer(index=True)
+    parent_right = fields.Integer(index=True)
     active = fields.Boolean(default=True)
     sequence = fields.Integer(default=0)
     color = fields.Integer()
@@ -41,35 +43,31 @@ class Document(models.Model):
             raise ValidationError(_('Parent already recursive!'))
 
     def _compute_child_count(self):
-        count_list = self.env['document.document']._read_group(
-            [('parent_id', 'in', self.ids)],
-            ['parent_id'],
-            ['__count'],
-        )
-        mapped_data = {parent.id: count for parent, count in count_list}
+        relative_field = self._fields.get("child_ids")
+        comodel_name = relative_field.comodel_name
+        inverse_name = relative_field.inverse_name
+        count_list = self.env[comodel_name]._read_group([(inverse_name, 'in', self.ids)], [inverse_name], ['%s:sum' % inverse_name])
+        mapped_data = {record.id: count for record, count in count_list}
         for record in self:
             record.child_count = mapped_data.get(record.id, 0)
 
-    def _compute_display_name(self):
+    def name_get(self):
         if self.env.context.get('display_full_name', False):
-            for record in self:
-                parts = []
-                r = record
-                while r:
-                    parts.append(r.name or '')
-                    r = r.parent_id
-                record.display_name = " / ".join(reversed(parts))
+            pass
         else:
-            super()._compute_display_name()
+            return super(Document, self).name_get()
+        def get_names(record):
+            res = []
+            while record:
+                res.append(record.name or '')
+                record = record.parent_id
+            return res
+        return [(record.id, " / ".join(reversed(get_names(record)))) for record in self]
 
     def _compute_full_name(self):
+        res_dict = dict(self.with_context({'display_full_name': True}).name_get())
         for record in self:
-            parts = []
-            r = record
-            while r:
-                parts.append(r.name or '')
-                r = r.parent_id
-            record.full_name = " / ".join(reversed(parts))
+            record.full_name = res_dict.get(record.id, "")
 
     def copy_data(self, default=None):
         default = dict(default or {})

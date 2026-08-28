@@ -11,6 +11,17 @@ from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
 
+_M_COLS = [f'm{i}' for i in range(1, 13)]
+_P_COLS = [f'p{i}' for i in range(1, 21)]
+_C_COLS = [f'c{i}' for i in range(1, 11)]
+
+
+def _split_lines(text):
+    """Text field (satu item per baris) -> list of str, kompatibel dengan skema JSON rps_bp."""
+    if not text:
+        return []
+    return [line.strip() for line in text.split('\n') if line.strip()]
+
 
 class BpEduWizardGenerate(models.TransientModel):
     _name = 'bp.edu.wizard.generate'
@@ -36,6 +47,7 @@ class BpEduWizardGenerate(models.TransientModel):
 
     result_attachment_id = fields.Many2one('ir.attachment', string='File Hasil', readonly=True)
     result_filename = fields.Char(string='Nama File', readonly=True)
+    generate_warning = fields.Text(string='Peringatan', readonly=True)
     state = fields.Selection([('draft', 'Draft'), ('done', 'Selesai')], default='draft')
 
     # ─── Context builders ────────────────────────────────────────────────────
@@ -64,8 +76,14 @@ class BpEduWizardGenerate(models.TransientModel):
             'bahan_kajian': mk.bahan_kajian or '',
             'matakuliah_syarat': mk.matakuliah_syarat or '-',
             'cpl_prodi': [
-                {'kode': c.kode, 'tipe': c.tipe, 'deskripsi': c.deskripsi}
-                for c in mk.cpl_ids.sorted('kode')
+                {
+                    'kode': c.kode,
+                    'tipe': c.tipe,
+                    'deskripsi': c.deskripsi,
+                    'nomor': f'CPL {i}',
+                    'label': f'CPL {i} ({c.kode})',
+                }
+                for i, c in enumerate(mk.cpl_ids.sorted('kode'), start=1)
             ],
             'cpmk': [
                 {'kode': c.kode, 'cpl': c.cpl_text or '', 'deskripsi': c.deskripsi}
@@ -75,11 +93,36 @@ class BpEduWizardGenerate(models.TransientModel):
                 {
                     'kode': s.kode,
                     'deskripsi': s.deskripsi,
-                    'cpmk': s.cpmk_id.kode,
+                    'cpmk': s.cpmk_text or s.cpmk_id.kode,
                     'minggu': s.minggu or '',
                     'cpl': s.level_bloom or '',
+                    'taksonomi': s.level_bloom or '',
                 }
                 for s in mk.cpmk_ids.mapped('sub_cpmk_ids').sorted('kode')
+            ],
+            'korelasi': [
+                {
+                    'cpmk': k.cpmk or '',
+                    **{col: k[col] or '' for col in _M_COLS},
+                }
+                for k in rps.korelasi_ids.sorted('sequence')
+            ],
+            'korelasi_cpl': [
+                {
+                    'sub': k.sub or '',
+                    'bobot': k.bobot or '',
+                    'minggu': k.minggu or '',
+                    **{col: k[col] or '' for col in _P_COLS},
+                }
+                for k in rps.korelasi_cpl_ids.sorted('sequence')
+            ],
+            'penilaian': [
+                {
+                    'jenis': p.jenis or '',
+                    'bobot': p.bobot or '',
+                    **{col: p[col] or '' for col in _C_COLS},
+                }
+                for p in rps.penilaian_ids.sorted('sequence')
             ],
             'detail': [
                 {
@@ -103,6 +146,65 @@ class BpEduWizardGenerate(models.TransientModel):
                 for p in mk.pustaka_ids.filtered(lambda p: p.jenis == 'Pendukung')
             ],
         }
+
+        rt = rps.rancangan_tugas_ids[:1]
+        if rt:
+            ctx['rancangan_tugas_proyek'] = {
+                'tujuan': rt.tujuan or '',
+                'kompetensi': _split_lines(rt.kompetensi),
+                'uraian_tugas': {
+                    'objek_garapan': rt.objek_garapan or '',
+                    'langkah_kerja': _split_lines(rt.langkah_kerja),
+                    'topik': _split_lines(rt.topik),
+                    'metode_kerja': _split_lines(rt.metode_kerja),
+                    'luaran_tugas': _split_lines(rt.luaran_tugas),
+                },
+                'kriteria_penilaian': {
+                    'penyusunan_proposal': {
+                        'bobot': rt.kriteria_proposal_bobot or '',
+                        'deskripsi': rt.kriteria_proposal_deskripsi or '',
+                    },
+                    'pengimplementasian_proyek': {
+                        'bobot': rt.kriteria_implementasi_bobot or '',
+                        'deskripsi': rt.kriteria_implementasi_deskripsi or '',
+                    },
+                    'penyusunan_laporan': {
+                        'bobot': rt.kriteria_laporan_bobot or '',
+                        'deskripsi': rt.kriteria_laporan_deskripsi or '',
+                    },
+                    'presentasi': {
+                        'bobot': rt.kriteria_presentasi_bobot or '',
+                        'deskripsi': rt.kriteria_presentasi_deskripsi or '',
+                    },
+                },
+            }
+
+        rd = rps.rubrik_deskriptif_ids[:1]
+        if rps.rubrik_holistik_ids or rd:
+            ctx['rubrik_penilaian'] = {
+                'rubrik_holistik_proposal_laporan': [
+                    {
+                        'grade': r.grade or '',
+                        'skor_min': r.skor_min,
+                        'skor_max': r.skor_max,
+                        'kriteria': r.kriteria or '',
+                    }
+                    for r in rps.rubrik_holistik_ids.sorted('skor_min')
+                ],
+            }
+            if rd:
+                ctx['rubrik_penilaian']['rubrik_deskriptif_presentasi'] = {
+                    'aspek_yang_dinilai': _split_lines(rd.aspek_yang_dinilai),
+                    'skala_penilaian': {
+                        'sangat_kurang': {'min': rd.skala_sangat_kurang_min, 'max': rd.skala_sangat_kurang_max},
+                        'kurang': {'min': rd.skala_kurang_min, 'max': rd.skala_kurang_max},
+                        'cukup': {'min': rd.skala_cukup_min, 'max': rd.skala_cukup_max},
+                        'baik': {'min': rd.skala_baik_min, 'max': rd.skala_baik_max},
+                        'sangat_baik': {'min': rd.skala_sangat_baik_min, 'max': rd.skala_sangat_baik_max},
+                    },
+                    'format_penilaian': rd.format_penilaian or '',
+                }
+
         ctx['meta'] = dict(ctx)
         return ctx
 
@@ -210,6 +312,7 @@ class BpEduWizardGenerate(models.TransientModel):
         from ..utils import docx_renderer
 
         template_bytes = base64.b64decode(self.template_id.template_file)
+        warning = ''
 
         if self.document_type == 'rps':
             if not self.rps_id:
@@ -217,6 +320,13 @@ class BpEduWizardGenerate(models.TransientModel):
             ctx = self._build_rps_context()
             images = self._get_images(self.rps_id.dosen_id)
             docx_bytes = docx_renderer.render(template_bytes, ctx, images)
+            missing = docx_renderer.get_missing_required_arrays()
+            if missing:
+                warning = (
+                    'Bagian wajib berikut kosong sama sekali di dokumen hasil: '
+                    + ', '.join(sorted(missing))
+                    + '. Kemungkinan besar data RPS ini belum lengkap.'
+                )
             kode = self.rps_id.kode_mk or 'RPS'
             filename = f'RPS_{kode}.docx'
             mimetype = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
@@ -267,7 +377,12 @@ class BpEduWizardGenerate(models.TransientModel):
             'attachment_id': attachment.id,
         })
 
-        self.write({'result_attachment_id': attachment.id, 'result_filename': filename, 'state': 'done'})
+        self.write({
+            'result_attachment_id': attachment.id,
+            'result_filename': filename,
+            'generate_warning': warning,
+            'state': 'done',
+        })
 
         # Tetap buka wizard dengan tombol download
         return {

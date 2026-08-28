@@ -98,18 +98,20 @@ class BpEduWizardImportJson(models.TransientModel):
         if doc_type == 'rps':
             rps = self.env['bp.edu.rps'].browse(result['rps_id'])
             mk = self.env['bp.edu.mata.kuliah'].browse(result['mk_id'])
+            status = 'RPS baru dibuat' if result.get('created') else 'RPS yang sudah ada diperbarui (tercatat di Riwayat)'
             summary_parts += [
                 f'Mata Kuliah: {mk.display_name}',
-                f'RPS ID: {rps.id}',
+                f'RPS ID: {rps.id} — {status}',
                 f'Detail: {len(rps.detail_ids)} minggu',
             ]
             write_vals['rps_id'] = rps.id
         elif doc_type == 'sap':
             sap = self.env['bp.edu.sap'].browse(result['sap_id'])
             mk = self.env['bp.edu.mata.kuliah'].browse(result['mk_id'])
+            status = 'SAP baru dibuat' if result.get('created') else 'SAP yang sudah ada diperbarui (tercatat di Riwayat)'
             summary_parts += [
                 f'Mata Kuliah: {mk.display_name}',
-                f'SAP ID: {sap.id}',
+                f'SAP ID: {sap.id} — {status}',
                 f'Pertemuan: {len(sap.pertemuan_ids)}',
             ]
             write_vals['sap_id'] = sap.id

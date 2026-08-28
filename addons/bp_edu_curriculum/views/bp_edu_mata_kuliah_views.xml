@@ -60,6 +60,8 @@
                                             <field name="kode"/>
                                             <field name="minggu" optional="show"/>
                                             <field name="level_bloom" optional="show"/>
+                                            <field name="cpmk_text" string="CPMK" optional="show"/>
+                                            <field name="cpmk_ids" widget="many2many_tags" optional="hide"/>
                                             <field name="deskripsi"/>
                                         </list>
                                     </field>

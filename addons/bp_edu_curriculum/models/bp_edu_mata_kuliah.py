@@ -21,11 +21,12 @@ class BpEduMataKuliah(models.Model):
         ('Wajib', 'Wajib'),
         ('Pilihan', 'Pilihan'),
     ], string='Status', default='Wajib')
-    kategori = fields.Selection([
-        ('Mata Kuliah Umum', 'Mata Kuliah Umum'),
-        ('Mata Kuliah Wajib Program Studi', 'Mata Kuliah Wajib Program Studi'),
-        ('Mata Kuliah Pilihan Program Studi', 'Mata Kuliah Pilihan Program Studi'),
-    ], string='Kategori')
+    kategori = fields.Char(
+        string='Kategori',
+        help='Teks bebas sesuai kurikulum, mis. "Mata Kuliah Utama Prodi", '
+             '"Mata Kuliah Penciri Prodi". Tidak dibakukan sebagai pilihan tetap '
+             'karena istilah berbeda-beda antar revisi kurikulum/JSON rps_bp.',
+    )
     prodi_id = fields.Many2one('bp.edu.program.studi', string='Program Studi', ondelete='set null')
     deskripsi_singkat = fields.Text(string='Deskripsi Singkat')
     bahan_kajian = fields.Text(string='Bahan Kajian')

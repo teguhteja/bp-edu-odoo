@@ -1,6 +1,6 @@
 {
     'name': 'BP Edu Document',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.1.0',
     'category': 'Education',
     'summary': 'Generate DOCX (RPS, SAP, Kontrak Kuliah) dan import/export JSON',
     'depends': ['bp_edu_rps'],

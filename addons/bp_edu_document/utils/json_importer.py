@@ -2,15 +2,32 @@
 JSON → Odoo importer untuk format JSON rps_bp.
 
 Mendukung tiga tipe JSON:
-  - RPS   : keys meta, cpl_prodi, cpmk, sub_cpmk, detail, pustaka_utama, pustaka_pendukung
+  - RPS   : keys meta, cpl_prodi, cpmk, sub_cpmk, korelasi, korelasi_cpl,
+            penilaian, detail, pustaka_utama, pustaka_pendukung,
+            rancangan_tugas_proyek (opsional), rubrik_penilaian (opsional)
   - SAP   : keys meta, pertemuan
   - Kontrak : keys tahun_akademik, nama_mk, cpmk, materi_minggu_N, bobot_*
 
 Setiap fungsi menerima `env` (Odoo Environment) dan `data` (parsed dict).
+
+import_rps() melakukan UPSERT: RPS untuk mata_kuliah_id yang sama akan
+di-update (write) bukan dibuat baru, supaya re-import JSON yang sudah
+diperbarui dari rps_bp otomatis tercatat di riwayat perubahan
+(bp.edu.field.history, lihat bp_edu_rps/models/bp_edu_history_tracking.py)
+alih-alih menumpuk RPS duplikat.
 """
 import logging
+import re
 
 _logger = logging.getLogger(__name__)
+
+_CPMK_RANGE_RE = re.compile(
+    r'^(?:CPMK-)?(\d+)\s*s[\.\s]*d[\.\s]*(?:CPMK-)?(\d+)$', re.IGNORECASE,
+)
+
+_M_COLS = [f'm{i}' for i in range(1, 13)]
+_P_COLS = [f'p{i}' for i in range(1, 21)]
+_C_COLS = [f'c{i}' for i in range(1, 11)]
 
 
 # ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -20,6 +37,17 @@ def _safe_int(val, default=0):
         return int(val)
     except (TypeError, ValueError):
         return default
+
+
+def _parse_minggu(val, default=0):
+    """
+    detail[].minggu di rps_bp bisa berupa angka polos (5) atau format
+    "N/16" (mis. "5/16", menandakan minggu ke-5 dari 16). Ambil bagian
+    sebelum '/' bila ada.
+    """
+    if isinstance(val, str) and '/' in val:
+        val = val.split('/', 1)[0]
+    return _safe_int(val, default)
 
 
 def _find_or_create_mk(env, kode, nama, meta):
@@ -79,14 +107,40 @@ def _active_tahun_akademik(env):
     return env['bp.edu.tahun.akademik'].search([('aktif', '=', True)], limit=1)
 
 
+def _parse_cpmk_refs(cpmk_text, cpmk_map):
+    """
+    Parse referensi CPMK dari sub_cpmk['cpmk'], yang bisa berupa:
+      - Satu kode        : "CPMK-1"
+      - Daftar dipisah koma: "CPMK-3, CPMK-5"
+      - Rentang           : "CPMK-1 s.d. CPMK-5" -> CPMK-1..CPMK-5
+
+    Returns: list of matched bp.edu.cpmk ids (urutan sesuai kemunculan/rentang),
+    hanya kode yang benar-benar ada di cpmk_map.
+    """
+    cpmk_text = (cpmk_text or '').strip()
+    if not cpmk_text:
+        return []
+
+    range_match = _CPMK_RANGE_RE.match(cpmk_text)
+    if range_match:
+        start, end = int(range_match.group(1)), int(range_match.group(2))
+        kodes = [f'CPMK-{i}' for i in range(start, end + 1)]
+    else:
+        kodes = [k.strip() for k in cpmk_text.split(',') if k.strip()]
+
+    return [cpmk_map[k] for k in kodes if k in cpmk_map]
+
+
 # ─── RPS Importer ────────────────────────────────────────────────────────────
 
 def import_rps(env, data: dict) -> dict:
     """
-    Import data JSON format RPS ke Odoo.
+    Import data JSON format RPS ke Odoo. Melakukan upsert: bila sudah ada RPS
+    untuk mata_kuliah_id yang sama, di-update (write) supaya tercatat di
+    riwayat perubahan; bila belum ada, dibuat baru.
 
     Returns:
-        dict dengan 'mk_id' dan 'rps_id'
+        dict dengan 'mk_id', 'rps_id', dan 'created' (bool)
     """
     meta = data.get('meta', {})
     kode_mk = meta.get('kode_mk', '').strip()
@@ -134,17 +188,31 @@ def import_rps(env, data: dict) -> dict:
         cpmk_map[kode] = cpmk.id
 
     # 4. Sub-CPMK
+    # Field 'cpl' di JSON versi lama menyimpan level taksonomi Bloom (mis. "C2");
+    # versi baru rps_bp merename-nya menjadi 'taksonomi' agar tidak rancu dengan
+    # CPL (Capaian Pembelajaran Lulusan). Baca 'taksonomi' dulu, fallback ke 'cpl'
+    # supaya JSON lama tetap terbaca.
+    #
+    # item['cpmk'] biasanya satu kode ("CPMK-1"), tapi baris ringkasan/akhir
+    # kadang merujuk banyak sekaligus: daftar dipisah koma ("CPMK-3, CPMK-5")
+    # atau rentang ("CPMK-1 s.d. CPMK-5"). cpmk_id (utama, wajib) diisi CPMK
+    # pertama yang match; cpmk_ids menyimpan semuanya.
     for item in data.get('sub_cpmk', []):
-        cpmk_kode = item.get('cpmk', '').strip()
-        if cpmk_kode not in cpmk_map:
-            _logger.warning('Sub-CPMK %s: CPMK %s tidak ditemukan, dilewati.', item.get('kode'), cpmk_kode)
+        cpmk_ids_matched = _parse_cpmk_refs(item.get('cpmk', ''), cpmk_map)
+        if not cpmk_ids_matched:
+            _logger.warning(
+                'Sub-CPMK %s: CPMK %r tidak ditemukan, dilewati.',
+                item.get('kode'), item.get('cpmk', ''),
+            )
             continue
         env['bp.edu.sub.cpmk'].create({
             'kode': item.get('kode', ''),
-            'cpmk_id': cpmk_map[cpmk_kode],
+            'cpmk_id': cpmk_ids_matched[0],
+            'cpmk_ids': [(6, 0, cpmk_ids_matched)],
+            'cpmk_text': item.get('cpmk', ''),
             'deskripsi': item.get('deskripsi', ''),
             'minggu': item.get('minggu', ''),
-            'level_bloom': item.get('cpl', ''),
+            'level_bloom': item.get('taksonomi') or item.get('cpl', ''),
         })
 
     # 5. Pustaka (hapus existing lalu buat ulang)
@@ -164,21 +232,43 @@ def import_rps(env, data: dict) -> dict:
             'referensi': item.get('referensi', ''),
         })
 
-    # 6. RPS header
+    # 6. RPS header — upsert
     dosen = _find_dosen(env, meta.get('dosen_pengampu', ''))
     ta = _active_tahun_akademik(env)
-    rps = env['bp.edu.rps'].create({
-        'mata_kuliah_id': mk.id,
-        'dosen_id': dosen.id if dosen else False,
-        'tahun_akademik_id': ta.id if ta else False,
-        'tanggal_penyusunan': meta.get('tanggal_penyusunan') or False,
-    })
 
-    # 7. RPS Detail (16 minggu)
+    Rps = env['bp.edu.rps']
+    rps = Rps.search([('mata_kuliah_id', '=', mk.id)], limit=1)
+    created = not bool(rps)
+
+    # dosen_id wajib diisi (required=True). Nama pengampu kadang berupa nama
+    # tim/kolektif (mis. "Tim Dosen Pembimbing Tugas Akhir") yang tidak match
+    # satu dosen manapun -- jangan timpa assignment lama dengan kosong kalau
+    # lookup gagal, cukup pertahankan yang sudah ada.
+    dosen_id = dosen.id if dosen else (rps.dosen_id.id if rps else False)
+    # Sama untuk tahun akademik: JSON tidak menyebut tahun akademik secara
+    # eksplisit, kita andalkan record yang ditandai "aktif". Kalau tidak ada
+    # satupun yang aktif, jangan timpa assignment lama dengan kosong.
+    tahun_akademik_id = ta.id if ta else (rps.tahun_akademik_id.id if rps else False)
+
+    rps_vals = {
+        'mata_kuliah_id': mk.id,
+        'dosen_id': dosen_id,
+        'tahun_akademik_id': tahun_akademik_id,
+        'tanggal_penyusunan': meta.get('tanggal_penyusunan') or False,
+    }
+    if rps:
+        rps.write(rps_vals)  # write() -> tercatat di bp.edu.field.history
+    else:
+        rps = Rps.create(rps_vals)
+
+    # 7. RPS Detail (16 minggu) — hapus lalu buat ulang, konsisten dengan CPMK/pustaka.
+    # Perubahan baris detail sendiri tidak dilacak per-field (hanya field header
+    # RPS yang dilacak), jadi ini aman dan lebih sederhana daripada upsert per-baris.
+    rps.detail_ids.unlink()
     for item in data.get('detail', []):
         env['bp.edu.rps.detail'].create({
             'rps_id': rps.id,
-            'minggu': _safe_int(item.get('minggu', 0)),
+            'minggu': _parse_minggu(item.get('minggu', 0)),
             'deskripsi': item.get('deskripsi', ''),
             'indikator': item.get('indikator', ''),
             'kriteria': item.get('kriteria', ''),
@@ -188,14 +278,157 @@ def import_rps(env, data: dict) -> dict:
             'bobot': str(item.get('bobot', '')),
         })
 
-    _logger.info('Import RPS selesai: MK=%s, RPS id=%s', kode_mk, rps.id)
-    return {'mk_id': mk.id, 'rps_id': rps.id}
+    # 8. Matriks Korelasi CPMK-Minggu, Korelasi Sub-CPMK-CPL, Penilaian
+    _import_matriks(env, rps, data)
+
+    # 9. Rancangan Tugas Proyek & Rubrik Penilaian (opsional, tidak semua MK punya)
+    _import_rancangan_tugas(env, rps, data.get('rancangan_tugas_proyek'))
+    _import_rubrik_penilaian(env, rps, data.get('rubrik_penilaian'))
+
+    # 10. Jejak riwayat yang mudah dibaca manusia (selain bp.edu.field.history
+    # yang mencatat per-field, chatter memberi ringkasan satu baris per import).
+    aksi = 'dibuat' if created else 'diperbarui'
+    rps.message_post(body=f'RPS {aksi} dari import JSON rps_bp (kode_mk={kode_mk}).')
+
+    _logger.info('Import RPS selesai: MK=%s, RPS id=%s, created=%s', kode_mk, rps.id, created)
+    return {'mk_id': mk.id, 'rps_id': rps.id, 'created': created}
+
+
+def _import_matriks(env, rps, data):
+    """Ganti baris matriks korelasi/korelasi_cpl/penilaian dengan isi JSON terbaru."""
+    rps.korelasi_ids.unlink()
+    for seq, item in enumerate(data.get('korelasi', []), start=10):
+        vals = {'rps_id': rps.id, 'sequence': seq, 'cpmk': item.get('cpmk', '')}
+        vals.update({col: item.get(col, '') for col in _M_COLS})
+        env['bp.edu.rps.korelasi'].create(vals)
+
+    rps.korelasi_cpl_ids.unlink()
+    for seq, item in enumerate(data.get('korelasi_cpl', []), start=10):
+        vals = {
+            'rps_id': rps.id,
+            'sequence': seq,
+            'sub': item.get('sub', ''),
+            'bobot': str(item.get('bobot', '')),
+            'minggu': str(item.get('minggu', '')),
+        }
+        vals.update({col: item.get(col, '') for col in _P_COLS})
+        env['bp.edu.rps.korelasi.cpl'].create(vals)
+
+    rps.penilaian_ids.unlink()
+    for seq, item in enumerate(data.get('penilaian', []), start=10):
+        vals = {
+            'rps_id': rps.id,
+            'sequence': seq,
+            'jenis': item.get('jenis', ''),
+            'bobot': str(item.get('bobot', '')),
+        }
+        vals.update({col: item.get(col, '') for col in _C_COLS})
+        env['bp.edu.rps.penilaian'].create(vals)
+
+
+def _join_lines(items):
+    """list of str (JSON) -> Text satu item per baris (field Odoo)."""
+    if not items:
+        return ''
+    return '\n'.join(str(i) for i in items)
+
+
+def _import_rancangan_tugas(env, rps, rtp):
+    """Import rancangan_tugas_proyek (opsional — tidak semua MK punya proyek)."""
+    rps.rancangan_tugas_ids.unlink()
+    if not rtp:
+        return
+    uraian = rtp.get('uraian_tugas', {}) or {}
+    kriteria = rtp.get('kriteria_penilaian', {}) or {}
+
+    def _kriteria(key):
+        item = kriteria.get(key, {}) or {}
+        return item.get('bobot', ''), item.get('deskripsi', '')
+
+    prop_bobot, prop_desk = _kriteria('penyusunan_proposal')
+    impl_bobot, impl_desk = _kriteria('pengimplementasian_proyek')
+    lap_bobot, lap_desk = _kriteria('penyusunan_laporan')
+    pres_bobot, pres_desk = _kriteria('presentasi')
+
+    env['bp.edu.rps.rancangan.tugas'].create({
+        'rps_id': rps.id,
+        'tujuan': rtp.get('tujuan', ''),
+        'kompetensi': _join_lines(rtp.get('kompetensi')),
+        'objek_garapan': uraian.get('objek_garapan', ''),
+        'langkah_kerja': _join_lines(uraian.get('langkah_kerja')),
+        'topik': _join_lines(uraian.get('topik')),
+        'metode_kerja': _join_lines(uraian.get('metode_kerja')),
+        'luaran_tugas': _join_lines(uraian.get('luaran_tugas')),
+        'kriteria_proposal_bobot': prop_bobot,
+        'kriteria_proposal_deskripsi': prop_desk,
+        'kriteria_implementasi_bobot': impl_bobot,
+        'kriteria_implementasi_deskripsi': impl_desk,
+        'kriteria_laporan_bobot': lap_bobot,
+        'kriteria_laporan_deskripsi': lap_desk,
+        'kriteria_presentasi_bobot': pres_bobot,
+        'kriteria_presentasi_deskripsi': pres_desk,
+    })
+
+
+def _import_rubrik_penilaian(env, rps, rp):
+    """Import rubrik_penilaian (opsional — tidak semua MK punya rubrik proyek)."""
+    rps.rubrik_holistik_ids.unlink()
+    rps.rubrik_deskriptif_ids.unlink()
+    if not rp:
+        return
+
+    for item in rp.get('rubrik_holistik_proposal_laporan', []):
+        env['bp.edu.rps.rubrik.holistik'].create({
+            'rps_id': rps.id,
+            'grade': item.get('grade', ''),
+            'skor_min': _safe_int(item.get('skor_min', 0)),
+            'skor_max': _safe_int(item.get('skor_max', 0)),
+            'kriteria': item.get('kriteria', ''),
+        })
+
+    deskriptif = rp.get('rubrik_deskriptif_presentasi')
+    if not deskriptif:
+        return
+    skala = deskriptif.get('skala_penilaian', {}) or {}
+
+    def _band(key):
+        band = skala.get(key, {}) or {}
+        return _safe_int(band.get('min', 0)), _safe_int(band.get('max', 0))
+
+    sk_min, sk_max = _band('sangat_kurang')
+    k_min, k_max = _band('kurang')
+    c_min, c_max = _band('cukup')
+    b_min, b_max = _band('baik')
+    sb_min, sb_max = _band('sangat_baik')
+
+    env['bp.edu.rps.rubrik.deskriptif'].create({
+        'rps_id': rps.id,
+        'aspek_yang_dinilai': _join_lines(deskriptif.get('aspek_yang_dinilai')),
+        'format_penilaian': deskriptif.get('format_penilaian', ''),
+        'skala_sangat_kurang_min': sk_min,
+        'skala_sangat_kurang_max': sk_max,
+        'skala_kurang_min': k_min,
+        'skala_kurang_max': k_max,
+        'skala_cukup_min': c_min,
+        'skala_cukup_max': c_max,
+        'skala_baik_min': b_min,
+        'skala_baik_max': b_max,
+        'skala_sangat_baik_min': sb_min,
+        'skala_sangat_baik_max': sb_max,
+    })
 
 
 # ─── SAP Importer ────────────────────────────────────────────────────────────
 
 def import_sap(env, data: dict) -> dict:
-    """Import data JSON format SAP ke Odoo. Returns dict dengan 'sap_id'."""
+    """
+    Import data JSON format SAP ke Odoo. Melakukan upsert: bila sudah ada SAP
+    untuk mata_kuliah_id yang sama, di-update (write) supaya tercatat di
+    riwayat perubahan; bila belum ada, dibuat baru. Sama seperti import_rps().
+
+    Returns:
+        dict dengan 'mk_id', 'sap_id', dan 'created' (bool)
+    """
     meta = data.get('meta', {})
     kode_mk = meta.get('kode_mk', '').strip()
     nama_mk = meta.get('nama_mk', '').strip()
@@ -204,12 +437,26 @@ def import_sap(env, data: dict) -> dict:
     dosen = _find_dosen(env, meta.get('dosen_pengampu', ''))
     ta = _active_tahun_akademik(env)
 
-    sap = env['bp.edu.sap'].create({
-        'mata_kuliah_id': mk.id,
-        'dosen_id': dosen.id if dosen else False,
-        'tahun_akademik_id': ta.id if ta else False,
-    })
+    Sap = env['bp.edu.sap']
+    sap = Sap.search([('mata_kuliah_id', '=', mk.id)], limit=1)
+    created = not bool(sap)
 
+    # Jangan timpa assignment lama dengan kosong kalau lookup gagal (lihat
+    # catatan yang sama di import_rps()).
+    dosen_id = dosen.id if dosen else (sap.dosen_id.id if sap else False)
+    tahun_akademik_id = ta.id if ta else (sap.tahun_akademik_id.id if sap else False)
+
+    sap_vals = {
+        'mata_kuliah_id': mk.id,
+        'dosen_id': dosen_id,
+        'tahun_akademik_id': tahun_akademik_id,
+    }
+    if sap:
+        sap.write(sap_vals)  # write() -> tercatat di bp.edu.field.history
+    else:
+        sap = Sap.create(sap_vals)
+
+    sap.pertemuan_ids.unlink()
     for item in data.get('pertemuan', []):
         kegiatan = item.get('kegiatan', {})
         pendahuluan = kegiatan.get('pendahuluan', {})
@@ -243,8 +490,11 @@ def import_sap(env, data: dict) -> dict:
             'referensi_2': item.get('referensi_2', ''),
         })
 
-    _logger.info('Import SAP selesai: MK=%s, SAP id=%s', kode_mk, sap.id)
-    return {'mk_id': mk.id, 'sap_id': sap.id}
+    aksi = 'dibuat' if created else 'diperbarui'
+    sap.message_post(body=f'SAP {aksi} dari import JSON rps_bp (kode_mk={kode_mk}).')
+
+    _logger.info('Import SAP selesai: MK=%s, SAP id=%s, created=%s', kode_mk, sap.id, created)
+    return {'mk_id': mk.id, 'sap_id': sap.id, 'created': created}
 
 
 # ─── Kontrak Kuliah Importer ─────────────────────────────────────────────────

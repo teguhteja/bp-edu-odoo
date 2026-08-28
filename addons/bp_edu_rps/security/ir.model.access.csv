@@ -13,3 +13,15 @@ access_bp_edu_kontrak_kuliah_dosen,bp.edu.kontrak.kuliah dosen,model_bp_edu_kont
 access_bp_edu_kontrak_kuliah_doko,bp.edu.kontrak.kuliah doko,model_bp_edu_kontrak_kuliah,bp_edu_core.group_dosen_koordinator,1,1,1,1
 access_bp_edu_kontrak_materi_dosen,bp.edu.kontrak.materi dosen,model_bp_edu_kontrak_materi,bp_edu_core.group_dosen,1,1,1,1
 access_bp_edu_kontrak_materi_doko,bp.edu.kontrak.materi doko,model_bp_edu_kontrak_materi,bp_edu_core.group_dosen_koordinator,1,1,1,1
+access_bp_edu_rps_korelasi_dosen,bp.edu.rps.korelasi dosen,model_bp_edu_rps_korelasi,bp_edu_core.group_dosen,1,1,1,1
+access_bp_edu_rps_korelasi_doko,bp.edu.rps.korelasi doko,model_bp_edu_rps_korelasi,bp_edu_core.group_dosen_koordinator,1,1,1,1
+access_bp_edu_rps_korelasi_cpl_dosen,bp.edu.rps.korelasi.cpl dosen,model_bp_edu_rps_korelasi_cpl,bp_edu_core.group_dosen,1,1,1,1
+access_bp_edu_rps_korelasi_cpl_doko,bp.edu.rps.korelasi.cpl doko,model_bp_edu_rps_korelasi_cpl,bp_edu_core.group_dosen_koordinator,1,1,1,1
+access_bp_edu_rps_penilaian_dosen,bp.edu.rps.penilaian dosen,model_bp_edu_rps_penilaian,bp_edu_core.group_dosen,1,1,1,1
+access_bp_edu_rps_penilaian_doko,bp.edu.rps.penilaian doko,model_bp_edu_rps_penilaian,bp_edu_core.group_dosen_koordinator,1,1,1,1
+access_bp_edu_rps_rancangan_tugas_dosen,bp.edu.rps.rancangan.tugas dosen,model_bp_edu_rps_rancangan_tugas,bp_edu_core.group_dosen,1,1,1,1
+access_bp_edu_rps_rancangan_tugas_doko,bp.edu.rps.rancangan.tugas doko,model_bp_edu_rps_rancangan_tugas,bp_edu_core.group_dosen_koordinator,1,1,1,1
+access_bp_edu_rps_rubrik_holistik_dosen,bp.edu.rps.rubrik.holistik dosen,model_bp_edu_rps_rubrik_holistik,bp_edu_core.group_dosen,1,1,1,1
+access_bp_edu_rps_rubrik_holistik_doko,bp.edu.rps.rubrik.holistik doko,model_bp_edu_rps_rubrik_holistik,bp_edu_core.group_dosen_koordinator,1,1,1,1
+access_bp_edu_rps_rubrik_deskriptif_dosen,bp.edu.rps.rubrik.deskriptif dosen,model_bp_edu_rps_rubrik_deskriptif,bp_edu_core.group_dosen,1,1,1,1
+access_bp_edu_rps_rubrik_deskriptif_doko,bp.edu.rps.rubrik.deskriptif doko,model_bp_edu_rps_rubrik_deskriptif,bp_edu_core.group_dosen_koordinator,1,1,1,1

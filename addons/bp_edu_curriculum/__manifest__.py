@@ -1,6 +1,6 @@
 {
     'name': 'BP Edu Curriculum',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.1.0',
     'category': 'Education',
     'summary': 'Kurikulum: mata kuliah, CPL, CPMK, Sub-CPMK, dan pustaka referensi',
     'depends': ['bp_edu_core', 'mail'],

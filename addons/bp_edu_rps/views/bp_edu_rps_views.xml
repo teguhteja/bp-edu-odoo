@@ -103,6 +103,149 @@
                                 </form>
                             </field>
                         </page>
+                        <page string="Korelasi CPMK-Minggu" name="korelasi">
+                            <field name="korelasi_ids" nolabel="1">
+                                <list editable="bottom">
+                                    <field name="cpmk"/>
+                                    <field name="m1"/>
+                                    <field name="m2"/>
+                                    <field name="m3"/>
+                                    <field name="m4"/>
+                                    <field name="m5"/>
+                                    <field name="m6"/>
+                                    <field name="m7"/>
+                                    <field name="m8"/>
+                                    <field name="m9"/>
+                                    <field name="m10"/>
+                                    <field name="m11"/>
+                                    <field name="m12"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Korelasi Sub-CPMK-CPL" name="korelasi_cpl">
+                            <field name="korelasi_cpl_ids" nolabel="1">
+                                <list editable="bottom">
+                                    <field name="sub"/>
+                                    <field name="p1"/>
+                                    <field name="p2"/>
+                                    <field name="p3"/>
+                                    <field name="p4"/>
+                                    <field name="p5"/>
+                                    <field name="p6"/>
+                                    <field name="p7"/>
+                                    <field name="p8"/>
+                                    <field name="p9"/>
+                                    <field name="p10"/>
+                                    <field name="p11"/>
+                                    <field name="p12"/>
+                                    <field name="p13"/>
+                                    <field name="p14"/>
+                                    <field name="p15"/>
+                                    <field name="p16"/>
+                                    <field name="p17"/>
+                                    <field name="p18"/>
+                                    <field name="p19"/>
+                                    <field name="p20"/>
+                                    <field name="bobot"/>
+                                    <field name="minggu"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Matriks Penilaian" name="penilaian">
+                            <field name="penilaian_ids" nolabel="1">
+                                <list editable="bottom">
+                                    <field name="jenis"/>
+                                    <field name="bobot"/>
+                                    <field name="c1"/>
+                                    <field name="c2"/>
+                                    <field name="c3"/>
+                                    <field name="c4"/>
+                                    <field name="c5"/>
+                                    <field name="c6"/>
+                                    <field name="c7"/>
+                                    <field name="c8"/>
+                                    <field name="c9"/>
+                                    <field name="c10"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Rancangan Tugas Proyek" name="rancangan_tugas">
+                            <field name="rancangan_tugas_ids" nolabel="1">
+                                <list editable="bottom">
+                                    <field name="tujuan"/>
+                                    <field name="objek_garapan"/>
+                                </list>
+                                <form string="Rancangan Tugas Proyek">
+                                    <group>
+                                        <field name="tujuan"/>
+                                        <field name="kompetensi"/>
+                                    </group>
+                                    <group string="Uraian Tugas">
+                                        <field name="objek_garapan"/>
+                                        <field name="langkah_kerja"/>
+                                        <field name="topik"/>
+                                        <field name="metode_kerja"/>
+                                        <field name="luaran_tugas"/>
+                                    </group>
+                                    <group string="Kriteria Penilaian">
+                                        <group>
+                                            <field name="kriteria_proposal_bobot"/>
+                                            <field name="kriteria_proposal_deskripsi"/>
+                                            <field name="kriteria_implementasi_bobot"/>
+                                            <field name="kriteria_implementasi_deskripsi"/>
+                                        </group>
+                                        <group>
+                                            <field name="kriteria_laporan_bobot"/>
+                                            <field name="kriteria_laporan_deskripsi"/>
+                                            <field name="kriteria_presentasi_bobot"/>
+                                            <field name="kriteria_presentasi_deskripsi"/>
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Rubrik Penilaian" name="rubrik">
+                            <group string="Rubrik Holistik Proposal/Laporan">
+                                <field name="rubrik_holistik_ids" nolabel="1">
+                                    <list editable="bottom">
+                                        <field name="grade"/>
+                                        <field name="skor_min"/>
+                                        <field name="skor_max"/>
+                                        <field name="kriteria"/>
+                                    </list>
+                                </field>
+                            </group>
+                            <group string="Rubrik Deskriptif Presentasi">
+                                <field name="rubrik_deskriptif_ids" nolabel="1">
+                                    <list editable="bottom">
+                                        <field name="aspek_yang_dinilai"/>
+                                        <field name="format_penilaian"/>
+                                    </list>
+                                    <form string="Rubrik Deskriptif Presentasi">
+                                        <group>
+                                            <field name="aspek_yang_dinilai"/>
+                                            <field name="format_penilaian"/>
+                                        </group>
+                                        <group string="Skala Penilaian">
+                                            <group>
+                                                <field name="skala_sangat_kurang_min"/>
+                                                <field name="skala_sangat_kurang_max"/>
+                                                <field name="skala_kurang_min"/>
+                                                <field name="skala_kurang_max"/>
+                                                <field name="skala_cukup_min"/>
+                                                <field name="skala_cukup_max"/>
+                                            </group>
+                                            <group>
+                                                <field name="skala_baik_min"/>
+                                                <field name="skala_baik_max"/>
+                                                <field name="skala_sangat_baik_min"/>
+                                                <field name="skala_sangat_baik_max"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </group>
+                        </page>
                     </notebook>
                 </sheet>
                 <chatter/>

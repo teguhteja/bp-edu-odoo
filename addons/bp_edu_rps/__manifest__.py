@@ -1,6 +1,6 @@
 {
     'name': 'BP Edu RPS',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.1.0',
     'category': 'Education',
     'summary': 'Rencana Pembelajaran Semester, SAP, dan Kontrak Kuliah',
     'depends': ['bp_edu_curriculum', 'mail'],

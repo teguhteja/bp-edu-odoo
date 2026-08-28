@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2026. Developed and maintained by Simplify It S.R.L. (https://simplifyit.com.bo) -->
+
+<templates xml:space="preserve">
+    <t t-name="simplifyit_linear_backend_theme.DarkModeToggle">
+        <div class="o_slt_dark_mode_toggle">
+            <button class="btn bg-transparent"
+                    t-on-click="onClick"
+                    t-att-title="label"
+                    t-att-aria-label="label">
+                <!-- The button carries the label, so the icon is decorative. -->
+                <i t-if="isDark" class="fa fa-lg fa-sun-o" aria-hidden="true"/>
+                <i t-else="" class="fa fa-lg fa-moon-o" aria-hidden="true"/>
+            </button>
+        </div>
+    </t>
+</templates>

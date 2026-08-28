@@ -1,0 +1,29 @@
+
+$sbs_color_brand: #0A2540;
+$sbs_color_primary: #0A2540;
+
+$sbs_color_success: #1DC959;
+$sbs_color_info: #6AB5FB;
+$sbs_color_warning: #FBB56A;
+$sbs_color_danger: #FF5757;
+
+
+$o-community-color: $sbs-color-brand;
+$o-enterprise-color: $sbs-color-brand;
+$o-enterprise-action-color: $sbs-color-primary;
+
+$o-brand-odoo: $sbs-color-brand;
+$o-brand-primary: $sbs-color-primary;
+
+$o-success: $sbs-color-success;
+$o-info: $sbs-color-info;
+$o-warning: $sbs-color-warning;
+$o-danger: $sbs-color-danger;
+
+$o-theme-text-colors: (
+    "primary": $sbs-color-brand,
+    "success": $o-success,
+    "info": $o-info,
+    "warning": $o-warning,
+    "danger": $o-danger,
+);

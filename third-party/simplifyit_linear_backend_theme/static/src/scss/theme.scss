@@ -1,0 +1,408 @@
+//
+// Linear backend theme — global chrome & shared components.
+// Works on Community and Enterprise: enterprise-only selectors simply
+// never match on Community.
+//
+
+body {
+    font-feature-settings: "cv05", "cv08", "cv10", "tnum" 0;
+    letter-spacing: -0.006em;
+    background-color: var(--slt-bg);
+    color: var(--slt-text);
+}
+
+// ================= Scrollbars =================
+.o_web_client {
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--slt-border-strong) transparent;
+    }
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: var(--slt-border-strong);
+        border-radius: 99px;
+    }
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+}
+
+// ================= Navbar =================
+.o_main_navbar {
+    --NavBar-entry-borderRadius: var(--slt-radius-sm);
+    // Community's navbar entries fall back to the purple $o-navbar-background;
+    // route them through the theme tokens instead.
+    --NavBar-entry-backgroundColor: transparent;
+    --NavBar-entry-backgroundColor--hover: var(--slt-surface-2);
+    --NavBar-entry-backgroundColor--focus: var(--slt-surface-2);
+    --NavBar-entry-backgroundColor--active: var(--slt-accent-soft);
+    --NavBar-entry-color: var(--slt-text-2);
+    --NavBar-entry-color--active: var(--slt-text);
+    --NavBar-menuStyle-backgroundColor: var(--slt-surface);
+
+    background: var(--slt-surface);
+    border-bottom: 1px solid var(--slt-border);
+    color: var(--slt-text-2);
+    min-height: var(--slt-navbar-height);
+
+    .o_menu_brand {
+        color: var(--slt-text);
+        font-weight: 600;
+        font-size: 14px;
+        letter-spacing: -0.01em;
+        &:hover {
+            background: var(--slt-surface-2);
+        }
+    }
+
+    .o_nav_entry,
+    .o_menu_sections .dropdown-toggle {
+        color: var(--slt-text-2);
+        font-size: 13px;
+        font-weight: 500;
+        border-radius: var(--slt-radius-sm);
+        &:hover {
+            background: var(--slt-surface-2);
+            color: var(--slt-text);
+        }
+    }
+
+    .o_menu_systray {
+        > div > a, .o_nav_entry, i {
+            color: var(--slt-text-2);
+        }
+        .o_user_avatar, .o_avatar {
+            border-radius: 50%;
+        }
+    }
+
+    .dropdown-toggle:focus-visible,
+    button:focus-visible {
+        outline: 2px solid var(--slt-accent);
+        outline-offset: -2px;
+    }
+}
+
+// Fully Linear on desktop: the sidebar owns all app/menu navigation, so the
+// default apps hamburger, the enterprise menu toggle and the section menus
+// are hidden there. Everything stays available on mobile, where the sidebar
+// is hidden.
+@media (min-width: 992px) {
+    .o_web_client {
+        .o_navbar_apps_menu,
+        .o_main_navbar .o_menu_toggle,
+        .o_main_navbar .o_menu_sections {
+            display: none !important;
+        }
+    }
+}
+
+// ================= Odoo/Bootstrap color bridges =================
+// Same root cause as the .btn-outline-primary fix below: these read a
+// compile-time hex ($primary/$link-color, baked from $o-brand-primary) via a
+// literal fallback instead of a variable, so stat buttons, plain links and
+// .text-primary would otherwise ignore the --slt-accent company palette.
+// --o-stat-button-color / --o-stat-text-color are Odoo's own override hooks
+// (web/static/src/views/form/button_box/button_box.scss); --link-color-rgb
+// is Bootstrap's (lib/bootstrap/scss/_root.scss); --Notebook__link-color--active
+// is Odoo's hook for the active notebook tab (web_enterprise/.../notebook.scss).
+:root {
+    --o-stat-button-color: var(--slt-accent);
+    --o-stat-text-color: var(--slt-accent);
+    --link-color-rgb: var(--slt-accent-rgb);
+    --Notebook__link-color--active: var(--slt-accent);
+}
+
+.text-primary {
+    --color: var(--slt-accent);
+}
+
+// ================= Buttons =================
+.btn {
+    --bs-btn-border-radius: var(--slt-radius-sm);
+    --bs-btn-font-weight: 500;
+    letter-spacing: -0.006em;
+
+    &:focus-visible {
+        box-shadow: var(--slt-ring);
+    }
+}
+
+// Odoo 19 buttons resolve their colors through --btn-* custom properties
+// (see the generated `.btn-primary { --btn-bg: ... }` rules), so the theme
+// overrides that same contract instead of the raw CSS properties.
+.btn-primary {
+    --btn-color: #FFF;
+    --btn-bg: var(--slt-accent);
+    --btn-border-color: var(--slt-accent);
+    --btn-hover-color: #FFF;
+    --btn-hover-bg: var(--slt-accent-strong);
+    --btn-hover-border-color: var(--slt-accent-strong);
+    --btn-focus-shadow-rgb: 94, 106, 210;
+    --btn-active-color: #FFF;
+    --btn-active-bg: var(--slt-accent-strong);
+    --btn-active-border-color: var(--slt-accent-strong);
+    --btn-disabled-color: #FFF;
+    --btn-disabled-bg: var(--slt-accent);
+    --btn-disabled-border-color: var(--slt-accent);
+    box-shadow: var(--slt-shadow-sm);
+}
+
+// Bootstrap's own outline-variant mixin bakes $primary in as a static hex at
+// asset-build time (see variables.scss's $o-brand-primary), so without this
+// override .btn-outline-primary stays stuck on the compile-time accent color
+// and ignores the --slt-accent company palette applied at runtime.
+.btn-outline-primary {
+    --btn-color: var(--slt-accent);
+    --btn-border-color: var(--slt-accent);
+    --btn-hover-color: #FFF;
+    --btn-hover-bg: var(--slt-accent);
+    --btn-hover-border-color: var(--slt-accent);
+    --btn-active-color: #FFF;
+    --btn-active-bg: var(--slt-accent);
+    --btn-active-border-color: var(--slt-accent);
+    --btn-active-shadow: 0;
+    --btn-disabled-color: var(--slt-accent);
+    --btn-disabled-bg: transparent;
+    --btn-disabled-border-color: var(--slt-accent);
+    --gradient: none;
+}
+
+.btn-secondary {
+    --btn-color: var(--slt-text-2);
+    --btn-bg: var(--slt-surface);
+    --btn-border-color: var(--slt-border-strong);
+    --btn-hover-color: var(--slt-text);
+    --btn-hover-bg: var(--slt-surface-2);
+    --btn-hover-border-color: var(--slt-border-strong);
+    --btn-focus-shadow-rgb: 94, 106, 210;
+    --btn-active-color: var(--slt-text);
+    --btn-active-bg: var(--slt-surface-3);
+    --btn-active-border-color: var(--slt-border-strong);
+    --btn-disabled-color: var(--slt-text-3);
+    --btn-disabled-bg: var(--slt-surface);
+    --btn-disabled-border-color: var(--slt-border);
+    box-shadow: var(--slt-shadow-sm);
+}
+
+.btn-link {
+    --bs-btn-color: var(--slt-accent-text);
+    --bs-btn-hover-color: var(--slt-accent-strong);
+}
+
+// ================= Inputs =================
+.o_input,
+.form-control,
+.form-select {
+    border-radius: var(--slt-radius-sm);
+    &:focus {
+        border-color: var(--slt-accent);
+        box-shadow: var(--slt-ring);
+    }
+}
+
+.form-check-input {
+    border-color: var(--slt-border-strong);
+    &:checked {
+        background-color: var(--slt-accent);
+        border-color: var(--slt-accent);
+    }
+    &:focus {
+        border-color: var(--slt-accent);
+        box-shadow: var(--slt-ring);
+    }
+}
+
+// ================= Dropdowns =================
+.dropdown-menu {
+    --bs-dropdown-border-radius: var(--slt-radius);
+    --bs-dropdown-border-color: var(--slt-border);
+    --bs-dropdown-bg: var(--slt-surface);
+    --bs-dropdown-link-color: var(--slt-text-2);
+    --bs-dropdown-link-hover-bg: var(--slt-surface-2);
+    --bs-dropdown-link-hover-color: var(--slt-text);
+    --bs-dropdown-link-active-bg: var(--slt-accent-soft);
+    --bs-dropdown-link-active-color: var(--slt-text);
+    box-shadow: var(--slt-shadow-md);
+    padding: 4px;
+    font-size: 13px;
+
+    .dropdown-item {
+        border-radius: var(--slt-radius-sm);
+        padding: 6px 10px;
+    }
+
+    .dropdown-divider {
+        border-color: var(--slt-border);
+        margin: 4px 0;
+    }
+}
+
+// ================= Modals =================
+.modal-content {
+    border-radius: var(--slt-radius-lg);
+    border: 1px solid var(--slt-border);
+    background: var(--slt-surface);
+    box-shadow: var(--slt-shadow-lg);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--slt-border);
+    .modal-title {
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+    }
+}
+
+.modal-footer {
+    border-top: 1px solid var(--slt-border);
+}
+
+// ================= Command palette (the Linear heart) =================
+.o_command_palette {
+    border-radius: var(--slt-radius-lg);
+    border: 1px solid var(--slt-border);
+    background: var(--slt-surface);
+    box-shadow: var(--slt-shadow-lg);
+    overflow: hidden;
+
+    .o_command_palette_search {
+        border-bottom: 1px solid var(--slt-border);
+        padding: 6px 8px;
+
+        input {
+            font-size: 15px;
+            padding: 8px 10px;
+            background: transparent;
+            &::placeholder {
+                color: var(--slt-text-3);
+            }
+        }
+
+        .o_namespaces, .o_command_category {
+            color: var(--slt-text-3);
+        }
+    }
+
+    .o_command_palette_listbox {
+        padding: 5px;
+    }
+
+    .o_command {
+        border-radius: var(--slt-radius-sm);
+        color: var(--slt-text-2);
+        font-size: 13.5px;
+
+        &.focused {
+            background: var(--slt-accent-soft);
+            color: var(--slt-text);
+        }
+
+        .o_command_hotkey {
+            padding: 7px 10px;
+        }
+    }
+
+    .o_command_category_name,
+    .o_command_palette_listbox_empty {
+        color: var(--slt-text-3);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        font-weight: 600;
+    }
+
+    .o_command_palette_footer {
+        border-top: 1px solid var(--slt-border);
+        color: var(--slt-text-3);
+        font-size: 12px;
+    }
+}
+
+// Keycaps (used in palette + tooltips)
+.o_command_hotkey kbd,
+kbd {
+    font-family: inherit;
+    font-size: 11px;
+    color: var(--slt-text-2);
+    background: var(--slt-surface-2);
+    border: 1px solid var(--slt-border);
+    border-radius: 4px;
+    box-shadow: none;
+    padding: 1px 5px;
+}
+
+// ================= Tooltips =================
+.tooltip {
+    .tooltip-inner {
+        background: #26262B;
+        color: #F7F8F8;
+        border-radius: var(--slt-radius-sm);
+        font-size: 12px;
+        padding: 5px 9px;
+        box-shadow: var(--slt-shadow-md);
+    }
+}
+
+// ================= Badges & tags =================
+.badge {
+    border-radius: 99px;
+    font-weight: 600;
+    letter-spacing: 0;
+}
+
+.o_tag {
+    border-radius: 99px;
+}
+
+// ================= Tabs =================
+.nav-tabs {
+    border-bottom: 1px solid var(--slt-border);
+
+    .nav-link {
+        color: var(--slt-text-3);
+        font-weight: 500;
+        border: none;
+        border-bottom: 2px solid transparent;
+        border-radius: 0;
+        &:hover {
+            color: var(--slt-text);
+            border-bottom-color: var(--slt-border-strong);
+        }
+        &.active {
+            color: var(--slt-text);
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--slt-accent);
+        }
+    }
+}
+
+// ================= Notifications =================
+.o_notification {
+    border-radius: var(--slt-radius);
+    border: 1px solid var(--slt-border);
+    box-shadow: var(--slt-shadow-md);
+}
+
+// ================= Enterprise home menu (no-op on Community) =================
+.o_home_menu {
+    .o_apps {
+        .o_app {
+            border-radius: var(--slt-radius);
+            transition: background 0.12s ease, transform 0.12s ease;
+            &:hover {
+                background: rgba(255, 255, 255, 0.08);
+                transform: translateY(-1px);
+            }
+            .o_caption {
+                font-weight: 500;
+                letter-spacing: -0.006em;
+            }
+        }
+    }
+}

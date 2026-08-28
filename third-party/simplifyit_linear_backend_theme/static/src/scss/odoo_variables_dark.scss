@@ -1,0 +1,57 @@
+//
+// Odoo core palette, dark mode — Community's missing half.
+//
+// `web.assets_web_dark` in core is only `web.assets_web` plus web's own
+// per-component `*.dark.scss` files; nothing there recolours Odoo's global
+// palette. On Enterprise `web_enterprise` supplies that half, which is why
+// dark mode looks right there and left the content area white on Community:
+// our `--slt-*` tokens paint the theme chrome, but lists, forms, kanban and
+// `body` are painted by Odoo from `$o-gray-*` / `$o-white` / `$o-black`.
+//
+// This file supplies the same half using OUR palette, so a single module
+// covers both editions. It is injected *before*
+// `web/static/src/scss/primary_variables.scss` — the assignments below must
+// land before Odoo derives values from them (`$o-main-text-color: $o-gray-900`,
+// `$o-webclient-background-color: $o-gray-100`, `$body-bg: …`), which is why
+// `('after', …)` would be too late. Plain assignments (no `!default`) so
+// web's own `!default` definitions do not overwrite them.
+//
+// Deliberately NOT named `*.dark.scss`: the catch-all
+// `static/src/**/*.dark.scss` entry in the manifest would then include this
+// file a second time, at the end of the bundle.
+//
+// Values mirror `tokens.dark.scss`; keep the two in sync.
+//
+
+// = Base
+// Inverted, Odoo-dark style: `$o-white` is the surface colour, `$o-black` the
+// text colour, so every core rule written for light mode reads correctly.
+$o-white: #17181C;   // --slt-surface
+$o-black: #F7F8F8;   // --slt-text
+
+// = Grayscale, inverted: 100 is the darkest canvas, 900 the lightest text.
+$o-gray-100: #0F1012;  // --slt-bg           -> $o-webclient-background-color -> $body-bg
+$o-gray-200: #17181C;  // --slt-surface
+$o-gray-300: #1E1F24;  // --slt-surface-2
+$o-gray-400: #26272D;  // --slt-surface-3 / --slt-border
+$o-gray-500: #35363E;  // --slt-border-strong
+$o-gray-600: #6B7280;
+$o-gray-700: #8A8F98;  // --slt-text-3
+$o-gray-800: #C9CACF;  // --slt-text-2
+$o-gray-900: #F7F8F8;  // --slt-text
+
+// = Surfaces Odoo hardcodes instead of deriving
+$o-view-background-color: #17181C;  // --slt-surface (defaults to literal `white`)
+
+// = Semantic colours, brightened for a dark canvas
+$o-success: #4CB782;  // --slt-green
+$o-warning: #F2994A;  // --slt-amber
+$o-danger: #EB5757;   // --slt-red
+$o-info: #5B8DEF;     // matches the `blue` palette's dark accent in palette.js
+
+// = Overrides consumed by variables.scss
+// That file is injected *after* web's primary variables and would otherwise
+// reimpose its light-mode values; it declares these two as `!default`, so the
+// plain assignments here win whenever the dark bundle is being built.
+$slt-accent-strong: #6E79DB;          // brighter indigo for links on dark
+$slt-component-active-color: #F7F8F8; // --slt-text, readable on the active tint

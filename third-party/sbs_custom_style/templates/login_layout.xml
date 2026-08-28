@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="sbs_login_layout_background" inherit_id="web.login_layout">
+        <xpath
+            expr="//div[hasclass('container') and hasclass('py-5')]"
+            position="attributes"
+        >
+            <attribute name="class">
+                container-fluid min-vh-100 py-5 sbs_login_background
+            </attribute>
+            <attribute name="t-att-style">
+                request.env['ir.http']._sbs_get_login_background_style()
+            </attribute>
+        </xpath>
+        <xpath
+            expr="//div[hasclass('text-center') and hasclass('border-top') and @t-if='not disable_footer']"
+            position="inside"
+        >
+            <div class="mt-2 sbs_login_customized_by">
+                Customized by
+                <a
+                    href="https://starbitsolutions.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >Star Bit Solutions</a>
+            </div>
+        </xpath>
+    </template>
+</odoo>

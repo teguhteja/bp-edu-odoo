@@ -1,0 +1,21 @@
+.o_slt_dark_mode_toggle {
+    display: flex;
+    align-items: center;
+
+    > button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 100%;
+        border: none;
+        border-radius: var(--slt-radius-sm);
+        color: var(--slt-text-2);
+
+        &:hover,
+        &:focus {
+            background-color: var(--slt-surface-2);
+            color: var(--slt-text);
+        }
+    }
+}

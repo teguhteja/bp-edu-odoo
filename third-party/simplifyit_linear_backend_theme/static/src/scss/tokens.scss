@@ -1,0 +1,56 @@
+//
+// Linear design tokens (light mode).
+// Dark mode re-declares the same custom properties in tokens.dark.scss,
+// which is only bundled into web.assets_web_dark.
+//
+
+:root {
+    // Surfaces
+    --slt-bg: #F9F8F9;
+    --slt-surface: #FFFFFF;
+    --slt-surface-2: #F1F0F3;
+    --slt-surface-3: #E9E8EC;
+    --slt-sidebar-bg: #F9F8F9;
+
+    // Borders
+    --slt-border: #E4E3E8;
+    --slt-border-strong: #CFCED6;
+
+    // Text
+    --slt-text: #26262B;
+    --slt-text-2: #4B4B55;
+    --slt-text-3: #86858E;
+
+    // Accent (Linear indigo)
+    --slt-accent: #5E6AD2;
+    --slt-accent-strong: #4F5ABF;
+    --slt-accent-text: #4C59BD;
+    --slt-accent-soft: rgba(94, 106, 210, 0.11);
+    --slt-accent-soft-2: rgba(94, 106, 210, 0.18);
+    --slt-accent-rgb: 94, 106, 210;
+
+    // Semantic
+    --slt-green: #3FA46F;
+    --slt-green-soft: rgba(76, 183, 130, 0.14);
+    --slt-amber: #C77B21;
+    --slt-amber-soft: rgba(242, 153, 74, 0.15);
+    --slt-red: #D64545;
+    --slt-red-soft: rgba(235, 87, 87, 0.12);
+
+    // Shape
+    --slt-radius-sm: 5px;
+    --slt-radius: 8px;
+    --slt-radius-lg: 12px;
+
+    // Elevation (Linear uses very soft, large shadows)
+    --slt-shadow-sm: 0 1px 2px rgba(20, 20, 26, 0.05);
+    --slt-shadow-md: 0 4px 24px rgba(20, 20, 26, 0.08), 0 1px 2px rgba(20, 20, 26, 0.06);
+    --slt-shadow-lg: 0 16px 64px rgba(20, 20, 26, 0.18), 0 4px 12px rgba(20, 20, 26, 0.08);
+
+    // Focus ring
+    --slt-ring: 0 0 0 3px rgba(94, 106, 210, 0.25);
+
+    // Layout
+    --slt-sidebar-width: 248px;
+    --slt-navbar-height: 48px;
+}

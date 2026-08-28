@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="sbs_view_res_config_settings_form" model="ir.ui.view">
+        <field name="name">res.config.settings.form.sbs.custom.style</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='user_default_rights']" position="before">
+                <block title="SBS Custom Style" id="sbs_custom_style_settings">
+                    <setting
+                        string="Light Mode Colors"
+                        help="Customize the look and feel of the light mode"
+                    >
+                        <div class="row g-3 mt-1">
+                            <div class="col-6">
+                                <label for="sbs_color_brand_light" string="Brand" class="d-block mb-1"/>
+                                <field name="sbs_color_brand_light" class="d-block w-auto p-0 m-0" widget="color"/>
+                            </div>
+                            <div class="col-6">
+                                <label for="sbs_color_primary_light" string="Primary" class="d-block mb-1"/>
+                                <field name="sbs_color_primary_light" class="d-block w-auto p-0 m-0" widget="color"/>
+                            </div>
+                            <div class="col-6">
+                                <label for="sbs_color_info_light" string="Info" class="d-block mb-1"/>
+                                <field name="sbs_color_info_light" class="d-block w-auto p-0 m-0" widget="color"/>
+                            </div>
+                            <div class="col-6">
+                                <label for="sbs_color_success_light" string="Success" class="d-block mb-1"/>
+                                <field name="sbs_color_success_light" class="d-block w-auto p-0 m-0" widget="color"/>
+                            </div>
+                            <div class="col-6">
+                                <label for="sbs_color_warning_light" string="Warning" class="d-block mb-1"/>
+                                <field name="sbs_color_warning_light" class="d-block w-auto p-0 m-0" widget="color"/>
+                            </div>
+                            <div class="col-6">
+                                <label for="sbs_color_danger_light" string="Danger" class="d-block mb-1"/>
+                                <field name="sbs_color_danger_light" class="d-block w-auto p-0 m-0" widget="color"/>
+                            </div>
+                        </div>
+                        <button
+                            name="action_sbs_reset_light_color_assets"
+                            icon="fa-refresh"
+                            type="object"
+                            string="Reset Light Colors"
+                            class="btn-link mt-2"
+                        />
+                    </setting>
+                    <setting
+                        string="Dark Mode Colors"
+                        help="Customize the look and feel of the dark mode"
+                    >
+                        <div class="row g-3 mt-1">
+                            <div class="col-6">
+                                <label for="sbs_color_brand_dark" string="Brand" class="d-block mb-1"/>
+                                <field name="sbs_color_brand_dark" class="d-block w-auto p-0 m-0" widget="color"/>
+                            </div>
+                            <div class="col-6">
+                                <label for="sbs_color_primary_dark" string="Primary" class="d-block mb-1"/>
+                                <field name="sbs_color_primary_dark" class="d-block w-auto p-0 m-0" widget="color"/>
+                            </div>
+                            <div class="col-6">
+                                <label for="sbs_color_info_dark" string="Info" class="d-block mb-1"/>
+                                <field name="sbs_color_info_dark" class="d-block w-auto p-0 m-0" widget="color"/>
+                            </div>
+                            <div class="col-6">
+                                <label for="sbs_color_success_dark" string="Success" class="d-block mb-1"/>
+                                <field name="sbs_color_success_dark" class="d-block w-auto p-0 m-0" widget="color"/>
+                            </div>
+                            <div class="col-6">
+                                <label for="sbs_color_warning_dark" string="Warning" class="d-block mb-1"/>
+                                <field name="sbs_color_warning_dark" class="d-block w-auto p-0 m-0" widget="color"/>
+                            </div>
+                            <div class="col-6">
+                                <label for="sbs_color_danger_dark" string="Danger" class="d-block mb-1"/>
+                                <field name="sbs_color_danger_dark" class="d-block w-auto p-0 m-0" widget="color"/>
+                            </div>
+                        </div>
+                        <button
+                            name="action_sbs_reset_dark_color_assets"
+                            icon="fa-refresh"
+                            type="object"
+                            string="Reset Dark Colors"
+                            class="btn-link mt-2"
+                        />
+                    </setting>
+                    <setting
+                        string="Theme Colors"
+                        help="Customize the look and feel of the theme"
+                    >
+                        <div class="row g-3 mt-1">
+                            <div class="col-6">
+                                <label for="sbs_theme_color_appsmenu_text" string="Menu Text" class="d-block mb-1"/>
+                                <field name="sbs_theme_color_appsmenu_text" class="d-block w-auto p-0 m-0" widget="color"/>
+                            </div>
+                            <div class="col-6">
+                                <label for="sbs_theme_color_appbar_text" string="Apps Text" class="d-block mb-1"/>
+                                <field name="sbs_theme_color_appbar_text" class="d-block w-auto p-0 m-0" widget="color"/>
+                            </div>
+                            <div class="col-6">
+                                <label for="sbs_theme_color_appbar_active" string="Apps Active" class="d-block mb-1"/>
+                                <field name="sbs_theme_color_appbar_active" class="d-block w-auto p-0 m-0" widget="color"/>
+                            </div>
+                            <div class="col-6">
+                                <label for="sbs_theme_color_appbar_background" string="Background" class="d-block mb-1"/>
+                                <field name="sbs_theme_color_appbar_background" class="d-block w-auto p-0 m-0" widget="color"/>
+                            </div>
+                        </div>
+                        <button
+                            name="action_sbs_reset_theme_color_assets"
+                            icon="fa-refresh"
+                            type="object"
+                            string="Reset Theme Colors"
+                            class="btn-link mt-2"
+                        />
+                    </setting>
+                    <setting
+                        string="Apps Menu Background"
+                        company_dependent="1"
+                        help="Set the background image for the apps menu"
+                    >
+                        <field name="sbs_theme_background_image" widget="image" class="d-block w-75 mt-2"/>
+                    </setting>
+                    <setting
+                        string="Favicon &amp; Logo"
+                        company_dependent="1"
+                        help="Set your own favicon and logo for the appsbar"
+                    >
+                        <div class="row g-3 mt-1">
+                            <div class="col-6 d-flex flex-column align-items-start">
+                                <label for="sbs_appbar_image" string="Sidebar Logo" class="mb-1"/>
+                                <field name="sbs_appbar_image" widget="image" class="oe_avatar"/>
+                            </div>
+                            <div class="col-6 d-flex flex-column align-items-start">
+                                <label for="sbs_theme_favicon" string="Favicon" class="mb-1"/>
+                                <field name="sbs_theme_favicon" widget="image" class="oe_avatar"/>
+                            </div>
+                        </div>
+                    </setting>
+                    <setting
+                        string="Login Background"
+                        help="Change the Odoo login background using a colour or an uploaded image"
+                    >
+                        <div class="row g-2 align-items-center mt-1">
+                            <label
+                                for="sbs_login_background_type"
+                                string="Background Type"
+                                class="col-5 mb-0"
+                            />
+                            <field
+                                name="sbs_login_background_type"
+                                class="col-7"
+                            />
+                        </div>
+                        <div
+                            class="row g-2 align-items-center mt-2"
+                            invisible="sbs_login_background_type != 'color'"
+                        >
+                            <label
+                                for="sbs_login_background_color"
+                                string="Colour"
+                                class="col-5 mb-0"
+                            />
+                            <field
+                                name="sbs_login_background_color"
+                                class="col-2 p-0 m-0"
+                                widget="color"
+                                required="sbs_login_background_type == 'color'"
+                            />
+                        </div>
+                        <div
+                            class="row g-2 align-items-start mt-2"
+                            invisible="sbs_login_background_type != 'image'"
+                        >
+                            <label
+                                for="sbs_login_background_image"
+                                string="Image"
+                                class="col-5 pt-2 mb-0"
+                            />
+                            <field
+                                name="sbs_login_background_image"
+                                class="col-7"
+                                widget="image"
+                                required="sbs_login_background_type == 'image'"
+                                options="{'accepted_file_extensions': 'image/*'}"
+                            />
+                        </div>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

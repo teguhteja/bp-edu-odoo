@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2026. Developed and maintained by Simplify It S.R.L. (https://simplifyit.com.bo) -->
+
+<templates xml:space="preserve">
+
+    <t
+        t-name="simplifyit_linear_backend_theme.WebClient"
+        t-inherit="web.WebClient"
+        t-inherit-mode="extension"
+    >
+        <xpath expr="//NavBar" position="after">
+            <LinearSidebar/>
+        </xpath>
+    </t>
+
+</templates>

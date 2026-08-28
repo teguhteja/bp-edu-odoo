@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2026. Developed and maintained by Simplify It S.R.L. (https://simplifyit.com.bo) -->
+
+<odoo>
+
+    <template id="login_panels" name="SimplifyIT Linear Login Panels">
+        <t t-set="sit_branding" t-value="request.env['simplifyit.theme.branding'].get_login_branding()"/>
+        <div class="sit-login-wrap">
+
+            <!-- ============ Brand panel (left) ============ -->
+            <section class="sit-brand-panel">
+                <div class="sit-brand-head">
+                    <img class="sit-brand-logo"
+                         t-attf-src="/web/binary/company_logo{{ '?dbname=' + db if db else '' }}"
+                         alt="Logo"/>
+                    <span class="sit-brand-name" t-esc="sit_branding.get('company_name')"/>
+                </div>
+
+                <div class="sit-brand-main">
+                    <h2 class="sit-claim">
+                        <t t-if="sit_branding.get('claim')" t-esc="sit_branding.get('claim')"/>
+                        <t t-else="">Everything your business needs, in one place.</t>
+                    </h2>
+                    <p class="sit-subclaim">
+                        <t t-if="sit_branding.get('subclaim')" t-esc="sit_branding.get('subclaim')"/>
+                        <t t-else="">Sales, inventory and accounting with the speed and clarity your team deserves.</t>
+                    </p>
+
+                    <div class="sit-preview" aria-hidden="true">
+                        <t t-foreach="sit_branding.get('preview_rows', [])" t-as="row">
+                            <div class="sit-preview-row">
+                                <span t-attf-class="sit-dot sit-dot-{{row['status']}}"></span>
+                                <span class="sit-preview-ref" t-esc="row['ref']"/>
+                                <span class="sit-preview-name" t-esc="row['name']"/>
+                                <span class="sit-preview-amount" t-esc="row['amount']"/>
+                                <span t-attf-class="sit-pill sit-pill-{{row['status']}}" t-esc="row['label']"/>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+
+                <div class="sit-brand-foot">
+                    <t t-if="sit_branding.get('footer')" t-esc="sit_branding.get('footer')"/>
+                    <t t-else="">Odoo 19 · Built by Simplify IT</t>
+                </div>
+            </section>
+
+            <!-- ============ Form panel (right) ============ -->
+            <section class="sit-form-panel">
+                <div class="sit-form-card">
+                    <!-- Compact brand, shown only when the brand panel is hidden (mobile) -->
+                    <div class="sit-form-brand">
+                        <img class="sit-brand-logo"
+                             t-attf-src="/web/binary/company_logo{{ '?dbname=' + db if db else '' }}"
+                             alt="Logo"/>
+                        <span class="sit-brand-name" t-esc="sit_branding.get('company_name')"/>
+                    </div>
+
+                    <t t-out="0"/>
+
+                    <div class="sit-form-foot" t-if="not disable_footer">
+                        <t t-if="not disable_database_manager">
+                            <a href="/web/database/manager">Manage databases</a>
+                            <span class="sit-foot-sep">·</span>
+                        </t>
+                        <a href="https://www.odoo.com?utm_source=db&amp;utm_medium=auth" target="_blank">Powered by Odoo</a>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </template>
+
+    <template id="login_layout" inherit_id="web.login_layout" name="SimplifyIT Linear Login Layout">
+
+        <xpath expr="//t[@t-set='body_classname']" position="attributes">
+            <attribute name="t-value">'bg-100 sit-login-body'</attribute>
+        </xpath>
+
+        <xpath expr="//div[hasclass('container')]" position="replace">
+            <t t-call="simplifyit_linear_backend_theme.login_panels">
+                <t t-out="0"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="login" inherit_id="web.login" name="SimplifyIT Linear Login">
+        <xpath expr="//form" position="before">
+            <div class="sit-form-head">
+                <h1 class="sit-form-title">Sign in</h1>
+                <p class="sit-form-sub">Access your workspace</p>
+                <span class="sit-db-pill"
+                      t-if="request.db and not (databases and len(databases) &gt; 1)">
+                    <span class="sit-db-dot"></span>
+                    <t t-esc="request.db"/>
+                </span>
+            </div>
+        </xpath>
+
+        <xpath expr="//label[@for='login']" position="replace">
+            <label for="login" class="form-label d-flex justify-content-between">Email address</label>
+        </xpath>
+        <xpath expr="//input[@id='login']" position="attributes">
+            <attribute name="placeholder">you@company.com</attribute>
+        </xpath>
+
+        <xpath expr="//label[@for='password']" position="replace">
+            <label for="password" class="form-label">Password</label>
+        </xpath>
+        <xpath expr="//input[@id='password']" position="attributes">
+            <attribute name="placeholder">••••••••</attribute>
+        </xpath>
+
+        <xpath expr="//div[hasclass('o_caps_lock_warning')]" position="after">
+            <div class="sit-remember-row">
+                <label class="sit-remember">
+                    <input type="checkbox" class="sit-remember-check"/>
+                    <div>Remember me</div>
+                </label>
+                <a t-if="reset_password_enabled"
+                   class="sit-forgot"
+                   t-attf-href="/web/reset_password?{{ keep_query() }}">Forgot your password?</a>
+            </div>
+        </xpath>
+
+        <xpath expr="//div[hasclass('oe_login_buttons')]/button[hasclass('btn-primary')]" position="replace">
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </xpath>
+
+        <xpath expr="//button[hasclass('o_show_password')]" position="after">
+            <div class="d-none" data-sit-password-label="show">Show password</div>
+            <div class="d-none" data-sit-password-label="hide">Hide password</div>
+        </xpath>
+
+    </template>
+
+</odoo>

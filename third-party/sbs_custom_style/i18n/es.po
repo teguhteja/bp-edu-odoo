@@ -1,0 +1,554 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: sbs_custom_style
+#. odoo-javascript
+#: code:addons/sbs_custom_style/static/src/chatter/core/recipients_list/recipients_list.js:0
+msgid "%(recipientCount)s more"
+msgstr "%(recipientCount)s más"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Apps Active"
+msgstr "Apps activas"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Apps Menu Background"
+msgstr ""
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_company__sbs_background_image
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__sbs_theme_background_image
+msgid "Apps Menu Background Image"
+msgstr "Imagen de fondo del menú de apps"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_company__sbs_appbar_image
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__sbs_appbar_image
+msgid "Apps Menu Footer Image"
+msgstr "Imagen del pie del menú de apps"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__sbs_theme_color_appsmenu_text
+msgid "Apps Menu Text Color"
+msgstr "Color de texto del menú de apps"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Apps Text"
+msgstr "Texto de apps"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__sbs_theme_color_appbar_active
+msgid "AppsBar Active Color"
+msgstr "AppsBar color activo"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__sbs_theme_color_appbar_background
+msgid "AppsBar Background Color"
+msgstr "AppsBar color de fondo"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__sbs_theme_color_appbar_text
+msgid "AppsBar Text Color"
+msgstr "AppsBar color de texto"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Background"
+msgstr "Fondo"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Background Type"
+msgstr ""
+
+#. module: sbs_custom_style
+#: model:ir.model.fields.selection,name:sbs_custom_style.selection__res_users__sbs_chatter_position__bottom
+msgid "Bottom"
+msgstr "Inferior"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Brand"
+msgstr "Marca"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__sbs_color_brand_dark
+msgid "Brand Dark Color"
+msgstr "Color oscuro de marca"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__sbs_color_brand_light
+msgid "Brand Light Color"
+msgstr "Color claro de marca"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Change the Odoo login background using a colour or an uploaded image"
+msgstr ""
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_users__sbs_chatter_position
+msgid "Chatter Position"
+msgstr "Posición del chatter"
+
+#. module: sbs_custom_style
+#. odoo-javascript
+#: code:addons/sbs_custom_style/static/src/group/search/collapse_all/collapse_all.xml:0
+msgid "Collapse All"
+msgstr "Contraer todo"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields.selection,name:sbs_custom_style.selection__res_config_settings__sbs_login_background_type__color
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Colour"
+msgstr ""
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,help:sbs_custom_style.field_ir_actions_server__sbs_refresh_view_types
+#: model:ir.model.fields,help:sbs_custom_style.field_ir_cron__sbs_refresh_view_types
+msgid ""
+"Comma-separated list of view types to reload (for example, list, kanban). "
+"Leave empty to reload all view types."
+msgstr ""
+
+#. module: sbs_custom_style
+#: model:ir.model,name:sbs_custom_style.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_company__sbs_favicon
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__sbs_theme_favicon
+msgid "Company Favicon"
+msgstr "Favicon de la compañía"
+
+#. module: sbs_custom_style
+#: model:ir.model,name:sbs_custom_style.model_res_config_settings
+msgid "Config Settings"
+msgstr "Ajustes de configuración"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Customize the look and feel of the dark mode"
+msgstr "Personalizar la apariencia del modo oscuro"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Customize the look and feel of the light mode"
+msgstr "Personalizar la apariencia del modo claro"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Customize the look and feel of the theme"
+msgstr "Personalizar la apariencia del tema"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_login_layout_background
+msgid "Customized by"
+msgstr ""
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Danger"
+msgstr "Peligro"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__sbs_color_danger_dark
+msgid "Danger Dark Color"
+msgstr "Color oscuro de peligro"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__sbs_color_danger_light
+msgid "Danger Light Color"
+msgstr "Color claro de peligro"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Dark Mode Colors"
+msgstr "Colores del modo oscuro"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_users__sbs_dialog_size
+msgid "Dialog Size"
+msgstr "Tamaño del diálogo"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_ir_actions_server__display_name
+#: model:ir.model.fields,field_description:sbs_custom_style.field_ir_http__display_name
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_company__display_name
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_users__display_name
+#: model:ir.model.fields,field_description:sbs_custom_style.field_sbs_custom_style_color_assets_editor__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: sbs_custom_style
+#. odoo-javascript
+#: code:addons/sbs_custom_style/static/src/group/search/expand_all/expand_all.xml:0
+msgid "Expand All"
+msgstr "Expandir todo"
+
+#. module: sbs_custom_style
+#. odoo-javascript
+#: code:addons/sbs_custom_style/static/src/chatter/chatter/chatter.xml:0
+msgid "External"
+msgstr "Externo"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Favicon"
+msgstr "Favicon"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Favicon & Logo"
+msgstr "Favicon y logotipo"
+
+#. module: sbs_custom_style
+#: model:ir.model,name:sbs_custom_style.model_ir_http
+msgid "HTTP Routing"
+msgstr "Enrutamiento HTTP"
+
+#. module: sbs_custom_style
+#. odoo-javascript
+#: code:addons/sbs_custom_style/static/src/theme/webclient/navbar/navbar.xml:0
+msgid "Home Menu"
+msgstr ""
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_ir_actions_server__id
+#: model:ir.model.fields,field_description:sbs_custom_style.field_ir_http__id
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_company__id
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__id
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_users__id
+#: model:ir.model.fields,field_description:sbs_custom_style.field_sbs_custom_style_color_assets_editor__id
+msgid "ID"
+msgstr "ID"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Image"
+msgstr ""
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Info"
+msgstr "Info"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__sbs_color_info_dark
+msgid "Info Dark Color"
+msgstr "Color oscuro de info"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__sbs_color_info_light
+msgid "Info Light Color"
+msgstr "Color claro de info"
+
+#. module: sbs_custom_style
+#. odoo-javascript
+#: code:addons/sbs_custom_style/static/src/chatter/chatter/chatter.xml:0
+msgid "Internal"
+msgstr "Interno"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields.selection,name:sbs_custom_style.selection__res_users__sbs_sidebar_type__invisible
+msgid "Invisible"
+msgstr "Invisible"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields.selection,name:sbs_custom_style.selection__res_users__sbs_sidebar_type__large
+msgid "Large"
+msgstr "Grande"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Light Mode Colors"
+msgstr "Colores del modo claro"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__sbs_login_background_type
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Login Background"
+msgstr ""
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__sbs_login_background_color
+msgid "Login Background Colour"
+msgstr ""
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__sbs_login_background_image
+msgid "Login Background Image"
+msgstr ""
+
+#. module: sbs_custom_style
+#. odoo-javascript
+#: code:addons/sbs_custom_style/static/src/appsbar/webclient/appsbar/appsbar.xml:0
+msgid "Logo"
+msgstr "Logo"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields.selection,name:sbs_custom_style.selection__res_users__sbs_dialog_size__maximize
+msgid "Maximize"
+msgstr "Maximizar"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Menu Text"
+msgstr "Texto del menú"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields.selection,name:sbs_custom_style.selection__res_users__sbs_dialog_size__minimize
+msgid "Minimize"
+msgstr "Minimizar"
+
+#. module: sbs_custom_style
+#. odoo-javascript
+#: code:addons/sbs_custom_style/static/src/chatter/chatter/chatter.xml:0
+msgid "Note"
+msgstr "Nota"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Primary"
+msgstr "Primario"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__sbs_color_primary_dark
+msgid "Primary Dark Color"
+msgstr "Color oscuro primario"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__sbs_color_primary_light
+msgid "Primary Light Color"
+msgstr "Color claro primario"
+
+#. module: sbs_custom_style
+#. odoo-python
+#: code:addons/sbs_custom_style/models/ir_actions_server.py:0
+#: model:ir.model.fields.selection,name:sbs_custom_style.selection__ir_actions_server__state__sbs_refresh
+msgid "Reload Views"
+msgstr ""
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Reset Dark Colors"
+msgstr "Restablecer colores oscuros"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Reset Light Colors"
+msgstr "Restablecer colores claros"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Reset Theme Colors"
+msgstr "Restablecer colores del tema"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "SBS Custom Style"
+msgstr ""
+
+#. module: sbs_custom_style
+#: model:ir.model,name:sbs_custom_style.model_sbs_custom_style_color_assets_editor
+msgid "SBS Custom Style Color Asset Utilities"
+msgstr ""
+
+#. module: sbs_custom_style
+#. odoo-javascript
+#: code:addons/sbs_custom_style/static/src/chatter/chatter/composer.js:0
+msgid "Send"
+msgstr "Enviar"
+
+#. module: sbs_custom_style
+#. odoo-javascript
+#: code:addons/sbs_custom_style/static/src/chatter/chatter/composer.js:0
+msgid "Send a message to internal followers..."
+msgstr "Enviar un mensaje a los seguidores internos..."
+
+#. module: sbs_custom_style
+#: model:ir.model,name:sbs_custom_style.model_ir_actions_server
+msgid "Server Action"
+msgstr ""
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Set the background image for the apps menu"
+msgstr "Establecer la imagen de fondo para el menú de aplicaciones"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Set your own favicon and logo for the appsbar"
+msgstr "Establezca su propio favicon y logotipo para la barra de aplicaciones"
+
+#. module: sbs_custom_style
+#. odoo-javascript
+#: code:addons/sbs_custom_style/static/src/chatter/core/recipients_list/recipients_list.xml:0
+msgid "Show all recipients"
+msgstr "Mostrar todos los destinatarios"
+
+#. module: sbs_custom_style
+#. odoo-javascript
+#: code:addons/sbs_custom_style/static/src/chatter/chatter/chatter.xml:0
+msgid "Show/Hide Notifications"
+msgstr "Mostrar/Ocultar notificaciones"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields.selection,name:sbs_custom_style.selection__res_users__sbs_chatter_position__side
+msgid "Side"
+msgstr "Lado"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Sidebar Logo"
+msgstr ""
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_users__sbs_sidebar_type
+msgid "Sidebar Type"
+msgstr "Tipo de barra lateral"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields.selection,name:sbs_custom_style.selection__res_users__sbs_sidebar_type__small
+msgid "Small"
+msgstr "Pequeño"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_login_layout_background
+msgid "Star Bit Solutions"
+msgstr ""
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Success"
+msgstr "Éxito"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__sbs_color_success_dark
+msgid "Success Dark Color"
+msgstr "Color oscuro de éxito"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__sbs_color_success_light
+msgid "Success Light Color"
+msgstr "Color claro de éxito"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Theme Colors"
+msgstr "Colores del tema"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_ir_actions_server__state
+#: model:ir.model.fields,field_description:sbs_custom_style.field_ir_cron__state
+msgid "Type"
+msgstr ""
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,help:sbs_custom_style.field_ir_actions_server__state
+#: model:ir.model.fields,help:sbs_custom_style.field_ir_cron__state
+msgid ""
+"Type of server action. The following values are available:\n"
+"- 'Update a Record': update the values of a record\n"
+"- 'Create Activity': create an activity (Discuss)\n"
+"- 'Send Email': post a message, a note or send an email (Discuss)\n"
+"- 'Send SMS': send SMS, log them on documents (SMS)- 'Add/Remove Followers': add or remove followers to a record (Discuss)\n"
+"- 'Create Record': create a new record with new values\n"
+"- 'Execute Code': a block of Python code that will be executed\n"
+"- 'Send Webhook Notification': send a POST request to an external system, also known as a Webhook\n"
+"- 'Multi Actions': define an action that triggers several other server actions\n"
+msgstr ""
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,help:sbs_custom_style.field_res_config_settings__sbs_login_background_image
+msgid "Upload a JPG, PNG, GIF, or WEBP image up to 10 MB."
+msgstr ""
+
+#. module: sbs_custom_style
+#: model:ir.model.fields.selection,name:sbs_custom_style.selection__res_config_settings__sbs_login_background_type__image
+msgid "Uploaded Image"
+msgstr ""
+
+#. module: sbs_custom_style
+#: model:ir.model,name:sbs_custom_style.model_res_users
+msgid "User"
+msgstr "Usuario"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_ir_actions_server__sbs_refresh_view_types
+#: model:ir.model.fields,field_description:sbs_custom_style.field_ir_cron__sbs_refresh_view_types
+msgid "View Types"
+msgstr ""
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_res_config_settings_form
+msgid "Warning"
+msgstr "Advertencia"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__sbs_color_warning_dark
+msgid "Warning Dark Color"
+msgstr "Color oscuro de advertencia"
+
+#. module: sbs_custom_style
+#: model:ir.model.fields,field_description:sbs_custom_style.field_res_config_settings__sbs_color_warning_light
+msgid "Warning Light Color"
+msgstr "Color claro de advertencia"
+
+#. module: sbs_custom_style
+#: model_terms:ir.ui.view,arch_db:sbs_custom_style.sbs_view_server_action_form
+msgid "e.g. list, kanban, form"
+msgstr ""
+
+#. module: sbs_custom_style
+#. odoo-javascript
+#: code:addons/sbs_custom_style/static/src/chatter/core/recipients_list/recipients_list.js:0
+msgid "no email address"
+msgstr "sin dirección de correo electrónico"
+
+#. module: sbs_custom_style
+#. odoo-javascript
+#: code:addons/sbs_custom_style/static/src/refresh/search/control_panel.xml:0
+msgid "s"
+msgstr ""
+
+#~ msgid "AppsBar"
+#~ msgstr "AppsBar"
+
+#~ msgid "Set your own Logo for the appsbar"
+#~ msgstr "Establezca su propio logotipo para la barra de aplicaciones"
+
+#~ msgid "Branding"
+#~ msgstr "Branding"
+
+#~ msgid "Color Assets Utils"
+#~ msgstr "Utilidades de activos de color"
+
+#~ msgid "Backend Theme"
+#~ msgstr "Tema del backend"
+
+#~ msgid "Background Image"
+#~ msgstr "Imagen de fondo"
+
+#~ msgid "Context Colors"
+#~ msgstr "Colores de contexto"
+
+#~ msgid "Customize context colors of the system"
+#~ msgstr "Personalizar los colores de contexto del sistema"

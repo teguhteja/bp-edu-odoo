@@ -1,0 +1,46 @@
+//
+// Linear design tokens — dark mode (only bundled into web.assets_web_dark).
+// Linear's dark palette: near-black canvas, slightly lifted surfaces,
+// desaturated text, the same indigo accent slightly brightened for contrast.
+//
+
+:root {
+    // Surfaces
+    --slt-bg: #0F1012;
+    --slt-surface: #17181C;
+    --slt-surface-2: #1E1F24;
+    --slt-surface-3: #26272D;
+    --slt-sidebar-bg: #0B0C0E;
+
+    // Borders
+    --slt-border: #26272D;
+    --slt-border-strong: #35363E;
+
+    // Text
+    --slt-text: #F7F8F8;
+    --slt-text-2: #C9CACF;
+    --slt-text-3: #8A8F98;
+
+    // Accent
+    --slt-accent: #5E6AD2;
+    --slt-accent-strong: #6E79DB;
+    --slt-accent-text: #858DF0;
+    --slt-accent-soft: rgba(94, 106, 210, 0.18);
+    --slt-accent-soft-2: rgba(94, 106, 210, 0.28);
+    --slt-accent-rgb: 94, 106, 210;
+
+    // Semantic
+    --slt-green: #4CB782;
+    --slt-green-soft: rgba(76, 183, 130, 0.16);
+    --slt-amber: #F2994A;
+    --slt-amber-soft: rgba(242, 153, 74, 0.16);
+    --slt-red: #EB5757;
+    --slt-red-soft: rgba(235, 87, 87, 0.16);
+
+    // Elevation
+    --slt-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --slt-shadow-md: 0 4px 24px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(0, 0, 0, 0.35);
+    --slt-shadow-lg: 0 16px 64px rgba(0, 0, 0, 0.6), 0 4px 12px rgba(0, 0, 0, 0.4);
+
+    --slt-ring: 0 0 0 3px rgba(110, 121, 219, 0.35);
+}

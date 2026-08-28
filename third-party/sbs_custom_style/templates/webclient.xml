@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="sbs_webclient_bootstrap" inherit_id="web.webclient_bootstrap">
+        <xpath expr="//t[@t-set='body_classname']" position="after">
+            <t
+                t-set="sbs_body_sidebar_classname"
+                t-value="'sbs_sidebar_type_' + (request.env.user.sbs_sidebar_type or 'large')"
+            />
+            <t
+                t-set="body_classname"
+                t-value="'%s %s' % (body_classname, sbs_body_sidebar_classname)"
+            />
+        </xpath>
+        <xpath expr="//meta[@name='theme-color']" position="replace">
+            <meta name="theme-color" content="#0A2540"/>
+        </xpath>
+    </template>
+</odoo>

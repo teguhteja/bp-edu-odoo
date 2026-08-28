@@ -1,0 +1,391 @@
+# Russian translation of simplifyit_linear_backend_theme.
+# This file contains the translation of the following modules:
+# 	* simplifyit_linear_backend_theme
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-07 04:23+0000\n"
+"PO-Revision-Date: 2026-08-07 04:23+0000\n"
+"Last-Translator: Simplify It S.R.L. <support@simplifyit.com.bo>\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.login_panels
+msgid "<span class=\"sit-foot-sep\">·</span>"
+msgstr "<span class=\"sit-foot-sep\">·</span>"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.res_config_settings_view_form_login_branding
+msgid "About this theme"
+msgstr "О теме"
+
+#. module: simplifyit_linear_backend_theme
+#: model:ir.model.fields,help:simplifyit_linear_backend_theme.field_res_company__slt_palette
+msgid ""
+"Accent color used for buttons, active menu items and highlights in the "
+"backend theme. A matching variant is used automatically in dark mode."
+msgstr ""
+"Акцентный цвет для кнопок, активных пунктов меню и выделений в теме бэкенда."
+" В тёмном режиме автоматически используется соответствующий вариант."
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.login
+msgid "Access your workspace"
+msgstr "Войдите в своё рабочее пространство"
+
+#. module: simplifyit_linear_backend_theme
+#. odoo-javascript
+#: code:addons/simplifyit_linear_backend_theme/static/src/webclient/sidebar/sidebar.xml:0
+msgid "Apps"
+msgstr "Приложения"
+
+#. module: simplifyit_linear_backend_theme
+#. odoo-javascript
+#: code:addons/simplifyit_linear_backend_theme/static/src/webclient/sidebar/sidebar.xml:0
+msgid "Avatar"
+msgstr "Аватар"
+
+#. module: simplifyit_linear_backend_theme
+#: model:ir.model.fields,field_description:simplifyit_linear_backend_theme.field_res_company__slt_palette
+msgid "Backend Accent Color"
+msgstr "Акцентный цвет бэкенда"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.res_config_settings_view_form_login_branding
+msgid "Claim"
+msgstr "Заголовок"
+
+#. module: simplifyit_linear_backend_theme
+#: model:ir.model,name:simplifyit_linear_backend_theme.model_res_company
+msgid "Companies"
+msgstr "Компании"
+
+#. module: simplifyit_linear_backend_theme
+#: model:ir.model,name:simplifyit_linear_backend_theme.model_res_config_settings
+msgid "Config Settings"
+msgstr "Настройки конфигурации"
+
+#. module: simplifyit_linear_backend_theme
+#. odoo-python
+#: code:addons/simplifyit_linear_backend_theme/models/theme_branding.py:0
+msgid "Confirmed"
+msgstr "Подтверждено"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.res_config_settings_view_form_login_branding
+msgid "Contact:"
+msgstr "Контакт:"
+
+#. module: simplifyit_linear_backend_theme
+#. odoo-javascript
+#: code:addons/simplifyit_linear_backend_theme/static/src/webclient/sidebar/sidebar.xml:0
+msgid "Ctrl K"
+msgstr "Ctrl K"
+
+#. module: simplifyit_linear_backend_theme
+#: model:ir.model.fields,field_description:simplifyit_linear_backend_theme.field_ir_http__display_name
+#: model:ir.model.fields,field_description:simplifyit_linear_backend_theme.field_res_company__display_name
+#: model:ir.model.fields,field_description:simplifyit_linear_backend_theme.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:simplifyit_linear_backend_theme.field_res_users_settings__display_name
+#: model:ir.model.fields,field_description:simplifyit_linear_backend_theme.field_simplifyit_theme_branding__display_name
+msgid "Display Name"
+msgstr "Отображаемое имя"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.login
+msgid "Email address"
+msgstr "Адрес электронной почты"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.login_panels
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.res_config_settings_view_form_login_branding
+msgid "Everything your business needs, in one place."
+msgstr "Всё, что нужно вашему бизнесу, в одном месте."
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.res_config_settings_view_form_login_branding
+msgid "Footer"
+msgstr "Нижний колонтитул"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.login
+msgid "Forgot your password?"
+msgstr "Забыли пароль?"
+
+#. module: simplifyit_linear_backend_theme
+#: model:ir.model,name:simplifyit_linear_backend_theme.model_ir_http
+msgid "HTTP Routing"
+msgstr "Маршрутизация HTTP"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.res_config_settings_view_form_login_branding
+msgid ""
+"Headline shown next to the logo on the login page. Leave empty to use the "
+"default."
+msgstr ""
+"Заголовок рядом с логотипом на странице входа. Оставьте пустым, чтобы "
+"использовать значение по умолчанию."
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.login
+msgid "Hide password"
+msgstr "Скрыть пароль"
+
+#. module: simplifyit_linear_backend_theme
+#: model:ir.model.fields,field_description:simplifyit_linear_backend_theme.field_res_users_settings__homemenu_config
+msgid "Home Menu Configuration"
+msgstr "Настройка главного меню"
+
+#. module: simplifyit_linear_backend_theme
+#: model:ir.model.fields,field_description:simplifyit_linear_backend_theme.field_ir_http__id
+#: model:ir.model.fields,field_description:simplifyit_linear_backend_theme.field_res_company__id
+#: model:ir.model.fields,field_description:simplifyit_linear_backend_theme.field_res_config_settings__id
+#: model:ir.model.fields,field_description:simplifyit_linear_backend_theme.field_res_users_settings__id
+#: model:ir.model.fields,field_description:simplifyit_linear_backend_theme.field_simplifyit_theme_branding__id
+msgid "ID"
+msgstr "ID"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.res_config_settings_view_form_login_branding
+msgid ""
+"If you are experiencing issues with the login page and you have the\n"
+"                                Website app installed, email us and we will send you the\n"
+"                                <code>simplifyit_linear_backend_theme_website</code> add-on, free of charge."
+msgstr ""
+"Если у вас возникли проблемы со страницей входа и установлено\n"
+"                                приложение «Сайт», напишите нам, и мы бесплатно вышлем вам модуль\n"
+"                                <code>simplifyit_linear_backend_theme_website</code>."
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.res_config_settings_view_form_login_branding
+msgid "Login Page"
+msgstr "Страница входа"
+
+#. module: simplifyit_linear_backend_theme
+#: model:ir.model.fields,field_description:simplifyit_linear_backend_theme.field_res_config_settings__slt_login_claim
+msgid "Login claim"
+msgstr "Заголовок страницы входа"
+
+#. module: simplifyit_linear_backend_theme
+#: model:ir.model.fields,field_description:simplifyit_linear_backend_theme.field_res_config_settings__slt_login_footer
+msgid "Login footer"
+msgstr "Нижний колонтитул страницы входа"
+
+#. module: simplifyit_linear_backend_theme
+#: model:ir.model.fields,field_description:simplifyit_linear_backend_theme.field_res_config_settings__slt_login_subclaim
+msgid "Login subclaim"
+msgstr "Подзаголовок страницы входа"
+
+#. module: simplifyit_linear_backend_theme
+#. odoo-javascript
+#: code:addons/simplifyit_linear_backend_theme/static/src/webclient/sidebar/sidebar.xml:0
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.login_panels
+msgid "Logo"
+msgstr "Logo"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.login_panels
+msgid "Manage databases"
+msgstr "Управление базами данных"
+
+#. module: simplifyit_linear_backend_theme
+#. odoo-javascript
+#: code:addons/simplifyit_linear_backend_theme/static/src/webclient/sidebar/sidebar.xml:0
+msgid "Odoo 19"
+msgstr "Odoo 19"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.login_panels
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.res_config_settings_view_form_login_branding
+msgid "Odoo 19 · Built by Simplify IT"
+msgstr "Odoo 19 · Внедрение Simplify IT"
+
+#. module: simplifyit_linear_backend_theme
+#. odoo-python
+#: code:addons/simplifyit_linear_backend_theme/models/theme_branding.py:0
+msgid "Paid"
+msgstr "Оплачено"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.login
+msgid "Password"
+msgstr "Пароль"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.login_panels
+msgid "Powered by Odoo"
+msgstr "Работает на Odoo"
+
+#. module: simplifyit_linear_backend_theme
+#. odoo-python
+#: code:addons/simplifyit_linear_backend_theme/models/theme_branding.py:0
+msgid "Quotation"
+msgstr "Коммерческое предложение"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.login
+msgid "Remember me"
+msgstr "Запомнить меня"
+
+#. module: simplifyit_linear_backend_theme
+#. odoo-javascript
+#: code:addons/simplifyit_linear_backend_theme/static/src/webclient/sidebar/sidebar.xml:0
+msgid "Reorder apps"
+msgstr "Изменить порядок приложений"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.login_panels
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.res_config_settings_view_form_login_branding
+msgid ""
+"Sales, inventory and accounting with the speed and clarity your team "
+"deserves."
+msgstr ""
+"Продажи, склад и бухгалтерия с той скоростью и ясностью, которых заслуживает"
+" ваша команда."
+
+#. module: simplifyit_linear_backend_theme
+#. odoo-javascript
+#: code:addons/simplifyit_linear_backend_theme/static/src/webclient/sidebar/sidebar.xml:0
+msgid "Search…"
+msgstr "Поиск…"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.res_config_settings_view_form_login_branding
+msgid "Short line under the claim. Leave empty to use the default."
+msgstr ""
+"Короткая строка под заголовком. Оставьте пустым, чтобы использовать значение"
+" по умолчанию."
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.login
+msgid "Show password"
+msgstr "Показать пароль"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.login
+msgid "Sign in"
+msgstr "Войти"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.res_config_settings_view_form_login_branding
+msgid "SimplifyIT Linear Backend Theme"
+msgstr "SimplifyIT Linear Backend Theme"
+
+#. module: simplifyit_linear_backend_theme
+#: model:ir.model,name:simplifyit_linear_backend_theme.model_simplifyit_theme_branding
+msgid "SimplifyIT Theme - Login Branding"
+msgstr "Тема SimplifyIT — оформление страницы входа"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.res_config_settings_view_form_login_branding
+msgid ""
+"Small print at the bottom of the brand panel. Leave empty to use the "
+"default."
+msgstr ""
+"Мелкий текст внизу брендовой панели. Оставьте пустым, чтобы использовать "
+"значение по умолчанию."
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.res_config_settings_view_form_login_branding
+msgid "Subclaim"
+msgstr "Подзаголовок"
+
+#. module: simplifyit_linear_backend_theme
+#. odoo-javascript
+#: code:addons/simplifyit_linear_backend_theme/static/src/webclient/systray/dark_mode_toggle.js:0
+msgid "Switch to dark theme"
+msgstr "Переключиться на тёмную тему"
+
+#. module: simplifyit_linear_backend_theme
+#. odoo-javascript
+#: code:addons/simplifyit_linear_backend_theme/static/src/webclient/systray/dark_mode_toggle.js:0
+msgid "Switch to light theme"
+msgstr "Переключиться на светлую тему"
+
+#. module: simplifyit_linear_backend_theme
+#: model:ir.model.fields,field_description:simplifyit_linear_backend_theme.field_res_config_settings__slt_theme_version
+msgid "Theme version"
+msgstr "Версия темы"
+
+#. module: simplifyit_linear_backend_theme
+#. odoo-javascript
+#: code:addons/simplifyit_linear_backend_theme/static/src/webclient/sidebar/sidebar.xml:0
+msgid "Toggle sidebar (Ctrl+B)"
+msgstr "Показать или скрыть боковую панель (Ctrl+B)"
+
+#. module: simplifyit_linear_backend_theme
+#: model:ir.model,name:simplifyit_linear_backend_theme.model_res_users_settings
+msgid "User Settings"
+msgstr "Настройки пользователя"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.res_config_settings_view_form_login_branding
+msgid "Version"
+msgstr "Версия"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.res_config_settings_view_form_login_branding
+msgid "Website:"
+msgstr "Сайт:"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.res_config_settings_view_form_login_branding
+msgid "simplifyit.com.bo"
+msgstr "simplifyit.com.bo"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.res_config_settings_view_form_login_branding
+msgid "support@simplifyit.com.bo"
+msgstr "support@simplifyit.com.bo"
+
+#. module: simplifyit_linear_backend_theme
+#: model_terms:ir.ui.view,arch_db:simplifyit_linear_backend_theme.login
+msgid "you@company.com"
+msgstr "you@company.com"
+
+#. module: simplifyit_linear_backend_theme
+#: model:ir.model.fields.selection,name:simplifyit_linear_backend_theme.selection__res_company__slt_palette__pink
+msgid "🌸 Pink"
+msgstr "🌸 Розовый"
+
+#. module: simplifyit_linear_backend_theme
+#: model:ir.model.fields.selection,name:simplifyit_linear_backend_theme.selection__res_company__slt_palette__red
+msgid "🔴 Red"
+msgstr "🔴 Красный"
+
+#. module: simplifyit_linear_backend_theme
+#: model:ir.model.fields.selection,name:simplifyit_linear_backend_theme.selection__res_company__slt_palette__blue
+msgid "🔵 Blue"
+msgstr "🔵 Синий"
+
+#. module: simplifyit_linear_backend_theme
+#: model:ir.model.fields.selection,name:simplifyit_linear_backend_theme.selection__res_company__slt_palette__orange
+msgid "🟠 Orange"
+msgstr "🟠 Оранжевый"
+
+#. module: simplifyit_linear_backend_theme
+#: model:ir.model.fields.selection,name:simplifyit_linear_backend_theme.selection__res_company__slt_palette__green
+msgid "🟢 Green"
+msgstr "🟢 Зелёный"
+
+#. module: simplifyit_linear_backend_theme
+#: model:ir.model.fields.selection,name:simplifyit_linear_backend_theme.selection__res_company__slt_palette__teal
+msgid "🟢 Teal"
+msgstr "🟢 Бирюзовый"
+
+#. module: simplifyit_linear_backend_theme
+#: model:ir.model.fields.selection,name:simplifyit_linear_backend_theme.selection__res_company__slt_palette__indigo
+msgid "🟣 Indigo (default)"
+msgstr "🟣 Индиго (по умолчанию)"
+
+#. module: simplifyit_linear_backend_theme
+#: model:ir.model.fields.selection,name:simplifyit_linear_backend_theme.selection__res_company__slt_palette__purple
+msgid "🟣 Purple"
+msgstr "🟣 Фиолетовый"

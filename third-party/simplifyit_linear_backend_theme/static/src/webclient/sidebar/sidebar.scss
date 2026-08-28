@@ -1,0 +1,399 @@
+//
+// Linear style sidebar.
+//
+
+.slt_sidebar {
+    display: flex;
+    flex-direction: column;
+    width: var(--slt-sidebar-width);
+    height: 100%;
+    overflow: hidden;
+    background: var(--slt-sidebar-bg);
+    border-right: 1px solid var(--slt-border);
+    transition: width 0.15s ease;
+
+    // ---------- Brand ----------
+    .slt_sidebar_brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 14px 10px;
+        flex: none;
+
+        .slt_brand_logo {
+            width: 28px;
+            height: 28px;
+            flex: none;
+            object-fit: contain;
+            border-radius: var(--slt-radius-sm);
+        }
+
+        .slt_brand_text {
+            min-width: 0;
+            line-height: 1.25;
+
+            b {
+                display: block;
+                font-size: 13.5px;
+                font-weight: 600;
+                letter-spacing: -0.01em;
+                color: var(--slt-text);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            span {
+                font-size: 11px;
+                color: var(--slt-text-3);
+            }
+        }
+
+        .slt_collapse_btn {
+            margin-left: auto;
+            flex: none;
+            width: 24px;
+            height: 24px;
+            display: grid;
+            place-items: center;
+            border: none;
+            background: transparent;
+            border-radius: var(--slt-radius-sm);
+            color: var(--slt-text-3);
+            cursor: pointer;
+            font-size: 10px;
+
+            &:hover {
+                background: var(--slt-surface-2);
+                color: var(--slt-text);
+            }
+        }
+    }
+
+    // ---------- Search trigger ----------
+    .slt_search_trigger {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 2px 12px 10px;
+        padding: 7px 10px;
+        flex: none;
+        font-size: 13px;
+        color: var(--slt-text-3);
+        background: var(--slt-surface);
+        border: 1px solid var(--slt-border);
+        border-radius: var(--slt-radius-sm);
+        cursor: pointer;
+        transition: border-color 0.15s;
+
+        &:hover {
+            border-color: var(--slt-border-strong);
+            color: var(--slt-text-2);
+        }
+
+        .fa-search {
+            font-size: 12px;
+        }
+
+        .slt_search_kbd {
+            margin-left: auto;
+            font-family: inherit;
+            font-size: 10.5px;
+            color: var(--slt-text-3);
+            background: var(--slt-surface-2);
+            border: 1px solid var(--slt-border);
+            border-radius: 4px;
+            padding: 0 5px;
+        }
+    }
+
+    // ---------- Nav ----------
+    .slt_sidebar_nav {
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 0 8px 12px;
+
+        .slt_nav_label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px;
+            font-size: 10.5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--slt-text-3);
+            padding: 10px 10px 6px;
+        }
+
+        .slt_reorder_toggle {
+            flex: none;
+            width: 20px;
+            height: 20px;
+            display: grid;
+            place-items: center;
+            border: none;
+            background: transparent;
+            border-radius: var(--slt-radius-sm);
+            color: var(--slt-text-3);
+            cursor: pointer;
+            font-size: 10px;
+            text-transform: none;
+            letter-spacing: normal;
+
+            &:hover {
+                background: var(--slt-surface-2);
+                color: var(--slt-text);
+            }
+
+            &.slt_active {
+                color: var(--slt-accent);
+                background: var(--slt-accent-soft);
+            }
+        }
+
+        // ---------- Reorder (drag & drop) mode ----------
+        &.slt_reordering {
+            .slt_app_btn {
+                cursor: move;
+            }
+
+            .slt_app_chev {
+                display: none;
+            }
+        }
+
+        .slt_app_drag_handle {
+            flex: none;
+            font-size: 11px;
+            color: var(--slt-text-3);
+        }
+
+        .slt_dragged_app {
+            opacity: 0.6;
+            background: var(--slt-surface-2);
+        }
+
+        .slt_app_btn {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 6px 10px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--slt-text-2);
+            text-decoration: none;
+            border-radius: var(--slt-radius-sm);
+            transition: background 0.12s, color 0.12s;
+            cursor: pointer;
+
+            &:hover {
+                background: var(--slt-surface-2);
+                color: var(--slt-text);
+            }
+
+            &.slt_active {
+                color: var(--slt-text);
+                font-weight: 600;
+            }
+
+            .slt_app_icon {
+                width: 20px;
+                height: 20px;
+                flex: none;
+                border-radius: 5px;
+            }
+
+            .slt_app_name {
+                min-width: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .slt_app_chev {
+                margin-left: auto;
+                font-size: 8px;
+                color: var(--slt-text-3);
+                transition: transform 0.15s;
+                opacity: 0;
+            }
+
+            &:hover .slt_app_chev,
+            &.slt_active .slt_app_chev {
+                opacity: 1;
+            }
+        }
+
+        .slt_app.slt_open > .slt_app_btn .slt_app_chev {
+            transform: rotate(90deg);
+        }
+
+        // ---------- Submenu tree items (shared by the inline tree and the
+        // collapsed-rail flyout, since both render the same MenuTree template) ----------
+        .slt_submenu_item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            margin-left: 5px;
+            font-size: 12.5px;
+            color: var(--slt-text-2);
+            text-decoration: none;
+            border-left: 2px solid var(--slt-border);
+            border-radius: 0 var(--slt-radius-sm) var(--slt-radius-sm) 0;
+
+            .slt_submenu_name {
+                min-width: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .slt_group_chev {
+                margin-left: auto;
+                flex: none;
+                font-size: 8px;
+                color: var(--slt-text-3);
+                transition: transform 0.15s;
+            }
+
+            &.slt_group_open .slt_group_chev {
+                transform: rotate(90deg);
+            }
+
+            &:hover {
+                background: var(--slt-surface-2);
+                color: var(--slt-text);
+            }
+
+            &.slt_active {
+                color: var(--slt-accent-text);
+                font-weight: 600;
+                border-left-color: var(--slt-accent);
+                background: var(--slt-accent-soft);
+            }
+        }
+
+        .slt_submenu {
+            padding: 2px 0 4px 24px;
+        }
+
+        // ---------- Hover flyout (collapsed rail only) ----------
+        .slt_flyout {
+            position: fixed;
+            left: 62px;
+            width: 240px;
+            max-height: calc(100vh - 24px);
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: var(--slt-surface);
+            border: 1px solid var(--slt-border);
+            border-radius: var(--slt-radius);
+            box-shadow: var(--slt-shadow-lg);
+            padding: 6px;
+            z-index: 1100;
+
+            .slt_flyout_header {
+                font-size: 11px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                color: var(--slt-text-3);
+                padding: 6px 10px 4px;
+            }
+
+            .slt_flyout_body .slt_submenu_item {
+                margin-left: 0;
+                border-left: none;
+                border-radius: var(--slt-radius-sm);
+            }
+        }
+    }
+
+    // ---------- Footer ----------
+    .slt_sidebar_foot {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        flex: none;
+        border-top: 1px solid var(--slt-border);
+
+        .slt_avatar {
+            width: 28px;
+            height: 28px;
+            flex: none;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .slt_foot_text {
+            min-width: 0;
+            line-height: 1.25;
+
+            b {
+                display: block;
+                font-size: 12.5px;
+                font-weight: 600;
+                color: var(--slt-text);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            small {
+                display: block;
+                font-size: 11px;
+                color: var(--slt-text-3);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+
+    // ---------- Collapsed rail ----------
+    &.slt_collapsed {
+        width: 56px;
+
+        .slt_brand_text,
+        .slt_search_label,
+        .slt_search_kbd,
+        .slt_nav_label,
+        .slt_app_name,
+        .slt_app_chev,
+        .slt_submenu,
+        .slt_foot_text {
+            display: none;
+        }
+
+        .slt_sidebar_brand {
+            flex-direction: column;
+            gap: 6px;
+            padding: 12px 0 6px;
+            align-items: center;
+
+            .slt_collapse_btn {
+                margin-left: 0;
+            }
+        }
+
+        .slt_search_trigger {
+            justify-content: center;
+            margin: 2px 10px 10px;
+            padding: 7px 0;
+        }
+
+        .slt_app_btn {
+            justify-content: center;
+            padding: 7px 0;
+        }
+
+        .slt_sidebar_foot {
+            justify-content: center;
+            padding: 10px 0;
+        }
+    }
+}

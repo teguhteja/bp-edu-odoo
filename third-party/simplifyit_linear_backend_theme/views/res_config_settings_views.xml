@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2026. Developed and maintained by Simplify It S.R.L. (https://simplifyit.com.bo) -->
+
+<odoo>
+
+    <record id="res_config_settings_view_form_login_branding" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.simplifyit.linear.login</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='general_settings']" position="inside">
+                <block title="Login Page" name="simplifyit_login_branding_setting_container">
+                    <setting string="Claim" help="Headline shown next to the logo on the login page. Leave empty to use the default.">
+                        <field name="slt_login_claim" placeholder="Everything your business needs, in one place."/>
+                    </setting>
+                    <setting string="Subclaim" help="Short line under the claim. Leave empty to use the default.">
+                        <field name="slt_login_subclaim" placeholder="Sales, inventory and accounting with the speed and clarity your team deserves."/>
+                    </setting>
+                    <setting string="Footer" help="Small print at the bottom of the brand panel. Leave empty to use the default.">
+                        <field name="slt_login_footer" placeholder="Odoo 19 · Built by Simplify IT"/>
+                    </setting>
+                </block>
+                <block title="About this theme" name="simplifyit_linear_about_setting_container">
+                    <setting string="SimplifyIT Linear Backend Theme">
+                        <div class="text-muted">
+                            <div>
+                                Version <field name="slt_theme_version" nolabel="1" class="d-inline-block"/>
+                            </div>
+                            <div>
+                                Contact: <a href="mailto:support@simplifyit.com.bo">support@simplifyit.com.bo</a>
+                            </div>
+                            <div>
+                                Website: <a href="https://simplifyit.com.bo" target="_blank">simplifyit.com.bo</a>
+                            </div>
+                            <div class="mt-2">
+                                If you are experiencing issues with the login page and you have the
+                                Website app installed, email us and we will send you the
+                                <code>simplifyit_linear_backend_theme_website</code> add-on, free of charge.
+                            </div>
+                        </div>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

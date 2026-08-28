@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2026. Developed and maintained by Simplify It S.R.L. (https://simplifyit.com.bo) -->
+
+<templates xml:space="preserve">
+
+    <t t-name="simplifyit_linear_backend_theme.LinearSidebar">
+        <aside class="slt_sidebar" t-att-class="{ slt_collapsed: state.collapsed }">
+
+            <div class="slt_sidebar_brand">
+                <img class="slt_brand_logo" src="/web/binary/company_logo" alt="Logo"/>
+                <div class="slt_brand_text">
+                    <b t-esc="companyName"/>
+                    <span>Odoo 19</span>
+                </div>
+                <button
+                    class="slt_collapse_btn"
+                    t-on-click="toggleCollapsed"
+                    data-tooltip="Toggle sidebar (Ctrl+B)"
+                >
+                    <i t-att-class="state.collapsed ? 'oi oi-chevron-right' : 'oi oi-chevron-left'"/>
+                </button>
+            </div>
+
+            <button class="slt_search_trigger" t-on-click="openCommandPalette">
+                <i class="fa fa-search"/>
+                <span class="slt_search_label">Search…</span>
+                <kbd class="slt_search_kbd">Ctrl K</kbd>
+            </button>
+
+            <nav class="slt_sidebar_nav" t-ref="navRef" t-att-class="{ slt_reordering: state.reordering }">
+                <div class="slt_nav_label">
+                    <span>Apps</span>
+                    <button
+                        class="slt_reorder_toggle"
+                        t-att-class="{ slt_active: state.reordering }"
+                        t-on-click="toggleReordering"
+                        data-tooltip="Reorder apps"
+                    >
+                        <i t-att-class="state.reordering ? 'fa fa-check' : 'fa fa-pencil'"/>
+                    </button>
+                </div>
+                <t t-foreach="apps" t-as="app" t-key="app.id">
+                    <div
+                        class="slt_app"
+                        t-att-class="{ slt_open: app.id === state.expandedAppId }"
+                        t-on-mouseenter="(ev) => this.onAppMouseEnter(app, ev)"
+                        t-on-mouseleave="onAppMouseLeave"
+                    >
+                        <a
+                            class="slt_app_btn"
+                            t-att-class="{ slt_active: app.id === currentAppId }"
+                            t-att-href="app.href"
+                            t-att-data-menu-xmlid="app.xmlid"
+                            t-on-click.prevent="() => this.onAppClick(app)"
+                        >
+                            <i t-if="state.reordering" class="slt_app_drag_handle fa fa-grip-vertical"/>
+                            <img
+                                t-if="app.webIconData"
+                                class="slt_app_icon"
+                                t-att-src="app.webIconData"
+                            />
+                            <img
+                                t-else=""
+                                class="slt_app_icon"
+                                src="/web/static/img/default_icon_app.png"
+                            />
+                            <span class="slt_app_name" t-esc="app.label"/>
+                            <i class="slt_app_chev oi oi-chevron-right"/>
+                        </a>
+                        <div class="slt_submenu" t-if="app.id === state.expandedAppId">
+                            <t t-call="simplifyit_linear_backend_theme.LinearSidebar.MenuTree">
+                                <t t-set="nodes" t-value="getMenuNodes(app.id)"/>
+                                <t t-set="depth" t-value="0"/>
+                            </t>
+                        </div>
+                        <div
+                            class="slt_flyout"
+                            t-if="state.collapsed and app.id === state.flyoutAppId"
+                            t-attf-style="top: {{state.flyoutTop}}px"
+                            t-on-mouseenter="onFlyoutMouseEnter"
+                            t-on-mouseleave="onFlyoutMouseLeave"
+                        >
+                            <div class="slt_flyout_header" t-esc="app.label"/>
+                            <div class="slt_flyout_body">
+                                <t t-if="getMenuNodes(app.id).length">
+                                    <t t-call="simplifyit_linear_backend_theme.LinearSidebar.MenuTree">
+                                        <t t-set="nodes" t-value="getMenuNodes(app.id)"/>
+                                        <t t-set="depth" t-value="0"/>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <a
+                                        class="slt_submenu_item"
+                                        href="#"
+                                        t-on-click.prevent="() => this.onAppClick(app)"
+                                    >
+                                        <span class="slt_submenu_name" t-esc="app.label"/>
+                                    </a>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </nav>
+
+            <div class="slt_sidebar_foot">
+                <img class="slt_avatar" t-att-src="avatarUrl" alt="Avatar"/>
+                <div class="slt_foot_text">
+                    <b t-esc="userName"/>
+                    <small t-esc="userLogin"/>
+                </div>
+            </div>
+
+        </aside>
+    </t>
+
+    <t t-name="simplifyit_linear_backend_theme.LinearSidebar.MenuTree">
+        <t t-foreach="nodes" t-as="node" t-key="node.id">
+            <a
+                class="slt_submenu_item"
+                t-att-class="{
+                    slt_active: node.id === state.activeMenuId,
+                    slt_group: node.children.length,
+                    slt_group_open: node.children.length and state.openGroups[node.id],
+                }"
+                t-attf-style="padding-left: {{ 10 + depth * 12 }}px"
+                href="#"
+                t-on-click.prevent="() => this.onNodeClick(node)"
+            >
+                <span class="slt_submenu_name" t-esc="node.name"/>
+                <i t-if="node.children.length" class="slt_group_chev oi oi-chevron-right"/>
+            </a>
+            <t t-if="node.children.length and state.openGroups[node.id]">
+                <t t-call="simplifyit_linear_backend_theme.LinearSidebar.MenuTree">
+                    <t t-set="nodes" t-value="node.children"/>
+                    <t t-set="depth" t-value="depth + 1"/>
+                </t>
+            </t>
+        </t>
+    </t>
+
+</templates>

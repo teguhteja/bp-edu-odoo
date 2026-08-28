@@ -1,0 +1,236 @@
+//
+// Linear backend theme — view layers (control panel, list, form, kanban, search).
+//
+
+// ================= Control panel =================
+.o_control_panel {
+    background: var(--slt-surface);
+    border-bottom: 1px solid var(--slt-border);
+
+    .o_breadcrumb {
+        font-size: 13.5px;
+
+        .breadcrumb-item {
+            a {
+                color: var(--slt-text-3);
+                &:hover {
+                    color: var(--slt-text);
+                }
+            }
+            &.active {
+                color: var(--slt-text);
+                font-weight: 600;
+                letter-spacing: -0.01em;
+            }
+        }
+    }
+
+    .o_control_panel_navigation,
+    .o_control_panel_actions {
+        .btn {
+            font-size: 13px;
+        }
+    }
+
+    .o_pager {
+        color: var(--slt-text-3);
+        font-size: 12.5px;
+        .o_pager_value {
+            color: var(--slt-text-2);
+        }
+    }
+}
+
+// ================= Search =================
+.o_searchview {
+    border-radius: var(--slt-radius-sm);
+    border-color: var(--slt-border-strong);
+
+    &:focus-within {
+        border-color: var(--slt-accent);
+        box-shadow: var(--slt-ring);
+    }
+
+    .o_searchview_facet {
+        border-radius: var(--slt-radius-sm);
+        // Solid tint (not rgba): the facet hover overlays (pencil/sort icons)
+        // use `bg-inherit` to mask the funnel icon underneath, which only
+        // works when the inherited background is opaque.
+        background: color-mix(in srgb, var(--slt-accent) 11%, var(--slt-surface));
+        border: none;
+        color: var(--slt-accent-text);
+
+        .o_searchview_facet_label {
+            background: color-mix(in srgb, var(--slt-accent) 11%, var(--slt-surface));
+            color: var(--slt-accent-text);
+            border-radius: var(--slt-radius-sm) 0 0 var(--slt-radius-sm);
+
+            // groupBy facets use .text-bg-action (with !important); keep the
+            // same flat Linear tint for those as well.
+            &.text-bg-action {
+                background: color-mix(in srgb, var(--slt-accent) 11%, var(--slt-surface)) !important;
+                color: var(--slt-accent-text) !important;
+            }
+        }
+    }
+}
+
+// ================= List view =================
+.o_list_view {
+    background: var(--slt-surface);
+
+    .o_list_renderer {
+        border-radius: 0;
+    }
+
+    .o_list_table {
+        thead {
+            background: var(--slt-surface);
+            color: var(--slt-text-3);
+
+            th {
+                font-size: 11px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                border-bottom: 1px solid var(--slt-border);
+                padding-top: 9px;
+                padding-bottom: 9px;
+            }
+        }
+
+        tbody {
+            tr.o_data_row {
+                transition: background 0.08s ease;
+
+                td.o_data_cell {
+                    border-bottom: 1px solid var(--slt-border);
+                    color: var(--slt-text-2);
+                    font-size: 13px;
+                    padding-top: 8px;
+                    padding-bottom: 8px;
+                }
+
+                &:hover td.o_data_cell {
+                    background: var(--slt-surface-2);
+                }
+
+                &.o_data_row_selected td.o_data_cell,
+                &.table-info td.o_data_cell {
+                    background: var(--slt-accent-soft);
+                }
+            }
+        }
+
+        tfoot {
+            border-top: 1px solid var(--slt-border-strong);
+            background: var(--slt-surface);
+        }
+    }
+}
+
+// ================= Form view =================
+.o_form_view {
+    background: var(--slt-bg);
+
+    .o_form_sheet_bg {
+        background: var(--slt-bg);
+
+        > .o_form_sheet {
+            background: var(--slt-surface);
+            border: 1px solid var(--slt-border);
+            border-radius: var(--slt-radius-lg);
+            box-shadow: var(--slt-shadow-sm);
+        }
+    }
+
+    .o_form_label {
+        color: var(--slt-text-2);
+        font-weight: 500;
+        font-size: 13px;
+    }
+
+    .oe_title h1 {
+        letter-spacing: -0.02em;
+        font-weight: 650;
+    }
+
+    .o_form_statusbar {
+        background: var(--slt-surface);
+        border-bottom: 1px solid var(--slt-border);
+
+        .o_statusbar_status .o_arrow_button {
+            font-size: 12.5px;
+            font-weight: 500;
+
+            &.o_arrow_button_current {
+                color: var(--slt-accent-text);
+                font-weight: 600;
+            }
+        }
+    }
+
+    .oe_button_box .oe_stat_button {
+        border-radius: var(--slt-radius-sm);
+        &:hover {
+            background: var(--slt-surface-2);
+        }
+        .o_button_icon {
+            color: var(--slt-accent);
+        }
+    }
+}
+
+// ================= Kanban view =================
+.o_kanban_view {
+    background: var(--slt-bg);
+
+    .o_kanban_record {
+        background: var(--slt-surface);
+        border: 1px solid var(--slt-border);
+        border-radius: var(--slt-radius);
+        box-shadow: var(--slt-shadow-sm);
+        transition: box-shadow 0.12s ease, border-color 0.12s ease;
+
+        &:hover {
+            border-color: var(--slt-border-strong);
+            box-shadow: var(--slt-shadow-md);
+        }
+    }
+
+    .o_kanban_group {
+        .o_kanban_header .o_kanban_header_title {
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: -0.006em;
+        }
+    }
+}
+
+// ================= Settings =================
+.o_base_settings {
+    background: var(--slt-bg);
+
+    .o_setting_box {
+        border-radius: var(--slt-radius);
+    }
+
+    .settings .o_settings_container .o_setting_box:hover {
+        background: var(--slt-surface-2);
+    }
+}
+
+// ================= Chatter (mail; no-op if mail not installed) =================
+.o-mail-Chatter {
+    background: var(--slt-bg);
+
+    .o-mail-Message {
+        border-radius: var(--slt-radius);
+    }
+
+    .o-mail-Composer {
+        .o-mail-Composer-coreMain {
+            border-radius: var(--slt-radius);
+        }
+    }
+}

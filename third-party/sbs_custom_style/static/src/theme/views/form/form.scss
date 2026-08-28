@@ -1,0 +1,109 @@
+.o_form_view {
+    &:not(.o_field_highlight) .o_field_widget:not(.o_field_invalid):not(.o_field_highlight) .o_input:not(:hover):not(:focus) {
+        --o-input-border-color: #{$gray-200};
+    }
+    &:not(.o_field_highlight) .o_required_modifier.o_field_widget:not(.o_field_invalid):not(.o_field_highlight) .o_input:not(:hover):not(:focus) {
+        --o-input-border-color: #{$gray-400};
+    }
+}
+
+@media screen {
+    body.o_web_client {
+        --body-font-weight: 600;
+        font-weight: var(--body-font-weight);
+
+        .btn {
+            --btn-font-weight: 600;
+        }
+    }
+
+    .o_web_client .o-autocomplete--dropdown-menu .dropdown-item,
+    .o_web_client .o-dropdown--menu .dropdown-item {
+        font-weight: 600;
+    }
+
+    .o_web_client .o_dropdown_title {
+        font-weight: 600;
+    }
+
+    .o_web_client .o_list_renderer .o_list_table {
+        thead th,
+        tbody td,
+        tbody .o_field_widget,
+        tbody .o_input,
+        tbody .badge,
+        .o_group_header {
+            font-weight: 600;
+        }
+    }
+
+    .o_web_client .o_form_view {
+        .o_control_panel .btn,
+        .o_form_statusbar .btn,
+        .o_form_renderer .btn {
+            font-weight: 600;
+        }
+
+        .o_field_statusbar .o_arrow_button,
+        .oe_title > h1,
+        .oe_title > h2,
+        .oe_title > h3,
+        .oe_title .o_input,
+        .o_form_label,
+        .o_notebook .nav-link,
+        .o_field_x2many_list_row_add a,
+        .o_field_x2many_list_row_add button,
+        .o-form-buttonbox .o_stat_text,
+        .o-form-buttonbox .o_stat_value,
+        .oe_subtotal_footer .o_form_label {
+            font-weight: 600;
+        }
+
+        .o_group .o_wrap_label .o_form_label,
+        .o_inner_group .o_wrap_label .o_form_label,
+        .o_form_label.o_form_label_empty,
+        .o_form_label.o_form_label_false,
+        .o_form_label.o_form_label_readonly {
+            font-weight: 600;
+        }
+
+        .o_form_renderer .o_field_widget,
+        .o_form_renderer .o_input {
+            font-weight: 600;
+        }
+
+        .o_field_x2many .o_list_table {
+            thead th {
+                font-weight: 600;
+            }
+
+            tbody td,
+            tbody .o_field_widget,
+            tbody .o_input {
+                font-weight: 600;
+            }
+
+            .o_field_x2many_list_row_add a,
+            .o_field_x2many_list_row_add button {
+                font-weight: 600;
+            }
+        }
+
+        .o_input::placeholder {
+            font-weight: 400;
+        }
+
+        .o-mail-Chatter {
+            .o-mail-Message-body,
+            .o-mail-Message-richBody {
+                font-weight: 400;
+            }
+
+            .o-mail-Message-author,
+            .o-mail-Chatter-topbar .btn,
+            .o-mail-Chatter-attachFiles {
+                font-weight: 600;
+            }
+        }
+    }
+}

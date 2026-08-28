@@ -1,0 +1,95 @@
+.sbs_apps_sidebar_panel {
+    @include sbs-disable-scrollbar();
+    background-color: $sbs-appbar-background;
+    width: var(--sbs-sidebar-width, 0);
+    overflow-y: auto;
+    .sbs_apps_sidebar {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        white-space: nowrap;
+        .sbs_apps_sidebar_menu {
+            padding: 0;
+            > li > a {
+                cursor: pointer;
+                font-size: 13px;
+                font-weight: 600;
+                overflow: hidden;
+                padding: 8px 11px;
+                text-decoration: none;
+                color: $sbs-appbar-color;
+                text-overflow: ellipsis;
+                .sbs_apps_sidebar_icon {
+                    width: 22px;
+                    height: 22px;
+                    margin-right: 5px;
+                }
+            }
+            > li.active > a {
+                background: $sbs-appbar-active;
+            }
+            > li:hover > a {
+                background: $sbs-appbar-active;
+            }
+        }
+    }
+}
+
+.sbs_sidebar_type_large {
+    --sbs-sidebar-width: #{$sbs-sidebar-large-width};
+}
+
+.sbs_sidebar_type_small {
+    --sbs-sidebar-width: #{$sbs-sidebar-small-width};
+    .sbs_apps_sidebar_name {
+        display: none;
+    }
+    .sbs_apps_sidebar_icon {
+        margin-right: 0 !important;
+    }
+       .sbs_apps_sidebar_logo {
+        display: none;
+    }
+}
+
+.sbs_sidebar_type_invisible {
+    --sbs-sidebar-width: 0;
+}
+
+.editor_has_snippets_hide_backend_navbar,
+.o_home_menu_background,
+.o_fullscreen {
+    --sbs-sidebar-width: 0;
+}
+
+.editor_has_snippets_hide_backend_navbar .sbs_apps_sidebar_panel {
+    transition: width 300ms;
+}
+
+@include media-breakpoint-only(md) {
+    .sbs_sidebar_type_large {
+        --sbs-sidebar-width: #{$sbs-sidebar-small-width};
+        .sbs_apps_sidebar_name {
+            display: none;
+        }
+        .sbs_apps_sidebar_icon {
+            margin-right: 0 !important;
+        }
+           .sbs_apps_sidebar_logo {
+            display: none;
+        }
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .sbs_sidebar_type_large, .sbs_sidebar_type_small {
+        --sbs-sidebar-width: 0;
+    }
+}
+
+@media print {
+    .sbs_sidebar_type_large, .sbs_sidebar_type_small {
+        --sbs-sidebar-width: 0;
+    }
+}

@@ -1,0 +1,36 @@
+//
+// Linear inspired primary variables.
+//
+// This file is inserted right after web/static/src/scss/primary_variables.scss
+// so its plain (non !default) assignments win on both Community and Enterprise
+// (web_enterprise inserts its variables *before* web's, hence before this file).
+//
+
+$slt-accent: #5E6AD2;
+
+// `!default` so odoo_variables_dark.scss — injected earlier in the dark
+// bundle — can brighten these for a dark canvas. In the light bundle nothing
+// sets them beforehand, so the values below apply.
+$slt-accent-strong: #4F5ABF !default;
+$slt-component-active-color: #26262B !default;
+
+// Brand
+$o-community-color: $slt-accent;
+$o-enterprise-color: $slt-accent;
+$o-enterprise-action-color: $slt-accent;
+$o-brand-odoo: $slt-accent;
+$o-brand-primary: $slt-accent;
+$o-action: $slt-accent;
+$o-main-link-color: $slt-accent-strong;
+
+// Typography — Inter, the Linear typeface (variable font shipped with the theme)
+$o-font-family-sans-serif: ("Inter", "InterVariable", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
+$o-headings-font-family: $o-font-family-sans-serif;
+
+// Inputs
+$o-input-border-required: $slt-accent;
+
+// Components
+$o-component-active-color: $slt-component-active-color;
+$o-component-active-bg: rgba($slt-accent, 0.12);
+$o-component-active-border: $slt-accent;

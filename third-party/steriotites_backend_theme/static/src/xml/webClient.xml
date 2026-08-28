@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<templates id="templateWebClient" xml:space="preserve">
+
+    <t t-name="SidebarMenuItem">
+        <div t-if="menu.childrenTree and menu.childrenTree.length" class="">
+            <b>
+                <t t-esc="menu.name"/>
+            </b>
+        </div>
+        <li
+            t-else=""
+            class="submenu"
+            t-on-click.stop="() => this.onSidebarMenuSelection(menu, true)"
+        >
+            <span
+                class="menu-label"
+                t-att-style="'padding-left:' + (level * 5) + 'px'"
+            >
+                <t t-esc="menu.name"/>
+            </span>
+        </li>
+
+        <t t-if="menu.childrenTree and menu.childrenTree.length">
+            <t t-foreach="menu.childrenTree" t-as="child" t-key="child.id">
+                <t t-call="SidebarMenuItem">
+                    <t t-set="menu" t-value="child"/>
+                    <t t-set="level" t-value="level + 1"/>
+                </t>
+            </t>
+        </t>
+    </t>
+    <t t-name="submenus">
+        <t t-if="env.isSmall and state.currentAppSections.length">
+            <t t-set="currentMenu" t-value="this.menuService.getCurrentApp()"/>
+
+            <div class="d-flex pb-1 border-bottom mb-3 gap-2">
+                <span
+                    class="menu-icon"
+                    t-attf-style="background-image:url('#{this._getMenuIcon(currentMenu)}')"
+                />
+                <b>
+                    <t t-esc="currentMenu.name" />
+                </b>
+            </div>
+
+            <div class="ps-2">
+                <t t-foreach="state.currentAppSections" t-as="section" t-key="section.id">
+                    <t t-call="SidebarMenuItem">
+                        <t t-set="menu" t-value="section"/>
+                        <t t-set="level" t-value="1"/>
+                    </t>
+                </t>
+            </div>
+
+            <li class="menu-separator mt-4">Main Apps</li>
+
+        </t>
+    </t>
+
+    <t t-inherit="web.WebClient" t-inherit-mode="extension">
+        <xpath expr="." position="replace">
+            <div class="custom-wrapper">
+
+                <div
+                    class="sidebar-backdrop"
+                    t-if="state.sidebarOpen"
+                    t-on-click="toggleSidebar"
+                />
+
+                <aside
+                    class="custom-sidebar"
+                    t-att-class="{
+                        'open': state.sidebarOpen,
+                        'mini': state.sidebarMini,
+                        'sidebar-mobile': env.isSmall
+                    }"
+                    t-if="!env.isSmall or state.sidebarOpen"
+                >
+                    <div class="logo">
+                        <i
+                            class="fa toggle-mini d-none d-md-inline me-2"
+                            t-att-class="{
+                                'fa-arrow-left': !state.sidebarMini,
+                                'fa-arrow-right': state.sidebarMini,
+                            }"
+                            t-on-click="toggleMiniSidebar"
+                        />
+                        <span t-if="!state.sidebarMini">
+                            <t t-esc="user.activeCompany.name"/>
+                        </span>
+                    </div>
+                    
+
+                    <ul class="custom-menu">
+                        <t t-call="submenus"/>
+                        <t t-foreach="menuService.getApps()" t-as="app" t-key="app.id">
+                            <li
+                                t-att-class="{
+                                    'active': state.currentAppId === app.id
+                                }"
+                                t-on-click="() => this.onSidebarMenuSelection(app)"
+                            >
+                                <span
+                                    class="menu-icon"
+                                    t-attf-style="background-image:url('#{this._getMenuIcon(app)}')"
+                                />
+                                <span class="menu-label" t-if="!state.sidebarMini">
+                                    <t t-esc="app.name"/>
+                                </span>
+                            </li>
+                        </t>
+                    </ul>
+
+                </aside>
+
+                <!-- MAIN -->
+                <div class="custom-main">
+                    <header class="custom-topbar">
+                        <button
+                            class="btn text-white  d-md-none"
+                            t-on-click="toggleSidebar"
+                        >
+                            <i class="fa fa-bars"/>
+                        </button>
+
+                        <NavBar/>
+                    </header>
+
+                    <div class="custom-content">
+                        <ActionContainer/>
+                        <MainComponentsContainer/>
+                    </div>
+                </div>
+
+            </div>
+        </xpath>
+    </t>
+
+</templates>

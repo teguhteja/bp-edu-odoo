@@ -81,7 +81,7 @@
         ]
     },
     'external_dependencies': {
-        'python': ['bs4']
+        'python': ['bs4', 'linkpreview']
     },
     'images': ['static/description/banner.jpg'],
     'license': 'LGPL-3',

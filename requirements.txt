@@ -5,6 +5,17 @@
 python-docx
 PyPDF2
 
+# third-party/enhanced_document_management (wizards/document_url.py)
+# Catatan: manifest modul itu hanya mendeklarasikan 'bs4', padahal kodenya
+# meng-import linkpreview -- bs4 & requests ikut terpasang sebagai dependensinya.
+linkpreview
+
+# cloud_storage_google (modul inti Odoo, bukan vendor di repo ini).
+# Manifest-nya menuntut python: ["google-auth"]; paket itu yang menyediakan
+# modul google.auth dan google.oauth2. Tanpa ini modul menolak diinstall
+# dengan "an external dependency is not met: google-auth".
+google-auth
+
 # third-party/storage (fs_storage, fs_attachment, fs_attachment_s3)
 packaging
 fsspec>=2024.5.0

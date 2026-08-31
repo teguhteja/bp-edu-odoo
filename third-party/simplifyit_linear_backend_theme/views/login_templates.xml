@@ -58,12 +58,9 @@
 
                     <t t-out="0"/>
 
-                    <div class="sit-form-foot" t-if="not disable_footer">
-                        <t t-if="not disable_database_manager">
-                            <a href="/web/database/manager">Manage databases</a>
-                            <span class="sit-foot-sep">·</span>
-                        </t>
-                        <a href="https://www.odoo.com?utm_source=db&amp;utm_medium=auth" target="_blank">Powered by Odoo</a>
+                    <div class="sit-form-foot"
+                         t-if="not disable_footer and not disable_database_manager">
+                        <a href="/web/database/manager">Manage databases</a>
                     </div>
                 </div>
             </section>

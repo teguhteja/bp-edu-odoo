@@ -87,7 +87,7 @@
                         domain="[('state', '=', 'accepted')]"/>
                 <filter string="Rejected" name="rejected"
                         domain="[('state', '=', 'rejected')]"/>
-                <group expand="0" string="Group By">
+                <group name="group_by">
                     <filter name="group_workspace" string="Workspace"
                             context="{'group_by':'workspace_id'}"/>
                     <filter name="group_state" string="State"

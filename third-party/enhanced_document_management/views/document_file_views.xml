@@ -361,7 +361,7 @@
                         domain="[('extension', '=', 'csv')]"/>
                 <filter string="DOC" name="filter_xlsx"
                         domain="[('extension', 'in', ['doc','docx'])]"/>
-                <group expand="0" string="Group By">
+                <group name="group_by">
                     <filter name="group_workspace" string="Workspace"
                             context="{'group_by':'workspace_id'}"/>
                     <filter name="group_extension" string="Extension"

@@ -30,7 +30,9 @@
         <field name="res_model">res.config.settings</field>
         <field name="view_id" ref="res_config_settings_view_form"/>
         <field name="view_mode">form</field>
-        <field name="target">inline</field>
+        <!-- Odoo 19: target 'inline' dihapus dari ir.actions.act_window.
+             Action settings di core Odoo 19 tidak menyetel target sama sekali
+             (default 'current'), jadi baris target dihilangkan. -->
         <field name="context">{'module' : 'document_management'}</field>
     </record>
 </odoo>

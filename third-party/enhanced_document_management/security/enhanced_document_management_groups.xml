@@ -5,17 +5,27 @@
         <field name="description">Access for Document module</field>
         <field name="sequence">50</field>
     </record>
+    <!--
+        Odoo 19: field `category_id` dihapus dari res.groups. Penggantinya
+        `privilege_id` -> res.groups.privilege, dan record privilege itu yang
+        memegang `category_id` ke ir.module.category.
+    -->
+    <record id="privilege_document_module" model="res.groups.privilege">
+        <field name="name">Document Management</field>
+        <field name="category_id" ref="module_document_module"/>
+        <field name="sequence">50</field>
+    </record>
     <!-- Define a group 'User' -->
     <record id="view_own_document" model="res.groups">
         <field name="name">User</field>
-        <field name="category_id" ref="module_document_module"/>
+        <field name="privilege_id" ref="privilege_document_module"/>
     </record>
     <!-- Define a group 'Manager' with implied 'User' group and associated users -->
     <record id="view_all_document" model="res.groups">
         <field name="name">Manager</field>
-        <field name="category_id" ref="module_document_module"/>
+        <field name="privilege_id" ref="privilege_document_module"/>
         <field name="implied_ids" eval="[(4, ref('view_own_document'))]"/>
-        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_admin'))]"/>
     </record>
     <!-- Define an access rule 'Document Manager' -->
     <record id="document_workspace_rule_manager" model="ir.rule">
@@ -87,9 +97,17 @@
         <field name="perm_unlink" eval="True"/>
         <field name="active" eval="True"/>
     </record>
-    <!-- Set default groups for the base.default_user -->
-    <record id="base.default_user" model="res.users">
-        <field name="groups_id"
+    <!--
+        Set default groups untuk user baru.
+
+        Odoo 19: record template `base.default_user` (res.users) sudah tidak
+        ada. Penggantinya `base.default_user_group` (res.groups). Lihat
+        res.users._default_groups(): user baru mendapat `base.group_user`
+        plus seluruh implied_ids milik group tersebut, jadi cara menambahkan
+        group default sekarang lewat implied_ids-nya.
+    -->
+    <record id="base.default_user_group" model="res.groups">
+        <field name="implied_ids"
                eval="[(4,ref('enhanced_document_management.view_own_document'))]"/>
     </record>
     <!-- Access rule for document templates based on multi-company settings.-->

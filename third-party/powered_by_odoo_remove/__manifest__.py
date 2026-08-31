@@ -44,7 +44,11 @@
     'category': 'Tools',
     'depends': ['portal'],
     'data': [
-        'views/login_layout.xml',
+        # 'views/login_layout.xml' dinonaktifkan: simplifyit_linear_backend_theme
+        # me-replace seluruh <div class="container"> milik web.login_layout dengan
+        # template login_panels-nya sendiri, sehingga node card-body/odoo.com yang
+        # dicari xpath modul ini sudah tidak ada lagi -> ParseError saat install.
+        # Branding login sekarang ditangani langsung di template tema tersebut.
         'views/portal_record_sidebar.xml',
         'views/brand_promotion.xml',
     ],

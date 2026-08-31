@@ -111,7 +111,7 @@
                         domain="[('state', '=', 'document_approval' )]"/>
                 <filter string="Approved" name="Approved"
                         domain="[('state', '=', 'approved')]"/>
-                <group expand="0" string="Group By">
+                <group name="group_by">
                     <filter name="group_documents" string="Documents"
                             context="{'group_by':'document_id'}"/>
                     <filter name="group_state" string="State"

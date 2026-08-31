@@ -1,6 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_bp_edu_field_history_user,bp.edu.field.history user,model_bp_edu_field_history,,1,0,0,0
-access_bp_edu_field_history_doko,bp.edu.field.history doko,model_bp_edu_field_history,bp_edu_core.group_dosen_koordinator,1,0,0,1
+access_bp_edu_history_snapshot_wizard_user,bp.edu.history.snapshot.wizard user,model_bp_edu_history_snapshot_wizard,,1,1,1,1
 access_bp_edu_rps_dosen,bp.edu.rps dosen,model_bp_edu_rps,bp_edu_core.group_dosen,1,1,1,1
 access_bp_edu_rps_doko,bp.edu.rps doko,model_bp_edu_rps,bp_edu_core.group_dosen_koordinator,1,1,1,1
 access_bp_edu_rps_detail_dosen,bp.edu.rps.detail dosen,model_bp_edu_rps_detail,bp_edu_core.group_dosen,1,1,1,1

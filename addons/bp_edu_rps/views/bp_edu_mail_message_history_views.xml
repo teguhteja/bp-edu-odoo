@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ─── List View ─────────────────────────────────────────── -->
+    <record id="bp_edu_history_message_list_view" model="ir.ui.view">
+        <field name="name">bp.edu.history.message.list</field>
+        <field name="model">mail.message</field>
+        <field name="arch" type="xml">
+            <list string="Riwayat Perubahan" create="false" edit="false" delete="false"
+                  default_order="date desc">
+                <field name="date" string="Waktu"/>
+                <field name="author_id" string="Diubah oleh"/>
+                <field name="bp_edu_tracking_fields_changed" string="Field Berubah"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ─── Form View ─────────────────────────────────────────── -->
+    <record id="bp_edu_history_message_form_view" model="ir.ui.view">
+        <field name="name">bp.edu.history.message.form</field>
+        <field name="model">mail.message</field>
+        <field name="arch" type="xml">
+            <form string="Detail Riwayat Perubahan" create="false" edit="false" delete="false">
+                <header>
+                    <button name="action_view_snapshot_before"
+                            string="Lihat Form Sebelum Perubahan Ini"
+                            type="object" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="date" string="Waktu Perubahan"/>
+                            <field name="author_id" string="Diubah oleh"/>
+                        </group>
+                    </group>
+                    <group string="Perubahan pada Momen Ini">
+                        <field name="bp_edu_tracking_summary" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

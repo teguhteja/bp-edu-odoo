@@ -6,9 +6,11 @@
         <field name="name">Dosen</field>
     </record>
 
-    <!-- Dosen Koordinator (DoKo): akses penuh termasuk konfigurasi -->
+    <!-- Kaprodi (Ketua Program Studi): akses penuh termasuk konfigurasi,
+         mata kuliah dibatasi hanya milik prodinya sendiri (lihat
+         bp_edu_curriculum/security/bp_edu_curriculum_rules.xml) -->
     <record id="group_dosen_koordinator" model="res.groups">
-        <field name="name">Dosen Koordinator</field>
+        <field name="name">Kaprodi</field>
     </record>
 
 </odoo>

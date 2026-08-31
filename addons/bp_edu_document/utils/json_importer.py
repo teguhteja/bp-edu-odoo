@@ -12,9 +12,10 @@ Setiap fungsi menerima `env` (Odoo Environment) dan `data` (parsed dict).
 
 import_rps() melakukan UPSERT: RPS untuk mata_kuliah_id yang sama akan
 di-update (write) bukan dibuat baru, supaya re-import JSON yang sudah
-diperbarui dari rps_bp otomatis tercatat di riwayat perubahan
-(bp.edu.field.history, lihat bp_edu_rps/models/bp_edu_history_tracking.py)
-alih-alih menumpuk RPS duplikat.
+diperbarui dari rps_bp otomatis tercatat di riwayat perubahan (tracking
+bawaan Odoo pada field mata_kuliah_id/dosen_id/dst -> chatter message_ids,
+lihat bp_edu_rps/models/bp_edu_mail_message_history.py) alih-alih menumpuk
+RPS duplikat.
 """
 import logging
 import re
@@ -50,13 +51,39 @@ def _parse_minggu(val, default=0):
     return _safe_int(val, default)
 
 
-def _find_or_create_mk(env, kode, nama, meta):
+def _find_prodi(env, meta):
+    """Resolusi program studi dari meta.program_studi.
+
+    Dipakai untuk menandai mata kuliah dan CPL agar tidak tercampur antar
+    prodi. Mengembalikan recordset kosong bila tidak ketemu.
+    """
+    nama = (meta.get('program_studi') or '').strip()
+    if not nama:
+        return env['bp.edu.program.studi'].browse()
+    Prodi = env['bp.edu.program.studi']
+    prodi = Prodi.search([('nama', '=', nama)], limit=1)
+    if not prodi:
+        prodi = Prodi.search([('nama', 'ilike', nama)], limit=1)
+    if not prodi:
+        _logger.warning(
+            'Program studi %r tidak ditemukan; mata kuliah dan CPL akan '
+            'diimpor tanpa penanda prodi.', nama,
+        )
+    return prodi
+
+
+def _find_or_create_mk(env, kode, nama, meta, prodi=None):
     MK = env['bp.edu.mata.kuliah']
     mk = MK.search([('kode', '=', kode)], limit=1)
-    if not mk:
+    if mk:
+        # Lengkapi penanda prodi pada data lama yang belum punya.
+        if prodi and not mk.prodi_id:
+            mk.write({'prodi_id': prodi.id})
+    else:
         mk = MK.create({
             'kode': kode,
             'nama': nama,
+            'prodi_id': prodi.id if prodi else False,
             'sks_teori': _safe_int(meta.get('sks_teori', 2)),
             'sks_praktik': _safe_int(meta.get('sks_praktik', 0)),
             'semester': _safe_int(meta.get('semester', 1)),
@@ -69,25 +96,41 @@ def _find_or_create_mk(env, kode, nama, meta):
     return mk
 
 
-def _upsert_cpl(env, cpl_prodi_list):
-    """Upsert CPL records. Returns {kode: id} map."""
+def _upsert_cpl(env, cpl_prodi_list, prodi=None):
+    """Upsert CPL records. Returns {kode: id} map.
+
+    Pencarian DIBATASI per program studi. Kode CPL seperti "S-01" atau "P-01"
+    dipakai ulang oleh setiap prodi dengan rumusan yang berbeda; tanpa
+    pembatasan ini, impor prodi kedua akan menimpa deskripsi CPL prodi
+    pertama. Model bp.edu.cpl memang menguniknya sebagai (kode, prodi_id).
+
+    Tanpa prodi (JSON lama tanpa meta.program_studi), perilaku lama
+    dipertahankan: pencarian hanya berdasarkan kode.
+    """
     CPL = env['bp.edu.cpl']
     cpl_map = {}
     for item in cpl_prodi_list:
         kode = item.get('kode', '').strip()
         if not kode:
             continue
-        cpl = CPL.search([('kode', '=', kode)], limit=1)
+        domain = [('kode', '=', kode)]
+        if prodi:
+            domain.append(('prodi_id', '=', prodi.id))
+        cpl = CPL.search(domain, limit=1)
         if cpl:
-            cpl.write({
+            nilai = {
                 'tipe': item.get('tipe', cpl.tipe),
                 'deskripsi': item.get('deskripsi', cpl.deskripsi),
-            })
+            }
+            if prodi and not cpl.prodi_id:
+                nilai['prodi_id'] = prodi.id
+            cpl.write(nilai)
         else:
             cpl = CPL.create({
                 'kode': kode,
                 'tipe': item.get('tipe', 'Pengetahuan'),
                 'deskripsi': item.get('deskripsi', ''),
+                'prodi_id': prodi.id if prodi else False,
             })
         cpl_map[kode] = cpl.id
     return cpl_map
@@ -149,12 +192,15 @@ def import_rps(env, data: dict) -> dict:
     if not kode_mk or not nama_mk:
         raise ValueError('JSON tidak valid: meta.kode_mk dan meta.nama_mk wajib ada.')
 
+    # 0. Program Studi -- penanda agar MK dan CPL tidak tercampur antar prodi.
+    prodi = _find_prodi(env, meta)
+
     # 1. Mata Kuliah
     meta_with_desc = dict(meta)
     meta_with_desc['deskripsi_singkat'] = data.get('deskripsi_singkat', '')
     meta_with_desc['bahan_kajian'] = data.get('bahan_kajian', '')
     meta_with_desc['matakuliah_syarat'] = data.get('matakuliah_syarat', '-')
-    mk = _find_or_create_mk(env, kode_mk, nama_mk, meta_with_desc)
+    mk = _find_or_create_mk(env, kode_mk, nama_mk, meta_with_desc, prodi)
 
     # Update deskripsi jika MK sudah ada
     mk.write({
@@ -164,7 +210,7 @@ def import_rps(env, data: dict) -> dict:
     })
 
     # 2. CPL Prodi
-    cpl_map = _upsert_cpl(env, data.get('cpl_prodi', []))
+    cpl_map = _upsert_cpl(env, data.get('cpl_prodi', []), prodi)
     if cpl_map:
         mk.write({'cpl_ids': [(6, 0, list(cpl_map.values()))]})
 
@@ -257,7 +303,7 @@ def import_rps(env, data: dict) -> dict:
         'tanggal_penyusunan': meta.get('tanggal_penyusunan') or False,
     }
     if rps:
-        rps.write(rps_vals)  # write() -> tercatat di bp.edu.field.history
+        rps.write(rps_vals)  # write() -> tercatat di chatter (tracking bawaan Odoo)
     else:
         rps = Rps.create(rps_vals)
 
@@ -285,7 +331,7 @@ def import_rps(env, data: dict) -> dict:
     _import_rancangan_tugas(env, rps, data.get('rancangan_tugas_proyek'))
     _import_rubrik_penilaian(env, rps, data.get('rubrik_penilaian'))
 
-    # 10. Jejak riwayat yang mudah dibaca manusia (selain bp.edu.field.history
+    # 10. Jejak riwayat tambahan yang mudah dibaca manusia (selain tracking otomatis
     # yang mencatat per-field, chatter memberi ringkasan satu baris per import).
     aksi = 'dibuat' if created else 'diperbarui'
     rps.message_post(body=f'RPS {aksi} dari import JSON rps_bp (kode_mk={kode_mk}).')
@@ -433,7 +479,7 @@ def import_sap(env, data: dict) -> dict:
     kode_mk = meta.get('kode_mk', '').strip()
     nama_mk = meta.get('nama_mk', '').strip()
 
-    mk = _find_or_create_mk(env, kode_mk, nama_mk, meta)
+    mk = _find_or_create_mk(env, kode_mk, nama_mk, meta, _find_prodi(env, meta))
     dosen = _find_dosen(env, meta.get('dosen_pengampu', ''))
     ta = _active_tahun_akademik(env)
 
@@ -452,7 +498,7 @@ def import_sap(env, data: dict) -> dict:
         'tahun_akademik_id': tahun_akademik_id,
     }
     if sap:
-        sap.write(sap_vals)  # write() -> tercatat di bp.edu.field.history
+        sap.write(sap_vals)  # write() -> tercatat di chatter (tracking bawaan Odoo)
     else:
         sap = Sap.create(sap_vals)
 

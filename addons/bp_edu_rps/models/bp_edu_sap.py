@@ -14,20 +14,28 @@ class BpEduSap(models.Model):
 
     mata_kuliah_id = fields.Many2one(
         'bp.edu.mata.kuliah', string='Mata Kuliah',
-        required=True, ondelete='restrict',
+        required=True, ondelete='restrict', tracking=True,
     )
     rps_id = fields.Many2one(
         'bp.edu.rps', string='RPS Terkait',
         domain="[('mata_kuliah_id', '=', mata_kuliah_id)]",
-        ondelete='set null',
+        ondelete='set null', tracking=True,
     )
     dosen_id = fields.Many2one(
-        'bp.edu.dosen', string='Dosen Pengampu',
-        ondelete='restrict',
+        'bp.edu.dosen', string='Dosen Koordinator',
+        ondelete='restrict', tracking=True,
+        help='Dosen penanggung jawab (koordinator) mata kuliah ini. '
+             'Hanya dia yang dapat mengubah SAP ini.',
+    )
+    dosen_ids = fields.Many2many(
+        'bp.edu.dosen', 'bp_edu_sap_dosen_rel', 'sap_id', 'dosen_id',
+        string='Dosen Pengampu', tracking=True,
+        help='Dosen-dosen yang mengampu mata kuliah ini. Mereka ikut dapat '
+             'melihat SAP ini walaupun bukan dosen koordinatornya.',
     )
     tahun_akademik_id = fields.Many2one(
         'bp.edu.tahun.akademik', string='Tahun Akademik',
-        ondelete='restrict',
+        ondelete='restrict', tracking=True,
     )
 
     kode_mk = fields.Char(related='mata_kuliah_id.kode', store=True)

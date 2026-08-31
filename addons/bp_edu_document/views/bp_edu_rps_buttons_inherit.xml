@@ -11,7 +11,8 @@
                 <button type="object"
                         name="action_generate_docx"
                         string="Generate DOCX"
-                        icon="fa-file-word-o"/>
+                        icon="fa-file-word-o"
+                        invisible="is_history_snapshot"/>
             </xpath>
         </field>
     </record>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Stat button "Buku Ajar" di form Mata Kuliah -->
+    <record id="view_bp_edu_mata_kuliah_dms_inherit" model="ir.ui.view">
+        <field name="name">bp.edu.mata.kuliah.form.dms.inherit</field>
+        <field name="model">bp.edu.mata.kuliah</field>
+        <field name="inherit_id" ref="bp_edu_curriculum.bp_edu_mata_kuliah_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <button name="action_open_dms_directory"
+                        string="Buku Ajar"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-folder-open">
+                    <field name="dms_file_count" string="Buku Ajar" widget="statinfo" />
+                </button>
+            </xpath>
+            <xpath expr="//page[@name='pustaka']" position="after">
+                <page string="Link Google Drive" name="gdrive_links">
+                    <div class="alert alert-info" role="alert">
+                        Upload file langsung ke server dimatikan untuk menghemat
+                        storage. Simpan buku ajar di Google Drive lalu tempel
+                        link-nya di sini.
+                    </div>
+                    <field name="gdrive_link_ids" nolabel="1">
+                        <list editable="bottom">
+                            <field name="sequence" widget="handle" />
+                            <field name="name" placeholder="Judul buku ajar" />
+                            <field name="url" widget="url" placeholder="https://drive.google.com/..." />
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

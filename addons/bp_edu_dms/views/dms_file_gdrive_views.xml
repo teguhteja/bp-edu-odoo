@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Form dms.file: field content disembunyikan (upload dimatikan), diganti
+         dengan link Google Drive + tombol buka + preview inline (khusus PDF/
+         file yang didukung Google Drive viewer). -->
+    <record id="view_dms_file_form_gdrive_inherit" model="ir.ui.view">
+        <field name="name">dms.file.form.gdrive.inherit</field>
+        <field name="model">dms.file</field>
+        <field name="inherit_id" ref="dms.view_dms_file_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='content']" position="replace">
+                <group name="content">
+                    <group>
+                        <field name="gdrive_url" placeholder="https://drive.google.com/file/d/..." />
+                    </group>
+                    <group>
+                        <button name="action_open_gdrive_link" string="Buka di Google Drive"
+                                type="object" class="btn-link" icon="fa-external-link"
+                                invisible="not gdrive_url" />
+                    </group>
+                </group>
+                <field name="gdrive_preview_html" nolabel="1" colspan="2"
+                       invisible="not gdrive_preview_html" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

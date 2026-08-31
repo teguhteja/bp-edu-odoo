@@ -1,6 +1,6 @@
 {
     'name': 'BP Edu Core',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.1.0',
     'category': 'Education',
     'summary': 'Foundation: master data dosen, program studi, dan tahun akademik',
     'depends': ['base', 'web', 'mail'],

@@ -7,7 +7,7 @@
               parent="bp_edu_core.menu_bp_edu_root"
               sequence="40"/>
 
-    <!-- Template DOCX: hanya DoKo (konfigurasi) -->
+    <!-- Template DOCX: hanya Kaprodi (konfigurasi) -->
     <menuitem id="menu_bp_edu_docx_template"
               name="Template DOCX"
               parent="menu_bp_edu_document"
@@ -15,7 +15,7 @@
               sequence="10"
               groups="bp_edu_core.group_dosen_koordinator"/>
 
-    <!-- History Generate: hanya DoKo -->
+    <!-- History Generate: hanya Kaprodi -->
     <menuitem id="menu_bp_edu_generate_log"
               name="History Generate"
               parent="menu_bp_edu_document"
@@ -30,7 +30,7 @@
               action="action_wizard_generate"
               sequence="30"/>
 
-    <!-- Import JSON: hanya DoKo (konfigurasi) -->
+    <!-- Import JSON: hanya Kaprodi (konfigurasi) -->
     <menuitem id="menu_wizard_import_json"
               name="Import JSON"
               parent="menu_bp_edu_document"

@@ -11,22 +11,32 @@
                     <button name="action_finalize"
                             string="Finalisasi"
                             type="object"
-                            invisible="state == 'final'"
+                            invisible="state == 'final' or is_history_snapshot"
                             class="btn-primary"/>
                     <button name="action_reset_draft"
                             string="Reset ke Draft"
                             type="object"
-                            invisible="state == 'draft'"/>
+                            invisible="state == 'draft' or is_history_snapshot"/>
                     <button name="action_buat_detail_kosong"
                             string="Generate 16 Baris Minggu"
                             type="object"
-                            invisible="detail_ids"
+                            invisible="detail_ids or state == 'final' or is_history_snapshot"
                             class="btn-secondary"/>
                     <field name="state" widget="statusbar"
-                           statusbar_visible="draft,final"/>
+                           statusbar_visible="draft,final"
+                           readonly="is_history_snapshot"/>
                 </header>
                 <sheet>
-                    <div class="oe_button_box" name="button_box">
+                    <div class="alert alert-warning" role="alert" invisible="not is_history_snapshot">
+                        <strong>Ini adalah snapshot riwayat</strong> — kondisi RPS ini
+                        <field name="snapshot_date" nolabel="1" class="d-inline"/>,
+                        sebelum perubahan oleh <field name="snapshot_by_id" nolabel="1" class="d-inline"/>.
+                        Data di bawah ini apa adanya saat itu dan tidak bisa diedit atau disimpan.
+                        <button name="action_open_live_rps" type="object"
+                                string="Buka RPS Saat Ini" class="btn-link p-0 ms-2"
+                                invisible="not snapshot_of_id"/>
+                    </div>
+                    <div class="oe_button_box" name="button_box" invisible="is_history_snapshot">
                         <button class="oe_stat_button" type="object"
                                 name="action_view_history" icon="fa-history">
                             <field name="history_count" string="Riwayat" widget="statinfo"/>
@@ -37,18 +47,25 @@
                         <h1>
                             <field name="mata_kuliah_id"
                                    options="{'no_create': True}"
+                                   readonly="state == 'final' or is_history_snapshot"
                                    placeholder="Pilih Mata Kuliah..."/>
                         </h1>
                     </div>
                     <group>
                         <group string="Informasi">
-                            <field name="dosen_id" options="{'no_create': True}"/>
-                            <field name="tahun_akademik_id" options="{'no_create': True}"/>
-                            <field name="tanggal_penyusunan"/>
+                            <field name="dosen_id" options="{'no_create': True}"
+                                   readonly="state == 'final' or is_history_snapshot"/>
+                            <field name="dosen_ids" widget="many2many_tags"
+                                   options="{'no_create': True}"
+                                   readonly="state == 'final' or is_history_snapshot"/>
+                            <field name="tahun_akademik_id" options="{'no_create': True}"
+                                   readonly="state == 'final' or is_history_snapshot"/>
+                            <field name="tanggal_penyusunan" readonly="state == 'final' or is_history_snapshot"/>
                         </group>
                         <group string="MK">
                             <field name="kode_mk" readonly="1"/>
                             <field name="nama_mk" readonly="1"/>
+                            <field name="prodi_id" readonly="1"/>
                             <field name="semester" readonly="1"/>
                         </group>
                     </group>
@@ -57,7 +74,7 @@
                     <notebook>
                         <page string="Detail Perkuliahan (16 Minggu)" name="detail">
                             <field name="detail_ids" nolabel="1"
-                                   readonly="state == 'final'">
+                                   readonly="state == 'final' or is_history_snapshot">
                                 <list editable="bottom"
                                       decoration-muted="minggu == 8"
                                       decoration-info="minggu == 16">
@@ -105,7 +122,8 @@
                             </field>
                         </page>
                         <page string="Korelasi CPMK-Minggu" name="korelasi">
-                            <field name="korelasi_ids" nolabel="1">
+                            <field name="korelasi_ids" nolabel="1"
+                                   readonly="state == 'final' or is_history_snapshot">
                                 <list editable="bottom">
                                     <field name="cpmk"/>
                                     <field name="m1"/>
@@ -124,7 +142,8 @@
                             </field>
                         </page>
                         <page string="Korelasi Sub-CPMK-CPL" name="korelasi_cpl">
-                            <field name="korelasi_cpl_ids" nolabel="1">
+                            <field name="korelasi_cpl_ids" nolabel="1"
+                                   readonly="state == 'final' or is_history_snapshot">
                                 <list editable="bottom">
                                     <field name="sub"/>
                                     <field name="p1"/>
@@ -153,7 +172,8 @@
                             </field>
                         </page>
                         <page string="Matriks Penilaian" name="penilaian">
-                            <field name="penilaian_ids" nolabel="1">
+                            <field name="penilaian_ids" nolabel="1"
+                                   readonly="state == 'final' or is_history_snapshot">
                                 <list editable="bottom">
                                     <field name="jenis"/>
                                     <field name="bobot"/>
@@ -171,7 +191,8 @@
                             </field>
                         </page>
                         <page string="Rancangan Tugas Proyek" name="rancangan_tugas">
-                            <field name="rancangan_tugas_ids" nolabel="1">
+                            <field name="rancangan_tugas_ids" nolabel="1"
+                                   readonly="state == 'final' or is_history_snapshot">
                                 <list editable="bottom">
                                     <field name="tujuan"/>
                                     <field name="objek_garapan"/>
@@ -206,50 +227,52 @@
                             </field>
                         </page>
                         <page string="Rubrik Penilaian" name="rubrik">
-                            <group string="Rubrik Holistik Proposal/Laporan">
-                                <field name="rubrik_holistik_ids" nolabel="1">
-                                    <list editable="bottom">
-                                        <field name="grade"/>
-                                        <field name="skor_min"/>
-                                        <field name="skor_max"/>
-                                        <field name="kriteria"/>
-                                    </list>
-                                </field>
-                            </group>
-                            <group string="Rubrik Deskriptif Presentasi">
-                                <field name="rubrik_deskriptif_ids" nolabel="1">
-                                    <list editable="bottom">
+                            <separator string="Rubrik Holistik Proposal/Laporan"/>
+                            <field name="rubrik_holistik_ids" nolabel="1"
+                                   readonly="state == 'final' or is_history_snapshot">
+                                <list editable="bottom">
+                                    <field name="grade"/>
+                                    <field name="skor_min"/>
+                                    <field name="skor_max"/>
+                                    <field name="kriteria"/>
+                                </list>
+                            </field>
+                            <separator string="Rubrik Deskriptif Presentasi"/>
+                            <field name="rubrik_deskriptif_ids" nolabel="1"
+                                   readonly="state == 'final' or is_history_snapshot">
+                                <list editable="bottom">
+                                    <field name="aspek_yang_dinilai"/>
+                                    <field name="format_penilaian"/>
+                                </list>
+                                <form string="Rubrik Deskriptif Presentasi">
+                                    <group>
                                         <field name="aspek_yang_dinilai"/>
                                         <field name="format_penilaian"/>
-                                    </list>
-                                    <form string="Rubrik Deskriptif Presentasi">
+                                    </group>
+                                    <group string="Skala Penilaian">
                                         <group>
-                                            <field name="aspek_yang_dinilai"/>
-                                            <field name="format_penilaian"/>
+                                            <field name="skala_sangat_kurang_min"/>
+                                            <field name="skala_sangat_kurang_max"/>
+                                            <field name="skala_kurang_min"/>
+                                            <field name="skala_kurang_max"/>
+                                            <field name="skala_cukup_min"/>
+                                            <field name="skala_cukup_max"/>
                                         </group>
-                                        <group string="Skala Penilaian">
-                                            <group>
-                                                <field name="skala_sangat_kurang_min"/>
-                                                <field name="skala_sangat_kurang_max"/>
-                                                <field name="skala_kurang_min"/>
-                                                <field name="skala_kurang_max"/>
-                                                <field name="skala_cukup_min"/>
-                                                <field name="skala_cukup_max"/>
-                                            </group>
-                                            <group>
-                                                <field name="skala_baik_min"/>
-                                                <field name="skala_baik_max"/>
-                                                <field name="skala_sangat_baik_min"/>
-                                                <field name="skala_sangat_baik_max"/>
-                                            </group>
+                                        <group>
+                                            <field name="skala_baik_min"/>
+                                            <field name="skala_baik_max"/>
+                                            <field name="skala_sangat_baik_min"/>
+                                            <field name="skala_sangat_baik_max"/>
                                         </group>
-                                    </form>
-                                </field>
-                            </group>
+                                    </group>
+                                </form>
+                            </field>
                         </page>
                     </notebook>
+                    <field name="is_history_snapshot" invisible="1"/>
+                    <field name="snapshot_of_id" invisible="1"/>
                 </sheet>
-                <chatter/>
+                <chatter invisible="is_history_snapshot"/>
             </form>
         </field>
     </record>
@@ -264,10 +287,14 @@
                   decoration-muted="state == 'draft'">
                 <field name="kode_mk" optional="show"/>
                 <field name="nama_mk"/>
+                <field name="prodi_id" optional="show"/>
                 <field name="semester" optional="show"/>
                 <field name="dosen_id" optional="show"/>
+                <field name="dosen_ids" widget="many2many_tags" optional="hide"/>
                 <field name="tahun_akademik_id" optional="show"/>
                 <field name="tanggal_penyusunan" optional="hide"/>
+                <field name="snapshot_date" string="Waktu Snapshot" optional="hide"/>
+                <field name="snapshot_by_id" string="Snapshot oleh" optional="hide"/>
                 <field name="state" widget="badge"
                        decoration-success="state == 'final'"
                        decoration-warning="state == 'draft'"/>
@@ -283,14 +310,18 @@
             <search string="Cari RPS">
                 <field name="mata_kuliah_id"/>
                 <field name="dosen_id"/>
+                <field name="dosen_ids"/>
+                <field name="prodi_id"/>
                 <field name="tahun_akademik_id"/>
                 <field name="semester"/>
                 <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
                 <filter string="Final" name="final" domain="[('state', '=', 'final')]"/>
                 <group>
+                    <filter string="Program Studi" name="group_prodi"
+                            context="{'group_by': 'prodi_id'}"/>
                     <filter string="Tahun Akademik" name="group_ta"
                             context="{'group_by': 'tahun_akademik_id'}"/>
-                    <filter string="Dosen" name="group_dosen"
+                    <filter string="Dosen Koordinator" name="group_dosen"
                             context="{'group_by': 'dosen_id'}"/>
                     <filter string="Semester" name="group_semester"
                             context="{'group_by': 'semester'}"/>

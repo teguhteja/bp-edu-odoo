@@ -18,6 +18,11 @@ class BpEduProgramStudi(models.Model):
         ('s2', 'S2'),
         ('s3', 'S3'),
     ], string='Jenjang', default='s1', required=True)
+    kaprodi_id = fields.Many2one(
+        'bp.edu.dosen', string='Kaprodi',
+        help='Ketua Program Studi. Menentukan siapa yang, lewat group '
+             'Kaprodi, hanya melihat mata kuliah milik prodi ini.',
+    )
     active = fields.Boolean(default=True)
 
     _sql_constraints = [

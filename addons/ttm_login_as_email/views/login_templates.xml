@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--
+        Label & placeholder form login.
+
+        priority="99" disengaja: tema backend (mis.
+        simplifyit_linear_backend_theme) juga me-replace label yang sama
+        dengan priority default 16. Kalau view ini jalan lebih dulu, teksnya
+        akan ditimpa balik oleh tema.
+
+        Class pada label sengaja disalin persis dari web.login bawaan
+        ("form-label d-flex justify-content-between") — kebetulan tema di atas
+        memakai class yang sama, jadi tampilannya konsisten dengan atau tanpa
+        tema terpasang.
+    -->
+    <template id="login_as_email" inherit_id="web.login" priority="99"
+              name="Login: Email Address or Username">
+
+        <xpath expr="//label[@for='login']" position="replace">
+            <label for="login" class="form-label d-flex justify-content-between">Email Address or Username</label>
+        </xpath>
+
+        <xpath expr="//input[@id='login']" position="attributes">
+            <attribute name="placeholder">Enter your email or username</attribute>
+        </xpath>
+
+    </template>
+
+</odoo>

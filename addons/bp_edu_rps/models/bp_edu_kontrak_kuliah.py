@@ -15,45 +15,54 @@ class BpEduKontrakKuliah(models.Model):
     # ── Identitas ───────────────────────────────────────────────
     mata_kuliah_id = fields.Many2one(
         'bp.edu.mata.kuliah', string='Mata Kuliah',
-        required=True, ondelete='restrict',
+        required=True, ondelete='restrict', tracking=True,
     )
     dosen_id = fields.Many2one(
-        'bp.edu.dosen', string='Dosen Pengampu',
-        required=True, ondelete='restrict',
+        'bp.edu.dosen', string='Dosen Koordinator',
+        required=True, ondelete='restrict', tracking=True,
+        help='Dosen penanggung jawab (koordinator) mata kuliah ini. '
+             'Hanya dia yang dapat mengubah Kontrak Kuliah ini.',
+    )
+    dosen_ids = fields.Many2many(
+        'bp.edu.dosen', 'bp_edu_kontrak_dosen_rel', 'kontrak_id', 'dosen_id',
+        string='Dosen Pengampu', tracking=True,
+        help='Dosen-dosen yang mengampu mata kuliah ini. Mereka ikut dapat '
+             'melihat Kontrak Kuliah ini walaupun bukan dosen koordinatornya.',
     )
     tahun_akademik_id = fields.Many2one(
         'bp.edu.tahun.akademik', string='Tahun Akademik',
-        ondelete='restrict',
+        ondelete='restrict', tracking=True,
     )
     # Identik nama field JSON untuk kemudahan import/export
-    periode = fields.Char(string='Periode', help='Contoh: Ganjil, Genap')
-    kelas = fields.Char(string='Kelas', default='A')
-    hari_jam = fields.Char(string='Hari & Jam', help='Contoh: Selasa, 14:00 - 15:40')
+    periode = fields.Char(string='Periode', help='Contoh: Ganjil, Genap', tracking=True)
+    kelas = fields.Char(string='Kelas', default='A', tracking=True)
+    hari_jam = fields.Char(string='Hari & Jam', help='Contoh: Selasa, 14:00 - 15:40', tracking=True)
     jenis_mk = fields.Char(
         string='Jenis MK',
         help='Contoh: Mata Kuliah Wajib Umum, Mata Kuliah Wajib Program Studi',
+        tracking=True,
     )
-    prasyarat = fields.Char(string='Prasyarat', default='-')
+    prasyarat = fields.Char(string='Prasyarat', default='-', tracking=True)
 
     # ── Bobot Penilaian (%) ─────────────────────────────────────
-    bobot_diskusi = fields.Integer(string='Bobot Diskusi (%)', default=10)
-    bobot_proyek = fields.Integer(string='Bobot Proyek (%)', default=20)
-    bobot_tugas = fields.Integer(string='Bobot Tugas (%)', default=10)
-    bobot_kuis = fields.Integer(string='Bobot Kuis (%)', default=10)
-    bobot_uts = fields.Integer(string='Bobot UTS (%)', default=20)
-    bobot_uas = fields.Integer(string='Bobot UAS (%)', default=30)
+    bobot_diskusi = fields.Integer(string='Bobot Diskusi (%)', default=10, tracking=True)
+    bobot_proyek = fields.Integer(string='Bobot Proyek (%)', default=20, tracking=True)
+    bobot_tugas = fields.Integer(string='Bobot Tugas (%)', default=10, tracking=True)
+    bobot_kuis = fields.Integer(string='Bobot Kuis (%)', default=10, tracking=True)
+    bobot_uts = fields.Integer(string='Bobot UTS (%)', default=20, tracking=True)
+    bobot_uas = fields.Integer(string='Bobot UAS (%)', default=30, tracking=True)
     total_bobot = fields.Integer(
         string='Total Bobot (%)', compute='_compute_total_bobot', store=True,
     )
 
     # ── Jumlah Penugasan ────────────────────────────────────────
-    jumlah_kuis_mingguan = fields.Integer(string='Jumlah Kuis Mingguan', default=1)
-    jumlah_tugas_terstruktur = fields.Integer(string='Jumlah Tugas Terstruktur', default=8)
-    jumlah_proyek = fields.Integer(string='Jumlah Proyek', default=1)
+    jumlah_kuis_mingguan = fields.Integer(string='Jumlah Kuis Mingguan', default=1, tracking=True)
+    jumlah_tugas_terstruktur = fields.Integer(string='Jumlah Tugas Terstruktur', default=8, tracking=True)
+    jumlah_proyek = fields.Integer(string='Jumlah Proyek', default=1, tracking=True)
 
     # ── Wakil Mahasiswa ─────────────────────────────────────────
-    wakil_mahasiswa = fields.Char(string='Nama Wakil Mahasiswa')
-    nim_wakil = fields.Char(string='NIM Wakil Mahasiswa')
+    wakil_mahasiswa = fields.Char(string='Nama Wakil Mahasiswa', tracking=True)
+    nim_wakil = fields.Char(string='NIM Wakil Mahasiswa', tracking=True)
 
     # ── CPMK (dari mata kuliah, bisa di-override) ───────────────
     cpmk_ids = fields.Many2many(

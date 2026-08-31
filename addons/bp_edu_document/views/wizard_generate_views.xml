@@ -16,7 +16,8 @@
 
                     <group invisible="state == 'done'">
                         <group string="Jenis Dokumen">
-                            <field name="document_type" widget="radio" required="1"/>
+                            <field name="document_type" widget="radio" required="1"
+                                   readonly="rps_id or sap_id or kontrak_id"/>
                         </group>
                         <group string="Template">
                             <field name="template_id" required="1"/>
@@ -27,13 +28,16 @@
                     <group string="Sumber Data" invisible="state == 'done'">
                         <field name="rps_id"
                                invisible="document_type != 'rps'"
-                               required="document_type == 'rps'"/>
+                               required="document_type == 'rps'"
+                               readonly="rps_id or sap_id or kontrak_id"/>
                         <field name="sap_id"
                                invisible="document_type != 'sap'"
-                               required="document_type == 'sap'"/>
+                               required="document_type == 'sap'"
+                               readonly="rps_id or sap_id or kontrak_id"/>
                         <field name="kontrak_id"
                                invisible="document_type != 'kontrak'"
-                               required="document_type == 'kontrak'"/>
+                               required="document_type == 'kontrak'"
+                               readonly="rps_id or sap_id or kontrak_id"/>
                     </group>
 
                     <!-- Read-only info setelah done -->

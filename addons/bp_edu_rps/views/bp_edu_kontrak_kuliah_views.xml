@@ -34,6 +34,8 @@
                     <group>
                         <group string="Identitas">
                             <field name="dosen_id" options="{'no_create': True}"/>
+                            <field name="dosen_ids" widget="many2many_tags"
+                                   options="{'no_create': True}"/>
                             <field name="tahun_akademik_id" options="{'no_create': True}"/>
                             <field name="periode"/>
                             <field name="kelas"/>
@@ -113,6 +115,7 @@
             <list string="Kontrak Kuliah">
                 <field name="mata_kuliah_id"/>
                 <field name="dosen_id" optional="show"/>
+                <field name="dosen_ids" widget="many2many_tags" optional="hide"/>
                 <field name="tahun_akademik_id" optional="show"/>
                 <field name="periode" optional="show"/>
                 <field name="kelas" optional="show"/>
@@ -131,11 +134,12 @@
             <search string="Cari Kontrak Kuliah">
                 <field name="mata_kuliah_id"/>
                 <field name="dosen_id"/>
+                <field name="dosen_ids"/>
                 <field name="tahun_akademik_id"/>
                 <group>
                     <filter string="Tahun Akademik" name="group_ta"
                             context="{'group_by': 'tahun_akademik_id'}"/>
-                    <filter string="Dosen" name="group_dosen"
+                    <filter string="Dosen Koordinator" name="group_dosen"
                             context="{'group_by': 'dosen_id'}"/>
                 </group>
             </search>

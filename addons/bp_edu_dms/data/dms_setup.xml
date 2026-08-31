@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Storage tunggal untuk semua folder buku ajar -->
+    <record id="dms_storage_buku_ajar" model="dms.storage">
+        <field name="name">Buku Ajar</field>
+        <field name="save_type">database</field>
+    </record>
+
+    <!-- Folder akar "Buku Ajar", satu folder per mata kuliah dibuat di bawah ini -->
+    <record id="dms_directory_buku_ajar_root" model="dms.directory">
+        <field name="name">Buku Ajar</field>
+        <field name="is_root_directory" eval="True" />
+        <field name="storage_id" ref="dms_storage_buku_ajar" />
+    </record>
+
+    <!-- Dosen (bp_edu_core.group_dosen) otomatis dapat akses tulis DMS,
+         Kaprodi (bp_edu_core.group_dosen_koordinator) dapat akses manager,
+         supaya tidak perlu grant manual satu-satu per dosen. -->
+    <record id="bp_edu_core.group_dosen" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('dms.group_dms_user'))]" />
+    </record>
+    <record id="bp_edu_core.group_dosen_koordinator" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('dms.group_dms_manager'))]" />
+    </record>
+
+    <!--
+        Hak akses level RECORD pada dms.directory.
+
+        Dua record di atas hanya memberi ACL level model (dms.group_dms_user /
+        dms.group_dms_manager). Akses per folder ditentukan ir.rule bawaan dms
+        ("Apply computed create/read/write/unlink permissions") yang membaca
+        keanggotaan dms.access.group. Tanpa satu pun access group, seluruh
+        pengguna non-superuser ditolak menulis, termasuk Administrator, yang
+        memunculkan pesan "doesn't have 'write' access to Directory, Buku Ajar".
+        Superuser (uid 1) tetap lolos, sehingga skrip terlihat normal.
+
+        Dipasang ke folder akar saja; folder anak mewarisi lewat
+        complete_group_ids yang dihitung dms.
+    -->
+    <record id="dms_access_group_buku_ajar_pengelola" model="dms.access.group">
+        <field name="name">Buku Ajar - Pengelola</field>
+        <field name="perm_create" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="perm_unlink" eval="True" />
+        <field name="group_ids" eval="[(6, 0, [
+            ref('bp_edu_core.group_dosen_koordinator'),
+            ref('dms.group_dms_manager'),
+        ])]" />
+        <field name="explicit_user_ids" eval="[(4, ref('base.user_admin'))]" />
+        <field name="directory_ids" eval="[(4, ref('dms_directory_buku_ajar_root'))]" />
+    </record>
+
+    <!-- Dosen boleh menambah dan mengubah berkas, tidak boleh menghapus. -->
+    <record id="dms_access_group_buku_ajar_dosen" model="dms.access.group">
+        <field name="name">Buku Ajar - Dosen</field>
+        <field name="perm_create" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="perm_unlink" eval="False" />
+        <field name="group_ids" eval="[(6, 0, [ref('bp_edu_core.group_dosen')])]" />
+        <field name="directory_ids" eval="[(4, ref('dms_directory_buku_ajar_root'))]" />
+    </record>
+
+</odoo>

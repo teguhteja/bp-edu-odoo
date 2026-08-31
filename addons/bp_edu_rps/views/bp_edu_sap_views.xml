@@ -32,6 +32,8 @@
                     <group>
                         <group string="Informasi">
                             <field name="dosen_id" options="{'no_create': True}"/>
+                            <field name="dosen_ids" widget="many2many_tags"
+                                   options="{'no_create': True}"/>
                             <field name="tahun_akademik_id" options="{'no_create': True}"/>
                             <field name="rps_id" options="{'no_create': True}"/>
                         </group>
@@ -168,6 +170,7 @@
                 <field name="kode_mk" optional="show"/>
                 <field name="mata_kuliah_id"/>
                 <field name="dosen_id" optional="show"/>
+                <field name="dosen_ids" widget="many2many_tags" optional="hide"/>
                 <field name="tahun_akademik_id" optional="show"/>
             </list>
         </field>

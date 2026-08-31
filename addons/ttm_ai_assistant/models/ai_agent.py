@@ -426,8 +426,12 @@ class AiAgent(models.Model):
         """Return daftar tools yang tersedia. Override di subclass untuk menambah tools."""
         return AI_TOOLS
 
-    def _call_api(self, messages):
-        """Kirim request ke LLM API. Return tuple (dict respons | None, pesan_error | None)."""
+    def _call_api(self, messages, use_tools=True):
+        """Kirim request ke LLM API. Return tuple (dict respons | None, pesan_error | None).
+
+        use_tools=False untuk pemanggilan satu-arah (mis. ekstraksi teks -> JSON)
+        yang tidak boleh dibelokkan LLM jadi tool call.
+        """
         url = PROVIDER_URLS.get(self.api_provider, PROVIDER_URLS['groq'])
         model = self.model_name or DEFAULT_MODELS.get(self.api_provider, 'llama-3.3-70b-versatile')
 
@@ -444,9 +448,10 @@ class AiAgent(models.Model):
             'messages': messages,
             'max_tokens': int(self.max_tokens or 2048),
             'temperature': float(self.temperature if self.temperature is not None else 0.7),
-            'tools': self._get_tools(),
-            'tool_choice': 'auto',
         }
+        if use_tools:
+            payload['tools'] = self._get_tools()
+            payload['tool_choice'] = 'auto'
 
         _logger.debug('AI API → %s | model=%s | messages=%d', url, model, len(messages))
 

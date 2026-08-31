@@ -14,7 +14,7 @@
               action="bp_edu_mata_kuliah_action"
               sequence="10"/>
 
-    <!-- CPL Prodi: hanya DoKo -->
+    <!-- CPL Prodi: hanya Kaprodi -->
     <menuitem id="menu_bp_edu_cpl"
               name="CPL Prodi"
               parent="menu_bp_edu_kurikulum"

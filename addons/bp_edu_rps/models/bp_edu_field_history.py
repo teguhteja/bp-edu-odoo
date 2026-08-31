@@ -1,25 +1,23 @@
 """
-Model riwayat perubahan field untuk RPS, SAP, dan Kontrak Kuliah.
+Daftar field yang dilacak per model lewat mekanisme tracking bawaan Odoo
+(tracking=True + mail.thread -> mail.message/mail.tracking.value).
+
+Dipakai bp_edu_history_tracking.py (history_count) dan
+bp_edu_mail_message_history.py (rekonstruksi kondisi sebelum perubahan).
 """
-from odoo import models, fields
 
-
-class BpEduFieldHistory(models.Model):
-    _name = 'bp.edu.field.history'
-    _description = 'Riwayat Perubahan Field'
-    _order = 'create_date desc, id desc'
-    _rec_name = 'field_label'
-    _log_access = True
-
-    model_name = fields.Char('Model', readonly=True, required=True, index=True)
-    res_id     = fields.Integer('Record ID', readonly=True, required=True, index=True)
-    res_name   = fields.Char('Record', readonly=True)
-    field_name  = fields.Char('Field (teknis)', readonly=True, required=True)
-    field_label = fields.Char('Field', readonly=True, required=True)
-    old_value  = fields.Text('Nilai Lama', readonly=True)
-    new_value  = fields.Text('Nilai Baru', readonly=True)
-    changed_by = fields.Many2one(
-        'res.users', string='Diubah oleh',
-        readonly=True, ondelete='set null', index=True,
-    )
-    # create_date (auto Odoo) = waktu perubahan terjadi
+TRACKED_FIELDS_BY_MODEL = {
+    'bp.edu.rps': [
+        'mata_kuliah_id', 'dosen_id', 'dosen_ids', 'tahun_akademik_id',
+        'tanggal_penyusunan', 'state',
+    ],
+    'bp.edu.sap': ['mata_kuliah_id', 'dosen_id', 'dosen_ids', 'tahun_akademik_id', 'rps_id'],
+    'bp.edu.kontrak.kuliah': [
+        'mata_kuliah_id', 'dosen_id', 'dosen_ids', 'tahun_akademik_id',
+        'periode', 'kelas', 'hari_jam', 'jenis_mk', 'prasyarat',
+        'bobot_diskusi', 'bobot_proyek', 'bobot_tugas',
+        'bobot_kuis', 'bobot_uts', 'bobot_uas',
+        'jumlah_kuis_mingguan', 'jumlah_tugas_terstruktur', 'jumlah_proyek',
+        'wakil_mahasiswa', 'nim_wakil',
+    ],
+}

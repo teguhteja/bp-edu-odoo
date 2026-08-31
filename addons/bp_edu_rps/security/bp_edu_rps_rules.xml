@@ -157,4 +157,148 @@
         <field name="perm_unlink" eval="True"/>
     </record>
 
+    <!--
+        Dosen pengampu (dosen_ids): selain dosen koordinator (dosen_id),
+        dosen yang tercatat mengampu mata kuliah tersebut ikut dapat MELIHAT
+        dokumennya. Rule dalam group yang sama di-OR oleh Odoo, jadi rule
+        di bawah hanya perlu memuat kondisi dosen_ids saja.
+
+        Sengaja read-only (perm_write/create/unlink = False): hak ubah tetap
+        hanya milik dosen koordinator lewat rule "*_dosen_own" di atas.
+    -->
+
+    <record id="rule_rps_dosen_pengampu" model="ir.rule">
+        <field name="name">RPS: Dosen pengampu boleh melihat</field>
+        <field name="model_id" ref="model_bp_edu_rps"/>
+        <field name="groups" eval="[(4, ref('bp_edu_core.group_dosen'))]"/>
+        <field name="domain_force">[('dosen_ids.user_id', '=', user.id)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_sap_dosen_pengampu" model="ir.rule">
+        <field name="name">SAP: Dosen pengampu boleh melihat</field>
+        <field name="model_id" ref="model_bp_edu_sap"/>
+        <field name="groups" eval="[(4, ref('bp_edu_core.group_dosen'))]"/>
+        <field name="domain_force">[('dosen_ids.user_id', '=', user.id)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_kontrak_dosen_pengampu" model="ir.rule">
+        <field name="name">Kontrak Kuliah: Dosen pengampu boleh melihat</field>
+        <field name="model_id" ref="model_bp_edu_kontrak_kuliah"/>
+        <field name="groups" eval="[(4, ref('bp_edu_core.group_dosen'))]"/>
+        <field name="domain_force">[('dosen_ids.user_id', '=', user.id)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <!-- Baris detail: ikut kepemilikan header lewat rps_id/sap_id/kontrak_id -->
+
+    <record id="rule_rps_detail_dosen_pengampu" model="ir.rule">
+        <field name="name">RPS Detail: Dosen pengampu boleh melihat</field>
+        <field name="model_id" ref="model_bp_edu_rps_detail"/>
+        <field name="groups" eval="[(4, ref('bp_edu_core.group_dosen'))]"/>
+        <field name="domain_force">[('rps_id.dosen_ids.user_id', '=', user.id)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_sap_pertemuan_dosen_pengampu" model="ir.rule">
+        <field name="name">SAP Pertemuan: Dosen pengampu boleh melihat</field>
+        <field name="model_id" ref="model_bp_edu_sap_pertemuan"/>
+        <field name="groups" eval="[(4, ref('bp_edu_core.group_dosen'))]"/>
+        <field name="domain_force">[('sap_id.dosen_ids.user_id', '=', user.id)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_kontrak_materi_dosen_pengampu" model="ir.rule">
+        <field name="name">Kontrak Materi: Dosen pengampu boleh melihat</field>
+        <field name="model_id" ref="model_bp_edu_kontrak_materi"/>
+        <field name="groups" eval="[(4, ref('bp_edu_core.group_dosen'))]"/>
+        <field name="domain_force">[('kontrak_id.dosen_ids.user_id', '=', user.id)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_rps_korelasi_dosen_pengampu" model="ir.rule">
+        <field name="name">Korelasi CPMK-Minggu: Dosen pengampu boleh melihat</field>
+        <field name="model_id" ref="model_bp_edu_rps_korelasi"/>
+        <field name="groups" eval="[(4, ref('bp_edu_core.group_dosen'))]"/>
+        <field name="domain_force">[('rps_id.dosen_ids.user_id', '=', user.id)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_rps_korelasi_cpl_dosen_pengampu" model="ir.rule">
+        <field name="name">Korelasi Sub-CPMK-CPL: Dosen pengampu boleh melihat</field>
+        <field name="model_id" ref="model_bp_edu_rps_korelasi_cpl"/>
+        <field name="groups" eval="[(4, ref('bp_edu_core.group_dosen'))]"/>
+        <field name="domain_force">[('rps_id.dosen_ids.user_id', '=', user.id)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_rps_penilaian_dosen_pengampu" model="ir.rule">
+        <field name="name">Matriks Penilaian: Dosen pengampu boleh melihat</field>
+        <field name="model_id" ref="model_bp_edu_rps_penilaian"/>
+        <field name="groups" eval="[(4, ref('bp_edu_core.group_dosen'))]"/>
+        <field name="domain_force">[('rps_id.dosen_ids.user_id', '=', user.id)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_rps_rancangan_tugas_dosen_pengampu" model="ir.rule">
+        <field name="name">Rancangan Tugas Proyek: Dosen pengampu boleh melihat</field>
+        <field name="model_id" ref="model_bp_edu_rps_rancangan_tugas"/>
+        <field name="groups" eval="[(4, ref('bp_edu_core.group_dosen'))]"/>
+        <field name="domain_force">[('rps_id.dosen_ids.user_id', '=', user.id)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_rps_rubrik_holistik_dosen_pengampu" model="ir.rule">
+        <field name="name">Rubrik Holistik: Dosen pengampu boleh melihat</field>
+        <field name="model_id" ref="model_bp_edu_rps_rubrik_holistik"/>
+        <field name="groups" eval="[(4, ref('bp_edu_core.group_dosen'))]"/>
+        <field name="domain_force">[('rps_id.dosen_ids.user_id', '=', user.id)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_rps_rubrik_deskriptif_dosen_pengampu" model="ir.rule">
+        <field name="name">Rubrik Deskriptif: Dosen pengampu boleh melihat</field>
+        <field name="model_id" ref="model_bp_edu_rps_rubrik_deskriptif"/>
+        <field name="groups" eval="[(4, ref('bp_edu_core.group_dosen'))]"/>
+        <field name="domain_force">[('rps_id.dosen_ids.user_id', '=', user.id)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
 </odoo>

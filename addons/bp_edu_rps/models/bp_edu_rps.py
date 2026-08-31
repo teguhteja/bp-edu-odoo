@@ -14,28 +14,45 @@ class BpEduRps(models.Model):
 
     mata_kuliah_id = fields.Many2one(
         'bp.edu.mata.kuliah', string='Mata Kuliah',
-        required=True, ondelete='restrict',
+        required=True, ondelete='restrict', tracking=True,
     )
     dosen_id = fields.Many2one(
-        'bp.edu.dosen', string='Dosen Pengampu',
-        required=True, ondelete='restrict',
+        'bp.edu.dosen', string='Dosen Koordinator',
+        required=True, ondelete='restrict', tracking=True,
+        help='Dosen penanggung jawab (koordinator) mata kuliah ini. '
+             'Hanya dia yang dapat mengubah RPS ini.',
+    )
+    dosen_ids = fields.Many2many(
+        'bp.edu.dosen', 'bp_edu_rps_dosen_rel', 'rps_id', 'dosen_id',
+        string='Dosen Pengampu', tracking=True,
+        help='Dosen-dosen yang mengampu mata kuliah ini. Mereka ikut dapat '
+             'melihat RPS ini walaupun bukan dosen koordinatornya.',
     )
     tahun_akademik_id = fields.Many2one(
         'bp.edu.tahun.akademik', string='Tahun Akademik',
-        ondelete='restrict',
+        ondelete='restrict', tracking=True,
     )
-    tanggal_penyusunan = fields.Date(string='Tanggal Penyusunan')
+    tanggal_penyusunan = fields.Date(string='Tanggal Penyusunan', tracking=True)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('final', 'Final'),
-    ], string='Status', default='draft', required=True)
+    ], string='Status', default='draft', required=True, tracking=True)
 
     # Computed dari mata_kuliah_id untuk kemudahan template
     kode_mk = fields.Char(related='mata_kuliah_id.kode', string='Kode MK', store=True)
     nama_mk = fields.Char(related='mata_kuliah_id.nama', string='Nama MK', store=True)
     semester = fields.Integer(related='mata_kuliah_id.semester', string='Semester', store=True)
+    prodi_id = fields.Many2one(
+        'bp.edu.program.studi', related='mata_kuliah_id.prodi_id',
+        string='Program Studi', store=True,
+    )
 
     detail_ids = fields.One2many('bp.edu.rps.detail', 'rps_id', string='Detail Per Minggu')
+
+    def copy(self, default=None):
+        default = dict(default or {})
+        default.setdefault('tahun_akademik_id', False)
+        return super().copy(default)
 
     def _compute_display_name(self):
         for rec in self:

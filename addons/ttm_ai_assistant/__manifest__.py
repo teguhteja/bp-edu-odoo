@@ -1,6 +1,6 @@
 {
     'name': 'TTM AI Assistant',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.1.0',
     'category': 'Discuss',
     'summary': 'Integrasikan AI ke chatter Odoo via @ai trigger',
     'description': """

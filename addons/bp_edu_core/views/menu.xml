@@ -7,7 +7,7 @@
               sequence="50"
               web_icon="bp_edu_core,static/description/icon.png"/>
 
-    <!-- ─── Master Data — hanya DoKo ────────────────────────── -->
+    <!-- ─── Master Data — hanya Kaprodi ─────────────────────── -->
     <menuitem id="menu_bp_edu_master"
               name="Master Data"
               parent="menu_bp_edu_root"

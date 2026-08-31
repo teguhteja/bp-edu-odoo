@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--
+        Kaprodi (group_dosen_koordinator): akses penuh ke bp.edu.mata.kuliah,
+        tapi hanya untuk mata kuliah milik program studi yang dia pimpin
+        (bp.edu.program.studi.kaprodi_id). Dicek lewat dosen_id.user_id
+        karena kaprodi_id menunjuk ke bp.edu.dosen, bukan res.users.
+
+        Pengguna dengan akses Administration/Settings (base.group_system,
+        mis. akun "administrator") dikecualikan dari pembatasan ini supaya
+        tetap bisa melihat seluruh mata kuliah lintas prodi.
+    -->
+    <record id="rule_mata_kuliah_kaprodi_own_prodi" model="ir.rule">
+        <field name="name">Mata Kuliah: Kaprodi hanya melihat milik prodinya</field>
+        <field name="model_id" ref="model_bp_edu_mata_kuliah"/>
+        <field name="groups" eval="[(4, ref('bp_edu_core.group_dosen_koordinator'))]"/>
+        <field name="domain_force">[('prodi_id.kaprodi_id.user_id', '=', user.id)] if not user.has_group('base.group_system') else []</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+</odoo>

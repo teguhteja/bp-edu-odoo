@@ -64,7 +64,7 @@
                         </group>
                         <group string="MK">
                             <field name="kode_mk" readonly="1"/>
-                            <field name="nama_mk" readonly="1"/>
+                            <field name="mata_kuliah_id" string="Nama MK" readonly="1"/>
                             <field name="prodi_id" readonly="1"/>
                             <field name="semester" readonly="1"/>
                         </group>
@@ -72,6 +72,20 @@
 
                     <!-- Detail 16 Minggu -->
                     <notebook>
+                        <page string="Buku Ajar" name="buku_ajar">
+                            <div class="alert alert-info" role="alert">
+                                <i class="fa fa-info-circle me-1"/>
+                                Data buku ajar dikelola di <strong>Mata Kuliah</strong>.
+                                Untuk menambah atau mengubah, buka data Mata Kuliah melalui menu <em>Kurikulum &gt; Mata Kuliah</em>.
+                            </div>
+                            <field name="pustaka_ids" nolabel="1" readonly="1">
+                                <list>
+                                    <field name="kode" string="Kode"/>
+                                    <field name="jenis" string="Jenis"/>
+                                    <field name="referensi" string="Referensi"/>
+                                </list>
+                            </field>
+                        </page>
                         <page string="Detail Perkuliahan (16 Minggu)" name="detail">
                             <field name="detail_ids" nolabel="1"
                                    readonly="state == 'final' or is_history_snapshot">

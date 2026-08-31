@@ -47,6 +47,12 @@ class BpEduRps(models.Model):
         string='Program Studi', store=True,
     )
 
+    pustaka_ids = fields.One2many(
+        related='mata_kuliah_id.pustaka_ids',
+        string='Buku Ajar / Pustaka',
+        readonly=True,
+    )
+
     detail_ids = fields.One2many('bp.edu.rps.detail', 'rps_id', string='Detail Per Minggu')
 
     def copy(self, default=None):

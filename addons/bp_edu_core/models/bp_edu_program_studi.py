@@ -23,6 +23,11 @@ class BpEduProgramStudi(models.Model):
         help='Ketua Program Studi. Menentukan siapa yang, lewat group '
              'Kaprodi, hanya melihat mata kuliah milik prodi ini.',
     )
+    fakultas_id = fields.Many2one(
+        'bp.edu.fakultas', string='Fakultas',
+        help='Fakultas yang menaungi prodi ini. Menentukan mata kuliah '
+             'mana saja yang terlihat oleh Dekan fakultas tersebut.',
+    )
     active = fields.Boolean(default=True)
 
     _sql_constraints = [

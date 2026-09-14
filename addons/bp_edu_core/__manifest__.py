@@ -1,13 +1,14 @@
 {
     'name': 'BP Edu Core',
-    'version': '19.0.1.1.0',
+    'version': '19.0.1.2.0',
     'category': 'Education',
-    'summary': 'Foundation: master data dosen, program studi, dan tahun akademik',
+    'summary': 'Foundation: master data dosen, program studi, fakultas, dan tahun akademik',
     'depends': ['base', 'web', 'mail'],
     'data': [
         'security/groups.xml',
         'security/ir.model.access.csv',
         'views/bp_edu_dosen_views.xml',
+        'views/bp_edu_fakultas_views.xml',
         'views/bp_edu_program_studi_views.xml',
         'views/bp_edu_tahun_akademik_views.xml',
         'views/bp_edu_dokumen_master_views.xml',

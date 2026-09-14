@@ -18,6 +18,7 @@
                         <field name="kode" placeholder="Contoh: TSI"/>
                         <field name="jenjang"/>
                         <field name="kaprodi_id" options="{'no_create': True}"/>
+                        <field name="fakultas_id" options="{'no_create': True}"/>
                         <field name="active"/>
                     </group>
                 </sheet>

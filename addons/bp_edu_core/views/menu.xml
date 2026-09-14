@@ -28,6 +28,13 @@
               sequence="20"
               groups="bp_edu_core.group_dosen_koordinator"/>
 
+    <menuitem id="menu_bp_edu_fakultas"
+              name="Fakultas"
+              parent="menu_bp_edu_master"
+              action="bp_edu_fakultas_action"
+              sequence="15"
+              groups="bp_edu_core.group_dosen_koordinator"/>
+
     <menuitem id="menu_bp_edu_tahun_akademik"
               name="Tahun Akademik"
               parent="menu_bp_edu_master"

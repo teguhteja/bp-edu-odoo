@@ -9,3 +9,5 @@ access_bp_edu_dokumen_master_user,bp.edu.dokumen.master user,model_bp_edu_dokume
 access_bp_edu_dokumen_master_doko,bp.edu.dokumen.master doko,model_bp_edu_dokumen_master,bp_edu_core.group_dosen_koordinator,1,1,1,1
 access_bp_edu_dokumen_master_history_user,bp.edu.dokumen.master.history user,model_bp_edu_dokumen_master_history,,1,0,0,0
 access_bp_edu_dokumen_master_history_doko,bp.edu.dokumen.master.history doko,model_bp_edu_dokumen_master_history,bp_edu_core.group_dosen_koordinator,1,1,1,0
+access_bp_edu_fakultas_user,bp.edu.fakultas user,model_bp_edu_fakultas,base.group_user,1,0,0,0
+access_bp_edu_fakultas_doko,bp.edu.fakultas doko,model_bp_edu_fakultas,bp_edu_core.group_dosen_koordinator,1,1,1,1

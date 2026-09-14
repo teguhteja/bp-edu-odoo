@@ -13,4 +13,11 @@
         <field name="name">Kaprodi</field>
     </record>
 
+    <!-- Dekan: melihat seluruh mata kuliah di semua program studi yang
+         berada di bawah fakultas yang dia pimpin (lihat
+         bp_edu_curriculum/security/bp_edu_curriculum_rules.xml) -->
+    <record id="group_dekan" model="res.groups">
+        <field name="name">Dekan</field>
+    </record>
+
 </odoo>

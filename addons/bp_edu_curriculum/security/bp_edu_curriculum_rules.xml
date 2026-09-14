@@ -10,16 +10,43 @@
         Pengguna dengan akses Administration/Settings (base.group_system,
         mis. akun "administrator") dikecualikan dari pembatasan ini supaya
         tetap bisa melihat seluruh mata kuliah lintas prodi.
+
+        Anggota grup Kaprodi yang BELUM terdaftar sebagai kaprodi resmi di
+        prodi manapun (mis. diberi grup untuk keperluan lain) juga
+        dikecualikan. Tanpa pengecekan ini, domain di bawah menjadi
+        "tidak ada yang cocok" dan mereka kehilangan akses ke SEMUA mata
+        kuliah, bukan cuma dibatasi ke satu prodi.
     -->
     <record id="rule_mata_kuliah_kaprodi_own_prodi" model="ir.rule">
         <field name="name">Mata Kuliah: Kaprodi hanya melihat milik prodinya</field>
         <field name="model_id" ref="model_bp_edu_mata_kuliah"/>
         <field name="groups" eval="[(4, ref('bp_edu_core.group_dosen_koordinator'))]"/>
-        <field name="domain_force">[('prodi_id.kaprodi_id.user_id', '=', user.id)] if not user.has_group('base.group_system') else []</field>
+        <field name="domain_force">[('prodi_id.kaprodi_id.user_id', '=', user.id)] if not user.has_group('base.group_system') and user.env['bp.edu.program.studi'].sudo().search_count([('kaprodi_id.user_id', '=', user.id)]) else []</field>
         <field name="perm_read" eval="True"/>
         <field name="perm_write" eval="True"/>
         <field name="perm_create" eval="True"/>
         <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <!--
+        Dekan (group_dekan): melihat mata kuliah di SEMUA program studi yang
+        berada di bawah fakultas yang dia pimpin (bp.edu.fakultas.dekan_id),
+        bukan cuma satu prodi seperti Kaprodi.
+
+        Pola pengecualian sama seperti rule Kaprodi di atas: superuser dan
+        anggota grup Dekan yang belum terdaftar resmi sebagai dekan di
+        fakultas manapun tidak dibatasi, supaya tidak ada yang kehilangan
+        akses ke SEMUA mata kuliah karena data dekan_id belum diisi.
+    -->
+    <record id="rule_mata_kuliah_dekan_own_fakultas" model="ir.rule">
+        <field name="name">Mata Kuliah: Dekan hanya melihat milik fakultasnya</field>
+        <field name="model_id" ref="model_bp_edu_mata_kuliah"/>
+        <field name="groups" eval="[(4, ref('bp_edu_core.group_dekan'))]"/>
+        <field name="domain_force">[('prodi_id.fakultas_id.dekan_id.user_id', '=', user.id)] if not user.has_group('base.group_system') and user.env['bp.edu.fakultas'].sudo().search_count([('dekan_id.user_id', '=', user.id)]) else []</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
     </record>
 
 </odoo>

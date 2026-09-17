@@ -1,0 +1,8 @@
+// Register our font key so the native FontFamilyPicker + Google-font
+// machinery treat it exactly like navbar-font / buttons-font.
+$o-base-website-values-palette: map-merge($o-base-website-values-palette, (
+    'announcement-bar-font': null,
+));
+$o-font-aliases-to-keys: map-merge($o-font-aliases-to-keys, (
+    'announcement-bar': 'announcement-bar-font',
+));

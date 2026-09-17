@@ -1,0 +1,46 @@
+// Hidden until JS confirms schedule + dismissal — but never hidden in
+// edit mode, or the admin couldn't edit it.
+body:not(.editor_enable) .o_announcement_bar:not(.o_announcement_bar_visible) {
+    display: none;
+}
+
+.o_announcement_bar {
+    position: relative;
+
+    // applied by the widget on themes with a fixed header (see JS)
+    &.o_announcement_bar_fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: $zindex-fixed;
+    }
+
+    $-ab-font: o-get-font-info('announcement-bar');
+    @if $-ab-font {
+        font-family: $-ab-font;
+    }
+
+    // The editor's _addSlide() strips d-none from .carousel-indicators —
+    // suppress the dots permanently here.
+    .carousel-indicators {
+        display: none;
+    }
+
+    .o_announcement_bar_close {
+        display: none;
+        position: absolute;
+        top: 50%;
+        right: 0.75rem;
+        transform: translateY(-50%);
+        z-index: 2;
+    }
+    &.o_announcement_bar_dismissable .o_announcement_bar_close {
+        display: block;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: underline;
+    }
+}

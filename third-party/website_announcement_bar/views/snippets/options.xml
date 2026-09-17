@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="snippet_options" inherit_id="website.snippet_options"
+          name="Announcement Bar Options">
+
+    <!-- Suppress Odoo's full section-background editor (image / video /
+         shape / parallax / color-combination) on our Messages. They are
+         .carousel-item, which matches the native both_bg_color_image
+         selector, so without this every Message grows the entire section
+         background UI. We ship one simple Background Color control instead. -->
+    <xpath expr="//t[@t-set='both_bg_color_image_exclude']" position="after">
+        <t t-set="both_bg_color_image_exclude"
+           t-value="both_bg_color_image_exclude + ', .o_announcement_bar .carousel-item'"/>
+    </xpath>
+
+    <xpath expr="." position="inside">
+
+        <!-- On/off toggle — lives on the header's option panel so it is
+             reachable while the bar is disabled (bar is OFF by default). -->
+        <div data-selector="#wrapwrap > header" data-no-check="true"
+             groups="website.group_website_designer">
+            <we-checkbox string="Announcement Bar"
+                         data-customize-website-views="website_announcement_bar.announcement_bar"
+                         data-no-preview="true"
+                         data-reload="/"/>
+        </div>
+
+        <!-- Bar options: click the bar to see these. -->
+        <div data-selector=".o_announcement_bar" data-no-check="true"
+             groups="website.group_website_designer">
+            <!-- Same view toggle as the header panel: lets the admin turn
+                 the bar OFF from the bar itself. Turning it back ON happens
+                 from the header's options (the bar is gone once disabled). -->
+            <we-checkbox string="Enabled"
+                         data-customize-website-views="website_announcement_bar.announcement_bar"
+                         data-no-preview="true"
+                         data-reload="/"/>
+
+            <!-- Message styling, packaged under one collapsible header. -->
+            <we-collapse string="Message Style">
+                <we-fontfamilypicker string="Font" data-variable="announcement-bar-font"/>
+                <we-colorpicker string="Background Color"
+                                data-select-style="true"
+                                data-css-property="background-color"
+                                data-color-prefix="bg-"/>
+            </we-collapse>
+
+            <we-checkbox string="Visitors Can Close"
+                         data-select-class="o_announcement_bar_dismissable"/>
+            <we-datetimepicker string="Show From"
+                               data-select-data-attribute="0"
+                               data-attribute-name="startTime"/>
+            <we-datetimepicker string="Show Until"
+                               data-select-data-attribute="0"
+                               data-attribute-name="endTime"/>
+        </div>
+
+        <!-- Reuse the native Carousel option JS for Add Message /
+             Transition / Delay. -->
+        <div data-js="Carousel" data-selector=".o_announcement_bar"
+             data-target="> .carousel"
+             groups="website.group_website_designer">
+            <we-row string="Message">
+                <we-button data-add-slide="true" data-no-preview="true"
+                           class="o_we_bg_brand_primary">Add Message</we-button>
+            </we-row>
+            <we-select string="Transition">
+                <we-button data-select-class="slide">Slide</we-button>
+                <we-button data-select-class="carousel-fade slide">Fade</we-button>
+            </we-select>
+            <we-input string="Delay"
+                      data-select-data-attribute="0s" data-attribute-name="bsInterval"
+                      data-unit="s" data-save-unit="ms" data-step="0.1"/>
+        </div>
+
+        <!-- Per-Message controls: native CarouselItem option (move /
+             add / remove) scoped to bar messages. -->
+        <div data-js="CarouselItem" data-selector=".o_announcement_bar .carousel-item"
+             groups="website.group_website_designer">
+            <we-button class="fa fa-fw fa-angle-left" data-switch-to-slide="left" data-no-preview="true" title="Move Backward"/>
+            <we-button class="fa fa-fw fa-angle-right me-2" data-switch-to-slide="right" data-no-preview="true" title="Move Forward"/>
+            <we-button class="fa fa-fw fa-plus o_we_bg_success" data-add-slide-item="true" data-no-preview="true" title="Add Message"/>
+            <we-button class="fa fa-fw fa-minus o_we_bg_danger" data-remove-slide="true" data-no-preview="true" title="Remove Message"/>
+        </div>
+
+    </xpath>
+</template>
+</odoo>

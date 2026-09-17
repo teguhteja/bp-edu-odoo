@@ -5,6 +5,11 @@ class BpEduMataKuliahRpsExt(models.Model):
     """Extend Mata Kuliah dengan count fields untuk RPS, SAP, dan Kontrak."""
     _inherit = 'bp.edu.mata.kuliah'
 
+    rps_ids = fields.One2many(
+        'bp.edu.rps', 'mata_kuliah_id', string='RPS',
+        help='Dipakai juga oleh rule akses Kaprodi/Dekan untuk mengecualikan '
+             'mata kuliah yang diampu dosen tsb walau di luar prodi/fakultasnya.',
+    )
     rps_count = fields.Integer(string='Jumlah RPS', compute='_compute_doc_counts')
     sap_count = fields.Integer(string='Jumlah SAP', compute='_compute_doc_counts')
     kontrak_count = fields.Integer(string='Jumlah Kontrak', compute='_compute_doc_counts')

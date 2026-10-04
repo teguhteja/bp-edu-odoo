@@ -13,5 +13,6 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 # Image web lama belum memuat python-docx (di container utama terpasang manual di volume
 # /var/lib/odoo/.local); bp_edu_core mewajibkannya lewat external_dependencies.
-RUN pip install --break-system-packages --no-cache-dir python-docx PyPDF2
+# websocket-client dibutuhkan Odoo untuk mengendalikan Chrome saat menjalankan tour.
+RUN pip install --break-system-packages --no-cache-dir python-docx PyPDF2 websocket-client
 USER odoo

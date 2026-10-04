@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="bp_edu_lab_perbaikan_view_list" model="ir.ui.view">
+        <field name="name">bp.edu.lab.perbaikan.list</field>
+        <field name="model">bp.edu.lab.perbaikan</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="kode"/>
+                <field name="tanggal"/>
+                <field name="product_id"/>
+                <field name="qty"/>
+                <field name="uom_id"/>
+                <field name="keterangan" optional="show"/>
+                <field name="state" widget="badge" decoration-warning="state == 'proses'" decoration-success="state == 'selesai'"/>
+                <field name="tanggal_selesai"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="bp_edu_lab_perbaikan_view_form" model="ir.ui.view">
+        <field name="name">bp.edu.lab.perbaikan.form</field>
+        <field name="model">bp.edu.lab.perbaikan</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_proses" type="object" string="Proses Perbaikan" class="btn-primary"
+                            invisible="state != 'draft'" groups="bp_edu_lab.group_lab_admin"/>
+                    <button name="action_selesai" type="object" string="Tandai Selesai" class="btn-primary"
+                            invisible="state != 'proses'" groups="bp_edu_lab.group_lab_admin"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="kode"/></h1></div>
+                    <group>
+                        <group>
+                            <field name="product_id" readonly="state != 'draft'"/>
+                            <field name="qty" readonly="state != 'draft'"/>
+                            <field name="uom_id"/>
+                        </group>
+                        <group>
+                            <field name="tanggal" readonly="state != 'draft'"/>
+                            <field name="tanggal_selesai"/>
+                        </group>
+                    </group>
+                    <field name="keterangan" placeholder="Keterangan kerusakan"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="bp_edu_lab_perbaikan_view_search" model="ir.ui.view">
+        <field name="name">bp.edu.lab.perbaikan.search</field>
+        <field name="model">bp.edu.lab.perbaikan</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="kode"/>
+                <field name="product_id"/>
+                <filter name="proses" string="Sedang Diperbaiki" domain="[('state', '=', 'proses')]"/>
+                <filter name="selesai" string="Selesai" domain="[('state', '=', 'selesai')]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="bp_edu_lab_perbaikan_action" model="ir.actions.act_window">
+        <field name="name">Perbaikan</field>
+        <field name="res_model">bp.edu.lab.perbaikan</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

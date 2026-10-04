@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_bp_edu_lab_inventaris" name="Inventaris" parent="bp_edu_lab.menu_bp_edu_lab_root" sequence="30"/>
+    <menuitem id="menu_bp_edu_lab_barang" name="Barang" parent="menu_bp_edu_lab_inventaris"
+              action="product_template_action_lab" sequence="10"/>
+    <menuitem id="menu_bp_edu_lab_stok_menipis" name="Stok Menipis" parent="menu_bp_edu_lab_inventaris"
+              action="product_template_action_lab_menipis" sequence="15"/>
+    <menuitem id="menu_bp_edu_lab_kategori" name="Kategori" parent="menu_bp_edu_lab_inventaris"
+              action="product_category_action_lab" sequence="20"/>
+    <menuitem id="menu_bp_edu_lab_perbaikan" name="Perbaikan" parent="menu_bp_edu_lab_inventaris"
+              action="bp_edu_lab_perbaikan_action" sequence="30"/>
+    <menuitem id="menu_bp_edu_lab_stock_opname" name="Stock Opname" parent="menu_bp_edu_lab_inventaris"
+              action="bp_edu_lab_stock_opname_action" sequence="40"/>
+
+    <menuitem id="menu_bp_edu_lab_pengadaan" name="Pengadaan" parent="bp_edu_lab.menu_bp_edu_lab_root" sequence="40"
+              groups="bp_edu_lab.group_lab_admin"/>
+    <menuitem id="menu_bp_edu_lab_po" name="Purchase Order" parent="menu_bp_edu_lab_pengadaan"
+              action="purchase.purchase_form_action" sequence="10"/>
+    <menuitem id="menu_bp_edu_lab_penerimaan" name="Penerimaan Barang" parent="menu_bp_edu_lab_pengadaan"
+              action="stock.action_picking_tree_incoming" sequence="20"/>
+    <menuitem id="menu_bp_edu_lab_supplier" name="Supplier" parent="menu_bp_edu_lab_pengadaan"
+              action="res_partner_action_supplier_lab" sequence="30"/>
+
+    <menuitem id="menu_bp_edu_lab_laporan_penggunaan" name="Penggunaan Bahan" parent="bp_edu_lab.menu_bp_edu_lab_laporan"
+              action="bp_edu_lab_laporan_penggunaan_action" sequence="30"/>
+    <menuitem id="menu_bp_edu_lab_laporan_pembelian" name="Pembelian" parent="bp_edu_lab.menu_bp_edu_lab_laporan"
+              action="bp_edu_lab_laporan_pembelian_action" sequence="40" groups="bp_edu_lab.group_lab_admin"/>
+    <menuitem id="menu_bp_edu_lab_laporan_penyesuaian" name="Penyesuaian Stok" parent="bp_edu_lab.menu_bp_edu_lab_laporan"
+              action="bp_edu_lab_laporan_penyesuaian_action" sequence="50"/>
+
+</odoo>

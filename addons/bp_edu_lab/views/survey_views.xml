@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Survey: penanda pretest/posttest praktikum -->
+    <record id="survey_survey_view_form_lab" model="ir.ui.view">
+        <field name="name">survey.survey.form.lab</field>
+        <field name="model">survey.survey</field>
+        <field name="inherit_id" ref="survey.survey_survey_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_title')]" position="after">
+                <group name="lab_praktikum">
+                    <group>
+                        <field name="jenis_ujian"/>
+                    </group>
+                    <group>
+                        <field name="mata_kuliah_id" invisible="not jenis_ujian"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Pertanyaan: kunci jawaban untuk penilaian manual -->
+    <record id="survey_question_form_lab" model="ir.ui.view">
+        <field name="name">survey.question.form.lab</field>
+        <field name="model">survey.question</field>
+        <field name="inherit_id" ref="survey.survey_question_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Kunci Jawaban" name="kunci_jawaban" invisible="is_page">
+                    <field name="kunci_jawaban" placeholder="Kunci jawaban untuk penilaian manual"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Jawaban: tampilkan praktikum/mahasiswa -->
+    <record id="survey_user_input_view_list_lab" model="ir.ui.view">
+        <field name="name">survey.user_input.list.lab</field>
+        <field name="model">survey.user_input</field>
+        <field name="inherit_id" ref="survey.survey_user_input_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="survey_id" position="after">
+                <field name="praktikum_id" optional="show"/>
+                <field name="mahasiswa_id" optional="show"/>
+                <field name="jenis_ujian" optional="show"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="survey_user_input_view_form_lab" model="ir.ui.view">
+        <field name="name">survey.user_input.form.lab</field>
+        <field name="model">survey.user_input</field>
+        <field name="inherit_id" ref="survey.survey_user_input_view_form"/>
+        <field name="arch" type="xml">
+            <field name="survey_id" position="after">
+                <field name="praktikum_id" readonly="1"/>
+                <field name="mahasiswa_id" readonly="1"/>
+                <field name="jenis_ujian" readonly="1"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Daftar ujian praktikum (bank soal pretest/posttest) -->
+    <record id="survey_survey_action_lab" model="ir.actions.act_window">
+        <field name="name">Ujian Praktikum</field>
+        <field name="res_model">survey.survey</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('jenis_ujian', '!=', False)]</field>
+        <field name="context">{'default_jenis_ujian': 'pra'}</field>
+    </record>
+
+    <record id="survey_user_input_action_lab" model="ir.actions.act_window">
+        <field name="name">Jawaban Ujian</field>
+        <field name="res_model">survey.user_input</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('praktikum_id', '!=', False)]</field>
+        <field name="context">{'create': False}</field>
+    </record>
+
+</odoo>

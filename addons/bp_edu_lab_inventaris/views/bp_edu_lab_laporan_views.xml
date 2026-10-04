@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="bp_edu_lab_laporan_penggunaan_view_list" model="ir.ui.view">
+        <field name="name">bp.edu.lab.laporan.penggunaan.list</field>
+        <field name="model">bp.edu.lab.laporan.penggunaan</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="tanggal"/>
+                <field name="praktikum_id"/>
+                <field name="categ_id"/>
+                <field name="product_id"/>
+                <field name="qty_per_kelompok"/>
+                <field name="jumlah_kelompok"/>
+                <field name="total" sum="Total"/>
+                <field name="stok_sekarang"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="bp_edu_lab_laporan_penggunaan_view_pivot" model="ir.ui.view">
+        <field name="name">bp.edu.lab.laporan.penggunaan.pivot</field>
+        <field name="model">bp.edu.lab.laporan.penggunaan</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="product_id" type="row"/>
+                <field name="praktikum_id" type="col"/>
+                <field name="total" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="bp_edu_lab_laporan_penggunaan_view_search" model="ir.ui.view">
+        <field name="name">bp.edu.lab.laporan.penggunaan.search</field>
+        <field name="model">bp.edu.lab.laporan.penggunaan</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="praktikum_id"/>
+                <field name="product_id"/>
+                <field name="categ_id"/>
+                <filter name="tanggal" string="Tanggal" date="tanggal"/>
+                <filter name="group_product" string="Barang" context="{'group_by': 'product_id'}"/>
+                <filter name="group_categ" string="Kategori" context="{'group_by': 'categ_id'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="bp_edu_lab_laporan_penggunaan_action" model="ir.actions.act_window">
+        <field name="name">Laporan Penggunaan Bahan</field>
+        <field name="res_model">bp.edu.lab.laporan.penggunaan</field>
+        <field name="view_mode">list,pivot</field>
+    </record>
+
+    <!-- Laporan pembelian: barang masuk dari penerimaan (laporan-pembelian di lab-app) -->
+    <record id="bp_edu_lab_laporan_pembelian_view_list" model="ir.ui.view">
+        <field name="name">stock.move.list.lab.pembelian</field>
+        <field name="model">stock.move</field>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <list create="0" edit="0" delete="0">
+                <field name="date" string="Tanggal"/>
+                <field name="reference" string="Kode Penerimaan"/>
+                <field name="origin" string="Kode PO"/>
+                <field name="partner_id" string="Supplier" optional="show"/>
+                <field name="product_id" string="Barang"/>
+                <field name="product_uom" string="Satuan"/>
+                <field name="quantity" string="Jumlah Diterima" sum="Total"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="bp_edu_lab_laporan_pembelian_action" model="ir.actions.act_window">
+        <field name="name">Laporan Pembelian</field>
+        <field name="res_model">stock.move</field>
+        <field name="view_mode">list,pivot</field>
+        <field name="view_id" ref="bp_edu_lab_laporan_pembelian_view_list"/>
+        <field name="domain">[('picking_code', '=', 'incoming'), ('state', '=', 'done'), ('product_id.bp_inventaris_lab', '=', True)]</field>
+        <field name="context">{'create': False}</field>
+    </record>
+
+</odoo>

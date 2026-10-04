@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="bp_edu_kelas_view_list" model="ir.ui.view">
+        <field name="name">bp.edu.kelas.list</field>
+        <field name="model">bp.edu.kelas</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="kode"/>
+                <field name="nama"/>
+                <field name="angkatan"/>
+                <field name="prodi_id"/>
+                <field name="jumlah_mahasiswa"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="bp_edu_kelas_view_form" model="ir.ui.view">
+        <field name="name">bp.edu.kelas.form</field>
+        <field name="model">bp.edu.kelas</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <widget name="web_ribbon" title="Diarsipkan" bg_color="text-bg-danger" invisible="active"/>
+                    <group>
+                        <group>
+                            <field name="nama"/>
+                            <field name="kode"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="angkatan" options="{'format': false}"/>
+                            <field name="prodi_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Mahasiswa" name="mahasiswa">
+                            <field name="mahasiswa_ids" readonly="1">
+                                <list>
+                                    <field name="nim"/>
+                                    <field name="nama"/>
+                                    <field name="email"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Deskripsi" name="deskripsi">
+                            <field name="deskripsi"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="bp_edu_kelas_view_search" model="ir.ui.view">
+        <field name="name">bp.edu.kelas.search</field>
+        <field name="model">bp.edu.kelas</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="nama"/>
+                <field name="kode"/>
+                <field name="prodi_id"/>
+                <field name="angkatan"/>
+                <filter name="arsip" string="Diarsipkan" domain="[('active', '=', False)]"/>
+                <filter name="group_angkatan" string="Angkatan" context="{'group_by': 'angkatan'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="bp_edu_kelas_action" model="ir.actions.act_window">
+        <field name="name">Kelas</field>
+        <field name="res_model">bp.edu.kelas</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

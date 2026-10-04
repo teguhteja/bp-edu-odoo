@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bp_edu_lab_perbaikan_manager,bp.edu.lab.perbaikan manager,model_bp_edu_lab_perbaikan,bp_edu_lab.group_lab_manager,1,0,0,0
+access_bp_edu_lab_perbaikan_admin,bp.edu.lab.perbaikan admin,model_bp_edu_lab_perbaikan,bp_edu_lab.group_lab_admin,1,1,1,1
+access_bp_edu_lab_stock_opname_manager,bp.edu.lab.stock.opname manager,model_bp_edu_lab_stock_opname,bp_edu_lab.group_lab_manager,1,0,0,0
+access_bp_edu_lab_stock_opname_admin,bp.edu.lab.stock.opname admin,model_bp_edu_lab_stock_opname,bp_edu_lab.group_lab_admin,1,1,1,1
+access_bp_edu_lab_stock_opname_line_manager,bp.edu.lab.stock.opname.line manager,model_bp_edu_lab_stock_opname_line,bp_edu_lab.group_lab_manager,1,0,0,0
+access_bp_edu_lab_stock_opname_line_admin,bp.edu.lab.stock.opname.line admin,model_bp_edu_lab_stock_opname_line,bp_edu_lab.group_lab_admin,1,1,1,1
+access_bp_edu_lab_praktikum_bahan_manager,bp.edu.lab.praktikum.bahan manager,model_bp_edu_lab_praktikum_bahan,bp_edu_lab.group_lab_manager,1,0,0,0
+access_bp_edu_lab_praktikum_bahan_admin,bp.edu.lab.praktikum.bahan admin,model_bp_edu_lab_praktikum_bahan,bp_edu_lab.group_lab_admin,1,1,1,1
+access_bp_edu_lab_laporan_penggunaan_manager,bp.edu.lab.laporan.penggunaan manager,model_bp_edu_lab_laporan_penggunaan,bp_edu_lab.group_lab_manager,1,0,0,0

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Manager Lab: hanya melihat data laboratorium (read-only). Di lab-app peran
+         "manager" ada tapi tidak punya akses menu apa pun; di sini diberi akses baca. -->
+    <record id="group_lab_manager" model="res.groups">
+        <field name="name">Lab: Manager (baca saja)</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <!-- Admin Lab (laboran): akses penuh praktikum, mahasiswa, kelompok, penilaian,
+         serta membuat soal pretest/posttest (survey). -->
+    <record id="group_lab_admin" model="res.groups">
+        <field name="name">Lab: Admin / Laboran</field>
+        <field name="implied_ids" eval="[(4, ref('group_lab_manager')), (4, ref('survey.group_survey_user'))]"/>
+    </record>
+
+    <record id="base.user_admin" model="res.users">
+        <field name="group_ids" eval="[(4, ref('group_lab_admin'))]"/>
+    </record>
+
+</odoo>

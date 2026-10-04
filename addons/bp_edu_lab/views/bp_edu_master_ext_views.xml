@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Program Studi: data gedung/alamat/telepon dari lab-app -->
+    <record id="bp_edu_program_studi_form_view_lab" model="ir.ui.view">
+        <field name="name">bp.edu.program.studi.form.lab</field>
+        <field name="model">bp.edu.program.studi</field>
+        <field name="inherit_id" ref="bp_edu_core.bp_edu_program_studi_form_view"/>
+        <field name="arch" type="xml">
+            <field name="fakultas_id" position="after">
+                <field name="gedung"/>
+                <field name="alamat"/>
+                <field name="telepon" widget="phone"/>
+                <field name="deskripsi"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Mata Kuliah: dosen pengampu praktikum (teks bebas dari lab-app) -->
+    <record id="bp_edu_mata_kuliah_form_view_lab" model="ir.ui.view">
+        <field name="name">bp.edu.mata.kuliah.form.lab</field>
+        <field name="model">bp.edu.mata.kuliah</field>
+        <field name="inherit_id" ref="bp_edu_curriculum.bp_edu_mata_kuliah_form_view"/>
+        <field name="arch" type="xml">
+            <field name="prodi_id" position="after">
+                <field name="dosen_pengampu"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Program studi untuk menu Laboratorium (tanpa syarat group Kaprodi) -->
+    <record id="bp_edu_program_studi_action_lab" model="ir.actions.act_window">
+        <field name="name">Program Studi</field>
+        <field name="res_model">bp.edu.program.studi</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="bp_edu_mata_kuliah_action_lab" model="ir.actions.act_window">
+        <field name="name">Mata Kuliah</field>
+        <field name="res_model">bp.edu.mata.kuliah</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

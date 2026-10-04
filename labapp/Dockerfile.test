@@ -1,0 +1,17 @@
+# Image khusus untuk menjalankan addon lab (bp_edu_lab*) beserta tes tour (HttpCase).
+# Base = image web bp-edu-odoo yang sudah dibangun dari Dockerfile root, ditambah Google Chrome
+# karena Odoo tour membutuhkan browser headless. Paket "chromium" di Ubuntu 24.04 hanya stub
+# snap yang tidak jalan di container, jadi dipakai .deb resmi Google Chrome.
+FROM localhost/bp-edu-odoo_web:latest
+
+USER root
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends wget ca-certificates \
+    && wget -q -O /tmp/chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+    && apt-get install -y --no-install-recommends /tmp/chrome.deb \
+    && rm -f /tmp/chrome.deb \
+    && rm -rf /var/lib/apt/lists/*
+# Image web lama belum memuat python-docx (di container utama terpasang manual di volume
+# /var/lib/odoo/.local); bp_edu_core mewajibkannya lewat external_dependencies.
+RUN pip install --break-system-packages --no-cache-dir python-docx PyPDF2
+USER odoo

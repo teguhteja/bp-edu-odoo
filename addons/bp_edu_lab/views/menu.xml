@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Aplikasi Laboratorium: menu utama tersendiri agar laboran tidak perlu group Kaprodi -->
+    <menuitem id="menu_bp_edu_lab_root"
+              name="Laboratorium"
+              sequence="55"
+              web_icon="bp_edu_lab,static/description/icon.png"
+              groups="bp_edu_lab.group_lab_manager"/>
+
+    <!-- Praktikum -->
+    <menuitem id="menu_bp_edu_lab_praktikum_root" name="Praktikum" parent="menu_bp_edu_lab_root" sequence="10"/>
+    <menuitem id="menu_bp_edu_lab_praktikum" name="Sesi Praktikum" parent="menu_bp_edu_lab_praktikum_root"
+              action="bp_edu_lab_praktikum_action" sequence="10"/>
+    <menuitem id="menu_bp_edu_lab_kelompok" name="Kelompok" parent="menu_bp_edu_lab_praktikum_root"
+              action="bp_edu_lab_kelompok_action" sequence="20"/>
+    <menuitem id="menu_bp_edu_lab_ujian" name="Pretest / Posttest" parent="menu_bp_edu_lab_praktikum_root"
+              action="survey_survey_action_lab" sequence="30"/>
+    <menuitem id="menu_bp_edu_lab_jawaban" name="Jawaban Ujian" parent="menu_bp_edu_lab_praktikum_root"
+              action="survey_user_input_action_lab" sequence="35"/>
+    <menuitem id="menu_bp_edu_lab_penilaian" name="Penilaian" parent="menu_bp_edu_lab_praktikum_root"
+              action="bp_edu_lab_peserta_penilaian_action" sequence="40"/>
+
+    <!-- Akademik -->
+    <menuitem id="menu_bp_edu_lab_akademik" name="Mahasiswa" parent="menu_bp_edu_lab_root" sequence="20"/>
+    <menuitem id="menu_bp_edu_lab_mahasiswa" name="Mahasiswa" parent="menu_bp_edu_lab_akademik"
+              action="bp_edu_mahasiswa_action" sequence="10"/>
+    <menuitem id="menu_bp_edu_lab_kelas" name="Kelas" parent="menu_bp_edu_lab_akademik"
+              action="bp_edu_kelas_action" sequence="20"/>
+    <menuitem id="menu_bp_edu_lab_mata_kuliah" name="Mata Kuliah" parent="menu_bp_edu_lab_akademik"
+              action="bp_edu_mata_kuliah_action_lab" sequence="30"/>
+    <menuitem id="menu_bp_edu_lab_prodi" name="Program Studi" parent="menu_bp_edu_lab_akademik"
+              action="bp_edu_program_studi_action_lab" sequence="40"/>
+
+    <!-- Laporan -->
+    <menuitem id="menu_bp_edu_lab_laporan" name="Laporan" parent="menu_bp_edu_lab_root" sequence="90"/>
+    <menuitem id="menu_bp_edu_lab_laporan_nilai" name="Nilai Praktikum" parent="menu_bp_edu_lab_laporan"
+              action="bp_edu_lab_peserta_laporan_nilai_action" sequence="10"/>
+    <menuitem id="menu_bp_edu_lab_laporan_absensi" name="Absensi" parent="menu_bp_edu_lab_laporan"
+              action="bp_edu_lab_peserta_laporan_absensi_action" sequence="20"/>
+
+</odoo>

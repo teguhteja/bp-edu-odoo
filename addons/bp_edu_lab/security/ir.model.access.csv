@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bp_edu_kelas_manager,bp.edu.kelas manager,model_bp_edu_kelas,group_lab_manager,1,0,0,0
+access_bp_edu_kelas_admin,bp.edu.kelas admin,model_bp_edu_kelas,group_lab_admin,1,1,1,1
+access_bp_edu_mahasiswa_manager,bp.edu.mahasiswa manager,model_bp_edu_mahasiswa,group_lab_manager,1,0,0,0
+access_bp_edu_mahasiswa_admin,bp.edu.mahasiswa admin,model_bp_edu_mahasiswa,group_lab_admin,1,1,1,1
+access_bp_edu_lab_praktikum_manager,bp.edu.lab.praktikum manager,model_bp_edu_lab_praktikum,group_lab_manager,1,0,0,0
+access_bp_edu_lab_praktikum_admin,bp.edu.lab.praktikum admin,model_bp_edu_lab_praktikum,group_lab_admin,1,1,1,1
+access_bp_edu_lab_kelompok_manager,bp.edu.lab.kelompok manager,model_bp_edu_lab_kelompok,group_lab_manager,1,0,0,0
+access_bp_edu_lab_kelompok_admin,bp.edu.lab.kelompok admin,model_bp_edu_lab_kelompok,group_lab_admin,1,1,1,1
+access_bp_edu_lab_peserta_manager,bp.edu.lab.peserta manager,model_bp_edu_lab_peserta,group_lab_manager,1,0,0,0
+access_bp_edu_lab_peserta_admin,bp.edu.lab.peserta admin,model_bp_edu_lab_peserta,group_lab_admin,1,1,1,1
+access_bp_edu_program_studi_lab_admin,bp.edu.program.studi lab admin,bp_edu_core.model_bp_edu_program_studi,group_lab_admin,1,1,1,1
+access_bp_edu_mata_kuliah_lab_admin,bp.edu.mata.kuliah lab admin,bp_edu_curriculum.model_bp_edu_mata_kuliah,group_lab_admin,1,1,1,1
+access_survey_survey_lab_manager,survey.survey lab manager,survey.model_survey_survey,group_lab_manager,1,0,0,0
+access_survey_question_lab_manager,survey.question lab manager,survey.model_survey_question,group_lab_manager,1,0,0,0
+access_survey_user_input_lab_manager,survey.user_input lab manager,survey.model_survey_user_input,group_lab_manager,1,0,0,0
+access_survey_user_input_line_lab_manager,survey.user_input.line lab manager,survey.model_survey_user_input_line,group_lab_manager,1,0,0,0

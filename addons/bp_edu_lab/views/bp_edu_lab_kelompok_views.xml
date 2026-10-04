@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="bp_edu_lab_kelompok_view_list" model="ir.ui.view">
+        <field name="name">bp.edu.lab.kelompok.list</field>
+        <field name="model">bp.edu.lab.kelompok</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="nama"/>
+                <field name="praktikum_id"/>
+                <field name="kelas_id"/>
+                <field name="prodi_id" optional="hide"/>
+                <field name="angkatan"/>
+                <field name="jumlah_anggota"/>
+                <field name="state" widget="badge" decoration-success="state == 'selesai'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="bp_edu_lab_kelompok_view_form" model="ir.ui.view">
+        <field name="name">bp.edu.lab.kelompok.form</field>
+        <field name="model">bp.edu.lab.kelompok</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_tambah_mahasiswa_kelas" type="object" string="Tambah Semua Mahasiswa Kelas"
+                            invisible="state != 'draft' or not kelas_id" groups="bp_edu_lab.group_lab_admin"/>
+                    <button name="action_selesai" type="object" string="Tandai Sudah Praktikum" class="btn-primary"
+                            invisible="state != 'draft'" groups="bp_edu_lab.group_lab_admin"/>
+                    <button name="action_draft" type="object" string="Kembalikan ke Draft"
+                            invisible="state != 'selesai'" groups="bp_edu_lab.group_lab_admin"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="nama" readonly="state == 'selesai'"/>
+                            <field name="praktikum_id" readonly="state == 'selesai'"/>
+                        </group>
+                        <group>
+                            <field name="kelas_id" readonly="state == 'selesai'"/>
+                            <field name="prodi_id"/>
+                            <field name="angkatan" options="{'format': false}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Anggota" name="anggota">
+                            <field name="peserta_ids" readonly="state == 'selesai'">
+                                <list editable="bottom">
+                                    <field name="mahasiswa_id"/>
+                                    <field name="nim"/>
+                                    <field name="presensi" readonly="1"/>
+                                    <field name="nilai" readonly="1"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Deskripsi" name="deskripsi">
+                            <field name="deskripsi"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="bp_edu_lab_kelompok_view_search" model="ir.ui.view">
+        <field name="name">bp.edu.lab.kelompok.search</field>
+        <field name="model">bp.edu.lab.kelompok</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="nama"/>
+                <field name="praktikum_id"/>
+                <field name="kelas_id"/>
+                <filter name="draft" string="Belum Praktikum" domain="[('state', '=', 'draft')]"/>
+                <filter name="selesai" string="Sudah Praktikum" domain="[('state', '=', 'selesai')]"/>
+                <filter name="group_praktikum" string="Praktikum" context="{'group_by': 'praktikum_id'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="bp_edu_lab_kelompok_action" model="ir.actions.act_window">
+        <field name="name">Kelompok</field>
+        <field name="res_model">bp.edu.lab.kelompok</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="bp_edu_mahasiswa_view_list" model="ir.ui.view">
+        <field name="name">bp.edu.mahasiswa.list</field>
+        <field name="model">bp.edu.mahasiswa</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="nim"/>
+                <field name="nama"/>
+                <field name="email"/>
+                <field name="kelas_id"/>
+                <field name="prodi_id" optional="hide"/>
+                <field name="angkatan" optional="show"/>
+                <field name="user_id" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="bp_edu_mahasiswa_view_form" model="ir.ui.view">
+        <field name="name">bp.edu.mahasiswa.form</field>
+        <field name="model">bp.edu.mahasiswa</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_buat_akses_portal" type="object" string="Buat Akses Portal"
+                            class="btn-primary" invisible="user_id"
+                            groups="bp_edu_lab.group_lab_admin"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Diarsipkan" bg_color="text-bg-danger" invisible="active"/>
+                    <field name="foto" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <label for="nama"/>
+                        <h1><field name="nama" placeholder="Nama mahasiswa"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="nim"/>
+                            <field name="email" widget="email"/>
+                            <field name="telepon" widget="phone"/>
+                            <field name="alamat"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="prodi_id"/>
+                            <field name="kelas_id"/>
+                            <field name="tahun" options="{'format': false}"/>
+                            <field name="gender" widget="radio" options="{'horizontal': true}"/>
+                            <field name="tanggal_lahir"/>
+                            <field name="user_id" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Riwayat Praktikum" name="praktikum">
+                            <field name="peserta_ids" readonly="1">
+                                <list>
+                                    <field name="praktikum_id"/>
+                                    <field name="mata_kuliah_id"/>
+                                    <field name="tanggal"/>
+                                    <field name="kelompok_id"/>
+                                    <field name="presensi"/>
+                                    <field name="nilai"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Deskripsi" name="deskripsi">
+                            <field name="deskripsi"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="bp_edu_mahasiswa_view_search" model="ir.ui.view">
+        <field name="name">bp.edu.mahasiswa.search</field>
+        <field name="model">bp.edu.mahasiswa</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="nama" filter_domain="['|', ('nama', 'ilike', self), ('nim', 'ilike', self)]"/>
+                <field name="email"/>
+                <field name="kelas_id"/>
+                <field name="prodi_id"/>
+                <filter name="tanpa_akun" string="Belum Punya Akun" domain="[('user_id', '=', False)]"/>
+                <filter name="arsip" string="Diarsipkan" domain="[('active', '=', False)]"/>
+                <filter name="group_kelas" string="Kelas" context="{'group_by': 'kelas_id'}"/>
+                <filter name="group_angkatan" string="Angkatan" context="{'group_by': 'angkatan'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="bp_edu_mahasiswa_action" model="ir.actions.act_window">
+        <field name="name">Mahasiswa</field>
+        <field name="res_model">bp.edu.mahasiswa</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Aksi massal: buat akun portal untuk mahasiswa terpilih -->
+    <record id="bp_edu_mahasiswa_action_portal" model="ir.actions.server">
+        <field name="name">Buat Akses Portal</field>
+        <field name="model_id" ref="model_bp_edu_mahasiswa"/>
+        <field name="binding_model_id" ref="model_bp_edu_mahasiswa"/>
+        <field name="group_ids" eval="[(4, ref('bp_edu_lab.group_lab_admin'))]"/>
+        <field name="state">code</field>
+        <field name="code">records.action_buat_akses_portal()</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Admin lab juga mengelola barang, pembelian, dan penerimaan -->
+    <record id="bp_edu_lab.group_lab_admin" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('stock.group_stock_manager')), (4, ref('purchase.group_purchase_manager'))]"/>
+    </record>
+
+    <record id="product_template_form_view_lab" model="ir.ui.view">
+        <field name="name">product.template.form.lab</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Laboratorium" name="laboratorium">
+                    <group>
+                        <group>
+                            <field name="bp_inventaris_lab"/>
+                            <field name="bp_reusable"/>
+                        </group>
+                        <group>
+                            <field name="bp_min_stock"/>
+                            <field name="bp_expiry_date"/>
+                            <field name="bp_stok_menipis"/>
+                        </group>
+                    </group>
+                    <field name="bp_perbaikan_ids" readonly="1">
+                        <list>
+                            <field name="kode"/>
+                            <field name="tanggal"/>
+                            <field name="qty"/>
+                            <field name="keterangan"/>
+                            <field name="state" widget="badge" decoration-warning="state == 'proses'" decoration-success="state == 'selesai'"/>
+                            <field name="tanggal_selesai"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Daftar inventaris lab dengan badge stok -->
+    <record id="product_template_list_lab" model="ir.ui.view">
+        <field name="name">product.template.list.lab</field>
+        <field name="model">product.template</field>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <list decoration-danger="bp_stok_menipis">
+                <field name="default_code" string="Kode"/>
+                <field name="name" string="Nama Barang"/>
+                <field name="categ_id" string="Kategori"/>
+                <field name="bp_reusable" string="Reusable"/>
+                <field name="uom_id" string="Satuan"/>
+                <field name="qty_available" string="Stok"/>
+                <field name="bp_min_stock"/>
+                <field name="bp_expiry_date" optional="show"/>
+                <field name="bp_stok_menipis" string="Stok Menipis"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="product_template_search_lab" model="ir.ui.view">
+        <field name="name">product.template.search.lab</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='services']" position="before">
+                <filter name="bp_stok_menipis" string="Stok Menipis" domain="[('bp_stok_menipis', '=', True)]"/>
+                <filter name="bp_inventaris_lab" string="Inventaris Lab" domain="[('bp_inventaris_lab', '=', True)]"/>
+                <separator/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_template_action_lab" model="ir.actions.act_window">
+        <field name="name">Inventaris Lab</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="view_id" ref="product_template_list_lab"/>
+        <field name="domain">[('bp_inventaris_lab', '=', True)]</field>
+        <field name="context">{'default_bp_inventaris_lab': True, 'default_is_storable': True, 'default_type': 'consu', 'default_purchase_ok': True, 'default_sale_ok': False}</field>
+    </record>
+
+    <record id="product_template_action_lab_menipis" model="ir.actions.act_window">
+        <field name="name">Stok Menipis</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="product_template_list_lab"/>
+        <field name="domain">[('bp_inventaris_lab', '=', True)]</field>
+        <field name="context">{'search_default_bp_stok_menipis': 1, 'default_bp_inventaris_lab': True, 'default_is_storable': True}</field>
+    </record>
+
+    <record id="product_category_action_lab" model="ir.actions.act_window">
+        <field name="name">Kategori Inventaris</field>
+        <field name="res_model">product.category</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="res_partner_action_supplier_lab" model="ir.actions.act_window">
+        <field name="name">Supplier</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="domain">[('supplier_rank', '>', 0)]</field>
+        <field name="context">{'res_partner_search_mode': 'supplier', 'default_is_company': True, 'default_supplier_rank': 1}</field>
+    </record>
+
+</odoo>

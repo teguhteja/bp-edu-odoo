@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Penilaian: grid peserta per praktikum (pengganti PenilaianController@edit) -->
+    <record id="bp_edu_lab_peserta_view_list_penilaian" model="ir.ui.view">
+        <field name="name">bp.edu.lab.peserta.list.penilaian</field>
+        <field name="model">bp.edu.lab.peserta</field>
+        <field name="arch" type="xml">
+            <list editable="bottom" create="0" delete="0">
+                <field name="praktikum_id" readonly="1"/>
+                <field name="kelompok_id" readonly="1"/>
+                <field name="nim"/>
+                <field name="mahasiswa_id" readonly="1"/>
+                <field name="kelas_id" optional="show"/>
+                <field name="presensi"/>
+                <field name="waktu_presensi" optional="hide" readonly="1"/>
+                <field name="berkas" filename="berkas_nama" widget="binary"/>
+                <field name="berkas_nama" column_invisible="1"/>
+                <field name="nilai"/>
+                <button name="action_lihat_jawaban" type="object" string="Lihat Jawaban" icon="fa-file-text-o"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Laporan nilai & presensi (pengganti LaporanController praktikum/absensi) -->
+    <record id="bp_edu_lab_peserta_view_list_laporan" model="ir.ui.view">
+        <field name="name">bp.edu.lab.peserta.list.laporan</field>
+        <field name="model">bp.edu.lab.peserta</field>
+        <field name="arch" type="xml">
+            <list create="0" edit="0" delete="0">
+                <field name="tanggal"/>
+                <field name="praktikum_id"/>
+                <field name="mata_kuliah_id"/>
+                <field name="kelas_id"/>
+                <field name="angkatan"/>
+                <field name="nim"/>
+                <field name="mahasiswa_id"/>
+                <field name="presensi"/>
+                <field name="nilai"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="bp_edu_lab_peserta_view_pivot" model="ir.ui.view">
+        <field name="name">bp.edu.lab.peserta.pivot</field>
+        <field name="model">bp.edu.lab.peserta</field>
+        <field name="arch" type="xml">
+            <pivot string="Laporan Praktikum">
+                <field name="praktikum_id" type="row"/>
+                <field name="kelas_id" type="col"/>
+                <field name="nilai" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="bp_edu_lab_peserta_view_form" model="ir.ui.view">
+        <field name="name">bp.edu.lab.peserta.form</field>
+        <field name="model">bp.edu.lab.peserta</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="mahasiswa_id"/>
+                            <field name="kelompok_id"/>
+                            <field name="praktikum_id"/>
+                        </group>
+                        <group>
+                            <field name="presensi"/>
+                            <field name="waktu_presensi"/>
+                            <field name="berkas" filename="berkas_nama"/>
+                            <field name="berkas_nama" invisible="1"/>
+                            <field name="nilai"/>
+                        </group>
+                    </group>
+                    <field name="jawaban_ids" readonly="1">
+                        <list>
+                            <field name="jenis_ujian"/>
+                            <field name="survey_id"/>
+                            <field name="state"/>
+                            <field name="end_datetime"/>
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="bp_edu_lab_peserta_view_search" model="ir.ui.view">
+        <field name="name">bp.edu.lab.peserta.search</field>
+        <field name="model">bp.edu.lab.peserta</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="mahasiswa_id"/>
+                <field name="praktikum_id"/>
+                <field name="kelas_id"/>
+                <field name="angkatan"/>
+                <field name="mata_kuliah_id"/>
+                <filter name="hadir" string="Hadir" domain="[('presensi', '=', True)]"/>
+                <filter name="tidak_hadir" string="Tidak Hadir" domain="[('presensi', '=', False)]"/>
+                <filter name="tanggal" string="Tanggal" date="tanggal"/>
+                <filter name="group_praktikum" string="Praktikum" context="{'group_by': 'praktikum_id'}"/>
+                <filter name="group_kelas" string="Kelas" context="{'group_by': 'kelas_id'}"/>
+                <filter name="group_angkatan" string="Angkatan" context="{'group_by': 'angkatan'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="bp_edu_lab_peserta_penilaian_action" model="ir.actions.act_window">
+        <field name="name">Penilaian</field>
+        <field name="res_model">bp.edu.lab.peserta</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="bp_edu_lab_peserta_view_list_penilaian"/>
+        <field name="context">{'search_default_group_praktikum': 1}</field>
+    </record>
+
+    <record id="bp_edu_lab_peserta_laporan_nilai_action" model="ir.actions.act_window">
+        <field name="name">Laporan Nilai Praktikum</field>
+        <field name="res_model">bp.edu.lab.peserta</field>
+        <field name="view_mode">list,pivot</field>
+        <field name="view_id" ref="bp_edu_lab_peserta_view_list_laporan"/>
+    </record>
+
+    <record id="bp_edu_lab_peserta_laporan_absensi_action" model="ir.actions.act_window">
+        <field name="name">Laporan Absensi</field>
+        <field name="res_model">bp.edu.lab.peserta</field>
+        <field name="view_mode">list,pivot</field>
+        <field name="view_id" ref="bp_edu_lab_peserta_view_list_laporan"/>
+        <field name="context">{'search_default_group_praktikum': 1, 'pivot_measures': ['__count']}</field>
+    </record>
+
+</odoo>

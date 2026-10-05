@@ -78,6 +78,17 @@ class TestPortalPraktikum(LabDataMixin, HttpCase):
         response = self.url_open(f'/my/praktikum/{self.praktikum.id}/ujian/post')
         self.assertIn('melewati batas', self._pesan(response))
 
+    def test_retry_survey_kembali_ke_praktikum(self):
+        """Route "Take Again" survey tidak boleh membuat jawaban baru tanpa praktikum."""
+        answer = self.praktikum.mulai_ujian(self.mhs, 'pra')
+        jumlah = self.env['survey.user_input'].search_count([('survey_id', '=', self.pretest.id)])
+        self.authenticate('mhs1@test.example', 'mhs1@test.example')
+        response = self.url_open(f'/survey/retry/{self.pretest.access_token}/{answer.access_token}',
+                                 allow_redirects=False)
+        self.assertIn(response.status_code, (302, 303))
+        self.assertTrue(response.headers['Location'].endswith('/my/praktikum'))
+        self.assertEqual(self.env['survey.user_input'].search_count([('survey_id', '=', self.pretest.id)]), jumlah)
+
     def test_tour_portal_mahasiswa(self):
         """E2E: mahasiswa presensi dengan token lalu mengerjakan pretest sampai selesai."""
         self.start_tour('/my/praktikum', 'bp_edu_lab_portal_tour', login='mhs1@test.example')

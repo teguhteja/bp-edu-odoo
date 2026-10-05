@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <!-- Privilege: tampil sebagai pilihan "Laboratorium" di tab Access Rights form user
+         (tanpa ini grup lab hanya terlihat di developer mode). -->
+    <record id="res_groups_privilege_lab" model="res.groups.privilege">
+        <field name="name">Laboratorium</field>
+        <field name="category_id" ref="base.module_category_education"/>
+        <field name="sequence">55</field>
+    </record>
+
     <!-- Manager Lab: hanya melihat data laboratorium (read-only). Di lab-app peran
          "manager" ada tapi tidak punya akses menu apa pun; di sini diberi akses baca. -->
     <record id="group_lab_manager" model="res.groups">
         <field name="name">Lab: Manager (baca saja)</field>
+        <field name="privilege_id" ref="res_groups_privilege_lab"/>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
     </record>
 
@@ -12,6 +21,7 @@
          serta membuat soal pretest/posttest (survey). -->
     <record id="group_lab_admin" model="res.groups">
         <field name="name">Lab: Admin / Laboran</field>
+        <field name="privilege_id" ref="res_groups_privilege_lab"/>
         <field name="implied_ids" eval="[(4, ref('group_lab_manager')), (4, ref('survey.group_survey_user'))]"/>
     </record>
 

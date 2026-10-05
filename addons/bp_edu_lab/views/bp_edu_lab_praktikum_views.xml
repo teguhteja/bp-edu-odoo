@@ -60,7 +60,7 @@
                                 <list>
                                     <field name="nama"/>
                                     <field name="kelas_id"/>
-                                    <field name="angkatan"/>
+                                    <field name="angkatan" options="{'enable_formatting': false}"/>
                                     <field name="jumlah_anggota"/>
                                     <field name="state" widget="badge" decoration-success="state == 'selesai'"/>
                                 </list>

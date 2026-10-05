@@ -22,6 +22,18 @@
         </xpath>
     </template>
 
+    <!-- Akhir ujian praktikum: ganti "Take Again" dengan kembali ke portal praktikum -->
+    <template id="survey_button_retake_lab" inherit_id="survey.survey_button_retake" name="Survey: Kembali ke Praktikum">
+        <xpath expr="//div[hasclass('d-print-none')]" position="attributes">
+            <attribute name="t-if" add="not answer.praktikum_id" separator=" and "/>
+        </xpath>
+        <xpath expr="//div[hasclass('d-print-none')]" position="after">
+            <div t-if="answer.praktikum_id" class="d-print-none">
+                <a role="button" class="btn btn-primary btn-lg o_lab_kembali" href="/my/praktikum">Kembali ke Praktikum</a>
+            </div>
+        </xpath>
+    </template>
+
     <!-- Halaman utama praktikum mahasiswa -->
     <template id="portal_my_praktikum" name="Praktikum Saya">
         <t t-call="portal.portal_layout">

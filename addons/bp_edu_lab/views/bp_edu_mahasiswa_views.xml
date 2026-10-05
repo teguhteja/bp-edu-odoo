@@ -11,7 +11,7 @@
                 <field name="email"/>
                 <field name="kelas_id"/>
                 <field name="prodi_id" optional="hide"/>
-                <field name="angkatan" optional="show"/>
+                <field name="angkatan" optional="show" options="{'enable_formatting': false}"/>
                 <field name="user_id" optional="show"/>
             </list>
         </field>
@@ -45,7 +45,7 @@
                         <group>
                             <field name="prodi_id"/>
                             <field name="kelas_id"/>
-                            <field name="tahun" options="{'format': false}"/>
+                            <field name="tahun" options="{'enable_formatting': false}"/>
                             <field name="gender" widget="radio" options="{'horizontal': true}"/>
                             <field name="tanggal_lahir"/>
                             <field name="user_id" readonly="1"/>

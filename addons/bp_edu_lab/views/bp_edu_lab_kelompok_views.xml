@@ -10,7 +10,7 @@
                 <field name="praktikum_id"/>
                 <field name="kelas_id"/>
                 <field name="prodi_id" optional="hide"/>
-                <field name="angkatan"/>
+                <field name="angkatan" options="{'enable_formatting': false}"/>
                 <field name="jumlah_anggota"/>
                 <field name="state" widget="badge" decoration-success="state == 'selesai'"/>
             </list>
@@ -40,7 +40,7 @@
                         <group>
                             <field name="kelas_id" readonly="state == 'selesai'"/>
                             <field name="prodi_id"/>
-                            <field name="angkatan" options="{'format': false}"/>
+                            <field name="angkatan" options="{'enable_formatting': false}"/>
                         </group>
                     </group>
                     <notebook>

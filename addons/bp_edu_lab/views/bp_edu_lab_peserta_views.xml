@@ -32,7 +32,7 @@
                 <field name="praktikum_id"/>
                 <field name="mata_kuliah_id"/>
                 <field name="kelas_id"/>
-                <field name="angkatan"/>
+                <field name="angkatan" options="{'enable_formatting': false}"/>
                 <field name="nim"/>
                 <field name="mahasiswa_id"/>
                 <field name="presensi"/>

@@ -53,6 +53,16 @@ registry.category("web_tour.tours").add("bp_edu_lab_portal_tour", {
             content: "Survey selesai",
             trigger: ".o_survey_finished",
         },
+        {
+            content: "Tidak ada Take Again; kembali ke halaman praktikum",
+            trigger: ".o_survey_finished:not(:has(a[href^='/survey/retry'])) a.o_lab_kembali",
+            run: "click",
+            expectUnloadPage: true,
+        },
+        {
+            content: "Tombol pretest kini untuk mengubah jawaban",
+            trigger: "a.o_lab_ujian_pra:contains('ubah jawaban')",
+        },
     ],
 });
 

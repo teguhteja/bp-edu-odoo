@@ -23,6 +23,19 @@ podman build -t localhost/bp-edu-odoo-labapp:latest -f labapp/Dockerfile.test la
 Container `bp-edu-odoo_labapp` memakai DB server `bp-edu-odoo_db_1` (network `odoo_app`) tetapi
 addons dari worktree ini, jadi container web utama tidak tersentuh.
 
+## Dokumentasi pengguna
+
+Panduan dosen, mahasiswa, dan inventaris (Markdown + DOCX, dengan screenshot) ada di
+`docs/labapp/`. Screenshot dibuat ulang pada DB salinan, jangan pada `labapp`:
+
+```powershell
+# salin labapp -> labapp_docs (pg_dump | psql) + filestore, jalankan server di :18071, lalu:
+$env:LABAPP_DB = 'labapp_docs'; $env:LABAPP_PASSWORD = '...'
+.\labapp\odoo-labapp.ps1 shell labapp_docs/prepare_docs_db.py
+python scripts/labapp_docs/screenshots.py          # LABAPP_DOCS_URL default http://localhost:18071
+python scripts/labapp_docs/md_to_docx.py
+```
+
 ## Impor data lab-app
 
 ```powershell

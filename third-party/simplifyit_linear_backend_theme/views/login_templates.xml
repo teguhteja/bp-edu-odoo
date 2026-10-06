@@ -16,33 +16,6 @@
                     <span class="sit-brand-name" t-esc="sit_branding.get('company_name')"/>
                 </div>
 
-                <div class="sit-brand-main">
-                    <h2 class="sit-claim">
-                        <t t-if="sit_branding.get('claim')" t-esc="sit_branding.get('claim')"/>
-                        <t t-else="">Everything your business needs, in one place.</t>
-                    </h2>
-                    <p class="sit-subclaim">
-                        <t t-if="sit_branding.get('subclaim')" t-esc="sit_branding.get('subclaim')"/>
-                        <t t-else="">Sales, inventory and accounting with the speed and clarity your team deserves.</t>
-                    </p>
-
-                    <div class="sit-preview" aria-hidden="true">
-                        <t t-foreach="sit_branding.get('preview_rows', [])" t-as="row">
-                            <div class="sit-preview-row">
-                                <span t-attf-class="sit-dot sit-dot-{{row['status']}}"></span>
-                                <span class="sit-preview-ref" t-esc="row['ref']"/>
-                                <span class="sit-preview-name" t-esc="row['name']"/>
-                                <span class="sit-preview-amount" t-esc="row['amount']"/>
-                                <span t-attf-class="sit-pill sit-pill-{{row['status']}}" t-esc="row['label']"/>
-                            </div>
-                        </t>
-                    </div>
-                </div>
-
-                <div class="sit-brand-foot">
-                    <t t-if="sit_branding.get('footer')" t-esc="sit_branding.get('footer')"/>
-                    <t t-else="">Odoo 19 · Built by Simplify IT</t>
-                </div>
             </section>
 
             <!-- ============ Form panel (right) ============ -->

@@ -26,6 +26,11 @@ class BpEduMahasiswa(models.Model):
     angkatan = fields.Integer(related='kelas_id.angkatan', store=True, string='Angkatan')
     tahun = fields.Integer(string='Tahun Masuk')
     deskripsi = fields.Text(string='Deskripsi')
+    is_wakil_mahasiswa = fields.Boolean(
+        string='Wakil Mahasiswa', tracking=True,
+        help='Ditampilkan sebagai wakil mahasiswa di Kontrak Kuliah program studinya.',
+    )
+    tanda_tangan = fields.Binary(string='Tanda Tangan', attachment=True)
     user_id = fields.Many2one('res.users', string='Akun Pengguna', copy=False, tracking=True,
                               help='Akun login (portal) mahasiswa. Ditautkan otomatis '
                                    'berdasarkan kesamaan email.')

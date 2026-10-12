@@ -32,6 +32,26 @@
         </field>
     </record>
 
+    <!-- Wakil mahasiswa diambil dari data Mahasiswa (is_wakil_mahasiswa) -->
+    <record id="view_bp_edu_kontrak_wakil_inherit" model="ir.ui.view">
+        <field name="name">bp.edu.kontrak.kuliah.form.wakil.inherit</field>
+        <field name="model">bp.edu.kontrak.kuliah</field>
+        <field name="inherit_id" ref="bp_edu_rps.bp_edu_kontrak_kuliah_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='wakil']/group" position="before">
+                <group>
+                    <field name="wakil_mahasiswa_id" options="{'no_create': True}"/>
+                    <field name="wakil_mahasiswa_tanda_tangan" widget="image" readonly="1"
+                           options="{'size': [200, 80]}" invisible="not wakil_mahasiswa_id"/>
+                </group>
+            </xpath>
+            <xpath expr="//page[@name='wakil']/group[2]" position="attributes">
+                <attribute name="invisible">wakil_mahasiswa_id</attribute>
+                <attribute name="string">Isi manual (jika tidak memilih dari data mahasiswa)</attribute>
+            </xpath>
+        </field>
+    </record>
+
     <!-- Tambah tombol "Generate DOCX" ke header form Kontrak Kuliah -->
     <record id="view_bp_edu_kontrak_generate_inherit" model="ir.ui.view">
         <field name="name">bp.edu.kontrak.kuliah.form.generate.inherit</field>

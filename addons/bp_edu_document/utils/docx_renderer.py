@@ -174,9 +174,10 @@ def _process_paragraph(paragraph, data: dict, images: dict):
     if not full_text.strip():
         return
 
-    # Image placeholder handling
+    # Image placeholder handling (spasi diabaikan: template memuat '{mahasiswa _sign}')
+    compact_text = re.sub(r'\s+', '', full_text)
     for placeholder, (key, is_small) in _IMAGE_PLACEHOLDERS.items():
-        if placeholder in full_text and images.get(key):
+        if placeholder in compact_text and images.get(key):
             img_bytes = images[key]
             width = Inches(0.5) if is_small else Inches(1.0)
             for run in paragraph.runs:

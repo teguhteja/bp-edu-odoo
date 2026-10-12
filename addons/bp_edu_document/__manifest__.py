@@ -3,7 +3,7 @@
     'version': '19.0.1.3.0',
     'category': 'Education',
     'summary': 'Generate DOCX (RPS, SAP, Kontrak Kuliah) dan import/export JSON',
-    'depends': ['bp_edu_rps'],
+    'depends': ['bp_edu_rps', 'bp_edu_lab'],
     'data': [
         'security/ir.model.access.csv',
         'views/bp_edu_docx_template_views.xml',

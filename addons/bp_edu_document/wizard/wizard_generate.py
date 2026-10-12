@@ -295,8 +295,11 @@ class BpEduWizardGenerate(models.TransientModel):
             'bobot_kuis': str(kontrak.bobot_kuis),
             'bobot_uts': str(kontrak.bobot_uts),
             'bobot_uas': str(kontrak.bobot_uas),
-            'wakil_mahasiswa': kontrak.wakil_mahasiswa or '',
-            'nim_wakil': kontrak.nim_wakil or '',
+            'wakil_mahasiswa': kontrak.wakil_mahasiswa_id.nama or kontrak.wakil_mahasiswa or '',
+            'nim_wakil': kontrak.wakil_mahasiswa_id.nim or kontrak.nim_wakil or '',
+            # Kosongkan placeholder TTD bila gambar tidak tersedia
+            'dosen_sign': '',
+            'mahasiswa_sign': '',
         }
         # materi_minggu_1 … materi_minggu_16 (flat keys)
         for m in kontrak.materi_ids.sorted('minggu'):
@@ -364,6 +367,9 @@ class BpEduWizardGenerate(models.TransientModel):
                 raise UserError('Pilih Kontrak Kuliah terlebih dahulu.')
             ctx = self._build_kontrak_context()
             images = self._get_images(self.kontrak_id.dosen_id)
+            ttd_wakil = self.kontrak_id.wakil_mahasiswa_id.tanda_tangan
+            if ttd_wakil:
+                images['mahasiswa_sign'] = base64.b64decode(ttd_wakil)
             docx_bytes = docx_renderer.render(template_bytes, ctx, images)
             mk_nama = self.kontrak_id.mata_kuliah_id.kode or 'KONTRAK'
             filename = f'Kontrak_{mk_nama}.docx'

@@ -314,6 +314,12 @@ class BpEduWizardMassGenerate(models.TransientModel):
             'referensi_1': pertemuan.referensi_1 or '',
             'referensi_2': pertemuan.referensi_2 or '',
         }
+        # Template SAP memakai nama datar: {no_pertemuan}, {sub_cpmk} (baris CPMK), {pengajar_pendahuluan}, dst.
+        pertemuan_data['no_pertemuan'] = pertemuan.no
+        pertemuan_data['sub_cpmk'] = pertemuan.detail_cpmk or ''
+        for tahap, peran_map in pertemuan_data['kegiatan'].items():
+            for peran, isi in peran_map.items():
+                pertemuan_data[f'{peran}_{tahap}'] = isi
         ctx = {**meta, **pertemuan_data}
         ctx['meta'] = meta
         return ctx

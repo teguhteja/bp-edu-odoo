@@ -10,7 +10,9 @@
         'views/bp_edu_generate_log_views.xml',
         'views/wizard_generate_views.xml',
         'views/wizard_import_json_views.xml',
+        'views/wizard_mass_generate_views.xml',
         'views/bp_edu_rps_buttons_inherit.xml',
+        'views/bp_edu_server_actions.xml',
         'views/menu.xml',
     ],
     'external_dependencies': {

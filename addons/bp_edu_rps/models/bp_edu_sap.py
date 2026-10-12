@@ -39,6 +39,11 @@ class BpEduSap(models.Model):
     )
 
     kode_mk = fields.Char(related='mata_kuliah_id.kode', store=True)
+    semester = fields.Integer(related='mata_kuliah_id.semester', string='Semester', store=True)
+    prodi_id = fields.Many2one(
+        'bp.edu.program.studi', related='mata_kuliah_id.prodi_id',
+        string='Program Studi', store=True,
+    )
 
     pertemuan_ids = fields.One2many('bp.edu.sap.pertemuan', 'sap_id', string='Pertemuan')
 

@@ -6,3 +6,4 @@ access_bp_edu_generate_log_dosen,bp.edu.generate.log dosen,model_bp_edu_generate
 access_bp_edu_generate_log_doko,bp.edu.generate.log doko,model_bp_edu_generate_log,bp_edu_core.group_dosen_koordinator,1,1,1,1
 access_bp_edu_wizard_generate_user,bp.edu.wizard.generate user,model_bp_edu_wizard_generate,,1,1,1,1
 access_bp_edu_wizard_import_json_doko,bp.edu.wizard.import.json doko,model_bp_edu_wizard_import_json,bp_edu_core.group_dosen_koordinator,1,1,1,1
+access_bp_edu_wizard_mass_generate_user,bp.edu.wizard.mass.generate user,model_bp_edu_wizard_mass_generate,,1,1,1,1

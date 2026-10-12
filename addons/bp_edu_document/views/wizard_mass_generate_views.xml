@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_wizard_mass_generate_form" model="ir.ui.view">
+        <field name="name">bp.edu.wizard.mass.generate.form</field>
+        <field name="model">bp.edu.wizard.mass.generate</field>
+        <field name="arch" type="xml">
+            <form string="Mass Generate DOCX">
+                <header>
+                    <button name="action_generate"
+                            string="Generate &amp; Unduh"
+                            type="object"
+                            class="btn-primary"
+                            invisible="state == 'done'"/>
+                    <button name="action_download"
+                            string="Unduh ZIP"
+                            type="object"
+                            class="btn-success"
+                            invisible="state == 'draft'"/>
+                </header>
+                <sheet>
+                    <div class="alert alert-success" role="alert"
+                         invisible="state == 'draft'">
+                        <strong>Selesai!</strong>
+                        File <field name="result_filename" nolabel="1" class="d-inline"/> telah dibuat.
+                        Klik <strong>Unduh ZIP</strong> untuk mengunduh.
+                    </div>
+                    <div class="alert alert-warning" role="alert"
+                         invisible="not generate_warning">
+                        <strong>Peringatan:</strong>
+                        <field name="generate_warning" nolabel="1"/>
+                    </div>
+                    <group invisible="state == 'done'">
+                        <group>
+                            <field name="document_type" readonly="1"/>
+                            <field name="template_id" options="{'no_create': True}"/>
+                            <field name="record_count" string="Jumlah yang Dipilih" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="RPS yang Dipilih"
+                           invisible="document_type != 'rps' or state == 'done'">
+                        <field name="rps_ids" nolabel="1" readonly="1">
+                            <list>
+                                <field name="kode_mk"/>
+                                <field name="nama_mk"/>
+                                <field name="prodi_id"/>
+                                <field name="semester"/>
+                                <field name="state" widget="badge"
+                                       decoration-success="state == 'final'"
+                                       decoration-warning="state == 'draft'"/>
+                            </list>
+                        </field>
+                    </group>
+                    <group string="SAP yang Dipilih"
+                           invisible="document_type != 'sap' or state == 'done'">
+                        <field name="sap_ids" nolabel="1" readonly="1">
+                            <list>
+                                <field name="kode_mk"/>
+                                <field name="mata_kuliah_id"/>
+                                <field name="prodi_id"/>
+                                <field name="semester"/>
+                                <field name="tahun_akademik_id"/>
+                            </list>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

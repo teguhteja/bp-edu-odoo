@@ -169,10 +169,37 @@
             <list string="SAP">
                 <field name="kode_mk" optional="show"/>
                 <field name="mata_kuliah_id"/>
+                <field name="prodi_id" optional="show"/>
+                <field name="semester" optional="show"/>
                 <field name="dosen_id" optional="show"/>
                 <field name="dosen_ids" widget="many2many_tags" optional="hide"/>
                 <field name="tahun_akademik_id" optional="show"/>
             </list>
+        </field>
+    </record>
+
+    <!-- ─── Search View ───────────────────────────────────────── -->
+    <record id="bp_edu_sap_search_view" model="ir.ui.view">
+        <field name="name">bp.edu.sap.search</field>
+        <field name="model">bp.edu.sap</field>
+        <field name="arch" type="xml">
+            <search string="Cari SAP">
+                <field name="mata_kuliah_id"/>
+                <field name="dosen_id"/>
+                <field name="prodi_id"/>
+                <field name="tahun_akademik_id"/>
+                <field name="semester"/>
+                <group>
+                    <filter string="Program Studi" name="group_prodi"
+                            context="{'group_by': 'prodi_id'}"/>
+                    <filter string="Semester" name="group_semester"
+                            context="{'group_by': 'semester'}"/>
+                    <filter string="Tahun Akademik" name="group_ta"
+                            context="{'group_by': 'tahun_akademik_id'}"/>
+                    <filter string="Dosen Koordinator" name="group_dosen"
+                            context="{'group_by': 'dosen_id'}"/>
+                </group>
+            </search>
         </field>
     </record>
 
@@ -181,6 +208,7 @@
         <field name="name">SAP</field>
         <field name="res_model">bp.edu.sap</field>
         <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="bp_edu_sap_search_view"/>
     </record>
 
 </odoo>

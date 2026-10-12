@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Server Action: Mass Generate DOCX dari list RPS -->
+    <record id="action_mass_generate_rps_docx" model="ir.actions.server">
+        <field name="name">Generate DOCX</field>
+        <field name="model_id" ref="bp_edu_rps.model_bp_edu_rps"/>
+        <field name="binding_model_id" ref="bp_edu_rps.model_bp_edu_rps"/>
+        <field name="binding_type">action</field>
+        <field name="state">code</field>
+        <field name="code">
+action = {
+    'type': 'ir.actions.act_window',
+    'name': 'Generate DOCX',
+    'res_model': 'bp.edu.wizard.mass.generate',
+    'view_mode': 'form',
+    'target': 'new',
+    'context': {
+        'default_document_type': 'rps',
+        'default_rps_ids': [(6, 0, records.ids)],
+        'active_model': 'bp.edu.rps',
+        'active_ids': records.ids,
+    },
+}
+        </field>
+    </record>
+
+    <!-- Server Action: Mass Unduh SAP dari list SAP -->
+    <record id="action_mass_generate_sap_docx" model="ir.actions.server">
+        <field name="name">Mass Unduh</field>
+        <field name="model_id" ref="bp_edu_rps.model_bp_edu_sap"/>
+        <field name="binding_model_id" ref="bp_edu_rps.model_bp_edu_sap"/>
+        <field name="binding_type">action</field>
+        <field name="state">code</field>
+        <field name="code">
+action = {
+    'type': 'ir.actions.act_window',
+    'name': 'Mass Unduh SAP',
+    'res_model': 'bp.edu.wizard.mass.generate',
+    'view_mode': 'form',
+    'target': 'new',
+    'context': {
+        'default_document_type': 'sap',
+        'default_sap_ids': [(6, 0, records.ids)],
+        'active_model': 'bp.edu.sap',
+        'active_ids': records.ids,
+    },
+}
+        </field>
+    </record>
+
+</odoo>

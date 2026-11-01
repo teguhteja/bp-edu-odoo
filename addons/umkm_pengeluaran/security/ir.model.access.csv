@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_umkm_pengeluaran_user,umkm.pengeluaran user,model_umkm_pengeluaran,point_of_sale.group_pos_user,1,1,1,1
+access_umkm_laba_rugi_user,umkm.laba.rugi user,model_umkm_laba_rugi,point_of_sale.group_pos_user,1,0,0,0

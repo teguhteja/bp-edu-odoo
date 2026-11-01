@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Pengeluaran -->
+    <record id="umkm_pengeluaran_view_list" model="ir.ui.view">
+        <field name="name">umkm.pengeluaran.list</field>
+        <field name="model">umkm.pengeluaran</field>
+        <field name="arch" type="xml">
+            <list editable="top">
+                <field name="date"/>
+                <field name="kategori"/>
+                <field name="name"/>
+                <field name="amount" sum="Total"/>
+                <field name="currency_id" column_invisible="1"/>
+                <field name="company_id" column_invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="umkm_pengeluaran_view_search" model="ir.ui.view">
+        <field name="name">umkm.pengeluaran.search</field>
+        <field name="model">umkm.pengeluaran</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="kategori"/>
+                <filter name="this_month" string="Bulan Ini"
+                        domain="[('date', '&gt;=', context_today().strftime('%Y-%m-01'))]"/>
+                <filter name="group_kategori" string="Kategori" context="{'group_by': 'kategori'}"/>
+                <filter name="group_month" string="Bulan" context="{'group_by': 'date:month'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="umkm_pengeluaran_action" model="ir.actions.act_window">
+        <field name="name">Pengeluaran</field>
+        <field name="res_model">umkm.pengeluaran</field>
+        <field name="view_mode">list,pivot,graph</field>
+        <field name="context">{'search_default_this_month': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Catat pengeluaran pertama</p>
+            <p>Contoh: beli janur, bunga, dupa, ongkos antar.</p>
+        </field>
+    </record>
+
+    <!-- Laba Rugi -->
+    <record id="umkm_laba_rugi_view_list" model="ir.ui.view">
+        <field name="name">umkm.laba.rugi.list</field>
+        <field name="model">umkm.laba.rugi</field>
+        <field name="arch" type="xml">
+            <list create="0" edit="0" delete="0">
+                <field name="date" widget="date" options="{'format': 'MMMM yyyy'}"/>
+                <field name="pendapatan" sum="Total"/>
+                <field name="pengeluaran" sum="Total"/>
+                <field name="laba" sum="Total" decoration-danger="laba &lt; 0" decoration-success="laba &gt;= 0"/>
+                <field name="currency_id" column_invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="umkm_laba_rugi_view_pivot" model="ir.ui.view">
+        <field name="name">umkm.laba.rugi.pivot</field>
+        <field name="model">umkm.laba.rugi</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="date" interval="month" type="row"/>
+                <field name="pendapatan" type="measure"/>
+                <field name="pengeluaran" type="measure"/>
+                <field name="laba" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="umkm_laba_rugi_view_graph" model="ir.ui.view">
+        <field name="name">umkm.laba.rugi.graph</field>
+        <field name="model">umkm.laba.rugi</field>
+        <field name="arch" type="xml">
+            <graph type="bar">
+                <field name="date" interval="month"/>
+                <field name="laba" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="umkm_laba_rugi_action" model="ir.actions.act_window">
+        <field name="name">Laporan Laba / Rugi</field>
+        <field name="res_model">umkm.laba.rugi</field>
+        <field name="view_mode">list,pivot,graph</field>
+    </record>
+
+    <record id="umkm_produk_terlaris_action" model="ir.actions.act_window">
+        <field name="name">Produk Terlaris</field>
+        <field name="res_model">report.pos.order</field>
+        <field name="view_mode">list,pivot,graph</field>
+        <field name="context">{'pivot_row_groupby': ['product_id'], 'pivot_column_groupby': ['date:month'], 'pivot_measures': ['product_qty', 'price_total'], 'group_by': ['product_id']}</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="umkm_menu_root" name="Keuangan UMKM" web_icon="point_of_sale,static/description/icon.png" sequence="5"
+              groups="point_of_sale.group_pos_user"/>
+    <menuitem id="umkm_pengeluaran_menu" parent="umkm_menu_root" action="umkm_pengeluaran_action" sequence="10"/>
+    <menuitem id="umkm_laba_rugi_menu" parent="umkm_menu_root" action="umkm_laba_rugi_action" sequence="20"/>
+    <menuitem id="umkm_produk_terlaris_menu" parent="umkm_menu_root" action="umkm_produk_terlaris_action" sequence="30"/>
+</odoo>
